@@ -254,7 +254,7 @@ public class PlasmaCondenser {
       
         //  Quantumchromodynamically Confined Matter
         PLASMA_CONDENSER_RECIPES.recipeBuilder()
-                .fluidInputs(HighEnergyQuarkGluonPlasma.getFluid(1000))
+                .fluidInputs(HighEnergyQuarkGluonPlasma.getPlasma(1000))
                 .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 24000))
                 .circuitMeta(1)
                 .fluidOutputs(QuantumchromodynamicallyConfinedMatter.getFluid(1000))
@@ -264,7 +264,7 @@ public class PlasmaCondenser {
                 .buildAndRegister();
 
         PLASMA_CONDENSER_RECIPES.recipeBuilder()
-                .fluidInputs(HighEnergyQuarkGluonPlasma.getFluid(1000))
+                .fluidInputs(HighEnergyQuarkGluonPlasma.getPlasma(1000))
                 .fluidInputs(GelidCryotheum.getFluid(12000))
                 .circuitMeta(1)
                 .fluidOutputs(QuantumchromodynamicallyConfinedMatter.getFluid(1000))
@@ -275,7 +275,7 @@ public class PlasmaCondenser {
 
         PLASMA_CONDENSER_RECIPES.recipeBuilder()
                 .notConsumable(SHAPE_MOLD_INGOT)
-                .fluidInputs(HighEnergyQuarkGluonPlasma.getFluid(L))
+                .fluidInputs(HighEnergyQuarkGluonPlasma.getPlasma(L))
                 .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 24000))
                 .circuitMeta(10)
                 .output(ingot, QuantumchromodynamicallyConfinedMatter)
@@ -286,7 +286,7 @@ public class PlasmaCondenser {
 
         PLASMA_CONDENSER_RECIPES.recipeBuilder()
                 .notConsumable(SHAPE_MOLD_INGOT)
-                .fluidInputs(HighEnergyQuarkGluonPlasma.getFluid(L))
+                .fluidInputs(HighEnergyQuarkGluonPlasma.getPlasma(L))
                 .fluidInputs(GelidCryotheum.getFluid(12000))
                 .circuitMeta(10)
                 .output(ingot, QuantumchromodynamicallyConfinedMatter)
