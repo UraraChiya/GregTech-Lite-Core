@@ -137,8 +137,8 @@ dependencies {
     implementation rfg.deobf("curse.maven:had-enough-items-557549:4810661")
     //  Code Chicken Lib 1.8+
     implementation rfg.deobf("curse.maven:codechicken-lib-1-8-242818:2779848")
-    //  GregTech CEu 2.8.3-beta
-    implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:4951281")
+    //  GregTech CEu 2.8.5-beta
+    implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:4965457")
     //  Gregicality Multiblocks 1.2.7
     implementation rfg.deobf("curse.maven:gregicality-multiblocks-564858:4910674")
     //  GregTech Food Option 1.10.2

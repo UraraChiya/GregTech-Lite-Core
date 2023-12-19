@@ -25,8 +25,8 @@ public class DimensionalOscillator {
         DIMENSIONAL_OSCILLATOR_RECIPES.recipeBuilder()
                 .input(QUANTUM_ANOMALY)
                 .input(QCD_PROTECTIVE_PLATING)
-                .fluidInputs(Naquadah.getFluid(L))
-                .fluidOutputs(RawStarMatter.getFluid(8000))
+                .fluidInputs(RawStarMatter.getFluid(8000))
+                .fluidOutputs(MagnetoHydrodynamicallyConstrainedStarMatter.getFluid(8000))
                 .EUt(VA[UIV])
                 .duration(400)
                 .buildAndRegister();

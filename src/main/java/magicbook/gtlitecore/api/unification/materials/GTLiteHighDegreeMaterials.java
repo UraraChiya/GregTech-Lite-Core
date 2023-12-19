@@ -25,7 +25,7 @@ public class GTLiteHighDegreeMaterials {
 
         //  15001 Quark Gluon Plasma
         QuarkGluonPlasma = new Material.Builder(getId(), gregtechId("quark_gluon_plasma"))
-                .liquid(new FluidBuilder().state(FluidState.PLASMA).temperature((int) (V[ZPM] + V[UHV])/2))// fixme plasma
+                .plasma(new FluidBuilder().temperature((int) (V[ZPM] + V[UHV])/2))
                 .color(0x8DA7DC)
                 .build()
                 .setFormula(TextFormatting.OBFUSCATED  + "a" + TextFormatting.RESET + "§e(u2)d(c2)s(t2)bg" + TextFormatting.OBFUSCATED + "a", false);
@@ -131,14 +131,13 @@ public class GTLiteHighDegreeMaterials {
 
         //  15015 Dense Neutron Plasma
         DenseNeutronPlasma = new Material.Builder(getId(), gregtechId("dense_neutron_plasma"))
-                .liquid() // fixme plasma
                 .plasma(new FluidBuilder().temperature(32768000))
                 .build()
                 .setFormula(TextFormatting.OBFUSCATED  + "a"  + TextFormatting.RESET + "n" + TextFormatting.OBFUSCATED  + "a" , false);
 
         //  15016 High Energy Quark-Gluon Plasma
         HighEnergyQuarkGluonPlasma = new Material.Builder(getId(), gregtechId("high_energy_quark_gluon_plasma"))
-                .liquid(new FluidBuilder().temperature((int) (V[UHV] + V[UIV])/2)) // fixme plasma
+                .plasma(new FluidBuilder().temperature((int) (V[UHV] + V[UIV])/2))
                 .color(0x9933CC)
                 .build()
                 .setFormula(TextFormatting.OBFUSCATED  + "a"  + TextFormatting.RESET + "§e(u2)d(c2)s(t2)bg" + TextFormatting.OBFUSCATED  + "a", true);
