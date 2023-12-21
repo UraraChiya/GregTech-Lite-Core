@@ -44,6 +44,7 @@ public class GTLiteTextures {
     public static OrientedOverlayRenderer QUANTUM_FORCE_TRANSFORMER_OVERLAY = new OrientedOverlayRenderer("multiblocks/quantum_force_transformer");
     public static OrientedOverlayRenderer TURBINE_MIXER_OVERLAY = new OrientedOverlayRenderer("multiblocks/turbine_mixer");
     public static OrientedOverlayRenderer COKING_TOWER_OVERLAY = new OrientedOverlayRenderer("multiblocks/coking_tower");
+    public static OrientedOverlayRenderer ENERGY_STORAGE_TOWER_OVERLAY = new OrientedOverlayRenderer("multiblocks/energy_storage_tower");
 
     //  GTLiteOverlayRenderer
     public static GTLiteOverlayRenderer INCONEL_625_CASING = new GTLiteOverlayRenderer("casings/inconel_625_casing");

@@ -25,6 +25,7 @@ public class GTLiteMetaBlocks {
     public static BlockActiveUniqueCasing ACTIVE_UNIQUE_CASING;
     public static BlockScienceCasing SCIENCE_CASING;
     public static BlockFieldCasing FIELD_CASING;
+    public static BlockBatteryCell BATTERY_CELL;
     public static BlockWireCoil WIRE_COIL;
     public static BlockTransparentCasing TRANSPARENT_CASING;
     public static BlockExplosive EXPLOSIVE_BLOCK;
@@ -62,6 +63,8 @@ public class GTLiteMetaBlocks {
         SCIENCE_CASING.setRegistryName("science_casing");
         FIELD_CASING = new BlockFieldCasing();
         FIELD_CASING.setRegistryName("field_casing");
+        BATTERY_CELL = new BlockBatteryCell();
+        BATTERY_CELL.setRegistryName("battery_cell");
         WIRE_COIL = new BlockWireCoil();
         WIRE_COIL.setRegistryName("wire_coil");
         TRANSPARENT_CASING = new BlockTransparentCasing();
@@ -88,6 +91,7 @@ public class GTLiteMetaBlocks {
         registerItemModel(PCB_FACTORY_CASING);
         registerItemModel(SCIENCE_CASING);
         registerItemModel(FIELD_CASING);
+        registerItemModel(BATTERY_CELL);
         registerItemModel(EXPLOSIVE_BLOCK);
         registerItemModel(CRUCIBLE);
         registerItemModel(HERMETIC_CASING);

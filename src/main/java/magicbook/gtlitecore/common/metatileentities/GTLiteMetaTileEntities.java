@@ -125,6 +125,7 @@ public class GTLiteMetaTileEntities {
     public static MetaTileEntityTurbineMixer TURBINE_MIXER;
     public static MetaTileEntityZhuHaiFishingPond ZHUHAI_FISHING_POND;
     public static MetaTileEntityCokingTower COKING_TOWER;
+    public static MetaTileEntityEnergyStorageTower ENERGY_STORAGE_TOWER;
 
     /**
      * @param machines Pre-init Machine name, e.g. public static SimpleSteamMetaTileEntity[] STEAM_VACUUM_CHAMBER = new SimpleSteamMetaTileEntity[2];
@@ -312,5 +313,25 @@ public class GTLiteMetaTileEntities {
         COKING_TOWER = registerMultiMetaTileEntity(78, new MetaTileEntityCokingTower(gtliteId("coking_tower")));
         //  79
         //  80
+        //  81
+        //  82
+        //  83
+        //  84
+        //  85
+        //  86
+        //  87
+        //  88
+        //  89
+        //  90
+        //  91
+        //  92
+        //  93
+        //  94
+        //  95
+        //  96
+        //  97
+        //  98
+        //  99
+        ENERGY_STORAGE_TOWER = registerMultiMetaTileEntity(100, new MetaTileEntityEnergyStorageTower(gtliteId("energy_storage_tower")));
     }
 }

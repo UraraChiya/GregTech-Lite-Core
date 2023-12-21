@@ -1,0 +1,103 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "variant": {
+      "hv": {
+        "model": "minecraft:cube_bottom_top",
+        "textures": {
+          "top": "gtlitecore:blocks/casings/batteries/hv_top",
+          "side": "gtlitecore:blocks/casings/batteries/hv",
+          "bottom": "#top"
+        }
+      },
+      "ev": {
+        "model": "minecraft:cube_bottom_top",
+        "textures": {
+          "top": "gtlitecore:blocks/casings/batteries/ev_top",
+          "side": "gtlitecore:blocks/casings/batteries/ev",
+          "bottom": "#top"
+        }
+      },
+      "iv": {
+        "model": "minecraft:cube_bottom_top",
+        "textures": {
+          "top": "gtlitecore:blocks/casings/batteries/iv_top",
+          "side": "gtlitecore:blocks/casings/batteries/iv",
+          "bottom": "#top"
+        }
+      },
+      "luv": {
+        "model": "minecraft:cube_bottom_top",
+        "textures": {
+          "top": "gtlitecore:blocks/casings/batteries/luv_top",
+          "side": "gtlitecore:blocks/casings/batteries/luv",
+          "bottom": "#top"
+        }
+      },
+      "zpm": {
+        "model": "minecraft:cube_bottom_top",
+        "textures": {
+          "top": "gtlitecore:blocks/casings/batteries/zpm_top",
+          "side": "gtlitecore:blocks/casings/batteries/zpm",
+          "bottom": "#top"
+        }
+      },
+      "uv": {
+        "model": "minecraft:cube_bottom_top",
+        "textures": {
+          "top": "gtlitecore:blocks/casings/batteries/uv_top",
+          "side": "gtlitecore:blocks/casings/batteries/uv",
+          "bottom": "#top"
+        }
+      },
+      "uhv": {
+        "model": "minecraft:cube_bottom_top",
+        "textures": {
+          "top": "gtlitecore:blocks/casings/batteries/uhv_top",
+          "side": "gtlitecore:blocks/casings/batteries/uhv",
+          "bottom": "#top"
+        }
+      },
+      "uev": {
+        "model": "minecraft:cube_bottom_top",
+        "textures": {
+          "top": "gtlitecore:blocks/casings/batteries/uev_top",
+          "side": "gtlitecore:blocks/casings/batteries/uev",
+          "bottom": "#top"
+        }
+      },
+      "uiv": {
+        "model": "minecraft:cube_bottom_top",
+        "textures": {
+          "top": "gtlitecore:blocks/casings/batteries/uiv_top",
+          "side": "gtlitecore:blocks/casings/batteries/uiv",
+          "bottom": "#top"
+        }
+      },
+      "uxv": {
+        "model": "minecraft:cube_bottom_top",
+        "textures": {
+          "top": "gtlitecore:blocks/casings/batteries/uxv_top",
+          "side": "gtlitecore:blocks/casings/batteries/uxv",
+          "bottom": "#top"
+        }
+      },
+      "opv": {
+        "model": "minecraft:cube_bottom_top",
+        "textures": {
+          "top": "gtlitecore:blocks/casings/batteries/opv_top",
+          "side": "gtlitecore:blocks/casings/batteries/opv",
+          "bottom": "#top"
+        }
+      },
+      "max": {
+        "model": "minecraft:cube_bottom_top",
+        "textures": {
+          "top": "gtlitecore:blocks/casings/batteries/max_top",
+          "side": "gtlitecore:blocks/casings/batteries/max",
+          "bottom": "#top"
+        }
+      }
+    }
+  }
+}

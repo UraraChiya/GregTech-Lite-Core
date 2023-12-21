@@ -147,6 +147,19 @@ tile.field_casing.uxv.name=遏制场发生器（§eUXV§r）
 tile.field_casing.opv.name=遏制场发生器（§9OpV§r）
 tile.field_casing.max.name=遏制场发生器（§c§lMAX§r）
 
+tile.battery_cell.hv.name=能量单元（§6HV§r）
+tile.battery_cell.ev.name=能量单元（§5EV§r）
+tile.battery_cell.iv.name=能量单元（§1IV§r）
+tile.battery_cell.luv.name=能量单元（§dLuV§r）
+tile.battery_cell.zpm.name=能量单元（§cZPM§r）
+tile.battery_cell.uv.name=能量单元（§3UV§r）
+tile.battery_cell.uhv.name=能量单元（§4UHV§r）
+tile.battery_cell.uev.name=能量单元（§aUEV§r）
+tile.battery_cell.uiv.name=能量单元（§2UIV§r）
+tile.battery_cell.uxv.name=能量单元（§eUXV§r）
+tile.battery_cell.opv.name=能量单元（§9OpV§r）
+tile.battery_cell.max.name=能量单元（§c§lMAX§r）
+
 tile.wire_coil.adamantium.name=精金线圈方块
 tile.wire_coil.ichorium.name=灵宝线圈方块
 
@@ -994,6 +1007,30 @@ gtlitecore.machine.coking_tower.tooltip.1=工业焦化厂
 gtlitecore.machine.coking_tower.tooltip.2=根据线圈等级获得并行与配方时间减免
 gtlitecore.machine.coking_tower.tooltip.3=线圈每比白铜高一个等级，配方所需时间变为原本的80%%。
 gtlitecore.machine.coking_tower.tooltip.4=最大并行数：§e(线圈等级 * 16)§7
+
+gtlitecore.machine.energy_storage_tower.name=储能塔
+gtlitecore.machine.energy_storage_tower.tooltip.1=一块大电池
+gtlitecore.machine.energy_storage_tower.tooltip.2=所有§6能量单元§7不需要保持同一电压等级。
+gtlitecore.machine.energy_storage_tower.tooltip.3=最少放置§r4层§7能量单元，最多放置§r16§7层能量单元。
+gtlitecore.machine.energy_storage_tower.tooltip.4=每§r24小时§7损失相当于总容量的§r1%%§7的能量。
+gtlitecore.machine.energy_storage_tower.tooltip.5=每个能量单元的损失上限为§f%,d EU/t§7。
+gtlitecore.machine.energy_storage_tower.tooltip.6=可以使用任意一种能源仓/动力仓，包括§r激光仓§7。
+gtlitecore.machine.energy_storage_tower.stored=已存储：%s
+gtlitecore.machine.energy_storage_tower.energy_stored=电量：%s
+gtlitecore.machine.energy_storage_tower.capacity=储量：%s
+gtlitecore.machine.energy_storage_tower.passive_drain=被动损失：%s
+gtlitecore.machine.energy_storage_tower.average_io=平均输入/输出：%s
+gtlitecore.machine.energy_storage_tower.time_to_fill=预计充满时间：%s
+gtlitecore.machine.energy_storage_tower.time_to_drain=预计耗空时间：%s
+gtlitecore.machine.energy_storage_tower.time_seconds=%s秒
+gtlitecore.machine.energy_storage_tower.time_minutes=%s分
+gtlitecore.machine.energy_storage_tower.time_hours=%s时
+gtlitecore.machine.energy_storage_tower.time_days=%s天
+gtlitecore.machine.energy_storage_tower.time_years=%s年
+gtlitecore.machine.energy_storage_tower.time_forever=无法估计
+gtlitecore.machine.energy_storage_tower.under_one_hour_left=能量在一小时内就会完全耗光！
+gtlitecore.machine.energy_storage_tower.average_io_hover=储能塔内部平均能量变动
+gtlitecore.machine.energy_storage_tower.cell_capacity=§c能量缓存：§r%,d EU
 
 #  Materials
 
