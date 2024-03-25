@@ -3,6 +3,7 @@ package magicbook.gtlitecore.common.metatileentities.multi.electric;
 import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.common.block.blocks.BlockUniqueCasing;
 import gregtech.api.GTValues;
+import gregtech.api.block.IHeatingCoilBlockStats;
 import gregtech.api.capability.IHeatingCoil;
 import gregtech.api.capability.impl.HeatingCoilRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -48,8 +49,9 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.GTValues.EV;
+import static gregtech.api.GTValues.LV;
+import static gregtech.api.unification.material.Materials.Titanium;
 
 public class MetaTileEntityCrystallizationCrucible extends RecipeMapMultiblockController implements IHeatingCoil {
 
@@ -69,11 +71,10 @@ public class MetaTileEntityCrystallizationCrucible extends RecipeMapMultiblockCo
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
         Object type = context.get("CoilType");
-        if (type instanceof BlockWireCoil.CoilType)
-            this.temperature = ((BlockWireCoil.CoilType) type).getCoilTemperature();
+        if (type instanceof IHeatingCoilBlockStats)
+            this.temperature = ((IHeatingCoilBlockStats) type).getCoilTemperature();
         else
             this.temperature = BlockWireCoil.CoilType.CUPRONICKEL.getCoilTemperature();
-
         this.temperature += 100 * Math.max(0, GTUtility.getTierByVoltage(getEnergyContainer().getInputVoltage()) - GTValues.MV);
     }
 

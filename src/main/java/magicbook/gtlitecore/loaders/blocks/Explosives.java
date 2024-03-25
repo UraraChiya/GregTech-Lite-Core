@@ -5,10 +5,10 @@ import magicbook.gtlitecore.common.blocks.BlockExplosive;
 import magicbook.gtlitecore.common.blocks.GTLiteMetaBlocks;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
+import static gregtech.common.items.MetaItems.GELLED_TOLUENE;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 
 public class Explosives {

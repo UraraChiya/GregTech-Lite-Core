@@ -1,32 +1,34 @@
 package magicbook.gtlitecore.loaders.multiblock;
 
+import gregtech.api.metatileentity.multiblock.CleanroomType;
+import gregtech.api.unification.material.MarkerMaterials;
+
 import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.SolderingAlloy;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.CARBON_MESH;
+import static gregtech.common.items.MetaItems.POWER_THRUSTER_ADVANCED;
 import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.DYSON_SWARM_RECIPES;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.PRECISE_ASSEMBLER_RECIPES;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 import static magicbook.gtlitecore.common.items.GTLiteMetaItems.DYSON_SWARM_MODULE;
-import static magicbook.gtlitecore.common.items.GTLiteMetaItems.MINING_DRONE_UIV;
 
 public class DysonSwarm {
 
     public static void init() {
 
         //  Dyson Swarm Module
-        PRECISE_ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Hdcs)
+        ASSEMBLER_RECIPES.recipeBuilder()
                 .input(plate, HY1301, 2)
-                .input(MINING_DRONE_UIV)
+                .input(circuit, MarkerMaterials.Tier.ZPM)
+                .input(CARBON_MESH, 8)
+                .input(ring, ActiniumGroupHAlloy, 16)
+                .input(POWER_THRUSTER_ADVANCED, 2)
                 .input(wireFine, CarbonNanotube, 4)
-                .fluidInputs(SolderingAlloy.getFluid(L * 4))
-                .fluidInputs(MARM200CeSteel.getFluid(L))
-                .fluidInputs(QuantumAlloy.getFluid(L / 2))
-                .fluidInputs(SiliconCarbide.getFluid(L / 4))
+                .fluidInputs(Polyetheretherketone.getFluid(L * 4))
                 .output(DYSON_SWARM_MODULE, 64)
                 .EUt(VA[UHV])
                 .duration(100)
-                .CasingTier(5) // UEV
+                .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
 
         //  x1

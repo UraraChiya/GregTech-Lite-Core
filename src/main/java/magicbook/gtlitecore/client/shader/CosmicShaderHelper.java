@@ -7,7 +7,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.ARBShaderObjects;
 
-@Deprecated
 public class CosmicShaderHelper {
     public static final ShaderCallback shaderCallback;
 

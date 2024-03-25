@@ -3,14 +3,16 @@ package magicbook.gtlitecore.loaders.oreprocessing;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.INDUSTRIAL_ROASTER_RECIPES;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 
 /**
  * The Waelz Process
  *
- * <p>Produces Germanium from Sphalerite</p>
+ * <p>
+ *     Produces Germanium from Sphalerite
+ * </p>
  *
  * <p>Main Products: Germanium</p>
  * <p>Side Products: Zinc, Gallium, Manganese</p>

@@ -10,6 +10,17 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Field Casing Recipe Builder
+ *
+ * @author Magic_Sweepy
+ *
+ * <p>
+ *     This class creates a recipe builder for field casing tier system (used for many multiblocks, e.g. {@link magicbook.gtlitecore.common.metatileentities.multi.electric.MetaTileEntityCollider}).
+ *     You should use {@link gregtech.api.capability.impl.MultiblockRecipeLogic#checkRecipe(Recipe)} to implement correspondent function about this recipe.
+ *     About related recipe property, please see: {@link FieldCasingTierProperty}.
+ * </p>
+ */
 public class FieldCasingTierRecipeBuilder extends RecipeBuilder<FieldCasingTierRecipeBuilder> {
 
     public FieldCasingTierRecipeBuilder() {}

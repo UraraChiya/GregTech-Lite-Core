@@ -16,12 +16,14 @@ import javax.annotation.Nonnull;
 import java.util.List;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
-import static magicbook.gtlitecore.api.unification.materials.info.GTLiteMaterialFlags.*;
-import static magicbook.gtlitecore.api.unification.materials.info.GTLiteOrePrefix.*;
+import static gregtech.api.recipes.RecipeMaps.AUTOCLAVE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CUTTER_RECIPES;
+import static gregtech.api.unification.material.Materials.DistilledWater;
+import static gregtech.api.unification.ore.OrePrefix.gemExquisite;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.CRYSTALLIZATION_RECIPES;
+import static magicbook.gtlitecore.api.unification.materials.info.GTLiteMaterialFlags.DISABLE_CRYSTALLIZATION;
+import static magicbook.gtlitecore.api.unification.materials.info.GTLiteOrePrefix.boule;
+import static magicbook.gtlitecore.api.unification.materials.info.GTLiteOrePrefix.seedCrystal;
 
 public class BouleRecipeHandler {
 

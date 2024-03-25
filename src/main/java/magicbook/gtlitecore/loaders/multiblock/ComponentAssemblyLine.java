@@ -4,11 +4,11 @@ import gregtech.api.unification.material.MarkerMaterials;
 import net.minecraftforge.fluids.FluidStack;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.recipes.RecipeMaps.PACKER_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.COMPONENT_ASSEMBLY_LINE_RECIPES;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
 import static net.minecraft.init.Items.*;

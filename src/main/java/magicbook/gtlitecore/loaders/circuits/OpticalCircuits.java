@@ -384,6 +384,45 @@ public class OpticalCircuits {
                 .CasingTier(3) // UV
                 .buildAndRegister();
 
+        //  UHASoC
+        NANO_SCALE_MASK_ALIGNER_RECIPES.recipeBuilder()
+                .notConsumable(lens, MagnetoResonatic)
+                .notConsumable(lens, NdYAG)
+                .notConsumable(lens, NetherStar)
+                .input(NEUTRONIUM_WAFER)
+                .output(UHASOC_WAFER, 32)
+                .EUt(VA[LuV])
+                .duration(50)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        CUTTER_RECIPES.recipeBuilder()
+                .input(UHASOC_WAFER)
+                .fluidInputs(Water.getFluid(1000))
+                .output(UHASOC_CHIP, 6)
+                .EUt(VA[LuV])
+                .duration(1800)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        CUTTER_RECIPES.recipeBuilder()
+                .input(UHASOC_WAFER)
+                .fluidInputs(DistilledWater.getFluid(750))
+                .output(UHASOC_CHIP, 6)
+                .EUt(VA[LuV])
+                .duration(1350)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        CUTTER_RECIPES.recipeBuilder()
+                .input(UHASOC_WAFER)
+                .fluidInputs(Lubricant.getFluid(250))
+                .output(UHASOC_CHIP, 6)
+                .EUt(VA[LuV])
+                .duration(900)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
         //  Optical SoC
         PRECISE_ASSEMBLER_RECIPES.recipeBuilder()
                 .input(OPTICAL_IMC_BOARD)

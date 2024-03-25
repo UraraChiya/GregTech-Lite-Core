@@ -4,9 +4,11 @@ import magicbook.gtlitecore.common.blocks.BlockWireCoil;
 import magicbook.gtlitecore.common.blocks.GTLiteMetaBlocks;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
+import static gregtech.api.unification.material.Materials.Seaborgium;
+import static gregtech.api.unification.material.Materials.Tritanium;
+import static gregtech.api.unification.ore.OrePrefix.foil;
+import static gregtech.api.unification.ore.OrePrefix.wireGtDouble;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 
 public class WireCoils {

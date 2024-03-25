@@ -27,12 +27,17 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import static magicbook.gtlitecore.api.GTLiteAPI.*;
-import static magicbook.gtlitecore.api.utils.GTLiteUtils.*;
+import static magicbook.gtlitecore.api.utils.GTLiteUtils.getCandidates;
+import static magicbook.gtlitecore.api.utils.GTLiteUtils.getTileEntity;
 
 public class GTLiteTraceabilityPredicate {
 
-    //  Firebox Casing Predicate
-    //  Used to Industrial Roaster.
+    /**
+     * Firebox Casing Predicate.
+     *
+     * <p>This is a heating coil like predicate, used in {@link magicbook.gtlitecore.common.metatileentities.multi.electric.MetaTileEntityIndustrialRoaster}.</p>
+     * <p>Init temperature in formStructure(), and each firebox (in {@link BlockFireboxCasing}) get a special temperature by oridinal.</p>
+     */
     public static Supplier<TraceabilityPredicate> FIRE_BOX = () -> new TraceabilityPredicate(blockWorldState -> {
         IBlockState blockState = blockWorldState.getBlockState();
         if ((blockState.getBlock() instanceof BlockFireboxCasing BlockFireboxCasing)) {
@@ -51,7 +56,12 @@ public class GTLiteTraceabilityPredicate {
             .toArray(BlockInfo[]::new)))
             .addTooltips("gtlitecore.machine.pattern.firebox");
 
-    //  Yotta Fluid Tank Cell Predicate
+    /**
+     * Yotta Fluid Tank Cell Predicate.
+     *
+     * <p>This is the basic predicate of Yotta Tank. You can see BATTERY_PREDICATE in {@link gregtech.common.metatileentities.multi.electric.MetaTileEntityPowerSubstation}.</p>
+     * <p>Hash map of Yotta Tank Cells init in {@link magicbook.gtlitecore.api.GTLiteAPI}.</p>
+     */
     public static final Supplier<TraceabilityPredicate> CELL_PREDICATE = () -> new TraceabilityPredicate(blockWorldState -> {
         IBlockState state = blockWorldState.getBlockState();
         if (MAP_YOT_TANK_CELL.containsKey(state)) {
@@ -72,7 +82,11 @@ public class GTLiteTraceabilityPredicate {
             .toArray(BlockInfo[]::new))
             .addTooltips("gtlitecore.machine.yotta_fluid_tank.error.cells");
 
-    //  Rotor Holder Predicate
+    /**
+     * (Reinforced) Rotor Holder Predicate.
+     *
+     * <p>Just a rotor holder predicate rewrite for {@link magicbook.gtlitecore.common.metatileentities.multi.part.MetaTileEntityReinforcedRotorHolder}.</p>
+     */
     public static Supplier<TraceabilityPredicate> ROTOR_HOLDER = () -> new TraceabilityPredicate(blockWorldState -> {
         TileEntity tileEntity = blockWorldState.getTileEntity();
         if (tileEntity instanceof IGregTechTileEntity) {
@@ -100,9 +114,13 @@ public class GTLiteTraceabilityPredicate {
             .addTooltips("gtlitecore.machine.reinforced_rotor_holder.error");
 
     /**
-     * @param mark Symbols, you need to get these in formStructure().
-     * @param allowedStates Allowed states.
-     * @return A special states(). you can use correspond text (mark) to check if the .aisle() is your upgrade structure part.
+     * Optional State in Multiblock Structure.
+     *
+     * <p>This is a special state for {@link gregtech.api.pattern.FactoryBlockPattern} used for some update meta tile entities.</p>
+     *
+     * @param mark           Symbol to get these infoes in formStructure().
+     * @param allowedStates  Allowed state, i.e. block mean of this symbol (like: 'S', getCasingState()), and getCasingState() is a {@link IBlockState} getter.
+     * @return               Just like blockMatcher parameter in {@link gregtech.api.pattern.FactoryBlockPattern}, you can use correspond text (mark) to check if the aisle is your upgrade structure part.
      */
     public static TraceabilityPredicate optionalStates(String mark, IBlockState... allowedStates) {
         return new TraceabilityPredicate(blockWorldState -> {
@@ -118,9 +136,13 @@ public class GTLiteTraceabilityPredicate {
     }
 
     /**
-     * @param mark Symbols, you need to get these in formStructure().
-     * @param allowedAbilities Allowed states.
-     * @return A special abilities(). you can use correspond text (mark) to check if the .aisle() is your upgrade structure part.
+     * Optional Ability in Multiblock Structure.
+     *
+     * <p>This is a special ability for {@link gregtech.api.pattern.FactoryBlockPattern} used for some update meta tile entities.</p>
+     *
+     * @param mark              Symbol to get these infoes in formStructure().
+     * @param allowedAbilities  Allowed ability, i.e. ability mean of this symbol (like: abilities(MultiblockAbility.IMPORT_ITEM), please use abilities in {@link MultiblockAbility}).
+     * @return                  Just like abilities() in {@link gregtech.api.metatileentity.multiblock.MultiblockControllerBase}, you can use correspond text (mark) to check if the ability is your upgrade structure part.
      */
     public static TraceabilityPredicate optionalAbilities(String mark, MultiblockAbility<?>... allowedAbilities) {
         return new TraceabilityPredicate(blockWorldState -> {

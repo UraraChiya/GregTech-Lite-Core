@@ -20,7 +20,6 @@ import net.minecraftforge.common.model.IModelState;
 import java.util.LinkedList;
 import java.util.List;
 
-@Deprecated
 public abstract class WrappedItemRenderer extends PerspectiveAwareItemRenderer {
 
     protected IBakedModel wrapped;
@@ -40,8 +39,8 @@ public abstract class WrappedItemRenderer extends PerspectiveAwareItemRenderer {
         /**
          * A callback from the model load event to grab the wrapped model.
          *
-         * @param modelRegistry Registry
-         * @return The wrapped model
+         * @param modelRegistry  Registry
+         * @return               The wrapped model
          */
         IBakedModel getWrappedModel(IRegistry<ModelResourceLocation, IBakedModel> modelRegistry);
     }
@@ -49,8 +48,8 @@ public abstract class WrappedItemRenderer extends PerspectiveAwareItemRenderer {
     /**
      * Renders a model basically the same as RenderItem does.
      *
-     * @param model The model to render.
-     * @param stack The stack being rendered. Used for quad tinting.
+     * @param model  The model to render.
+     * @param stack  The stack being rendered. Used for quad tinting.
      */
     public static void renderModel(IBakedModel model, ItemStack stack) {
         renderModel(model, stack, 1.0F);
@@ -59,9 +58,9 @@ public abstract class WrappedItemRenderer extends PerspectiveAwareItemRenderer {
     /**
      * Renders a model basically the same as RenderItem does, except allows overriding the alpha.
      *
-     * @param model         The model to render.
-     * @param stack         The stack being renderer. Used for quad tinting.
-     * @param alphaOverride Th alpha override 1.0 -> 0.0
+     * @param model          The model to render.
+     * @param stack          The stack being renderer. Used for quad tinting.
+     * @param alphaOverride  The alpha override 1.0 -> 0.0
      */
     public static void renderModel(IBakedModel model, ItemStack stack, float alphaOverride) {
 

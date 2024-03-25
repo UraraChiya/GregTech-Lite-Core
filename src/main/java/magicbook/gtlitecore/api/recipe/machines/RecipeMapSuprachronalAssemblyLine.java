@@ -10,6 +10,11 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Suprachronal Assembly Line Recipe Map
+ *
+ * @author Zalgo239
+ */
 public class RecipeMapSuprachronalAssemblyLine<R extends RecipeBuilder<R>> extends RecipeMap<R> {
 
     public RecipeMapSuprachronalAssemblyLine(String unlocalizedName,

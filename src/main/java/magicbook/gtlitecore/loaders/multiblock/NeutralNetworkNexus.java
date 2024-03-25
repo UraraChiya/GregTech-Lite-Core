@@ -4,9 +4,10 @@ import gregtech.api.unification.material.Material;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
 import static gregtech.common.items.MetaItems.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.NEUTRAL_NETWORK_NEXUS_BREEDING_MODE;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.NEUTRAL_NETWORK_NEXUS_HYBRIDIZING_MODE;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 import static magicbook.gtlitecore.api.unification.materials.info.GTLiteOrePrefix.*;
 

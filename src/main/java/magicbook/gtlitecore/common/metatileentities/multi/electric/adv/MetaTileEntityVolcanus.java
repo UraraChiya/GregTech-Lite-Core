@@ -50,8 +50,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import static gregtech.api.GTValues.*;
-import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
+import static gregtech.api.GTValues.IV;
+import static gregtech.api.GTValues.LV;
+import static magicbook.gtlitecore.api.unification.GTLiteMaterials.BlazingPyrotheum;
 
 public class MetaTileEntityVolcanus extends RecipeMapMultiblockController implements IHeatingCoil {
 

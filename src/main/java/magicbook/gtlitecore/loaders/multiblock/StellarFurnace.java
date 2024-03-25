@@ -6,14 +6,14 @@ import magicbook.gtlitecore.common.blocks.BlockTransparentCasing;
 import magicbook.gtlitecore.common.blocks.GTLiteMetaBlocks;
 
 import java.math.BigInteger;
-import java.time.Instant;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.STELLAR_FURNACE_RECIPES;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.VACUUM_CHAMBER_RECIPES;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
 
@@ -234,6 +234,8 @@ public class StellarFurnace {
                 .buildAndRegister();
 
         //  Step3: Cosmic Neutron Plasma
+
+        //  Canning Dense Neutron Plasma with containment cell, and prepare it to stellar furnace.
         CANNER_RECIPES.recipeBuilder()
                 .input(EXTREMELY_DURABLE_PLASMA_CONTAINMENT_CELL)
                 .fluidInputs(DenseNeutronPlasma.getPlasma(1000))
@@ -243,12 +245,14 @@ public class StellarFurnace {
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
 
+        //  2 Dense Neutron Plasma Containment Cell -> 1 Cosmic Neutron Plasma Cell (and return empty containment cell)
         STELLAR_FURNACE_RECIPES.recipeBuilder()
                 .input(DENSE_NEUTRON_PLASMA_CONTAINMENT_CELL, 2)
                 .inputs(GTLiteMetaBlocks.EXPLOSIVE_BLOCK.getItemVariant(BlockExplosive.ExplosiveType.QUANTUM_CHROMODYNAMIC_CHARGE))
                 .fluidInputs(AstralTitanium.getPlasma(6000))
                 .fluidInputs(CelestialTungsten.getPlasma(6000))
                 .output(COSMIC_NEUTRON_PLASMA_CONTAINMENT_CELL)
+                .output(EXTREMELY_DURABLE_PLASMA_CONTAINMENT_CELL)
                 .EUt(VA[UIV])
                 .duration(10)
                 .temperature(BigInteger.valueOf(886544780))

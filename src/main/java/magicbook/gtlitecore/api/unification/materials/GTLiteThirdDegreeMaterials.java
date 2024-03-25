@@ -3,7 +3,7 @@ package magicbook.gtlitecore.api.unification.materials;
 import gregtech.api.unification.material.Material;
 
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.info.MaterialFlags.*;
+import static gregtech.api.unification.material.info.MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING;
 import static gregtech.api.unification.material.info.MaterialIconSet.*;
 import static gregtech.api.util.GTUtility.gregtechId;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;

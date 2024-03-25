@@ -7,9 +7,9 @@ import magicbook.gtlitecore.common.GTLiteConfigHolder;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
-import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.recipes.RecipeMaps.CIRCUIT_ASSEMBLER_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.wireFine;
 import static gregtech.common.items.MetaItems.*;
 
 public class QuantumCircuits {

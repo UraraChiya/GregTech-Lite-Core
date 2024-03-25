@@ -1,13 +1,13 @@
 package magicbook.gtlitecore.loaders.multiblock;
 
-import static gregicality.multiblocks.api.unification.GCYMMaterials.*;
+import static gregicality.multiblocks.api.unification.GCYMMaterials.TitaniumCarbide;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
 import static gregtech.common.items.MetaItems.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.QUANTUM_FORCE_TRANSFORMER_RECIPES;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
-import static magicbook.gtlitecore.api.unification.materials.info.GTLiteOrePrefix.*;
+import static magicbook.gtlitecore.api.unification.materials.info.GTLiteOrePrefix.swarm;
 import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
 
 public class QuantumForceTransformer {

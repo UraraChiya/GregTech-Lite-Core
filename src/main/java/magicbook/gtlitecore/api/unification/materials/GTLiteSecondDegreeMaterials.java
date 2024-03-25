@@ -10,7 +10,7 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.*;
-import static gregtech.api.util.GTUtility.*;
+import static gregtech.api.util.GTUtility.gregtechId;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 import static magicbook.gtlitecore.api.unification.materials.info.GTLiteMaterialIconSet.CUSTOM_LEGENDARIUM;
 import static magicbook.gtlitecore.api.unification.materials.info.GTLiteMaterialIconSet.CUSTOM_MAGNETO_RESONATIC;
@@ -191,7 +191,7 @@ public class GTLiteSecondDegreeMaterials {
                         .blastStats(VA[LuV], 886)
                         .vacuumStats(VA[EV], 400))
                 .components(Nickel, 14, Iron, 12, Molybdenum, 11, CobaltBrass, 8, Chrome, 6, Silicon, 4)
-                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_FRAME)
+                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_FRAME, GENERATE_RING)
                 .build();
 
         //  12013 High Strength Structural Steel-HY130-1
@@ -687,7 +687,7 @@ public class GTLiteSecondDegreeMaterials {
                 .blast(b -> b
                         .temp(13100, BlastProperty.GasTier.HIGHEST)
                         .blastStats(VA[UEV], 420))
-                .flags(GENERATE_PLATE)
+                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME)
                 .build();
 
         //  12051 Actinium Group-L Alloy
@@ -714,6 +714,7 @@ public class GTLiteSecondDegreeMaterials {
                 .blast(b -> b
                         .temp(14500, BlastProperty.GasTier.HIGHEST)
                         .blastStats(VA[UEV], 300))
+                .flags(GENERATE_ROD, GENERATE_RING)
                 .build();
 
         //  12053 Halogen Mixture

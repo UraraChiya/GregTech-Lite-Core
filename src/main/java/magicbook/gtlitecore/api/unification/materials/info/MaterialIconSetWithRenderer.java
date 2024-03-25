@@ -8,7 +8,6 @@ import net.minecraft.util.ResourceLocation;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-@Deprecated
 public class MaterialIconSetWithRenderer extends MaterialIconSet implements IItemRenderer, IItemRendererManager {
 
     private IItemRendererManager rendererManager;

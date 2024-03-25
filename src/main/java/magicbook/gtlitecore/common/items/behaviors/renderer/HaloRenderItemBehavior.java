@@ -12,17 +12,28 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.function.Supplier;
 
-@Deprecated
+/**
+ * Halo Render Item Behavior.
+ *
+ * @author Gate Guardian
+ *
+ * <p>
+ *     This renderer is transplanted from <a href="https://github.com/GTNewHorizons/GT5-Unofficial">GT5u</a>.
+ *     Use {@link HaloItemRenderer} to add a extra renderer to items (should mixin gregtech's item renderer, please see e.g. {@link magicbook.gtlitecore.mixin.gregtech.MixinMetaItem}).
+ *     Thanks for tong-ge to fix problem of getHaloTexture() cause server side crash (problem of {@link TextureAtlasSprite}).
+ * </p>
+ */
+@SuppressWarnings("rawtypes")
 public class HaloRenderItemBehavior implements IHaloRenderBehavior {
 
     private final int haloSize;
     private final int haloColour;
-    private final Supplier<TextureAtlasSprite> supplier;
+    private final Supplier supplier;
     private final boolean drawPulse;
 
     public HaloRenderItemBehavior(int haloSize,
                                   int haloColour,
-                                  Supplier<TextureAtlasSprite> supplier,
+                                  Supplier supplier,
                                   boolean drawPulse) {
         this.haloSize = haloSize;
         this.haloColour = haloColour;
@@ -35,9 +46,10 @@ public class HaloRenderItemBehavior implements IHaloRenderBehavior {
         return true;
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public TextureAtlasSprite getHaloTexture() {
-        return supplier.get();
+        return (TextureAtlasSprite) supplier.get();
     }
 
     @Override

@@ -4,7 +4,6 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Deprecated
 public interface IHaloRenderBehavior extends IItemRendererManager {
     @SideOnly(Side.CLIENT)
     boolean shouldDrawHalo();

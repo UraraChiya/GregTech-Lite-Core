@@ -1,9 +1,10 @@
 package magicbook.gtlitecore.loaders.oreprocessing;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.ingot;
 import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 
@@ -12,7 +13,9 @@ import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
  *
  * @author Magic_Sweepy (2023/11/26)
  *
- * <p>Produces Bismuth Vanadate from Vanadium Magnetite</p>
+ * <p>
+ *     Produces Bismuth Vanadate from Vanadium Magnetite
+ * </p>
  *
  * <p>Main Products: Bismuth Vanadate</p>
  * <p>Side Products: Some Nitrogenous compounds</p>

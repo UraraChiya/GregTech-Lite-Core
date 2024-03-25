@@ -14,7 +14,15 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-@Deprecated
+/**
+ * Shader Utility
+ *
+ * <p>
+ *     This class is referenced some codes in LWJGL wiki,
+ *     please see: <a href="http://lwjgl.org/wiki/index.php?title=GLSL_Shaders_with_LWJGL">LWJGL wiki</a>.
+ *     Used for {@link magicbook.gtlitecore.client.shader.CosmicShaderHelper}.
+ * </p>
+ */
 public class ShaderUtils {
 
     private static final int VERT = ARBVertexShader.GL_VERTEX_SHADER_ARB;
@@ -64,7 +72,7 @@ public class ShaderUtils {
     }
 
     // Most of the code taken from the LWJGL wiki
-    // http://lwjgl.org/wiki/index.php?title=GLSL_Shaders_with_LWJGL
+    //
 
     private static int createProgram(String vert, String frag) {
         int vertId = 0, fragId = 0, program = 0;

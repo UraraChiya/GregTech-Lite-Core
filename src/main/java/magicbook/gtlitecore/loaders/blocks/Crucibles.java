@@ -9,9 +9,9 @@ import magicbook.gtlitecore.common.blocks.GTLiteMetaBlocks;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
-import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
+import static gregtech.api.unification.ore.OrePrefix.plate;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.VACUUM_CHAMBER_RECIPES;
+import static magicbook.gtlitecore.api.unification.GTLiteMaterials.HexagonalBoronNitride;
 
 public class Crucibles {
     public static void init() {

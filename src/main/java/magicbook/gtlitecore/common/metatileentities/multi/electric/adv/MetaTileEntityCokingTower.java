@@ -42,7 +42,8 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-import static gregtech.api.GTValues.*;
+import static gregtech.api.GTValues.EV;
+import static gregtech.api.GTValues.LV;
 
 public class MetaTileEntityCokingTower extends RecipeMapMultiblockController {
 

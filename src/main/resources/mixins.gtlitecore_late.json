@@ -10,5 +10,9 @@
     "gregtech.MixinMetaTileEntityItemBus"
   ],
   "server": [],
-  "client": []
+  "client": [
+    "gregtech.MixinMetaItem",
+    "gregtech.MixinMetaPrefixItem",
+    "gregtech.MixinMetaValueItem"
+  ]
 }

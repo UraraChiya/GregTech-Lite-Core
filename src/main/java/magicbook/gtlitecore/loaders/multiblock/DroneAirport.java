@@ -6,11 +6,12 @@ import gregtech.api.unification.material.Material;
 import net.minecraftforge.fluids.FluidStack;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.DRONE_AIRPORT_RECIPES;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
 
@@ -173,7 +174,7 @@ public class DroneAirport {
                 .stationResearch(b -> b
                         .researchStack(MINING_DRONE_UHV.getStackForm())
                         .EUt(VA[UHV])
-                        .CWUt(96))
+                        .CWUt(128))
                 .buildAndRegister();
 
         //  UIV
@@ -190,7 +191,7 @@ public class DroneAirport {
                 .stationResearch(b -> b
                         .researchStack(MINING_DRONE_UEV.getStackForm())
                         .EUt(VA[UEV])
-                        .CWUt(128))
+                        .CWUt(256))
                 .buildAndRegister();
 
         //  UXV
@@ -207,7 +208,7 @@ public class DroneAirport {
                 .stationResearch(b -> b
                         .researchStack(MINING_DRONE_UIV.getStackForm())
                         .EUt(VA[UIV])
-                        .CWUt(160))
+                        .CWUt(512))
                 .buildAndRegister();
 
         //  OpV
@@ -224,7 +225,7 @@ public class DroneAirport {
                 .stationResearch(b -> b
                         .researchStack(MINING_DRONE_UXV.getStackForm())
                         .EUt(VA[UXV])
-                        .CWUt(192))
+                        .CWUt(1024))
                 .buildAndRegister();
 
         //  MAX
@@ -241,115 +242,115 @@ public class DroneAirport {
                 .stationResearch(b -> b
                         .researchStack(MINING_DRONE_OpV.getStackForm())
                         .EUt(VA[OpV])
-                        .CWUt(224))
+                        .CWUt(2048))
                 .buildAndRegister();
     }
 
     private static void LVstage() {
         //  Iron-Copper-Gold vein
         createDroneAirportRecipe(1, MINING_DRONE_LV,
-                Iron, 8000,
-                Copper, 8000,
-                Gold, 6000,
-                Magnetite, 9000,
+                Iron,              8000,
+                Copper,            8000,
+                Gold,              6000,
+                Magnetite,         9000,
                 VanadiumMagnetite, 7000,
-                Pyrite, 8000,
-                Chalcopyrite, 9000,
-                Sphalerite, 6000,
-                Aluminium, 6000,
+                Pyrite,            8000,
+                Chalcopyrite,      9000,
+                Sphalerite,        6000,
+                Aluminium,         6000,
                 VH[LV]);
 
         //  Nickel-Cobalt-Sulfur vein
         createDroneAirportRecipe(2, MINING_DRONE_LV,
-                Nickel, 8000,
-                Cobalt, 7000,
-                Sulfur, 9000,
-                Garnierite, 7000,
-                Pentlandite, 6000,
+                Nickel,         8000,
+                Cobalt,         7000,
+                Sulfur,         9000,
+                Garnierite,     7000,
+                Pentlandite,    6000,
                 YellowLimonite, 9000,
-                BrownLimonite, 9000,
-                BandedIron, 8000,
-                Cobaltite, 6000,
+                BrownLimonite,  9000,
+                BandedIron,     8000,
+                Cobaltite,      6000,
                 VH[LV]);
 
         //  Salt-Rock Salt vein
         createDroneAirportRecipe(3, MINING_DRONE_LV,
-                Salt, 9000,
-                RockSalt, 9000,
-                Realgar, 7000,
-                Zeolite, 8000,
-                Asbestos, 9000,
+                Salt,       9000,
+                RockSalt,   9000,
+                Realgar,    7000,
+                Zeolite,    8000,
+                Asbestos,   9000,
                 Lepidolite, 7000,
-                Spodumene, 7000,
-                Grossular, 6000,
-                Gypsum, 7000,
+                Spodumene,  7000,
+                Grossular,  6000,
+                Gypsum,     7000,
                 VH[LV]);
 
         //  Quartzites-Topaz vein
         createDroneAirportRecipe(4, MINING_DRONE_LV,
-                Quartzite, 9000,
-                NetherQuartz, 8000,
-                CertusQuartz, 8000,
-                Barite, 7000,
+                Quartzite,           9000,
+                NetherQuartz,        8000,
+                CertusQuartz,        8000,
+                Barite,              7000,
                 BasalticMineralSand, 7000,
                 GraniticMineralSand, 7000,
-                FullersEarth, 8000,
-                Topaz, 6000,
-                BlueTopaz, 6000,
+                FullersEarth,        8000,
+                Topaz,               6000,
+                BlueTopaz,           6000,
                 VH[LV]);
     }
 
     private static void MVstage() {
         //  Lead-Silver-Copper vein
         createDroneAirportRecipe(1, MINING_DRONE_MV,
-                Lead, 8000,
-                Silver, 6000,
-                Tin, 9000,
-                Galena, 8000,
-                Cassiterite, 7000,
+                Lead,            8000,
+                Silver,          6000,
+                Tin,             9000,
+                Galena,          8000,
+                Cassiterite,     7000,
                 CassiteriteSand, 5000,
-                Tetrahedrite, 8000,
-                Stibnite, 6000,
-                Bauxite, 7000,
+                Tetrahedrite,    8000,
+                Stibnite,        6000,
+                Bauxite,         7000,
                 VH[MV]);
 
         //  Redstone-Diamond-Thorium vein
         createDroneAirportRecipe(2, MINING_DRONE_MV,
-                Redstone, 8000,
-                Diamond, 7000,
-                Emerald, 6000,
-                Ruby, 6000,
-                Cinnabar, 7000,
-                Coal, 9000,
-                Graphite, 6000,
+                Redstone,  8000,
+                Diamond,   7000,
+                Emerald,   6000,
+                Ruby,      6000,
+                Cinnabar,  7000,
+                Coal,      9000,
+                Graphite,  6000,
                 Beryllium, 8000,
-                Thorium, 6000,
+                Thorium,   6000,
                 VH[MV]);
 
         //  Lapis-Electrotine vein
         createDroneAirportRecipe(3, MINING_DRONE_MV,
-                Lapis, 8000,
-                Sodalite, 7000,
-                Kyanite, 9000,
-                Lazurite, 8000,
-                Calcite, 9000,
+                Lapis,       8000,
+                Sodalite,    7000,
+                Kyanite,     9000,
+                Lazurite,    8000,
+                Calcite,     9000,
                 Electrotine, 6000,
-                Saltpeter, 7000,
-                Diatomite, 8000,
-                Alunite, 6000,
+                Saltpeter,   7000,
+                Diatomite,   8000,
+                Alunite,     6000,
                 VH[MV]);
 
         //  Oilsand-Magnesite vein
         createDroneAirportRecipe(4, MINING_DRONE_MV,
-                Oilsands, 9000,
-                Soapstone, 8000,
-                Talc, 8000,
+                Oilsands,       9000,
+                Soapstone,      8000,
+                Talc,           8000,
                 GlauconiteSand, 7000,
-                Trona, 6000,
-                Magnesite, 7000,
-                Olivine, 7000,
-                Bentonite, 7000,
-                Pollucite, 6000,
+                Trona,          6000,
+                Magnesite,      7000,
+                Olivine,        7000,
+                Bentonite,      7000,
+                Pollucite,      6000,
                 VH[MV]);
     }
 
@@ -357,54 +358,54 @@ public class DroneAirport {
 
         //  Lithium-Tungsten-Molybdenum vein
         createDroneAirportRecipe(1, MINING_DRONE_HV,
-                Lithium, 9000,
-                Molybdenum, 7000,
-                Scheelite, 6000,
-                Tungstate, 6000,
-                Wulfenite, 8000,
+                Lithium,     9000,
+                Molybdenum,  7000,
+                Scheelite,   6000,
+                Tungstate,   6000,
+                Wulfenite,   8000,
                 Molybdenite, 8000,
-                Powellite, 7000,
-                Chromite, 7000,
-                Ilmenite, 6000,
+                Powellite,   7000,
+                Chromite,    7000,
+                Ilmenite,    6000,
                 VH[HV]);
 
         //  Neodymium-Platinum-Palladium vein
         createDroneAirportRecipe(2, MINING_DRONE_HV,
-                Neodymium, 6000,
-                Platinum, 7000,
-                Palladium, 7000,
+                Neodymium,  6000,
+                Platinum,   7000,
+                Palladium,  7000,
                 Bastnasite, 8000,
-                Monazite, 7000,
-                Cooperite, 8000,
-                Bornite, 9000,
-                Tantalite, 8000,
+                Monazite,   7000,
+                Cooperite,  8000,
+                Bornite,    9000,
+                Tantalite,  8000,
                 Pyrolusite, 8000,
                 VH[HV]);
 
         //  Sapphire-Amethyst vein
         createDroneAirportRecipe(3, MINING_DRONE_HV,
-                Sapphire, 7000,
-                Almandine, 7000,
-                Pyrope, 8000,
+                Sapphire,      7000,
+                Almandine,     7000,
+                Pyrope,        8000,
                 GreenSapphire, 7000,
-                Amethyst, 9000,
-                GarnetRed, 8000,
-                GarnetYellow, 8000,
-                GarnetYellow, 8000,
-                Opal, 8000,
+                Amethyst,      9000,
+                GarnetRed,     8000,
+                GarnetYellow,  8000,
+                GarnetYellow,  8000,
+                Opal,          8000,
                 VH[HV]);
 
         //  Copper-Tantalum vein
         createDroneAirportRecipe(4, MINING_DRONE_HV,
-                Malachite, 9000,
-                Apatite, 8000,
+                Malachite,           9000,
+                Apatite,             8000,
                 TricalciumPhosphate, 8000,
-                Realgar, 9000,
-                Grossular, 8000,
-                Pyrolusite, 7000,
-                Spessartine, 7000,
-                Tantalite, 6000,
-                Pyrochlore, 8000,
+                Realgar,             9000,
+                Grossular,           8000,
+                Pyrolusite,          7000,
+                Spessartine,         7000,
+                Tantalite,           6000,
+                Pyrochlore,          8000,
                 VH[HV]);
     }
 
@@ -412,53 +413,53 @@ public class DroneAirport {
 
         //  Naquadah-Plutonium-Uranium vein
         createDroneAirportRecipe(1, MINING_DRONE_EV,
-                Neodymium, 9000,
-                Platinum, 8000,
-                Cooperite, 7000,
-                Tungstate, 8000,
-                Scheelite, 7000,
-                Bauxite, 8000,
-                Palladium, 7000,
+                Neodymium,  9000,
+                Platinum,   8000,
+                Cooperite,  7000,
+                Tungstate,  8000,
+                Scheelite,  7000,
+                Bauxite,    8000,
+                Palladium,  7000,
                 Pyrochlore, 8000,
-                Grossular, 8000,
+                Grossular,  8000,
                 VH[EV]);
 
         //  Monazite-Molybdenum vein
         createDroneAirportRecipe(2, MINING_DRONE_EV,
-                Monazite, 9000,
-                Bastnasite, 8000,
-                Molybdenum, 7000,
+                Monazite,    9000,
+                Bastnasite,  8000,
+                Molybdenum,  7000,
                 Molybdenite, 8000,
-                Bornite, 7000,
-                Tantalite, 8000,
-                Almandine, 8000,
-                Apatite, 7000,
-                Ilmenite, 7000,
+                Bornite,     7000,
+                Tantalite,   8000,
+                Almandine,   8000,
+                Apatite,     7000,
+                Ilmenite,    7000,
                 VH[EV]);
 
         //  Oilsand vein
         createDroneAirportRecipe(3, MINING_DRONE_EV,
-                Oilsands, 8000,
-                Oilsands, 8000,
-                Oilsands, 8000,
-                Oilsands, 8000,
+                Oilsands,            8000,
+                Oilsands,            8000,
+                Oilsands,            8000,
+                Oilsands,            8000,
                 GraniticMineralSand, 7000,
-                GarnetSand, 7000,
+                GarnetSand,          7000,
                 BasalticMineralSand, 6000,
-                GlauconiteSand, 9000,
-                Quartzite, 7000,
+                GlauconiteSand,      9000,
+                Quartzite,           7000,
                 VH[EV]);
 
         //  Silver-Gold-Platinum vein
         createDroneAirportRecipe(4, MINING_DRONE_EV,
-                Silver, 7000,
-                Silver, 7000,
-                Gold, 6000,
-                Gold, 6000,
-                Platinum, 8000,
-                Platinum, 8000,
-                Lead, 9000,
-                Tin, 9000,
+                Silver,    7000,
+                Silver,    7000,
+                Gold,      6000,
+                Gold,      6000,
+                Platinum,  8000,
+                Platinum,  8000,
+                Lead,      9000,
+                Tin,       9000,
                 Cooperite, 7000,
                 VH[EV]);
     }
@@ -467,39 +468,39 @@ public class DroneAirport {
 
         //  Naquadah-Plutonium-Uranium vein
         createDroneAirportRecipe(1, MINING_DRONE_IV,
-                Naquadah, 6000,
-                Naquadah, 6000,
-                Naquadah, 6000,
+                Naquadah,     6000,
+                Naquadah,     6000,
+                Naquadah,     6000,
                 Plutonium239, 7000,
-                Uraninite, 8000,
-                Uraninite, 8000,
-                Pitchblende, 8000,
-                Pitchblende, 8000,
-                Pyrochlore, 9000,
+                Uraninite,    8000,
+                Uraninite,    8000,
+                Pitchblende,  8000,
+                Pitchblende,  8000,
+                Pyrochlore,   9000,
                 VH[IV]);
 
         //  Thorium-Plutonium-Pitchblende vein
         createDroneAirportRecipe(2, MINING_DRONE_IV,
-                Thorium, 8000,
-                Thorium, 8000,
-                Uraninite, 7000,
-                Uraninite, 7000,
+                Thorium,     8000,
+                Thorium,     8000,
+                Uraninite,   7000,
+                Uraninite,   7000,
                 Pitchblende, 9000,
                 Pitchblende, 9000,
-                Beryllium, 8000,
-                Emerald, 8000,
-                Olivine, 9000,
+                Beryllium,   8000,
+                Emerald,     8000,
+                Olivine,     9000,
                 VH[IV]);
 
         //  Sylvanite-Gold-Silver vein
         createDroneAirportRecipe(3, MINING_DRONE_IV,
-                Gold, 8000,
-                Gold, 8000,
-                Gold, 8000,
-                Gold, 8000,
-                Silver, 9000,
-                Silver, 9000,
-                Silver, 9000,
+                Gold,      8000,
+                Gold,      8000,
+                Gold,      8000,
+                Gold,      8000,
+                Silver,    9000,
+                Silver,    9000,
+                Silver,    9000,
                 Sylvanite, 4000,
                 Sylvanite, 4000,
                 VH[IV]);
@@ -509,12 +510,12 @@ public class DroneAirport {
                 Molybdenite, 9000,
                 Molybdenite, 9000,
                 Molybdenite, 9000,
-                Wulfenite, 8000,
-                Wulfenite, 8000,
-                Wulfenite, 8000,
-                Rheniite, 7000,
-                Rheniite, 7000,
-                Rheniite, 7000,
+                Wulfenite,   8000,
+                Wulfenite,   8000,
+                Wulfenite,   8000,
+                Rheniite,    7000,
+                Rheniite,    7000,
+                Rheniite,    7000,
                 VH[IV]);
     }
 

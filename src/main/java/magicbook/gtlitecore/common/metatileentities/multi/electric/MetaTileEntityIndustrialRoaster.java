@@ -6,7 +6,10 @@ import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
-import gregtech.api.pattern.*;
+import gregtech.api.pattern.BlockPattern;
+import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.pattern.MultiblockShapeInfo;
+import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.util.TextFormattingUtil;
@@ -45,7 +48,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static gregtech.api.GTValues.*;
+import static gregtech.api.GTValues.EV;
+import static gregtech.api.GTValues.LV;
 
 public class MetaTileEntityIndustrialRoaster extends RecipeMapMultiblockController implements IHeatingCoil {
 

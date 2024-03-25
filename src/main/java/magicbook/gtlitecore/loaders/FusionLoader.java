@@ -382,5 +382,16 @@ public class FusionLoader {
                 .EUToStart(1300000000L)
                 .duration(200)
                 .buildAndRegister();
+
+        //  Hikarium + Tairitsium -> Fatalium plasma
+        //  Mk V recipe, OpV material pre step.
+        FUSION_RECIPES.recipeBuilder()
+                .fluidInputs(Hikarium.getFluid(L * 4))
+                .fluidInputs(Tairitsium.getFluid(L * 4))
+                .fluidOutputs(Fatalium.getPlasma(L * 2))
+                .EUt(VA[UEV])
+                .EUToStart(2550000000L)
+                .duration(20)
+                .buildAndRegister();
     }
 }

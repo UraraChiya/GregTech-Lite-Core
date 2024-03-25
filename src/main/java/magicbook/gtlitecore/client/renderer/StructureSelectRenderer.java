@@ -15,8 +15,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 /**
- * @since This class is referenced some codes in Multiblocked,
- *        please see: <a href="https://github.com/CleanroomMC/Multiblocked/"></a>.
+ * Structure Select Renderer
+ *
+ * @author Gate Guardian
+ *
+ * <p>
+ *     Used for Structure Select Tool (a dev tool),
+ *     This class is referenced some codes in Multiblocked,
+ *     please see: <a href="https://github.com/CleanroomMC/Multiblocked/"></a>.
+ * </p>
+ *
  */
 @SideOnly(Side.CLIENT)
 public class StructureSelectRenderer {

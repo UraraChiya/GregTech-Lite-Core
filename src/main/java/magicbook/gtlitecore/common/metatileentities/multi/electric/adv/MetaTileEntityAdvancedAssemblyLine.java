@@ -50,12 +50,11 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
 
-import static gregtech.api.GTValues.*;
+import static gregtech.api.GTValues.UV;
 import static gregtech.api.util.GTUtility.getTierByVoltage;
 import static gregtech.api.util.GTUtility.gregtechId;
 
@@ -369,9 +368,9 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
         tooltip.add(I18n.format("gtlitecore.machine.advanced_assembly_line.tooltip.3"));
         tooltip.add(I18n.format("gtlitecore.machine.advanced_assembly_line.tooltip.4"));
         tooltip.add(I18n.format("gtlitecore.machine.advanced_assembly_line.tooltip.5"));
+        tooltip.add(I18n.format("gtlitecore.universal.tooltip.get_parallel_by_voltage"));
         tooltip.add(I18n.format("gtlitecore.machine.advanced_assembly_line.tooltip.6"));
         tooltip.add(I18n.format("gtlitecore.machine.advanced_assembly_line.tooltip.7"));
-        tooltip.add(I18n.format("gtlitecore.machine.advanced_assembly_line.tooltip.8"));
 
         if (ConfigHolder.machines.orderedAssembly && ConfigHolder.machines.orderedFluidAssembly) {
             tooltip.add(I18n.format("gregtech.machine.assembly_line.tooltip_ordered_both"));

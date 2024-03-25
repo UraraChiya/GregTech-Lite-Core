@@ -432,6 +432,23 @@ public class GTLiteMetaItems {
     public static MetaItem<?>.MetaValueItem FLUID_CORE_T9;
     public static MetaItem<?>.MetaValueItem FLUID_CORE_T10;
 
+    //  General Circuits
+    public static MetaItem<?>.MetaValueItem GENERAL_CIRCUIT_ULV;
+    public static MetaItem<?>.MetaValueItem GENERAL_CIRCUIT_LV;
+    public static MetaItem<?>.MetaValueItem GENERAL_CIRCUIT_MV;
+    public static MetaItem<?>.MetaValueItem GENERAL_CIRCUIT_HV;
+    public static MetaItem<?>.MetaValueItem GENERAL_CIRCUIT_EV;
+    public static MetaItem<?>.MetaValueItem GENERAL_CIRCUIT_IV;
+    public static MetaItem<?>.MetaValueItem GENERAL_CIRCUIT_LuV;
+    public static MetaItem<?>.MetaValueItem GENERAL_CIRCUIT_ZPM;
+    public static MetaItem<?>.MetaValueItem GENERAL_CIRCUIT_UV;
+    public static MetaItem<?>.MetaValueItem GENERAL_CIRCUIT_UHV;
+    public static MetaItem<?>.MetaValueItem GENERAL_CIRCUIT_UEV;
+    public static MetaItem<?>.MetaValueItem GENERAL_CIRCUIT_UIV;
+    public static MetaItem<?>.MetaValueItem GENERAL_CIRCUIT_UXV;
+    public static MetaItem<?>.MetaValueItem GENERAL_CIRCUIT_OpV;
+    public static MetaItem<?>.MetaValueItem GENERAL_CIRCUIT_MAX;
+
     //  Debug Items
     public static MetaItem<?>.MetaValueItem STRUCTURE_WRITER;
 

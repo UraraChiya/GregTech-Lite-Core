@@ -9,8 +9,9 @@ import net.minecraftforge.fluids.FluidStack;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static magicbook.gtlitecore.api.unification.GTLiteMaterials.RichAmmoniaMixture;
+import static magicbook.gtlitecore.api.unification.GTLiteMaterials.RichNitrogenMixture;
 
 public class AmmoniaChain {
 

@@ -7,8 +7,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
+import static gregtech.api.unification.material.Materials.Biomass;
+import static gregtech.api.unification.material.Materials.Water;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.TREE_GROWTH_RECIPES;
 
 public class TreeGrowthFactory {
 

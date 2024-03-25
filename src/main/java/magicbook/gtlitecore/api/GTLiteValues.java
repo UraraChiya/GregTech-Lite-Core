@@ -6,14 +6,25 @@ import gregtech.api.unification.material.Material;
 @SuppressWarnings("unused")
 public class GTLiteValues {
 
+    /**
+     * This modid is same as MODID in {@link magicbook.gtlitecore.GTLiteCore},
+     * but please use it in internal interaction situation (e.g. {@link magicbook.gtlitecore.common.covers.GTLiteCoverBehavior}).
+     */
     public static final String MODID = "gtlitecore";
+
     public static final String MODID_GT = "gregtech";
+
     public static final String MODID_GCYM = "gcym";
+
     public static final String MODID_GTFO = "gregtechfoodoption";
 
     public static final String MODID_AE2 = "appliedenergistics2";
+
     public static final String MODID_XU2 = "extrautils2";
+
     public static final String MODID_EIO = "enderio";
+
+    public static final String MODID_TOP = "theoneprobe";
 
     public static final Material[] tierList = {
             MarkerMaterials.Tier.ULV,

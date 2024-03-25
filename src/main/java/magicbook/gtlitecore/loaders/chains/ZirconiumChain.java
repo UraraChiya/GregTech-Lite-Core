@@ -1,10 +1,12 @@
 package magicbook.gtlitecore.loaders.chains;
 
-import static gregtech.api.GTValues.*;
+import static gregtech.api.GTValues.IV;
+import static gregtech.api.GTValues.VA;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
-import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.gem;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.CVD_UNIT_RECIPES;
+import static magicbook.gtlitecore.api.unification.GTLiteMaterials.CubicZirconia;
 
 public class ZirconiumChain {
 

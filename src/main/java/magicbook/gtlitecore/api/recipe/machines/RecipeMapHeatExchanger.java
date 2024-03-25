@@ -10,6 +10,12 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Heat Exchanger Recipe Map
+ *
+ * @author Glodblock (original author), Magic_Sweepy
+ *
+ */
 public class RecipeMapHeatExchanger<R extends RecipeBuilder<R>> extends RecipeMap<R> {
 
     public RecipeMapHeatExchanger(@Nonnull String unlocalizedName,

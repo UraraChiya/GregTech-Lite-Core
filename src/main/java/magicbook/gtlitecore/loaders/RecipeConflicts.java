@@ -9,7 +9,7 @@ import net.minecraftforge.fluids.FluidStack;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
 import static gregtechfoodoption.GTFOMaterialHandler.IsopropylChloride;
 
 public class RecipeConflicts {
@@ -68,12 +68,10 @@ public class RecipeConflicts {
         //  Conflict between Polydimethylsiloxane and Carbon Tetrachloride
         GTRecipeHandler.removeRecipesByInputs(CHEMICAL_RECIPES,
                 new ItemStack[]{OreDictUnifier.get(dust, Silicon), IntCircuitIngredient.getIntegratedCircuit(2)},
-                new FluidStack[]{Water.getFluid(1000), Chlorine.getFluid(4000), Methane.getFluid(2000)}
-        );
+                new FluidStack[]{Water.getFluid(1000), Chlorine.getFluid(4000), Methane.getFluid(2000)});
         GTRecipeHandler.removeRecipesByInputs(LARGE_CHEMICAL_RECIPES,
                 new ItemStack[]{OreDictUnifier.get(dust, Silicon), IntCircuitIngredient.getIntegratedCircuit(2)},
-                new FluidStack[]{Water.getFluid(1000), Chlorine.getFluid(4000), Methane.getFluid(2000)}
-        );
+                new FluidStack[]{Water.getFluid(1000), Chlorine.getFluid(4000), Methane.getFluid(2000)});
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Silicon, 3)
@@ -148,6 +146,24 @@ public class RecipeConflicts {
                 .fluidOutputs(IsopropylChloride.getFluid(1000))
                 .EUt(VA[LV])
                 .duration(200)
+                .buildAndRegister();
+
+        //  Conflict between Carbon Monoxide and Toluene Diisocyanate
+        GTRecipeHandler.removeRecipesByInputs(CHEMICAL_RECIPES,
+                new ItemStack[]{OreDictUnifier.get(dust, Carbon)},
+                new FluidStack[]{CarbonDioxide.getFluid(1000)});
+
+        GTRecipeHandler.removeRecipesByInputs(LARGE_CHEMICAL_RECIPES,
+                new ItemStack[]{OreDictUnifier.get(dust, Carbon)},
+                new FluidStack[]{CarbonDioxide.getFluid(1000)});
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Carbon)
+                .circuitMeta(1)
+                .fluidInputs(CarbonDioxide.getFluid(1000))
+                .fluidOutputs(CarbonMonoxide.getFluid(2000))
+                .EUt(VA[ULV])
+                .duration(800)
                 .buildAndRegister();
     }
 }

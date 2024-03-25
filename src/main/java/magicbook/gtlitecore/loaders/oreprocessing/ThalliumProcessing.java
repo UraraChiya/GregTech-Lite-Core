@@ -1,17 +1,18 @@
 package magicbook.gtlitecore.loaders.oreprocessing;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.GTValues.HV;
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.recipes.RecipeMaps.ELECTROLYZER_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
-import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.INDUSTRIAL_ROASTER_RECIPES;
+import static magicbook.gtlitecore.api.unification.GTLiteMaterials.ThalliumSulfate;
 
 /**
  * The Thallium Process
  *
  * <p>
- * Produces Thallium from Pyrite or Galena
+ *     Produces Thallium from Pyrite or Galena
  * </p>
  *
  * <p>Main Products: Thallium</p>

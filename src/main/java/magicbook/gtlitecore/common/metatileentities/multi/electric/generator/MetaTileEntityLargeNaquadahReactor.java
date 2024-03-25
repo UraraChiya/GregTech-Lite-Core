@@ -6,6 +6,8 @@ import gregtech.api.GTValues;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
+import gregtech.api.capability.impl.EnergyContainerList;
+import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.capability.impl.MultiblockFuelRecipeLogic;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.resources.TextureArea;
@@ -41,7 +43,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import static gregtech.api.GTValues.*;
@@ -59,6 +61,14 @@ public class MetaTileEntityLargeNaquadahReactor extends FuelMultiblockController
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
         return new MetaTileEntityLargeNaquadahReactor(metaTileEntityId);
+    }
+
+    @Override
+    protected void initializeAbilities() {
+        this.inputFluidInventory = new FluidTankList(this.allowSameFluidFillForOutputs(), this.getAbilities(MultiblockAbility.IMPORT_FLUIDS));
+        List<IEnergyContainer> energyContainer = new ArrayList<>(this.getAbilities(MultiblockAbility.OUTPUT_LASER));
+        energyContainer.addAll(this.getAbilities(MultiblockAbility.OUTPUT_LASER));
+        this.energyContainer = new EnergyContainerList(energyContainer);
     }
 
     @Override
@@ -84,6 +94,7 @@ public class MetaTileEntityLargeNaquadahReactor extends FuelMultiblockController
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gregtech.universal.tooltip.base_production_eut", GTValues.V[UHV]));
         tooltip.add(I18n.format("gtlitecore.machine.large_naquadah_reactor.tooltip.boost", GTValues.V[UHV] * 4L));
+        tooltip.add(I18n.format("gtlitecore.universal.tooltip.laser_output"));
     }
 
     @Nonnull
@@ -104,7 +115,10 @@ public class MetaTileEntityLargeNaquadahReactor extends FuelMultiblockController
                                     IEnergyContainer container = mte.getCapability(GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER, null);
                                     return container != null && container.getOutputVoltage() == GTValues.V[UHV];})
                                 .toArray(MetaTileEntity[]::new))
-                                .setExactLimit(1)
+                                .setMaxGlobalLimited(1)
+                                .setPreviewCount(1))
+                        .or(abilities(MultiblockAbility.OUTPUT_LASER)
+                                .setMaxGlobalLimited(1)
                                 .setPreviewCount(1)))
                 .where('U', states(getUniqueCasingState()))
                 .where('G', states(getSecondCasingState()))

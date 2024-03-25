@@ -36,6 +36,7 @@ public class GTLiteMaterials {
     public static Material Shirabon;
     public static Material Edenium;
     public static Material Fatalium;
+    public static Material Omnium;
 
     //  First Degree Materials (Range: 11001-12000)
     public static Material PlatinumGroupResidue;

@@ -8,7 +8,7 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
-import static magicbook.gtlitecore.api.unification.materials.info.GTLiteOrePrefix.*;
+import static magicbook.gtlitecore.api.unification.materials.info.GTLiteOrePrefix.milled;
 
 public class IsaMillOreProcessing {
 

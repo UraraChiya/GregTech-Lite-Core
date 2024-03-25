@@ -13,7 +13,29 @@
 
 ### What is this?
 
-GregTech Lite Core, a.k.a _Gregicality Science unofficial Extended Life_, is the core mod for Minecraft 1.12.2 Forge Modpack __[GregTech Lite](https://www.mcmod.cn/modpack/655.html)__. This mod based on **[Gregicality Science](https://github.com/GregTechCEu/gregicality-science)**, and use same mod name.
+GregTech Lite Core, a.k.a. _Gregicality Science unofficial Extended Life_, is the core mod for Minecraft 1.12.2 Forge Modpack __[GregTech Lite](https://www.mcmod.cn/modpack/655.html)__. This mod based on **[Gregicality Science](https://github.com/GregTechCEu/gregicality-science)**, and use same mod name.
+
+### Introduction
+
+GTLite core use same Mod Name as [Gregicality Science](https://github.com/GregTechCEu/gregicality-science), but use different Mod ID (means GTLite core is incompability with GCY:S).
+
+#### Features
+
+These are some of the things you will find in this mod:
+
+- Endgame contents from UHV (2,097,105 V) to MAX (2,147,483,647 V), makes the difficulty of GregTech CEu more similar to GregTech 5 Unofficial.
+
+- More Processing machines, e.g. _Mega Machines_, more powerful than Gregicality Multiblocks machines.
+
+- Larger and Stronger Generators, e.g. _Hyper Reactors_, support laser source hatch.
+
+- New Circuits: _Gooware_, _Optical_, _Spintronic_, _Cosmic_, _Supracausal_, _Suprachronal_, _Magneto Resonatic_ and SMDs for Endgame.
+
+- More QoL contents, e.g. more circuit outputs than GregTech CEu.
+
+#### Integrations
+
+- __The One Probe Integration__: Forked from [Gregic Probe](https://github.com/vfyjxf/GregicProbe), add more info of Machines and Multiblocks.
 
 ### Project Goal
 

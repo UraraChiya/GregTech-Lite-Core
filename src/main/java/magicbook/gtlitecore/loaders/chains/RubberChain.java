@@ -1,11 +1,13 @@
 package magicbook.gtlitecore.loaders.chains;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.common.items.MetaItems.BLACKLIGHT;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.BURNER_REACTOR_RECIPES;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.CRYOGENIC_REACTOR_RECIPES;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 
 public class RubberChain {
@@ -70,15 +72,15 @@ public class RubberChain {
                 .duration(140)
                 .buildAndRegister();
 
-        //  C6H6 + F -> C6H5F + HCl
+        //  C6H6 + 2F -> C6H5F + HF
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Benzene.getFluid(1000))
-                .fluidInputs(Fluorine.getFluid(1000))
+                .fluidInputs(Fluorine.getFluid(2000))
                 .circuitMeta(1)
                 .fluidOutputs(Fluorobenzene.getFluid(1000))
-                .fluidOutputs(HydrochloricAcid.getFluid(1000))
-                .EUt(VA[LV])
-                .duration(280)
+                .fluidOutputs(HydrofluoricAcid.getFluid(1000))
+                .EUt(VA[HV])
+                .duration(60)
                 .buildAndRegister();
 
         //  2C6H5F + 6HF + O -> C5H4F8O + 2C3H6

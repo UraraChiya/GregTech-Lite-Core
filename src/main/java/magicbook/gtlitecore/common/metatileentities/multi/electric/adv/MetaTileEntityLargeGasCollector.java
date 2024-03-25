@@ -96,8 +96,8 @@ public class MetaTileEntityLargeGasCollector extends RecipeMapMultiblockControll
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtlitecore.machine.large_gas_collector.tooltip.1"));
         tooltip.add(I18n.format("gtlitecore.machine.large_gas_collector.tooltip.2"));
+        tooltip.add(I18n.format("gtlitecore.universal.tooltip.get_parallel_by_voltage"));
         tooltip.add(I18n.format("gtlitecore.machine.large_gas_collector.tooltip.3"));
-        tooltip.add(I18n.format("gtlitecore.machine.large_gas_collector.tooltip.4"));
     }
 
     @SuppressWarnings("InnerClassMayBeStatic")

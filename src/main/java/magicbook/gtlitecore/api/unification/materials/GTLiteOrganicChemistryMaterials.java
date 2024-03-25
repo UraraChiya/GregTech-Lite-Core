@@ -8,8 +8,8 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.*;
-import static gregtech.api.util.GTUtility.*;
-import static gregtechfoodoption.GTFOMaterialHandler.*;
+import static gregtech.api.util.GTUtility.gregtechId;
+import static gregtechfoodoption.GTFOMaterialHandler.AceticAnhydride;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 
 public class GTLiteOrganicChemistryMaterials {
@@ -253,7 +253,8 @@ public class GTLiteOrganicChemistryMaterials {
                 .color(14777458)
                 .flags(DISABLE_DECOMPOSITION, GENERATE_PLATE)
                 .components(Carbon, 8, Hydrogen, 8, Sulfur, 1, Oxygen, 3)
-                .build();
+                .build()
+                .setFormula("C8H7SO3H", true);
 
         //  13029 PEDOT:PSS
         PedotPSS = new Material.Builder(getId(), gregtechId("pedot_pss"))

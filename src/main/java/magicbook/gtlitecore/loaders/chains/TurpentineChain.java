@@ -2,7 +2,8 @@ package magicbook.gtlitecore.loaders.chains;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.material.Materials.Naphtha;
+import static gregtech.api.unification.material.Materials.Steam;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 
 public class TurpentineChain {

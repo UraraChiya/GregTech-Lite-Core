@@ -1,9 +1,10 @@
 package magicbook.gtlitecore.loaders.oreprocessing;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_BATH_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
 import static gregtechfoodoption.GTFOMaterialHandler.SodiumSulfate;
 import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
@@ -13,7 +14,9 @@ import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
  *
  * @author Magic_Sweepy (2024/02/01)
  *
- * <p>Produces Polonium and Radium from Pitchblende</p>
+ * <p>
+ *     Produces Polonium and Radium from Pitchblende
+ * </p>
  *
  * <p>Main Products: Polonium, Radium</p>
  * <p>Side Products: Uraninite</p>

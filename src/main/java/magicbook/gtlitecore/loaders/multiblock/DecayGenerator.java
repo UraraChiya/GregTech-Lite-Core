@@ -8,11 +8,12 @@ import net.minecraftforge.fluids.FluidStack;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.ingotHot;
 import static gregtech.common.items.MetaItems.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.DECAY_GENERATOR_RECIPES;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
-import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
+import static magicbook.gtlitecore.common.items.GTLiteMetaItems.ALPHA_PARTICLE;
+import static magicbook.gtlitecore.common.items.GTLiteMetaItems.NEUTRON;
 
 public class DecayGenerator {
 

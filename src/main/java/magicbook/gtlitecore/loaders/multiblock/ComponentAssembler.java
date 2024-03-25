@@ -7,8 +7,9 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
-import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.COMPONENT_ASSEMBLER_RECIPES;
+import static magicbook.gtlitecore.api.unification.GTLiteMaterials.NitrileButadieneRubber;
+import static magicbook.gtlitecore.api.unification.GTLiteMaterials.PolyPhosphonitrileFluoroRubber;
 import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
 import static net.minecraft.init.Items.*;
 

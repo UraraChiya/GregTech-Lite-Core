@@ -17,7 +17,7 @@ import net.minecraft.item.crafting.Ingredient;
 
 import javax.annotation.Nonnull;
 
-import static gregtech.api.unification.material.properties.PropertyKey.*;
+import static gregtech.api.unification.material.properties.PropertyKey.GEM;
 import static gregtech.common.items.MetaItems.*;
 
 public class ToolRecipeHandler {

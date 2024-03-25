@@ -28,7 +28,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import java.util.List;
 
 import static gregtech.api.unification.material.Materials.NaquadahAlloy;

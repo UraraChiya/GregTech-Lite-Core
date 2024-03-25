@@ -20,7 +20,8 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.common.metatileentities.MetaTileEntities.QUANTUM_TANK;
-import static gregtechfoodoption.GTFOMaterialHandler.*;
+import static gregtechfoodoption.GTFOMaterialHandler.LithiumCarbonate;
+import static gregtechfoodoption.GTFOMaterialHandler.RainbowSap;
 import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
@@ -343,6 +344,8 @@ public class MiscRecipes {
         NANO_SCALE_MASK_ALIGNER_RECIPES.recipeBuilder()
                 .input(gem, CertusQuartz)
                 .notConsumable(lens, Celestite)
+                .notConsumable(lens, PrHoYLF)
+                .notConsumable(lens, LeadZirconateTitanate)
                 .fluidInputs(StarlightLiquid.getFluid(L))
                 .output(gem, CelestialCrystal)
                 .EUt(VA[UEV])
@@ -897,7 +900,7 @@ public class MiscRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(plateDouble, Darmstadtium, 16)
                 .input(circuit, MarkerMaterials.Tier.UHV, 4)
-                .input(ENERGY_CLUSTER, 16)
+                .input(ENERGY_CLUSTER)
                 .input(FIELD_GENERATOR_UV, 4)
                 .input(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT_WAFER, 64)
                 .input(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT_WAFER, 64)
@@ -924,7 +927,7 @@ public class MiscRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(plateDouble, Orichalcum, 16)
                 .input(circuit, MarkerMaterials.Tier.UEV, 4)
-                .input(ULTIMATE_BATTERY, 16)
+                .input(ULTIMATE_BATTERY)
                 .input(FIELD_GENERATOR_UHV, 4)
                 .input(NANO_PIC_WAFER, 64)
                 .input(NANO_PIC_WAFER, 64)
@@ -952,7 +955,7 @@ public class MiscRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(plateDouble, Adamantium, 16)
                 .input(circuit, MarkerMaterials.Tier.UIV, 4)
-                .input(ULTIMATE_BATTERY_MK2, 16)
+                .input(ULTIMATE_BATTERY_MK2)
                 .input(FIELD_GENERATOR_UEV, 4)
                 .input(PICO_PIC_WAFER, 64)
                 .input(PICO_PIC_WAFER, 64)
@@ -980,7 +983,7 @@ public class MiscRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(plateDouble, Infinity, 16)
                 .input(circuit, MarkerMaterials.Tier.UXV, 4)
-                .input(ULTIMATE_BATTERY_MK3, 16)
+                .input(ULTIMATE_BATTERY_MK3)
                 .input(FIELD_GENERATOR_UIV, 4)
                 .input(FEMTO_PIC_WAFER, 64)
                 .input(FEMTO_PIC_WAFER, 64)
@@ -1008,7 +1011,7 @@ public class MiscRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(plateDouble, Spacetime, 16)
                 .input(circuit, MarkerMaterials.Tier.OpV, 4)
-                .input(ULTIMATE_BATTERY_MK4, 16)
+                .input(ULTIMATE_BATTERY_MK4)
                 .input(FIELD_GENERATOR_UXV, 4)
                 .input(FEMTO_PIC_WAFER, 64)
                 .input(FEMTO_PIC_WAFER, 64)
@@ -1181,5 +1184,197 @@ public class MiscRecipes {
                 .CasingTier(8)
                 .buildAndRegister();
 
+        //  General Circuits
+
+        //  ULV
+        PACKER_RECIPES.recipeBuilder()
+                .input(circuit, MarkerMaterials.Tier.ULV)
+                .circuitMeta(5)
+                .output(GENERAL_CIRCUIT_ULV)
+                .EUt(VA[ULV])
+                .duration(20)
+                .buildAndRegister();
+
+        //  LV
+        ModHandler.addShapedRecipe("general_circuit.lv", GENERAL_CIRCUIT_LV.getStackForm(),
+                " X ",
+                'X', new UnificationEntry(circuit, MarkerMaterials.Tier.LV));
+
+        PACKER_RECIPES.recipeBuilder()
+                .input(circuit, MarkerMaterials.Tier.LV)
+                .circuitMeta(5)
+                .output(GENERAL_CIRCUIT_LV)
+                .EUt(VA[ULV])
+                .duration(20)
+                .buildAndRegister();
+
+        //  MV
+        ModHandler.addShapedRecipe("general_circuit.mv", GENERAL_CIRCUIT_MV.getStackForm(),
+                " X ",
+                'X', new UnificationEntry(circuit, MarkerMaterials.Tier.MV));
+
+        PACKER_RECIPES.recipeBuilder()
+                .input(circuit, MarkerMaterials.Tier.MV)
+                .circuitMeta(5)
+                .output(GENERAL_CIRCUIT_MV)
+                .EUt(VA[ULV])
+                .duration(20)
+                .buildAndRegister();
+
+        //  HV
+        ModHandler.addShapedRecipe("general_circuit.hv", GENERAL_CIRCUIT_HV.getStackForm(),
+                " X ",
+                'X', new UnificationEntry(circuit, MarkerMaterials.Tier.HV));
+
+        PACKER_RECIPES.recipeBuilder()
+                .input(circuit, MarkerMaterials.Tier.HV)
+                .circuitMeta(5)
+                .output(GENERAL_CIRCUIT_HV)
+                .EUt(VA[ULV])
+                .duration(20)
+                .buildAndRegister();
+
+        //  EV
+        ModHandler.addShapedRecipe("general_circuit.ev", GENERAL_CIRCUIT_EV.getStackForm(),
+                " X ",
+                'X', new UnificationEntry(circuit, MarkerMaterials.Tier.EV));
+
+        PACKER_RECIPES.recipeBuilder()
+                .input(circuit, MarkerMaterials.Tier.EV)
+                .circuitMeta(5)
+                .output(GENERAL_CIRCUIT_EV)
+                .EUt(VA[ULV])
+                .duration(20)
+                .buildAndRegister();
+
+        //  IV
+        ModHandler.addShapedRecipe("general_circuit.iv", GENERAL_CIRCUIT_IV.getStackForm(),
+                " X ",
+                'X', new UnificationEntry(circuit, MarkerMaterials.Tier.IV));
+
+        PACKER_RECIPES.recipeBuilder()
+                .input(circuit, MarkerMaterials.Tier.IV)
+                .circuitMeta(5)
+                .output(GENERAL_CIRCUIT_IV)
+                .EUt(VA[ULV])
+                .duration(20)
+                .buildAndRegister();
+
+        //  LuV
+        ModHandler.addShapedRecipe("general_circuit.luv", GENERAL_CIRCUIT_LuV.getStackForm(),
+                " X ",
+                'X', new UnificationEntry(circuit, MarkerMaterials.Tier.LuV));
+
+        PACKER_RECIPES.recipeBuilder()
+                .input(circuit, MarkerMaterials.Tier.LuV)
+                .circuitMeta(5)
+                .output(GENERAL_CIRCUIT_LuV)
+                .EUt(VA[ULV])
+                .duration(20)
+                .buildAndRegister();
+
+        //  ZPM
+        ModHandler.addShapedRecipe("general_circuit.zpm", GENERAL_CIRCUIT_ZPM.getStackForm(),
+                " X ",
+                'X', new UnificationEntry(circuit, MarkerMaterials.Tier.ZPM));
+
+        PACKER_RECIPES.recipeBuilder()
+                .input(circuit, MarkerMaterials.Tier.ZPM)
+                .circuitMeta(5)
+                .output(GENERAL_CIRCUIT_ZPM)
+                .EUt(VA[ULV])
+                .duration(20)
+                .buildAndRegister();
+
+        //  UV
+        ModHandler.addShapedRecipe("general_circuit.uv", GENERAL_CIRCUIT_UV.getStackForm(),
+                " X ",
+                'X', new UnificationEntry(circuit, MarkerMaterials.Tier.UV));
+
+        PACKER_RECIPES.recipeBuilder()
+                .input(circuit, MarkerMaterials.Tier.UV)
+                .circuitMeta(5)
+                .output(GENERAL_CIRCUIT_UV)
+                .EUt(VA[ULV])
+                .duration(20)
+                .buildAndRegister();
+
+        //  UHV
+        ModHandler.addShapedRecipe("general_circuit.uhv", GENERAL_CIRCUIT_UHV.getStackForm(),
+                " X ",
+                'X', new UnificationEntry(circuit, MarkerMaterials.Tier.UHV));
+
+        PACKER_RECIPES.recipeBuilder()
+                .input(circuit, MarkerMaterials.Tier.UHV)
+                .circuitMeta(5)
+                .output(GENERAL_CIRCUIT_UHV)
+                .EUt(VA[ULV])
+                .duration(20)
+                .buildAndRegister();
+
+        //  UEV
+        ModHandler.addShapedRecipe("general_circuit.uev", GENERAL_CIRCUIT_UEV.getStackForm(),
+                " X ",
+                'X', new UnificationEntry(circuit, MarkerMaterials.Tier.UEV));
+
+        PACKER_RECIPES.recipeBuilder()
+                .input(circuit, MarkerMaterials.Tier.UEV)
+                .circuitMeta(5)
+                .output(GENERAL_CIRCUIT_UEV)
+                .EUt(VA[ULV])
+                .duration(20)
+                .buildAndRegister();
+
+        //  UIV
+        ModHandler.addShapedRecipe("general_circuit.uiv", GENERAL_CIRCUIT_UIV.getStackForm(),
+                " X ",
+                'X', new UnificationEntry(circuit, MarkerMaterials.Tier.UIV));
+
+        PACKER_RECIPES.recipeBuilder()
+                .input(circuit, MarkerMaterials.Tier.UIV)
+                .circuitMeta(5)
+                .output(GENERAL_CIRCUIT_UIV)
+                .EUt(VA[ULV])
+                .duration(20)
+                .buildAndRegister();
+
+        //  UXV
+        ModHandler.addShapedRecipe("general_circuit.uxv", GENERAL_CIRCUIT_UXV.getStackForm(),
+                " X ",
+                'X', new UnificationEntry(circuit, MarkerMaterials.Tier.UXV));
+
+        PACKER_RECIPES.recipeBuilder()
+                .input(circuit, MarkerMaterials.Tier.UXV)
+                .circuitMeta(5)
+                .output(GENERAL_CIRCUIT_UXV)
+                .EUt(VA[ULV])
+                .duration(20)
+                .buildAndRegister();
+
+        //  OpV
+        ModHandler.addShapedRecipe("general_circuit.opv", GENERAL_CIRCUIT_OpV.getStackForm(),
+                " X ",
+                'X', new UnificationEntry(circuit, MarkerMaterials.Tier.OpV));
+
+        PACKER_RECIPES.recipeBuilder()
+                .input(circuit, MarkerMaterials.Tier.OpV)
+                .circuitMeta(5)
+                .output(GENERAL_CIRCUIT_OpV)
+                .EUt(VA[ULV])
+                .duration(20)
+                .buildAndRegister();
+
+        //  MAX
+        ModHandler.addShapedRecipe("general_circuit.max", GENERAL_CIRCUIT_MAX.getStackForm(),
+                " X ",
+                'X', new UnificationEntry(circuit, MarkerMaterials.Tier.MAX));
+
+        PACKER_RECIPES.recipeBuilder()
+                .input(circuit, MarkerMaterials.Tier.MAX)
+                .circuitMeta(5)
+                .output(GENERAL_CIRCUIT_MAX)
+                .EUt(VA[ULV])
+                .duration(20)
+                .buildAndRegister();
     }
 }

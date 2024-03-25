@@ -10,6 +10,17 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Altitude Recipe Builder
+ *
+ * @author Gate Guardian
+ *
+ * <p>
+ *     This class creates a recipe builder for detecting the height in multiblocks (actually, this function is implement in multiblocks, e.g. {@link magicbook.gtlitecore.common.metatileentities.multi.electric.MetaTileEntityCosmicRayDetector}).
+ *     You should use {@link gregtech.api.capability.impl.MultiblockRecipeLogic#checkRecipe(Recipe)} to implement correspondent function about this recipe.
+ *     About related recipe property, please see: {@link AltitudeProperty}.
+ * </p>
+ */
 public class AltitudeRecipeBuilder extends RecipeBuilder<AltitudeRecipeBuilder> {
 
     public AltitudeRecipeBuilder() {}

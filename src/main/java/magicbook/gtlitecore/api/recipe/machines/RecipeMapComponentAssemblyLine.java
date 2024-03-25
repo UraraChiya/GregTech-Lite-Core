@@ -11,6 +11,12 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Component Assembly Line Recipe Map
+ *
+ * @author Gate Guardian
+ *
+ */
 public class RecipeMapComponentAssemblyLine<R extends RecipeBuilder<R>> extends RecipeMap<R> {
 
     public RecipeMapComponentAssemblyLine(@Nonnull String unlocalizedName,

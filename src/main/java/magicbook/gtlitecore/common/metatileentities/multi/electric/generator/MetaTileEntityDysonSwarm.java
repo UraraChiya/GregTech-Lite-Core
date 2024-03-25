@@ -4,6 +4,9 @@ import gregtech.api.GTValues;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
+import gregtech.api.capability.impl.EnergyContainerList;
+import gregtech.api.capability.impl.FluidTankList;
+import gregtech.api.capability.impl.ItemHandlerList;
 import gregtech.api.capability.impl.MultiblockFuelRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -31,10 +34,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
+import java.util.ArrayList;
 import java.util.List;
 
-import static gregtech.api.GTValues.*;
+import static gregtech.api.GTValues.UIV;
+import static gregtech.api.GTValues.VA;
 
 public class MetaTileEntityDysonSwarm extends FuelMultiblockController {
 
@@ -47,6 +51,17 @@ public class MetaTileEntityDysonSwarm extends FuelMultiblockController {
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
         return new MetaTileEntityDysonSwarm(metaTileEntityId);
+    }
+
+    @Override
+    protected void initializeAbilities() {
+        this.inputInventory = new ItemHandlerList(this.getAbilities(MultiblockAbility.IMPORT_ITEMS));
+        this.inputFluidInventory = new FluidTankList(this.allowSameFluidFillForOutputs(), this.getAbilities(MultiblockAbility.IMPORT_FLUIDS));
+        this.outputInventory = new ItemHandlerList(this.getAbilities(MultiblockAbility.EXPORT_ITEMS));
+        this.outputFluidInventory = new FluidTankList(this.allowSameFluidFillForOutputs(), this.getAbilities(MultiblockAbility.EXPORT_FLUIDS));
+        List<IEnergyContainer> energyContainer = new ArrayList<>(this.getAbilities(MultiblockAbility.OUTPUT_LASER));
+        energyContainer.addAll(this.getAbilities(MultiblockAbility.OUTPUT_LASER));
+        this.energyContainer = new EnergyContainerList(energyContainer);
     }
 
     @Override
@@ -98,6 +113,7 @@ public class MetaTileEntityDysonSwarm extends FuelMultiblockController {
         tooltip.add(I18n.format("gtlitecore.machine.dyson_swarm.tooltip.15"));
         tooltip.add(I18n.format("gtlitecore.machine.dyson_swarm.tooltip.16"));
         tooltip.add(I18n.format("gtlitecore.machine.dyson_swarm.uses_per_hour_coolant", 3600000));
+        tooltip.add(I18n.format("gtlitecore.universal.tooltip.laser_output"));
     }
 
     @Nonnull
@@ -141,7 +157,11 @@ public class MetaTileEntityDysonSwarm extends FuelMultiblockController {
                                     IEnergyContainer container = mte.getCapability(GregtechCapabilities.CAPABILITY_ENERGY_CONTAINER, null);
                                     return container != null && container.getOutputVoltage() >= GTValues.V[UIV];})
                                 .toArray(MetaTileEntity[]::new))
-                                .setExactLimit(1)))
+                                .setMaxGlobalLimited(1)
+                                .setPreviewCount(1))
+                        .or(abilities(MultiblockAbility.OUTPUT_LASER)
+                                .setMaxGlobalLimited(1)
+                                .setPreviewCount(1)))
                 .where('O', states(getUniqueCasingState()))
                 .where('y', states(getSecondUniqueCasingState()))
                 .where('r', states(getThirdUniqueCasingState()))

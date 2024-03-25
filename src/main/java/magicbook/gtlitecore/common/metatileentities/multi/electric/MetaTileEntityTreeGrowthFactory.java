@@ -27,7 +27,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static gregtech.api.GTValues.*;
+import static gregtech.api.GTValues.HV;
+import static gregtech.api.GTValues.V;
 
 public class MetaTileEntityTreeGrowthFactory extends RecipeMapMultiblockController {
 

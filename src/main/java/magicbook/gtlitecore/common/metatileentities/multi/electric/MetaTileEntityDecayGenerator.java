@@ -37,7 +37,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import static gregtech.api.GTValues.*;
+import static gregtech.api.GTValues.ZPM;
 
 public class MetaTileEntityDecayGenerator extends RecipeMapMultiblockController {
 

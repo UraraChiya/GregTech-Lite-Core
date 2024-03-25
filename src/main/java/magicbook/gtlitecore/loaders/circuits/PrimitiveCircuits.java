@@ -9,13 +9,14 @@ import magicbook.gtlitecore.common.GTLiteConfigHolder;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.GTValues.LV;
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
-import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.VACUUM_CHAMBER_RECIPES;
+import static magicbook.gtlitecore.common.items.GTLiteMetaItems.VACUUM_TUBE_COMPONENT;
 
 public class PrimitiveCircuits {
 
@@ -27,7 +28,7 @@ public class PrimitiveCircuits {
     private static void removeVanillaRecipes() {
         if (GTLiteConfigHolder.recipes.enableHarderVacuumTube) {
             ModHandler.removeRecipeByName("gregtech:vacuum_tube");
-            GTRecipeHandler.removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{GLASS_TUBE.getStackForm(), OreDictUnifier.get(bolt, Steel), OreDictUnifier.get(wireGtSingle, Copper, 2), IntCircuitIngredient.getIntegratedCircuit(1)});
+            GTRecipeHandler.removeRecipesByInputs(ASSEMBLER_RECIPES, GLASS_TUBE.getStackForm(), OreDictUnifier.get(bolt, Steel), OreDictUnifier.get(wireGtSingle, Copper, 2), IntCircuitIngredient.getIntegratedCircuit(1));
             GTRecipeHandler.removeRecipesByInputs(ASSEMBLER_RECIPES,
                     new ItemStack[]{GLASS_TUBE.getStackForm(), OreDictUnifier.get(bolt, Steel), OreDictUnifier.get(wireGtSingle, Copper, 2)},
                     new FluidStack[]{RedAlloy.getFluid(18)});

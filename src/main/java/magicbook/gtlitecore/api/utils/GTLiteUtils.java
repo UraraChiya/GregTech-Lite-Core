@@ -25,8 +25,8 @@ import java.util.function.Supplier;
 public class GTLiteUtils {
 
     /**
-     * @param name String name in the namespace.
-     * @return GregTech Lite resource location, pay attention, do not use gtliteId() in Materials init.
+     * @param name  Name in gtlitecore's namespace, used to init some internal things in gtlitecore.
+     * @return      GregTech Lite resource location (namespace), pay attention, do not use gtliteId() in Materials init.
      */
     @Nonnull
     public static ResourceLocation gtliteId(@Nonnull String name) {
@@ -34,26 +34,26 @@ public class GTLiteUtils {
     }
 
     /**
-     * @param number Long number.
-     * @return Just a rewrite of formatNumbers().
+     * @param number  Long number.
+     * @return        Just a rewrite of formatNumbers(), please see {@link TextFormattingUtil#formatNumbers(long)}.
      */
     public static String formatNumbers(long number) {
         return TextFormattingUtil.formatNumbers(number);
     }
 
     /**
-     * @param number Double number.
-     * @return Just a rewrite of formatNumbers().
+     * @param number  Double number.
+     * @return        Just a rewrite of formatNumbers(), please see {@link TextFormattingUtil#formatNumbers(double)}.
      */
     public static String formatNumbers(double number) {
         return TextFormattingUtil.formatNumbers(number);
     }
 
     /**
-     * @param tag NBT tag.
-     * @param key Key.
-     * @param defaultValue Default value.
-     * @return If tag has special key, then return integer of key (value), if not, then return default value.
+     * @param tag           NBT tag.
+     * @param key           Key.
+     * @param defaultValue  Default value.
+     * @return              If tag has special key, then return integer of key (value), if not, then return default value.
      */
     public static int getOrDefault(NBTTagCompound tag,
                                    String key,
@@ -65,7 +65,7 @@ public class GTLiteUtils {
     }
 
     /**
-     * @return Used to check if multiblock part has tier and set its related info.
+     * @return  Used to check if multiblock part has tier and set its related info.
      */
     public static <T> T getOrDefault(BooleanSupplier canGet,
                                      Supplier<T> getter,
@@ -74,8 +74,9 @@ public class GTLiteUtils {
     }
 
     /**
-     * @param lists List.
-     * @return List size, used to get ArrayList<List<IBlockState>> in some block tier multiblocks.
+     * @param lists  List.
+     * @return       List size, used to get ArrayList<List<IBlockState>> in some block tier multiblocks,
+     *               please see: {@link magicbook.gtlitecore.common.metatileentities.multi.electric.adv.MetaTileEntityPreciseAssembler}.
      */
     public static <T> int maxLength(List<List<T>> lists) {
         return lists.stream()
@@ -85,9 +86,10 @@ public class GTLiteUtils {
     }
 
     /**
-     * @param list List.
-     * @param length List size.
-     * @return The final list, used to recheck list of IBlockState in some block tier multiblocks.
+     * @param list    List.
+     * @param length  List size.
+     * @return        The final list, used to recheck list of IBlockState in some block tier multiblocks,
+     *                please see: {@link magicbook.gtlitecore.common.metatileentities.multi.electric.adv.MetaTileEntityPreciseAssembler}.
      */
     public static <T> List<T> consistentList(List<T> list,
                                              int length) {
@@ -103,8 +105,9 @@ public class GTLiteUtils {
     }
 
     /**
-     * @param tile MetaTileEntity.
-     * @return MetaTileEntityHolder, used to get special block info in Traceability Predicate.
+     * @param tile  MetaTileEntity.
+     * @return      MetaTileEntityHolder, used to get special block info in Traceability Predicate.
+     *              Please see: {@link magicbook.gtlitecore.api.pattern.GTLiteTraceabilityPredicate#ROTOR_HOLDER}.
      */
     public static MetaTileEntityHolder getTileEntity(MetaTileEntity tile) {
         MetaTileEntityHolder holder = new MetaTileEntityHolder();
@@ -115,8 +118,8 @@ public class GTLiteUtils {
     }
 
     /**
-     * @param allowedStates Allowed Block States.
-     * @return Used to build upgrade multiblock.
+     * @param allowedStates  Allowed Block States.
+     * @return               Used to build upgrade multiblock.
      */
     public static Supplier<BlockInfo[]> getCandidates(IBlockState... allowedStates) {
         return () -> Arrays.stream(allowedStates)
@@ -125,8 +128,8 @@ public class GTLiteUtils {
     }
 
     /**
-     * @param metaTileEntities Allowed Meta Tile Entities.
-     * @return Used to build upgrade multiblock.
+     * @param metaTileEntities  Allowed Meta Tile Entities.
+     * @return                  Used to build upgrade multiblock.
      */
     public static Supplier<BlockInfo[]> getCandidates(MetaTileEntity... metaTileEntities) {
         return () -> Arrays.stream(metaTileEntities)
@@ -136,10 +139,10 @@ public class GTLiteUtils {
     }
 
     /**
-     * @param value Int value.
-     * @param min Min value.
-     * @param max Max value.
-     * @return If value < min value, then return min, if value >= min, then return min(value, max).
+     * @param value  Int value.
+     * @param min    Min value.
+     * @param max    Max value.
+     * @return       If value < min value, then return min, if value >= min, then return min(value, max).
      */
     public static int clamp(int value, int min, int max) {
         if (value < min) {
@@ -150,10 +153,10 @@ public class GTLiteUtils {
     }
 
     /**
-     * @param value Double value.
-     * @param min Min value.
-     * @param max Max value.
-     * @return If value < min value, then return min, if value >= min, then return min(value, max).
+     * @param value  Double value.
+     * @param min    Min value.
+     * @param max    Max value.
+     * @return       If value < min value, then return min, if value >= min, then return min(value, max).
      */
     public static double clamp(double value, double min, double max) {
         if (value < min) {
@@ -164,8 +167,8 @@ public class GTLiteUtils {
     }
 
     /**
-     * @param values long value.
-     * @return summarized values.
+     * @param values  Long value.
+     * @return        Summarized values.
      */
     public static BigInteger summarizedValue(long[] values) {
         BigInteger retValue = BigInteger.ZERO;
@@ -187,8 +190,8 @@ public class GTLiteUtils {
     }
 
     /**
-     * @param stack Item stack.
-     * @return Item stack id.
+     * @param stack  Item stack.
+     * @return       Item stack id.
      */
     public static int stackToInt(ItemStack stack) {
         if (isStackInvalid(stack))
@@ -197,33 +200,33 @@ public class GTLiteUtils {
     }
 
     /**
-     * @param item Item stack.
-     * @param meta Meta data of item stack.
-     * @return Item stack id.
+     * @param item  Item stack.
+     * @param meta  Meta data of item stack.
+     * @return      Item stack id.
      */
     public static int itemToInt(Item item, int meta) {
         return Item.getIdFromItem(item) | (meta << 16);
     }
 
     /**
-     * @param stack ItemStack.
-     * @return Check if itemstack invalid.
+     * @param stack  Item stack.
+     * @return       Check if itemstack invalid.
      */
     public static boolean isStackInvalid(Object stack) {
         return !(stack instanceof ItemStack) || ((ItemStack) stack).getCount() < 0;
     }
 
     /**
-     * @param aStack Itemstack.
-     * @return Check if itemstack valid.
+     * @param aStack  Item stack.
+     * @return        Check if itemstack valid.
      */
     public static boolean isStackValid(Object aStack) {
         return (aStack instanceof ItemStack) && ((ItemStack) aStack).getCount() >= 0;
     }
 
     /**
-     * @param aStack Meta data
-     * @return Get itemstack from meta data.
+     * @param aStack  Meta data.
+     * @return        Get itemstack from meta data.
      */
     public static ItemStack intToStack(int aStack) {
         int tID = aStack & (~0 >>> 16), tMeta = aStack >>> 16;
@@ -233,6 +236,11 @@ public class GTLiteUtils {
         return null;
     }
 
+    /**
+     * @param aAmount  Amount property.
+     * @param aStacks  Object stack.
+     * @return         Copy item stack with unsafe amount.
+     */
     public static ItemStack copyAmountUnsafe(long aAmount, Object... aStacks) {
         ItemStack rStack = copy(aStacks);
         if (isStackInvalid(rStack))
@@ -245,6 +253,12 @@ public class GTLiteUtils {
         return rStack;
     }
 
+    /**
+     * Rewrite of same name method in {@link ItemStack}.
+     *
+     * @param aStacks  Object stack.
+     * @return         Copy item stack, i.e. return new item stack with the same property.
+     */
     public static ItemStack copy(Object... aStacks) {
         for (Object tStack : aStacks)
             if (isStackValid(tStack))

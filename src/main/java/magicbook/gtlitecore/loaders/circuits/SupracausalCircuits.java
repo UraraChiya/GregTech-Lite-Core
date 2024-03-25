@@ -4,12 +4,13 @@ import gregtech.api.metatileentity.multiblock.CleanroomType;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.material.Materials.Neutronium;
+import static gregtech.api.unification.material.Materials.SolderingAlloy;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
-import static magicbook.gtlitecore.api.unification.materials.info.GTLiteOrePrefix.*;
+import static magicbook.gtlitecore.api.unification.materials.info.GTLiteOrePrefix.swarm;
 import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
 
 public class SupracausalCircuits {
@@ -46,11 +47,11 @@ public class SupracausalCircuits {
                 .input(frameGt, TantalumHafniumSeaborgiumCarbide)
                 .input(SPACETIME_CONDENSER)
                 .input(plate, CosmicFabric, 4)
-                .input(QCD_PROTECTIVE_PLATING, 4)
                 .input(NUCLEAR_CLOCK)
                 .input(TOPOLOGICAL_MANIPULATOR_UNIT)
                 .input(GRAVITON_TRANSDUCER)
                 .input(EIGENFOLDED_SPACETIME_MANIFOLD)
+                .input(RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM)
                 .input(BOSE_EINSTEIN_CONDENSATE, 2)
                 .input(MANIFOLD_OSCILLATORY_POWER_CELL, 4)
                 .input(wireGtSingle, HeavyQuarkDegenerateMatter, 2)
@@ -148,6 +149,7 @@ public class SupracausalCircuits {
                 .output(MACROWORMHOLE_GENERATOR)
                 .EUt(VA[UXV])
                 .duration(20)
+                .CasingTier(5)
                 .buildAndRegister();
 
         //  Stabilized Wormhole Generator
@@ -280,7 +282,7 @@ public class SupracausalCircuits {
                 .input(SPACETIME_CONDENSER)
                 .input(SUPRACAUSAL_ASSEMBLY, 2)
                 .input(SUPRACAUSAL_DIODE, 8)
-                .input(COSMIC_CPU_CHIP, 16) // TODO new chip
+                .input(COSMIC_CPU_CHIP, 16) // TODO new chip or not
                 .input(SUPRACAUSAL_MEMORY_CHIP, 32)
                 .input(wireFine, HeavyQuarkDegenerateMatter, 24)
                 .input(foil, Hikarium, 32)

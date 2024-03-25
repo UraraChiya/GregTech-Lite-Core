@@ -14,7 +14,7 @@ dependencies {
     //  Fluid Craft for AE2 2.5.7-r
     implementation rfg.deobf("curse.maven:ae2-fluid-crafting-rework-623955:5122358")
     //  The One Probe
-    runtimeOnly 'curse.maven:top-245211:2667280'
+    implementation rfg.deobf("curse.maven:top-245211:2667280");
     //  Groovy Script 0.7.0
     implementation rfg.deobf("curse.maven:groovyscript-687577:4905039")
     //  CraftTweaker2 API

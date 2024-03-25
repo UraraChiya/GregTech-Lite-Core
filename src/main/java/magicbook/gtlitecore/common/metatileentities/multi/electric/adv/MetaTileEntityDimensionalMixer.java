@@ -213,7 +213,7 @@ public class MetaTileEntityDimensionalMixer extends MultiMapMultiblockController
         tooltip.add(I18n.format("gtlitecore.machine.dimensional_mixer.tooltip.14"));
         tooltip.add(I18n.format("gtlitecore.machine.dimensional_mixer.tooltip.15"));
         tooltip.add(I18n.format("gtlitecore.machine.dimensional_mixer.tooltip.16"));
-        tooltip.add(I18n.format("gtlitecore.machine.dimensional_mixer.tooltip.17"));
+        tooltip.add(I18n.format("gtlitecore.universal.tooltip.laser_input"));
     }
 
     public class DimensionalMixerRecipeLogic extends MultiblockRecipeLogic {

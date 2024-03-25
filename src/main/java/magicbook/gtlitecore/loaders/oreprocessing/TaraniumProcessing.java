@@ -12,7 +12,8 @@ import net.minecraftforge.fluids.FluidStack;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.ingotHot;
 import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 
@@ -20,7 +21,9 @@ import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
  *
  * The Taranium Production Process
  *
- * <p>Produces Taranium and Bedrock Dust from Bedrock Smoke</p>
+ * <p>
+ *     Produces Taranium and Bedrock Dust from Bedrock Smoke
+ * </p>
  *
  * <p>Main Products: Taranium Dust, Taranium Fuels, Bedrock Dust</p>
  * <p>Side Products: Platinum, Iridium, Osmium</p>
@@ -526,13 +529,10 @@ public class TaraniumProcessing {
                 .EUt(VA[ZPM] * 2)
                 .buildAndRegister();
 
-        //  Remove vibranium dust -> hot ingot
-        GTRecipeHandler.removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Vibranium), IntCircuitIngredient.getIntegratedCircuit(1));
-        GTRecipeHandler.removeRecipesByInputs(BLAST_RECIPES,
-                new ItemStack[]{OreDictUnifier.get(dust, Vibranium),
-                                IntCircuitIngredient.getIntegratedCircuit(2)},
-                new FluidStack[]{Argon.getFluid(50)});
+        //  Vibranium dust -> hot ingot used for Quantum Force Transformer,
+        //  in common game, you can not get vibranium dust in your bedrock processing stage.
 
+        //  Another common vibranium hot ingot recipes.
         FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
                 .notConsumable(MetaItems.SHAPE_MOLD_INGOT)
                 .fluidInputs(Vibranium.getPlasma(L))

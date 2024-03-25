@@ -12,6 +12,11 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import javax.annotation.Nonnull;
 import java.math.BigInteger;
 
+/**
+ * No Coil Higher Temperature Recipe Builder
+ *
+ * @author Magic_Sweepy
+ */
 public class NoCoilHigherTemperatureRecipeBuilder extends RecipeBuilder<NoCoilHigherTemperatureRecipeBuilder> {
 
     public NoCoilHigherTemperatureRecipeBuilder() {}

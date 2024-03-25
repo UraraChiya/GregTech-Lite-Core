@@ -47,7 +47,8 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-import static gregtech.api.GTValues.*;
+import static gregtech.api.GTValues.LV;
+import static gregtech.api.GTValues.LuV;
 
 public class MetaTileEntityPreciseAssembler extends MultiMapMultiblockController {
 
@@ -169,7 +170,11 @@ public class MetaTileEntityPreciseAssembler extends MultiMapMultiblockController
     @Nonnull
     @Override
     protected ICubeRenderer getFrontOverlay() {
-        return Textures.FUSION_REACTOR_OVERLAY;
+        if (this.CasingTier <= 3) {
+            return Textures.FUSION_REACTOR_OVERLAY;
+        } else {
+            return GTLiteTextures.PRECISE_ASSEMBLER_OVERLAY;
+        }
     }
 
     @SuppressWarnings("all")
@@ -261,11 +266,16 @@ public class MetaTileEntityPreciseAssembler extends MultiMapMultiblockController
         tooltip.add(I18n.format("gtlitecore.machine.precise_assembler.tooltip.3"));
         tooltip.add(I18n.format("gtlitecore.machine.precise_assembler.tooltip.4"));
         tooltip.add(I18n.format("gtlitecore.machine.precise_assembler.tooltip.5"));
+        tooltip.add(I18n.format("gtlitecore.machine.precise_assembler.tooltip.6"));
     }
 
     @Override
     public boolean canBeDistinct() {
         return true;
+    }
+
+    public int getCasingTier() {
+        return this.CasingTier;
     }
 
     protected class PreciseAssemblerRecipeLogic extends MultiblockRecipeLogic {
@@ -300,7 +310,11 @@ public class MetaTileEntityPreciseAssembler extends MultiMapMultiblockController
         @Override
         public int getParallelLimit() {
             if (isPrecise()) {
-                return 1;
+                if (getCasingTier() > 3) {
+                    return (int) Math.pow(2, CasingTier + 4);
+                } else {
+                    return 1;
+                }
             } else {
                 return (int) Math.pow(2, CasingTier + 4);
             }

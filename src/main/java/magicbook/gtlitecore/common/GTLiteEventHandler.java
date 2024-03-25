@@ -1,7 +1,7 @@
 package magicbook.gtlitecore.common;
 
 import gregtech.api.unification.material.event.MaterialEvent;
-import magicbook.gtlitecore.GTLiteCore;
+import magicbook.gtlitecore.api.GTLiteValues;
 import magicbook.gtlitecore.api.unification.GTLiteMaterials;
 import magicbook.gtlitecore.api.unification.OrePrefixAddition;
 import magicbook.gtlitecore.api.unification.materials.GTLiteMaterialPropertyAddition;
@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid = GTLiteCore.MODID)
+@Mod.EventBusSubscriber(modid = GTLiteValues.MODID)
 public class GTLiteEventHandler {
 
     @SubscribeEvent(priority = EventPriority.HIGH)

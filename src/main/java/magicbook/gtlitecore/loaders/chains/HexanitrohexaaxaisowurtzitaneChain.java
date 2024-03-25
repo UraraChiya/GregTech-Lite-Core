@@ -5,9 +5,11 @@ import gregtech.api.metatileentity.multiblock.CleanroomType;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static gregtechfoodoption.GTFOMaterialHandler.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.ingot;
+import static gregtech.common.items.MetaItems.BLACKLIGHT;
+import static gregtechfoodoption.GTFOMaterialHandler.AceticAnhydride;
+import static gregtechfoodoption.GTFOMaterialHandler.Glyoxal;
 import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 
@@ -70,10 +72,10 @@ public class HexanitrohexaaxaisowurtzitaneChain {
                 .duration(20)
                 .buildAndRegister();
 
-        //  6NH3 + 4CH2O -> (CH2)6N4 + 6H2O
+        //  4NH3 + 6CH2O -> (CH2)6N4 + 6H2O
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(Ammonia.getFluid(6000))
-                .fluidInputs(Formaldehyde.getFluid(4000))
+                .fluidInputs(Ammonia.getFluid(4000))
+                .fluidInputs(Formaldehyde.getFluid(6000))
                 .output(dust, Hexamethylenetetramine, 22)
                 .fluidOutputs(Water.getFluid(6000))
                 .EUt(VA[HV])

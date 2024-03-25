@@ -7,14 +7,15 @@ import magicbook.gtlitecore.common.GTLiteConfigHolder;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.dustSmall;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 
 /**
  * The Rare Earth Extraction Process
  *
  * <p>
- * Produces Rare Earth Element Oxides from Rare Earth
+ *     Produces Rare Earth Element Oxides from Rare Earth
  * </p>
  *
  * <p>Main Products: All of the REE Oxides</p>

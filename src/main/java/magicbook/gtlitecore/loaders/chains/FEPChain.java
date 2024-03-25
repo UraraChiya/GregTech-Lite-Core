@@ -1,10 +1,13 @@
 package magicbook.gtlitecore.loaders.chains;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.PYROLYSE_RECIPES;
+import static gregtech.api.unification.material.Materials.Steel;
+import static gregtech.api.unification.material.Materials.Tetrafluoroethylene;
+import static gregtech.api.unification.ore.OrePrefix.stick;
+import static magicbook.gtlitecore.api.unification.GTLiteMaterials.FluorinatedEthylenePropylene;
+import static magicbook.gtlitecore.api.unification.GTLiteMaterials.Hexafluoropropylene;
 
 public class FEPChain {
 

@@ -31,13 +31,24 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import static gregtech.api.GTValues.ULV;
 import static magicbook.gtlitecore.api.pattern.GTLiteTraceabilityPredicate.optionalStates;
 
+/**
+ * Large Primitive Blast Furnace
+ *
+ * @author Gate Guardian
+ *
+ * <p>
+ *     This is a basic example of
+ *      {@link magicbook.gtlitecore.api.pattern.GTLiteTraceabilityPredicate#optionalStates(String, IBlockState...)},
+ *     this method create a upgrade system of multiblock.
+ *     Thanks my friend Gate Guardian's work about it, I just do something unimportant.
+ * </p>
+ */
 public class MetaTileEntityLargePrimitiveBlastFurnace extends NoEnergyMultiblockController {
 
     private byte auxiliaryFurnaceNumber = 0;

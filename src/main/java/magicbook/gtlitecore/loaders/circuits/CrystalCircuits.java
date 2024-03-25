@@ -9,7 +9,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.MarkerMaterials.Color.*;
+import static gregtech.api.unification.material.MarkerMaterials.Color.Blue;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
@@ -167,7 +167,8 @@ public class CrystalCircuits {
 
     private static void AdvancedCrystalSoC() {
 
-        //  Ce:LAG
+        //  1/2 CeO2 + 1/5 Lu2O3 + Al2O3 -> Ce:LAG
+        //  this recipe just has some tweak, e.g. half consume of materials (because recipe should be more chip).
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, CeriumOxide)
                 .input(dust, LutetiumOxide)
@@ -178,7 +179,8 @@ public class CrystalCircuits {
                 .duration(180)
                 .buildAndRegister();
 
-        //  Crystal CPU
+        //  Advanced Crystal CPU recipes
+        //  use Ce:LAG lens, and 1 step to get Crystal CPU (this machine required material over ZPM, so is not too imba).
         NANO_SCALE_MASK_ALIGNER_RECIPES.recipeBuilder()
                 .input(plate, Emerald)
                 .notConsumable(lens, CeLAG)
@@ -199,7 +201,7 @@ public class CrystalCircuits {
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
 
-        //  Crystal SoC Socket
+        //  Advanced Crystal SoC Socket recipe
         PRECISE_ASSEMBLER_RECIPES.recipeBuilder()
                 .input(plate, Naquadah)
                 .input(CRYSTAL_INTERFACE_CHIP)
@@ -211,7 +213,6 @@ public class CrystalCircuits {
                 .duration(20)
                 .CasingTier(3)
                 .buildAndRegister();
-
     }
 
     private static void AssemblyBuffer() {

@@ -9,14 +9,27 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.function.Supplier;
 
-@Deprecated
+/**
+ * Cosmic Render Item Behavior.
+ *
+ * @author Gate Guardian
+ *
+ * <p>
+ *     This renderer is transplanted from <a href="https://github.com/GTNewHorizons/GT5-Unofficial">GT5u</a>.
+ *     Use {@link CosmicItemRenderer} to add a extra renderer to items (should mixin gregtech's item renderer, please see e.g. {@link magicbook.gtlitecore.mixin.gregtech.MixinMetaItem}).
+ *     Thanks for tong-ge to fix problem of getMaskTexture() cause server side crash (problem of {@link TextureAtlasSprite}).
+ * </p>
+ */
+@SuppressWarnings("rawtypes")
 public class CosmicRenderItemBehavior implements ICosmicRenderBehavior {
 
-    private final Supplier<TextureAtlasSprite> supplier;
+    private final Supplier supplier;
     private final int maskOpacity;
 
     public CosmicRenderItemBehavior(Supplier<TextureAtlasSprite> supplier,
@@ -25,10 +38,11 @@ public class CosmicRenderItemBehavior implements ICosmicRenderBehavior {
         this.maskOpacity = maskOpacity;
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public TextureAtlasSprite getMaskTexture(ItemStack stack,
                                              @Nullable EntityLivingBase player) {
-        return supplier.get();
+        return (TextureAtlasSprite) supplier.get();
     }
 
     @Override

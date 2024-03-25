@@ -10,8 +10,8 @@ import net.minecraftforge.fluids.FluidStack;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtechfoodoption.GTFOMaterialHandler.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtechfoodoption.GTFOMaterialHandler.SodiumChlorate;
 import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 
@@ -19,7 +19,7 @@ import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
  * The Platinum Process
  *
  * <p>
- * Produces Platinum Group Metals from Platinum Group Sludge
+ *     Produces Platinum Group Metals from Platinum Group Sludge
  * </p>
  *
  * <p>Main Products: Platinum, Palladium, Rhodium, Ruthenium, Iridium, Osmium</p>

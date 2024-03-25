@@ -7,10 +7,11 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CANNER_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.SIMULATOR_RECIPES;
 import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
 
 public class Simulator {

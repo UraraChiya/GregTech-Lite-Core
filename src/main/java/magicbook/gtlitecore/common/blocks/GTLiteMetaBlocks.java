@@ -38,6 +38,7 @@ public class GTLiteMetaBlocks {
     public static BlockDecorativeTransparentCasing DECORATIVE_TRANSPARENT_CASING;
     public static BlockCoolingCore COOLING_CORE;
     public static BlockDysonSwarmCasing DYSON_SWARM_CASING;
+    public static BlockQuantumComputerCasing QUANTUM_COMPUTER_CASING;
 
     private GTLiteMetaBlocks() {}
 
@@ -145,6 +146,10 @@ public class GTLiteMetaBlocks {
         DYSON_SWARM_CASING = new BlockDysonSwarmCasing();
         DYSON_SWARM_CASING.setRegistryName("dyson_swarm_casing");
         DYSON_SWARM_CASING.setCreativeTab(GTLiteAPI.TAB_GTLITE_BLOCK);
+
+        QUANTUM_COMPUTER_CASING = new BlockQuantumComputerCasing();
+        QUANTUM_COMPUTER_CASING.setRegistryName("quantum_computer_casing");
+        QUANTUM_COMPUTER_CASING.setCreativeTab(GTLiteAPI.TAB_GTLITE_BLOCK);
     }
 
     @SideOnly(Side.CLIENT)
@@ -171,6 +176,7 @@ public class GTLiteMetaBlocks {
         registerItemModel(DECORATIVE_TRANSPARENT_CASING);
         registerItemModel(COOLING_CORE);
         registerItemModel(DYSON_SWARM_CASING);
+        registerItemModel(QUANTUM_COMPUTER_CASING);
 
         WIRE_COIL.onModelRegister();
         TRANSPARENT_CASING.onModelRegister();

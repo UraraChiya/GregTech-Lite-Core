@@ -14,6 +14,11 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Flow Rate Recipe Builder
+ *
+ * @author Gate Guardian
+ */
 public class FlowRateRecipeBuilder extends RecipeBuilder<FlowRateRecipeBuilder> {
 
     public FlowRateRecipeBuilder() {}

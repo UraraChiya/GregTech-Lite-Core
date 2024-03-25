@@ -27,10 +27,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import java.util.List;
 
-import static gregtech.api.GTValues.*;
+import static gregtech.api.GTValues.IV;
+import static gregtech.api.GTValues.V;
 
 public class MetaTileEntityLargeRocketEngine extends FuelMultiblockController {
 

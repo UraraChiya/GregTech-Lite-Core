@@ -4,18 +4,20 @@ import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.unification.OreDictUnifier;
 import magicbook.gtlitecore.common.GTLiteConfigHolder;
 
-import static gregtech.api.GTValues.*;
+import static gregtech.api.GTValues.EV;
+import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
-import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.ingotHot;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.CHEMICAL_DRYER_RECIPES;
+import static magicbook.gtlitecore.api.unification.GTLiteMaterials.TungstenTrioxide;
 
 /**
  * The Tungsten Process
  *
  * <p>
- * Adds extra steps for making Tungsten
+ *     Adds extra steps for making Tungsten
  * </p>
  *
  * <p>Main Products: Tungsten</p>

@@ -5,7 +5,17 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Deprecated
+/**
+ * Render Buffer Helper
+ *
+ * @author Gate Guardian
+ *
+ * <p>
+ *     Used for Structure Select Tool (a dev tool),
+ *     please see: {@link StructureSelectRenderer}, this is the renderer of this tool.
+ * </p>
+ */
+@SuppressWarnings("unused")
 @SideOnly(Side.CLIENT)
 public class RenderBufferHelper {
 

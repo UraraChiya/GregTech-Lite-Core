@@ -268,14 +268,14 @@ public class GTLiteRecipeMaps {
     @ZenProperty
     public static final RecipeMap<SpaceElevatorCasingTierRecipeBuilder> SPACE_ELEVATOR_DRILLING_MODULE = new RecipeMap<>("space_elevator_drilling_module", 2, 0, 1, 1, new SpaceElevatorCasingTierRecipeBuilder(), false)
             .setSlotOverlay(false, true, false, GuiTextures.MOLECULAR_OVERLAY_3)
-            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressWidget.MoveType.HORIZONTAL)
+            .setProgressBar(GTLiteGuiTextures.PROGRESS_BAR_SPACE_ELEVATOR_DRILLING_MODULE, ProgressWidget.MoveType.VERTICAL)
             .setSound(GTSoundEvents.DRILL_TOOL);
 
     @ZenProperty
     public static final RecipeMap<SpaceElevatorCasingTierRecipeBuilder> SPACE_ELEVATOR_MINING_MODULE = new RecipeMap<>("space_elevator_mining_module", 4, 9, 2, 0, new SpaceElevatorCasingTierRecipeBuilder(), false)
             .setSlotOverlay(false, true, false, GuiTextures.MOLECULAR_OVERLAY_3)
             .setSlotOverlay(false, true, true, GuiTextures.MOLECULAR_OVERLAY_4)
-            .setProgressBar(GuiTextures.PROGRESS_BAR_COMPRESS, ProgressWidget.MoveType.HORIZONTAL)
+            .setProgressBar(GTLiteGuiTextures.PROGRESS_BAR_SPACE_ELEVATOR_MINING_MODULE, ProgressWidget.MoveType.VERTICAL)
             .setSound(GTSoundEvents.MINER);
 
     @ZenProperty
@@ -341,9 +341,8 @@ public class GTLiteRecipeMaps {
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, ProgressWidget.MoveType.HORIZONTAL)
             .setSound(GTSoundEvents.ARC);
 
-    //  TODO This recipe map is ugly in JEI info (height has exceeded limit), so we need to use Modular UI to redo it.
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> TURBINE_MIXER_RECIPES = new RecipeMap<>("turbine_mixer_recipes", 9, 1, 6, 1, new SimpleRecipeBuilder(), false)
+    public static final RecipeMap<SimpleRecipeBuilder> TURBINE_MIXER_RECIPES = new RecipeMapTurbineMixer<>("turbine_mixer_recipes", 9, 1, 6, 1, new SimpleRecipeBuilder(), false)
             .setSlotOverlay(false, false, GuiTextures.DUST_OVERLAY)
             .setSlotOverlay(true, false, GuiTextures.DUST_OVERLAY)
             .setProgressBar(GuiTextures.PROGRESS_BAR_MIXER, ProgressWidget.MoveType.CIRCULAR)
@@ -356,11 +355,15 @@ public class GTLiteRecipeMaps {
 
     @ZenProperty
     public static final RecipeMap<FuelRecipeBuilder> HIGH_PRESSURE_STEAM_TURBINE_RECIPES = new RecipeMap<>("high_pressure_steam_turbine_recipes", 0, 0, 1, 1, new FuelRecipeBuilder(), false)
+            .setSlotOverlay(false, true, true, GuiTextures.DARK_CANISTER_OVERLAY)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_GAS_COLLECTOR, ProgressWidget.MoveType.HORIZONTAL)
             .allowEmptyOutput()
             .setSound(GTSoundEvents.TURBINE);
 
     @ZenProperty
     public static final RecipeMap<FuelRecipeBuilder> SUPERCRITICAL_STEAM_TURBINE_RECIPES = new RecipeMap<>("supercritical_steam_turbine_recipes", 0, 0, 1, 1, new FuelRecipeBuilder(), false)
+            .setSlotOverlay(false, true, true, GuiTextures.DARK_CANISTER_OVERLAY)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_GAS_COLLECTOR, ProgressWidget.MoveType.HORIZONTAL)
             .allowEmptyOutput()
             .setSound(GTSoundEvents.TURBINE);
 
@@ -380,7 +383,8 @@ public class GTLiteRecipeMaps {
             .setSound(GTSoundEvents.SCIENCE);
 
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> NANO_SCALE_MASK_ALIGNER_RECIPES = new RecipeMap<>("nano_scale_mask_aligner_recipes", 2, 1, 1, 0, new SimpleRecipeBuilder(), false)
+    public static final RecipeMap<SimpleRecipeBuilder> NANO_SCALE_MASK_ALIGNER_RECIPES = new RecipeMap<>("nano_scale_mask_aligner_recipes", 4, 2, 2, 0, new SimpleRecipeBuilder(), false)
+            .setSlotOverlay(false, false, false, GuiTextures.LENS_OVERLAY)
             .setSlotOverlay(false, false, true, GuiTextures.LENS_OVERLAY)
             .setSlotOverlay(false, true, true, GuiTextures.MOLECULAR_OVERLAY_4)
             .setSound(GTSoundEvents.ARC);
@@ -404,7 +408,7 @@ public class GTLiteRecipeMaps {
             .setSound(GTSoundEvents.COMPRESSOR);
 
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> VIRTUAL_COSMOS_SIMULATOR_RECIPES = new RecipeMapVirtualCosmosSimulator<>("virtual_cosmos_simulator_recipes", 1, 12, 0, 12, new SimpleRecipeBuilder(), false)
+    public static final RecipeMap<SimpleRecipeBuilder> VIRTUAL_COSMOS_SIMULATOR_RECIPES = new RecipeMapVirtualCosmosSimulator<>("virtual_cosmos_simulator_recipes", 1, 81, 0, 18, new SimpleRecipeBuilder(), false)
             .setSound(GTSoundEvents.ARC);
 
     @ZenProperty
@@ -418,6 +422,10 @@ public class GTLiteRecipeMaps {
     public static final RecipeMap<FuelRecipeBuilder> DYSON_SWARM_RECIPES = new RecipeMap<>("dyson_swarm_recipes", 2, 8, 0, 0, new FuelRecipeBuilder(), true)
             .allowEmptyOutput()
             .setSound(GTSoundEvents.COOLING);
+
+    public static final RecipeMap<SimpleRecipeBuilder> PLANETARY_GAS_SIPHON_RECIPES = new RecipeMap<>("planetary_gas_siphon_recipes", 4, 0, 1, 1, new SimpleRecipeBuilder(), false)
+            .setProgressBar(GTLiteGuiTextures.PROGRESS_BAR_SPACE_ELEVATOR_DRILLING_MODULE, ProgressWidget.MoveType.VERTICAL)
+            .setSound(GTSoundEvents.MINER);
 
     public GTLiteRecipeMaps() {}
 }

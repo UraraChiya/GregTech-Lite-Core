@@ -115,9 +115,9 @@ public class MetaTileEntityLargeFluidPhaseTransformer extends MultiMapMultiblock
                                boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gtlitecore.machine.large_fluid_phase_transformer.tooltip.1"));
+        tooltip.add(I18n.format("gtlitecore.universal.tooltip.get_parallel_by_voltage"));
         tooltip.add(I18n.format("gtlitecore.machine.large_fluid_phase_transformer.tooltip.2"));
         tooltip.add(I18n.format("gtlitecore.machine.large_fluid_phase_transformer.tooltip.3"));
-        tooltip.add(I18n.format("gtlitecore.machine.large_fluid_phase_transformer.tooltip.4"));
         tooltip.add(I18n.format("gtlitecore.universal.tooltip.max_parallel", 640));
     }
 

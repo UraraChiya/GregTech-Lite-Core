@@ -10,6 +10,11 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Precise Assembler Recipe Map
+ *
+ * @author Glodblock (original author), Magic_Sweepy
+ */
 public class RecipeMapPreciseAssembler<R extends RecipeBuilder<R>> extends RecipeMap<R> {
 
     public RecipeMapPreciseAssembler(@Nonnull String unlocalizedName,

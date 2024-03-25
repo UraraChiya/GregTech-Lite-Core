@@ -33,11 +33,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import static gregtech.api.GTValues.*;
+import static gregtech.api.GTValues.HV;
+import static gregtech.api.GTValues.IV;
 
 public class MetaTileEntityExtremeIndustrialGreenhouse extends RecipeMapMultiblockController {
 

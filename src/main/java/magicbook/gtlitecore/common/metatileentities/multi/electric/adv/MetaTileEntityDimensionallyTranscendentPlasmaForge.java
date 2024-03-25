@@ -6,7 +6,10 @@ import gregtech.api.GregTechAPI;
 import gregtech.api.block.IHeatingCoilBlockStats;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IHeatingCoil;
-import gregtech.api.capability.impl.*;
+import gregtech.api.capability.impl.EnergyContainerList;
+import gregtech.api.capability.impl.FluidTankList;
+import gregtech.api.capability.impl.HeatingCoilRecipeLogic;
+import gregtech.api.capability.impl.ItemHandlerList;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -269,7 +272,7 @@ public class MetaTileEntityDimensionallyTranscendentPlasmaForge extends MultiMap
         tooltip.add(I18n.format("gtlitecore.machine.dimensionally_transcendent_plasma_forge.tooltip.20"));
         tooltip.add(I18n.format("gtlitecore.machine.dimensionally_transcendent_plasma_forge.tooltip.21"));
         tooltip.add(I18n.format("gtlitecore.machine.dimensionally_transcendent_plasma_forge.tooltip.22"));
-        tooltip.add(I18n.format("gtlitecore.machine.dimensionally_transcendent_plasma_forge.tooltip.23"));
+        tooltip.add(I18n.format("gtlitecore.universal.tooltip.laser_input"));
     }
 
     @Override

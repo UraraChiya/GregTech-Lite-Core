@@ -10,6 +10,11 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Large Circuit Assembly Line Recipe Map
+ *
+ * @author Magic_Sweepy
+ */
 public class RecipeMapLargeCircuitAssemblyLine<R extends RecipeBuilder<R>> extends RecipeMap<R> {
 
     public RecipeMapLargeCircuitAssemblyLine(@Nonnull String unlocalizedName,

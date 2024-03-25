@@ -21,8 +21,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 /**
- * @since This class is referenced some codes in Multiblocked,
- *        please see: <a href="https://github.com/CleanroomMC/Multiblocked/"></a>.
+ * Structure Writer Item Behavior
+ *
+ * @author Gate Guardian
+ *
+ * <p>
+ *     This class is referenced some codes in Multiblocked,
+ *     please see: <a href="https://github.com/CleanroomMC/Multiblocked/">Multiblocked</a>.
+ * </p>
  */
 public class StructureWriterBehavior implements IItemBehaviour, ItemUIFactory {
 

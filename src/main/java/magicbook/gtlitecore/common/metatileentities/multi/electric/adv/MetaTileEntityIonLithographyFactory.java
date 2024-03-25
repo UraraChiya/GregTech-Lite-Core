@@ -62,8 +62,7 @@ public class MetaTileEntityIonLithographyFactory extends MultiMapMultiblockContr
                 GTLiteRecipeMaps.ION_IMPLANTATOR_RECIPES,
                 RecipeMaps.ELECTROLYZER_RECIPES,
                 RecipeMaps.POLARIZER_RECIPES,
-                RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES
-        });
+                RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES});
         this.recipeMapWorkable = new IonLithographyFactoryRecipeLogic(this);
     }
 
@@ -91,6 +90,7 @@ public class MetaTileEntityIonLithographyFactory extends MultiMapMultiblockContr
         this.inputInventory = new ItemHandlerList(this.getAbilities(MultiblockAbility.IMPORT_ITEMS));
         this.inputFluidInventory = new FluidTankList(this.allowSameFluidFillForOutputs(), this.getAbilities(MultiblockAbility.IMPORT_FLUIDS));
         this.outputInventory = new ItemHandlerList(this.getAbilities(MultiblockAbility.EXPORT_ITEMS));
+        this.outputFluidInventory = new FluidTankList(this.allowSameFluidFillForOutputs(), this.getAbilities(MultiblockAbility.EXPORT_FLUIDS));
         List<IEnergyContainer> energyContainer = new ArrayList<>(this.getAbilities(MultiblockAbility.INPUT_ENERGY));
         energyContainer.addAll(this.getAbilities(MultiblockAbility.INPUT_LASER));
         this.energyContainer=new EnergyContainerList(energyContainer);
@@ -248,7 +248,7 @@ public class MetaTileEntityIonLithographyFactory extends MultiMapMultiblockContr
         tooltip.add(I18n.format("gtlitecore.machine.ion_lithography_factory.tooltip.14"));
         tooltip.add(I18n.format("gtlitecore.machine.ion_lithography_factory.tooltip.15"));
         tooltip.add(I18n.format("gtlitecore.machine.ion_lithography_factory.tooltip.16"));
-        tooltip.add(I18n.format("gtlitecore.machine.ion_lithography_factory.tooltip.17"));
+        tooltip.add(I18n.format("gtlitecore.universal.tooltip.laser_input"));
     }
 
     public class IonLithographyFactoryRecipeLogic extends MultiblockRecipeLogic {

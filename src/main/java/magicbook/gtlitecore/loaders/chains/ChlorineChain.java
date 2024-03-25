@@ -1,10 +1,11 @@
 package magicbook.gtlitecore.loaders.chains;
 
-import static gregtech.api.GTValues.*;
+import static gregtech.api.GTValues.EV;
+import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.MIXER_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
+import static gregtech.api.unification.ore.OrePrefix.plate;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.CATALYTIC_REFORMER_RECIPES;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 
 public class ChlorineChain {

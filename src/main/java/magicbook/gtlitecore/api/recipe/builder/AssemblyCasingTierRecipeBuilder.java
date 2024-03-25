@@ -10,6 +10,17 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Precise Assembly Casing Recipe Builder
+ *
+ * @author Magic_Sweepy
+ *
+ * <p>
+ *     This class creates a recipe builder for Precise Assembler Casing Tier system (please see: {@link magicbook.gtlitecore.common.metatileentities.multi.electric.adv.MetaTileEntityPreciseAssembler}.
+ *     You should use {@link gregtech.api.capability.impl.MultiblockRecipeLogic#checkRecipe(Recipe)} to implement correspondent function about this recipe.
+ *     About related recipe property, please see: {@link AssemblyCasingTierProperty}.
+ * </p>
+ */
 public class AssemblyCasingTierRecipeBuilder extends RecipeBuilder<AssemblyCasingTierRecipeBuilder> {
 
     public AssemblyCasingTierRecipeBuilder() {}

@@ -46,6 +46,9 @@ public class GTLiteConfigHolder {
         @Comment({"Enable high tier Tiered Hatch (UHV-MAX) recipes.", "Default: true"})
         public boolean enableHighTierTieredHatch = true;
 
+        @Comment({"Enable some recipe tweaks of GTFO (such as Greenhouse Glass).", "Default: true"})
+        public boolean enableGTFOTweaks = true;
+
         public CompatibilityOptions() {}
     }
 
@@ -59,6 +62,9 @@ public class GTLiteConfigHolder {
 
         @Comment({"Enable high tier fluid hatch (UEV-OpV) recipes, these hatches may have issues.", "Default: true"})
         public boolean enableHighTierFluidHatch = true;
+
+        @Comment({"Enable high tier multi fluid hatch (UEV-OpV) recipes, these hatches may have issues.", "Default: true"})
+        public boolean enableHighTierMultiFluidHatch = true;
 
         @Comment({"Enable high tier 1A energy hatch (UEV-OpV) recipes.", "Default: true"})
         public boolean enableHighTier1AEnergyHatch = true;

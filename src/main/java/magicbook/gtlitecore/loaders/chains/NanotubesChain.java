@@ -6,10 +6,12 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
+import static gregtech.common.items.MetaItems.SHAPE_EXTRUDER_INGOT;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.LASER_CVD_UNIT_RECIPES;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.PLASMA_CVD_UNIT_RECIPES;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
-import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
+import static magicbook.gtlitecore.common.items.GTLiteMetaItems.CARBON_ALLOTROPE_MIXTURE;
+import static magicbook.gtlitecore.common.items.GTLiteMetaItems.GRAPHENE_ALIGNED_CNT;
 
 public class NanotubesChain {
 

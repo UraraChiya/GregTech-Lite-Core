@@ -10,6 +10,11 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Grindball Recipe Builder
+ *
+ * @author Gate Guardian
+ */
 public class GrindBallRecipeBuilder extends RecipeBuilder<GrindBallRecipeBuilder> {
 
     public GrindBallRecipeBuilder() {}

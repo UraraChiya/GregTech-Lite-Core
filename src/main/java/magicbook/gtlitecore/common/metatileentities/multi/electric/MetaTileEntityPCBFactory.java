@@ -33,13 +33,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import static gregtech.api.GTValues.*;
+import static gregtech.api.GTValues.EV;
+import static gregtech.api.GTValues.LuV;
 import static magicbook.gtlitecore.api.pattern.GTLiteTraceabilityPredicate.optionalStates;
 
+//  TODO redo workable handler and recipe maps, maybe split nano assembling mode to a new nano swarm-related machine.
+//  TODO add recipe tier, and compare with auxiliaryUpgradeNumber though checkRecipe().
 public class MetaTileEntityPCBFactory extends MultiMapMultiblockController {
 
     private byte auxiliaryUpgradeNumber = 0;

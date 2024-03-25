@@ -53,7 +53,8 @@ public class HeatExchangerRecipeLogic extends NoEnergyMultiblockRecipeLogic {
     @Override
     protected void updateRecipeProgress() {
         super.updateRecipeProgress();
-        if (!canRecipeProgress) return;
+        if (!canRecipeProgress)
+            return;
 
         if (currentHeat < maxHeat) {
             setHeat(currentHeat + 1);

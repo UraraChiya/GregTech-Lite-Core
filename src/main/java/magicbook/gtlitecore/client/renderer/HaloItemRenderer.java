@@ -16,9 +16,18 @@ import net.minecraftforge.common.model.IModelState;
 
 import java.util.Random;
 
-@Deprecated
+/**
+ * Halo Item Renderer.
+ *
+ * @author Gate Guardian
+ *
+ * <p>
+ *     This renderer is transplanted from <a href="https://github.com/GTNewHorizons/GT5-Unofficial">GT5u</a>.
+ *     Please see {@link magicbook.gtlitecore.common.items.behaviors.renderer.HaloRenderItemBehavior}.
+ * </p>
+ */
 public class HaloItemRenderer extends WrappedItemRenderer {
-    private Random randy = new Random();
+    private final Random random = new Random();
 
     public HaloItemRenderer(IModelState state, IBakedModel model) {
         super(state, model);
@@ -28,73 +37,78 @@ public class HaloItemRenderer extends WrappedItemRenderer {
         super(state, getter);
     }
 
+    /**
+     * @param stack          Item stack, should check if it in gregtech's {@link MetaItem} class, otherwise cause crash when it in AE2 Pattern (please see: {@link appeng.items.misc.ItemEncodedPattern}).
+     * @param transformType  Transform type, used to check if it in GUI.
+     */
     @Override
     public void renderItem(ItemStack stack, ItemCameraTransforms.TransformType transformType) {
-
-        Tessellator tess = Tessellator.getInstance();
-        BufferBuilder buffer = tess.getBuffer();
-        if (transformType == ItemCameraTransforms.TransformType.GUI) {
-            MetaItem<?>.MetaValueItem valueItem = ((MetaItem<?>)stack.getItem()).getItem(stack);
-            IHaloRenderBehavior hri = null;
-            if (valueItem != null) {
-                hri = (IHaloRenderBehavior) ((IItemRenderer)valueItem).getRendererManager();
-            }
-
-            if (hri != null) {
-                GlStateManager.pushMatrix();
-                GlStateManager.enableBlend();
-                GlStateManager.disableDepth();
-                GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
-
-                GlStateManager.disableAlpha();
-
-                if (hri.shouldDrawHalo()) {
-                    Colour.glColourARGB(hri.getHaloColour());
-                    TextureAtlasSprite sprite = hri.getHaloTexture();
-
-                    double spread = hri.getHaloSize() / 16D;
-                    double min = 0D - spread;
-                    double max = 1D + spread;
-
-                    float minU = sprite.getMinU();
-                    float maxU = sprite.getMaxU();
-                    float minV = sprite.getMinV();
-                    float maxV = sprite.getMaxV();
-
-                    buffer.begin(0x07, DefaultVertexFormats.POSITION_TEX);
-                    buffer.pos(max, max, 0).tex(maxU, minV).endVertex();
-                    buffer.pos(min, max, 0).tex(minU, minV).endVertex();
-                    buffer.pos(min, min, 0).tex(minU, maxV).endVertex();
-                    buffer.pos(max, min, 0).tex(maxU, maxV).endVertex();
-
-                    tess.draw();
+        if (stack.getItem() instanceof MetaItem) {
+            Tessellator tess = Tessellator.getInstance();
+            BufferBuilder buffer = tess.getBuffer();
+            if (transformType == ItemCameraTransforms.TransformType.GUI) {
+                MetaItem<?>.MetaValueItem valueItem = ((MetaItem<?>) stack.getItem()).getItem(stack);
+                IHaloRenderBehavior hri = null;
+                if (valueItem != null) {
+                    hri = (IHaloRenderBehavior) ((IItemRenderer) valueItem).getRendererManager();
                 }
 
-                if (hri.shouldDrawPulse()) {
+                if (hri != null) {
                     GlStateManager.pushMatrix();
-                    double scale = randy.nextDouble() * 0.15 + 0.95;
-                    double trans = (1 - scale) / 2;
-                    GlStateManager.translate(trans, trans, 0);
-                    GlStateManager.scale(scale, scale, 1.0001);
+                    GlStateManager.enableBlend();
+                    GlStateManager.disableDepth();
+                    GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
 
-                    renderModel(wrapped, stack, 0.6F);
+                    GlStateManager.disableAlpha();
 
+                    if (hri.shouldDrawHalo()) {
+                        Colour.glColourARGB(hri.getHaloColour());
+                        TextureAtlasSprite sprite = hri.getHaloTexture();
+
+                        double spread = hri.getHaloSize() / 16D;
+                        double min = 0D - spread;
+                        double max = 1D + spread;
+
+                        float minU = sprite.getMinU();
+                        float maxU = sprite.getMaxU();
+                        float minV = sprite.getMinV();
+                        float maxV = sprite.getMaxV();
+
+                        buffer.begin(0x07, DefaultVertexFormats.POSITION_TEX);
+                        buffer.pos(max, max, 0).tex(maxU, minV).endVertex();
+                        buffer.pos(min, max, 0).tex(minU, minV).endVertex();
+                        buffer.pos(min, min, 0).tex(minU, maxV).endVertex();
+                        buffer.pos(max, min, 0).tex(maxU, maxV).endVertex();
+
+                        tess.draw();
+                    }
+
+                    if (hri.shouldDrawPulse()) {
+                        GlStateManager.pushMatrix();
+                        double scale = random.nextDouble() * 0.15 + 0.95;
+                        double trans = (1 - scale) / 2;
+                        GlStateManager.translate(trans, trans, 0);
+                        GlStateManager.scale(scale, scale, 1.0001);
+
+                        renderModel(wrapped, stack, 0.6F);
+
+                        GlStateManager.popMatrix();
+                    }
+                    renderModel(wrapped, stack);
+
+                    GlStateManager.enableAlpha();
+                    GlStateManager.enableDepth();
+                    GlStateManager.enableRescaleNormal();
+
+                    GlStateManager.disableBlend();
                     GlStateManager.popMatrix();
+                } else {
+                    renderModel(wrapped, stack);
                 }
-                renderModel(wrapped, stack);
 
-                GlStateManager.enableAlpha();
-                GlStateManager.enableDepth();
-                GlStateManager.enableRescaleNormal();
-
-                GlStateManager.disableBlend();
-                GlStateManager.popMatrix();
-            }else {
+            } else {
                 renderModel(wrapped, stack);
             }
-
-        }else {
-            renderModel(wrapped, stack);
         }
     }
 }

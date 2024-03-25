@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-import static gregtech.api.GTValues.*;
+import static gregtech.api.GTValues.HV;
+import static gregtech.api.GTValues.LV;
 
 public class MetaTileEntityUnmannedDroneAirport extends RecipeMapMultiblockController {
 

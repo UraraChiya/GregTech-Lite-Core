@@ -4,7 +4,7 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
+import static gregtech.common.items.MetaItems.SHAPE_EXTRUDER_INGOT;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 
 public class FullereneChain {

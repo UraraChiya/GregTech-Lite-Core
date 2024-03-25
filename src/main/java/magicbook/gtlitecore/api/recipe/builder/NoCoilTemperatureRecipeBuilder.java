@@ -13,6 +13,9 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.annotation.Nonnull;
 
+/**
+ * No Coil Temperature Recipe Builder
+ */
 public class NoCoilTemperatureRecipeBuilder extends RecipeBuilder<NoCoilTemperatureRecipeBuilder> {
 
     public NoCoilTemperatureRecipeBuilder() {}

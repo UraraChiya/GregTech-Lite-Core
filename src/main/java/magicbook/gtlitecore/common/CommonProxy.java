@@ -88,6 +88,7 @@ public class CommonProxy {
         registry.register(GTLiteMetaBlocks.DECORATIVE_TRANSPARENT_CASING);
         registry.register(GTLiteMetaBlocks.COOLING_CORE);
         registry.register(GTLiteMetaBlocks.DYSON_SWARM_CASING);
+        registry.register(GTLiteMetaBlocks.QUANTUM_COMPUTER_CASING);
     }
 
     @SubscribeEvent
@@ -120,6 +121,7 @@ public class CommonProxy {
         registry.register(createItemBlock(GTLiteMetaBlocks.DECORATIVE_TRANSPARENT_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(GTLiteMetaBlocks.COOLING_CORE, VariantItemBlock::new));
         registry.register(createItemBlock(GTLiteMetaBlocks.DYSON_SWARM_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(GTLiteMetaBlocks.QUANTUM_COMPUTER_CASING, VariantItemBlock::new));
     }
 
     @Nonnull
@@ -222,7 +224,7 @@ public class CommonProxy {
 
         event.setCanceled(true);
 
-        if (message.startsWith("=help")) { //  if player send =help, then return guide of this function.
+        if (message.startsWith("=help")) { //  If player send =help, then return guide of this function.
             for (int i = 1; i <= 12; i++) {
                 event.getPlayer().sendMessage(new TextComponentTranslation(String.format("gtlitecore.chat_calculator.help.%s", i), i == 3 ? new TextComponentString("%").setStyle(new Style().setColor(TextFormatting.AQUA)) : new TextComponentString[]{}));
             }

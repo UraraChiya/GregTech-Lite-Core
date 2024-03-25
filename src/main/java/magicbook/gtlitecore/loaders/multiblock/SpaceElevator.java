@@ -7,11 +7,11 @@ import net.minecraftforge.fluids.FluidStack;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.ore;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.SPACE_ELEVATOR_DRILLING_MODULE;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.SPACE_ELEVATOR_MINING_MODULE;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
 
-@SuppressWarnings("rawtypes")
 public class SpaceElevator {
 
     public static void init() {
@@ -20,100 +20,180 @@ public class SpaceElevator {
     }
 
     private static void DrillingModule() {
+
+        int[] Energy = { VA[IV], VH[IV], VA[LuV], VH[LuV], VA[ZPM], VH[ZPM], VA[UV], VH[UV], VA[UHV], VH[UHV], VA[UEV], VH[UEV], VA[UIV], VH[UIV] };
+
+        MetaItem<?>.MetaValueItem[] Drone = { MINING_DRONE_LV, MINING_DRONE_MV, MINING_DRONE_HV, MINING_DRONE_EV, MINING_DRONE_IV,
+                                              MINING_DRONE_LuV, MINING_DRONE_ZPM, MINING_DRONE_UV, MINING_DRONE_UHV, MINING_DRONE_UEV,
+                                              MINING_DRONE_UIV, MINING_DRONE_UXV, MINING_DRONE_OpV, MINING_DRONE_MAX };
+
         //  LV Mining Drone
-        createDrillingModuleFluidRecipe(1, MINING_DRONE_LV, Chlorobenzene, 44800, 1, VA[IV]);
-        createDrillingModuleFluidRecipe(2, MINING_DRONE_LV, SulfuricAcid, 39200, 1, VA[IV]);
-        createDrillingModuleFluidRecipe(3, MINING_DRONE_LV, Iron, 44800, 1, VA[IV]);
-        createDrillingModuleFluidRecipe(4, MINING_DRONE_LV, RawOil, 7000, 1, VA[IV]);
-        createDrillingModuleFluidRecipe(5, MINING_DRONE_LV, OilHeavy,89600, 1, VA[IV]);
+        createDrillingModuleFluidRecipe(1,  Drone[0], Chlorobenzene,  44800,  1, Energy[0]);
+        createDrillingModuleFluidRecipe(2,  Drone[0], SulfuricAcid,   39200,  1, Energy[0]);
+        createDrillingModuleFluidRecipe(3,  Drone[0], Iron,           44800,  1, Energy[0]);
+        createDrillingModuleFluidRecipe(4,  Drone[0], RawOil,         7000,   1, Energy[0]);
+        createDrillingModuleFluidRecipe(5,  Drone[0], OilHeavy,       89600,  1, Energy[0]);
+        createDrillingModuleFluidRecipe(6,  Drone[0], CarbonMonoxide, 224000, 1, Energy[0]);
+        createDrillingModuleFluidRecipe(7,  Drone[0], Helium,         140000, 1, Energy[0]);
+        createDrillingModuleFluidRecipe(8,  Drone[0], SaltWater,      140000, 1, Energy[0]);
+        createDrillingModuleFluidRecipe(9,  Drone[0], Helium3,        70000,  1, Energy[0]);
+        createDrillingModuleFluidRecipe(10, Drone[0], Oxygen,         44800,  1, Energy[0]);
 
         //  MV Mining Drone
-        createDrillingModuleFluidRecipe(1, MINING_DRONE_MV, CarbonMonoxide, 224000, 1, VH[IV]);
-        createDrillingModuleFluidRecipe(2, MINING_DRONE_MV, Helium, 140000, 1, VH[IV]);
-        createDrillingModuleFluidRecipe(3, MINING_DRONE_MV, SaltWater, 140000, 1, VH[IV]);
-        createDrillingModuleFluidRecipe(4, MINING_DRONE_MV, Helium3, 70000, 1, VH[IV]);
-        createDrillingModuleFluidRecipe(5, MINING_DRONE_MV, Oxygen, 44800, 1, VH[IV]);
+        createDrillingModuleFluidRecipe(1,  Drone[1], Neon,      8000,  1, Energy[1]);
+        createDrillingModuleFluidRecipe(2,  Drone[1], Hydrogen,  78400, 1, Energy[1]);
+        createDrillingModuleFluidRecipe(3,  Drone[1], Nitrogen,  78400, 1, Energy[1]);
+        createDrillingModuleFluidRecipe(4,  Drone[1], Methane,   89600, 1, Energy[1]);
+        createDrillingModuleFluidRecipe(5,  Drone[1], Deuterium, 78400, 1, Energy[1]);
+        createDrillingModuleFluidRecipe(6,  Drone[1], Tritium,   12000, 1, Energy[1]);
+        createDrillingModuleFluidRecipe(7,  Drone[1], Argon,     8000,  1, Energy[1]);
+        createDrillingModuleFluidRecipe(8,  Drone[1], Ammonia,   12000, 1, Energy[1]);
+        createDrillingModuleFluidRecipe(9,  Drone[1], Ethylene,  89600, 1, Energy[1]);
+        createDrillingModuleFluidRecipe(10, Drone[1], Steam,     78400, 1, Energy[1]);
 
         //  HV Mining Drone
-        createDrillingModuleFluidRecipe(1, MINING_DRONE_HV, Neon, 1600, 1, VA[LuV]);
-        createDrillingModuleFluidRecipe(2, MINING_DRONE_HV, Hydrogen, 78400, 1, VA[LuV]);
-        createDrillingModuleFluidRecipe(3, MINING_DRONE_HV, Nitrogen, 78400, 1, VA[LuV]);
-        createDrillingModuleFluidRecipe(4, MINING_DRONE_HV, Methane, 89600, 1, VA[LuV]);
-        createDrillingModuleFluidRecipe(5, MINING_DRONE_HV, Deuterium, 78400, 1, VA[LuV]);
+        createDrillingModuleFluidRecipe(1,  Drone[2], Fluorine,         89600, 1, Energy[2]);
+        createDrillingModuleFluidRecipe(2,  Drone[2], Krypton,          8000,  1, Energy[2]);
+        createDrillingModuleFluidRecipe(3,  Drone[2], Copper,           44800, 1, Energy[2]);
+        createDrillingModuleFluidRecipe(4,  Drone[2], DistilledWater,   89600, 1, Energy[2]);
+        createDrillingModuleFluidRecipe(5,  Drone[2], Xenon,            8000,  1, Energy[2]);
+        createDrillingModuleFluidRecipe(6,  Drone[2], Bromine,          33600, 1, Energy[2]);
+        createDrillingModuleFluidRecipe(7,  Drone[2], IodineSlurry,     12000, 1, Energy[2]);
+        createDrillingModuleFluidRecipe(8,  Drone[2], HydrochloricAcid, 39200, 1, Energy[2]);
+        createDrillingModuleFluidRecipe(9,  Drone[2], Ammonia,          33600, 1, Energy[2]);
+        createDrillingModuleFluidRecipe(10, Drone[2], CarbonDisulfide,  33600, 1, Energy[2]);
 
         //  EV Mining Drone
-        createDrillingModuleFluidRecipe(1, MINING_DRONE_EV, Tritium, 12000, 1, VH[LuV]);
-        createDrillingModuleFluidRecipe(2, MINING_DRONE_EV, Argon, 1600, 1, VH[LuV]);
-        createDrillingModuleFluidRecipe(3, MINING_DRONE_EV, Ammonia, 12000, 1, VH[LuV]);
-        createDrillingModuleFluidRecipe(4, MINING_DRONE_EV, Ethylene, 89600, 1, VH[LuV]);
-        createDrillingModuleFluidRecipe(5, MINING_DRONE_EV, HydrofluoricAcid, 33600, 1, VH[LuV]);
+        createDrillingModuleFluidRecipe(1,  Drone[3], LiquidAir,           89600, 1, Energy[3]);
+        createDrillingModuleFluidRecipe(2,  Drone[3], Nickel,              44800, 1, Energy[3]);
+        createDrillingModuleFluidRecipe(3,  Drone[3], NitricAcid,          39200, 1, Energy[3]);
+        createDrillingModuleFluidRecipe(4,  Drone[3], Ethylbenzene,        12000, 1, Energy[3]);
+        createDrillingModuleFluidRecipe(5,  Drone[3], Propene,             12000, 1, Energy[3]);
+        createDrillingModuleFluidRecipe(6,  Drone[3], Toluene,             12000, 1, Energy[3]);
+        createDrillingModuleFluidRecipe(7,  Drone[3], Glowstone,           44800, 1, Energy[3]);
+        createDrillingModuleFluidRecipe(8,  Drone[3], Mercury,             78400, 1, Energy[3]);
+        createDrillingModuleFluidRecipe(9,  Drone[3], Tin,                 44800, 1, Energy[3]);
+        createDrillingModuleFluidRecipe(10, Drone[3], UraniumHexafluoride, 33600, 1, Energy[3]);
 
         //  IV Mining Drone
-        createDrillingModuleFluidRecipe(1, MINING_DRONE_IV, Fluorine, 89600, 1, VA[ZPM]);
-        createDrillingModuleFluidRecipe(2, MINING_DRONE_IV, Krypton, 800, 1, VA[ZPM]);
-        createDrillingModuleFluidRecipe(3, MINING_DRONE_IV, Copper, 44800, 1, VA[ZPM]);
-        createDrillingModuleFluidRecipe(4, MINING_DRONE_IV, DistilledWater, 89600, 1, VA[ZPM]);
-        createDrillingModuleFluidRecipe(5, MINING_DRONE_IV, Xenon, 800, 1, VA[ZPM]);
+        createDrillingModuleFluidRecipe(1,  Drone[4], LiquidNetherAir,  89600, 1, Energy[4]);
+        createDrillingModuleFluidRecipe(2,  Drone[4], Lava,             78400, 1, Energy[4]);
+        createDrillingModuleFluidRecipe(3,  Drone[4], HydrofluoricAcid, 39200, 1, Energy[4]);
+        createDrillingModuleFluidRecipe(4,  Drone[4], Fluorobenzene,    44800, 1, Energy[4]);
+        createDrillingModuleFluidRecipe(5,  Drone[4], Acetylene,        12000, 1, Energy[4]);
+        createDrillingModuleFluidRecipe(6,  Drone[4], SodiumBisulfate,  39200, 1, Energy[4]);
+        createDrillingModuleFluidRecipe(7,  Drone[4], Arsenic,          33600, 1, Energy[4]);
+        createDrillingModuleFluidRecipe(8,  Drone[4], Radon,            8000,  1, Energy[4]);
+        createDrillingModuleFluidRecipe(9,  Drone[4], Lead,             44800, 1, Energy[4]);
+        createDrillingModuleFluidRecipe(10, Drone[4], NetherStar,       12000, 1, Energy[4]);
 
         //  LuV Mining Drone
-        createDrillingModuleFluidRecipe(1, MINING_DRONE_LuV, Bromine, 33600, 1, VH[ZPM]);
-        createDrillingModuleFluidRecipe(2, MINING_DRONE_LuV, Radon, 800, 1, VH[ZPM]);
-        createDrillingModuleFluidRecipe(3, MINING_DRONE_LuV, IodineSlurry, 12000, 1, VH[ZPM]);
-        createDrillingModuleFluidRecipe(4, MINING_DRONE_LuV, HydrochloricAcid, 39200, 1, VH[ZPM]);
-        createDrillingModuleFluidRecipe(5, MINING_DRONE_LuV, Tin, 44800, 1, VH[ZPM]);
+        createDrillingModuleFluidRecipe(1,  Drone[5], LiquidEnderAir,      89600, 1, Energy[5]);
+        createDrillingModuleFluidRecipe(2,  Drone[5], Chloroform,          44800, 1, Energy[5]);
+        createDrillingModuleFluidRecipe(3,  Drone[5], Butene,              39200, 1, Energy[5]);
+        createDrillingModuleFluidRecipe(4,  Drone[5], FluoroantimonicAcid, 39200, 1, Energy[5]);
+        createDrillingModuleFluidRecipe(5,  Drone[5], Butyraldehyde,       33600, 1, Energy[5]);
+        createDrillingModuleFluidRecipe(6,  Drone[5], AquaRegia,           78400, 1, Energy[5]);
+        createDrillingModuleFluidRecipe(7,  Drone[5], SulfurDichloride,    33600, 1, Energy[5]);
+        createDrillingModuleFluidRecipe(8,  Drone[5], AceticAcid,          44800, 1, Energy[5]);
+        createDrillingModuleFluidRecipe(9,  Drone[5], Indium,              8000,  1, Energy[5]);
+        createDrillingModuleFluidRecipe(10, Drone[5], HydrogenPeroxide,    12000, 1, Energy[5]);
 
         //  ZPM Mining Drone
-        createDrillingModuleFluidRecipe(1, MINING_DRONE_ZPM, LiquidAir, 89600, 1, VA[UV]);
-        createDrillingModuleFluidRecipe(2, MINING_DRONE_ZPM, Nickel, 44800, 1, VA[UV]);
-        createDrillingModuleFluidRecipe(3, MINING_DRONE_ZPM, NitricAcid, 39200, 1, VA[UV]);
-        createDrillingModuleFluidRecipe(4, MINING_DRONE_ZPM, Steam, 78400, 1, VA[UV]);
-        createDrillingModuleFluidRecipe(5, MINING_DRONE_ZPM, Toluene, 12000, 1, VA[UV]);
+        createDrillingModuleFluidRecipe(1,  Drone[6], HeliumNeon,      8000,  1, Energy[6]);
+        createDrillingModuleFluidRecipe(2,  Drone[6], Acetone,         33600, 1, Energy[6]);
+        createDrillingModuleFluidRecipe(3,  Drone[6], BoricAcid,       44800, 1, Energy[6]);
+        createDrillingModuleFluidRecipe(4,  Drone[6], Glycerol,        39200, 1, Energy[6]);
+        createDrillingModuleFluidRecipe(5,  Drone[6], Niobium,         12000, 1, Energy[6]);
+        createDrillingModuleFluidRecipe(6,  Drone[6], Dichlorobenzene, 44800, 1, Energy[6]);
+        createDrillingModuleFluidRecipe(7,  Drone[6], DragonBreath,    39200, 1, Energy[6]);
+        createDrillingModuleFluidRecipe(8,  Drone[6], Methanol,        33600, 1, Energy[6]);
+        createDrillingModuleFluidRecipe(9,  Drone[6], NitrationMixture,78400, 1, Energy[6]);
+        createDrillingModuleFluidRecipe(10, Drone[6], PhosphoricAcid,  89600, 1, Energy[6]);
 
-        //  UV Mining Drone
-        createDrillingModuleFluidRecipe(1, MINING_DRONE_UV, LiquidNetherAir, 89600, 2, VH[UV]);
-        createDrillingModuleFluidRecipe(2, MINING_DRONE_UV, Propene, 12000, 2, VH[UV]);
-        createDrillingModuleFluidRecipe(3, MINING_DRONE_UV, PhosphoricAcid, 39200, 2, VH[UV]);
-        createDrillingModuleFluidRecipe(4, MINING_DRONE_UV, Lead, 44800, 2, VH[UV]);
-        createDrillingModuleFluidRecipe(5, MINING_DRONE_UV, Ethylbenzene, 12000, 2, VH[UV]);
+        //  UV Mining Drone 2
+        createDrillingModuleFluidRecipe( 1, Drone[7], AmmoniumChloride,        44800, 2, Energy[7]);
+        createDrillingModuleFluidRecipe( 2, Drone[7], SiliconTetrachloride,    39200, 2, Energy[7]);
+        createDrillingModuleFluidRecipe( 3, Drone[7], ConcentrateDragonBreath, 33600, 2, Energy[7]);
+        createDrillingModulePlasmaRecipe(4, Drone[7], Helium,                  78400, 2, Energy[7]);
+        createDrillingModuleFluidRecipe( 5, Drone[7], PotassiumHydroxide,      33600, 2, Energy[7]);
+        createDrillingModuleFluidRecipe( 6, Drone[7], HydrobromicAcid,         44800, 2, Energy[7]);
+        createDrillingModuleFluidRecipe( 7, Drone[7], SodiumPersulfate,        39200, 2, Energy[7]);
+        createDrillingModuleFluidRecipe( 8, Drone[7], FormicAcid,              33600, 2, Energy[7]);
+        createDrillingModuleFluidRecipe( 9, Drone[7], Tantalum,                12000, 2, Energy[7]);
+        createDrillingModuleFluidRecipe(10, Drone[7], PhthalicAcid,            12000, 2, Energy[7]);
 
-        //  UHV Mining Drone
-        createDrillingModuleFluidRecipe(1, MINING_DRONE_UHV, LiquidEnderAir, 89600, 3, VA[UHV]);
-        createDrillingModuleFluidRecipe(2, MINING_DRONE_UHV, FluoroantimonicAcid, 39200, 3, VA[UHV]);
-        createDrillingModuleFluidRecipe(3, MINING_DRONE_UHV, DragonBreath, 78400, 3, VA[UHV]);
-        createDrillingModuleFluidRecipe(4, MINING_DRONE_UHV, CarbonDisulfide, 33600, 3, VA[UHV]);
-        createDrillingModuleFluidRecipe(5, MINING_DRONE_UHV, Acetylene, 12000, 3, VA[UHV]);
+        //  UHV Mining Drone 3
+        createDrillingModuleFluidRecipe( 1,  Drone[8], GlycerylTrinitrate,     78400, 3, Energy[8]);
+        createDrillingModulePlasmaRecipe(2,  Drone[8], Argon,                  44800, 3, Energy[8]);
+        createDrillingModuleFluidRecipe( 3,  Drone[8], Plutonium239,           12000, 3, Energy[8]);
+        createDrillingModuleFluidRecipe( 4,  Drone[8], HexachloroplatinicAcid, 39200, 3, Energy[8]);
+        createDrillingModulePlasmaRecipe(5,  Drone[8], Nitrogen,               33600, 3, Energy[8]);
+        createDrillingModuleFluidRecipe( 6,  Drone[8], Styrene,                44800, 3, Energy[8]);
+        createDrillingModulePlasmaRecipe(7,  Drone[8], Oxygen,                 33600, 3, Energy[8]);
+        createDrillingModulePlasmaRecipe(8,  Drone[8], Iron,                   39200, 3, Energy[8]);
+        createDrillingModuleFluidRecipe( 9,  Drone[8], Neodymium,              78400, 3, Energy[8]);
+        createDrillingModulePlasmaRecipe(10, Drone[8], Tin,                    44800, 3, Energy[8]);
 
-        //  UEV Mining Drone
-        createDrillingModulePlasmaRecipe(1, MINING_DRONE_UEV, StarCoreMatter, 39200, 4, VH[UHV]);
-        createDrillingModuleFluidRecipe(2, MINING_DRONE_UEV, Niobium, 44800, 4, VH[UHV]);
-        createDrillingModuleFluidRecipe(3, MINING_DRONE_UEV, NitrationMixture, 12000, 4, VH[UHV]);
-        createDrillingModuleFluidRecipe(4, MINING_DRONE_UEV, Glowstone, 44800, 4, VH[UHV]);
-        createDrillingModuleFluidRecipe(5, MINING_DRONE_UEV, Mercury, 78400, 4, VH[UHV]);
+        //  UEV Mining Drone 4
+        createDrillingModulePlasmaRecipe(1, Drone[9], StarCoreMatter,     39200, 4, Energy[9]);
+        createDrillingModuleFluidRecipe( 2, Drone[9], Tennessine,         33600, 4, Energy[9]);
+        createDrillingModuleFluidRecipe( 3, Drone[9], AmmoniumNitrate,    44800, 4, Energy[9]);
+        createDrillingModulePlasmaRecipe(4, Drone[9], Nickel,             33600, 4, Energy[9]);
+        createDrillingModuleFluidRecipe( 5, Drone[9], Plutonium241,       78400, 4, Energy[9]);
+        createDrillingModuleFluidRecipe( 6, Drone[9], MethylamineMixture, 12000, 4, Energy[9]);
+        createDrillingModulePlasmaRecipe(7, Drone[9], Americium,          33600, 4, Energy[9]);
+        createDrillingModuleFluidRecipe( 8, Drone[9], Nitrochlorobenzene, 89600, 4, Energy[9]);
+        createDrillingModuleFluidRecipe( 9, Drone[9], BedrockSmoke,       78400, 4, Energy[9]);
+        createDrillingModuleFluidRecipe(10, Drone[9], Naquadria,          12000, 4, Energy[9]);
 
-        //  UIV Mining Drone
-        createDrillingModuleFluidRecipe(1, MINING_DRONE_UIV, RawStarMatter, 39200, 5, VA[UEV]);
-        createDrillingModuleFluidRecipe(2, MINING_DRONE_UIV, BedrockSmoke, 44800, 5, VA[UEV]);
-        createDrillingModuleFluidRecipe(3, MINING_DRONE_UIV, ConcentrateDragonBreath, 33600, 5, VA[UEV]);
-        createDrillingModuleFluidRecipe(4, MINING_DRONE_UIV, AquaRegia, 12000, 5, VA[UEV]);
-        createDrillingModuleFluidRecipe(5, MINING_DRONE_UIV, Indium, 78400, 5, VA[UEV]);
+        //  UIV Mining Drone 5
+        createDrillingModuleFluidRecipe(1,  Drone[10], RawStarMatter,              39200, 5, Energy[10]);
+        createDrillingModuleFluidRecipe(2,  Drone[10], BedrockSmoke,               44800, 5, Energy[10]);
+        createDrillingModuleFluidRecipe(3,  Drone[10], RareEarthChloridesSolution, 78400, 5, Energy[10]);
+        createDrillingModuleFluidRecipe(4,  Drone[10], OganessonBreedingBase,      33600, 5, Energy[10]);
+        createDrillingModuleFluidRecipe(5,  Drone[10], Einsteinium,                12000, 5, Energy[10]);
+        createDrillingModuleFluidRecipe(6,  Drone[10], DragonBlood,                33600, 5, Energy[10]);
+        createDrillingModuleFluidRecipe(7,  Drone[10], Meitnerium,                 44800, 5, Energy[10]);
+        createDrillingModuleFluidRecipe(8,  Drone[10], Technetium,                 39200, 5, Energy[10]);
+        createDrillingModuleFluidRecipe(9,  Drone[10], MetastableFlerovium,        12000, 5, Energy[10]);
+        createDrillingModuleFluidRecipe(10, Drone[10], ThalliumCopperChloride,     33600, 5, Energy[10]);
 
         //  UXV Mining Drone
-        createDrillingModuleFluidRecipe(1, MINING_DRONE_UXV, CrudeExoticGas, 89600, 5, VH[UEV]);
-        createDrillingModuleFluidRecipe(2, MINING_DRONE_UXV, OganessonBreedingBase, 44800, 5, VH[UEV]);
-        createDrillingModuleFluidRecipe(3, MINING_DRONE_UXV, NetherStar, 33600, 5, VH[UEV]);
-        createDrillingModuleFluidRecipe(4, MINING_DRONE_UXV, RareEarthChloridesSolution, 44800, 5, VH[UEV]);
-        createDrillingModulePlasmaRecipe(5, MINING_DRONE_UXV, Helium, 78400, 5, VH[UEV]);
+        createDrillingModuleFluidRecipe(1,  Drone[11], CrudeExoticGas,      89600, 5, Energy[11]);
+        createDrillingModuleFluidRecipe(2,  Drone[11], Mendelevium,         12000, 5, Energy[11]);
+        createDrillingModuleFluidRecipe(3,  Drone[11], Tiberium,            33600, 5, Energy[11]);
+        createDrillingModuleFluidRecipe(4,  Drone[11], MetastableHassium,   12000, 5, Energy[11]);
+        createDrillingModuleFluidRecipe(5,  Drone[11], AmmoniumPerrhenate,  44800, 5, Energy[11]);
+        createDrillingModuleFluidRecipe(6,  Drone[11], SiliconCarbide,      33600, 5, Energy[11]);
+        createDrillingModuleFluidRecipe(7,  Drone[11], Francium,            33600, 5, Energy[11]);
+        createDrillingModuleFluidRecipe(8,  Drone[11], MetastableOganesson, 12000, 5, Energy[11]);
+        createDrillingModuleFluidRecipe(9,  Drone[11], Rutherfordium,       39200, 5, Energy[11]);
+        createDrillingModuleFluidRecipe(10, Drone[11], DegenerateRhenium,   12000, 5, Energy[11]);
 
         //  OpV Mining Drone
-        createDrillingModuleFluidRecipe(1, MINING_DRONE_OpV, WhiteDwarfMatter, 33600, 5, VA[UIV]);
-        createDrillingModuleFluidRecipe(2, MINING_DRONE_OpV, BlackDwarfMatter, 33600, 5, VA[UIV]);
-        createDrillingModuleFluidRecipe(3, MINING_DRONE_OpV, DragonBlood, 12000, 5, VA[UIV]);
-        createDrillingModuleFluidRecipe(4, MINING_DRONE_OpV, Bedrock, 78400, 5, VA[UIV]);
-        createDrillingModulePlasmaRecipe(4, MINING_DRONE_OpV, Argon, 44800, 5, VA[UIV]);
+        createDrillingModuleFluidRecipe(1,  Drone[12], WhiteDwarfMatter,           33600, 5, Energy[12]);
+        createDrillingModuleFluidRecipe(2,  Drone[12], BlackDwarfMatter,           33600, 5, Energy[12]);
+        createDrillingModuleFluidRecipe(3,  Drone[12], HeavyQuarks,                12000, 5, Energy[12]);
+        createDrillingModuleFluidRecipe(4,  Drone[12], Neutronium,                 12000, 5, Energy[12]);
+        createDrillingModuleFluidRecipe(5,  Drone[12], Gluons,                     33600, 5, Energy[12]);
+        createDrillingModuleFluidRecipe(6,  Drone[12], Dubnium,                    44800, 5, Energy[12]);
+        createDrillingModuleFluidRecipe(7,  Drone[12], LightQuarks,                39200, 5, Energy[12]);
+        createDrillingModuleFluidRecipe(8,  Drone[12], HeavyQuarkDegenerateMatter, 12000, 5, Energy[12]);
+        createDrillingModuleFluidRecipe(9,  Drone[12], Astralium,                  12000, 5, Energy[12]);
+        createDrillingModuleFluidRecipe(10, Drone[12], Rhugnor,                    12000, 5, Energy[12]);
 
         //  MAX Mining Drone
-        createDrillingModuleFluidRecipe(1, MINING_DRONE_MAX, Galaxium, 12000, 5, VH[UIV]);
-        createDrillingModuleFluidRecipe(2, MINING_DRONE_MAX, SuperluminalTachyonJet, 33600, 5, VH[UIV]);
+        createDrillingModuleFluidRecipe(1,  Drone[13], Galaxium,                               12000, 5, Energy[13]);
+        createDrillingModuleFluidRecipe(2,  Drone[13], SuperluminalTachyonJet,                 33600, 5, Energy[13]);
+        createDrillingModuleFluidRecipe(3,  Drone[13], Hypogen,                                12000, 5, Energy[13]);
+        createDrillingModuleFluidRecipe(4,  Drone[13], SuperheavyLAlloy,                       89600, 5, Energy[13]);
+        createDrillingModuleFluidRecipe(5,  Drone[13], ActiniumGroupLAlloy,                    39200, 5, Energy[13]);
+        createDrillingModuleFluidRecipe(6,  Drone[13], CosmicComputingMixture,                 44800, 5, Energy[13]);
+        createDrillingModuleFluidRecipe(7,  Drone[13], ActiniumGroupHAlloy,                    33600, 5, Energy[13]);
+        createDrillingModuleFluidRecipe(8,  Drone[13], SuperheavyHAlloy,                       78400, 5, Energy[13]);
+        createDrillingModuleFluidRecipe(9,  Drone[13], Legendarium,                            33600, 5, Energy[13]);
+        createDrillingModuleFluidRecipe(10, Drone[13], QuantumchromodynamicallyConfinedMatter, 12000, 5, Energy[13]);
     }
 
     private static void MiningModule() {
@@ -122,57 +202,57 @@ public class SpaceElevator {
 
         //  Iron-Copper-Aluminium vein
         createMiningModuleRecipe(1, MINING_DRONE_LV,
-                Iron, 8000,
-                Copper, 8000,
-                Gold, 6000,
-                Magnetite, 9000,
+                Iron,              8000,
+                Copper,            8000,
+                Gold,              6000,
+                Magnetite,         9000,
                 VanadiumMagnetite, 7000,
-                Pyrite, 8000,
-                Chalcopyrite, 9000,
-                Sphalerite, 6000,
-                Aluminium, 5000,
+                Pyrite,            8000,
+                Chalcopyrite,      9000,
+                Sphalerite,        6000,
+                Aluminium,         5000,
                 1,
                 VA[IV]);
 
         //  Nickel-Cobalt-Sulfur vein
         createMiningModuleRecipe(2, MINING_DRONE_LV,
-                Nickel, 8000,
-                Cobalt, 7000,
-                Sulfur, 9000,
-                Garnierite, 7000,
-                Pentlandite, 6000,
+                Nickel,        8000,
+                Cobalt,        7000,
+                Sulfur,        9000,
+                Garnierite,    7000,
+                Pentlandite,   6000,
                 YellowLimonite,9000,
                 BrownLimonite, 9000,
-                BandedIron, 8000,
-                Cobaltite, 6000,
+                BandedIron,    8000,
+                Cobaltite,     6000,
                 1,
                 VA[IV]);
 
         //  Salt-Rock Salt vein
         createMiningModuleRecipe(3, MINING_DRONE_LV,
-                Salt, 9000,
-                RockSalt, 9000,
-                Realgar, 7000,
-                Zeolite, 8000,
-                Asbestos, 9000,
+                Salt,       9000,
+                RockSalt,   9000,
+                Realgar,    7000,
+                Zeolite,    8000,
+                Asbestos,   9000,
                 Lepidolite, 7000,
-                Spodumene, 7000,
-                Grossular, 6000,
-                Gypsum, 7000,
+                Spodumene,  7000,
+                Grossular,  6000,
+                Gypsum,     7000,
                 1,
                 VA[IV]);
 
         //  Quartzites-Topaz vein
         createMiningModuleRecipe(4, MINING_DRONE_LV,
-                Quartzite, 9000,
-                NetherQuartz, 8000,
-                CertusQuartz, 8000,
-                Barite, 7000,
+                Quartzite,           9000,
+                NetherQuartz,        8000,
+                CertusQuartz,        8000,
+                Barite,              7000,
                 BasalticMineralSand, 7000,
                 GraniticMineralSand, 7000,
-                FullersEarth, 8000,
-                Topaz, 6000,
-                BlueTopaz, 6000,
+                FullersEarth,        8000,
+                Topaz,               6000,
+                BlueTopaz,           6000,
                 1,
                 VA[IV]);
 
@@ -180,57 +260,57 @@ public class SpaceElevator {
 
         //  Lead-Silver-Copper vein
         createMiningModuleRecipe(1, MINING_DRONE_MV,
-                Lead, 8000,
-                Silver, 6000,
-                Tin, 9000,
-                Galena, 8000,
-                Cassiterite, 7000,
+                Lead,            8000,
+                Silver,          6000,
+                Tin,             9000,
+                Galena,          8000,
+                Cassiterite,     7000,
                 CassiteriteSand, 5000,
-                Tetrahedrite, 8000,
-                Stibnite, 6000,
-                Bauxite, 7000,
+                Tetrahedrite,    8000,
+                Stibnite,        6000,
+                Bauxite,         7000,
                 1,
                 VH[IV]);
 
         //  Redstone-Diamond-Thorium vein
         createMiningModuleRecipe(2, MINING_DRONE_MV,
-                Redstone, 8000,
-                Diamond, 7000,
-                Emerald, 6000,
-                Ruby, 6000,
-                Cinnabar, 7000,
-                Coal, 9000,
-                Graphite, 6000,
+                Redstone,  8000,
+                Diamond,   7000,
+                Emerald,   6000,
+                Ruby,      6000,
+                Cinnabar,  7000,
+                Coal,      9000,
+                Graphite,  6000,
                 Beryllium, 8000,
-                Thorium, 6000,
+                Thorium,   6000,
                 1,
                 VH[IV]);
 
         //  Lapis-Electrotine vein
         createMiningModuleRecipe(3, MINING_DRONE_MV,
-                Lapis, 8000,
-                Sodalite, 7000,
-                Kyanite, 9000,
-                Lazurite, 8000,
-                Calcite, 9000,
+                Lapis,       8000,
+                Sodalite,    7000,
+                Kyanite,     9000,
+                Lazurite,    8000,
+                Calcite,     9000,
                 Electrotine, 6000,
-                Saltpeter, 7000,
-                Diatomite, 8000,
-                Alunite, 6000,
+                Saltpeter,   7000,
+                Diatomite,   8000,
+                Alunite,     6000,
                 1,
                 VH[IV]);
 
         //  Oilsand-Magnesite vein
         createMiningModuleRecipe(4, MINING_DRONE_MV,
-                Oilsands, 9000,
-                Soapstone, 8000,
-                Talc, 8000,
+                Oilsands,       9000,
+                Soapstone,      8000,
+                Talc,           8000,
                 GlauconiteSand, 7000,
-                Trona, 6000,
-                Magnesite, 7000,
-                Olivine, 7000,
-                Bentonite, 7000,
-                Pollucite, 6000,
+                Trona,          6000,
+                Magnesite,      7000,
+                Olivine,        7000,
+                Bentonite,      7000,
+                Pollucite,      6000,
                 1,
                 VH[IV]);
 
@@ -238,57 +318,57 @@ public class SpaceElevator {
 
         //  Lithium-Tungsten-Molybdenum vein
         createMiningModuleRecipe(1, MINING_DRONE_HV,
-                Lithium, 9000,
-                Molybdenum, 7000,
-                Scheelite, 6000,
-                Tungstate, 6000,
-                Wulfenite, 8000,
+                Lithium,     9000,
+                Molybdenum,  7000,
+                Scheelite,   6000,
+                Tungstate,   6000,
+                Wulfenite,   8000,
                 Molybdenite, 8000,
-                Powellite, 7000,
-                Chromite, 7000,
-                Ilmenite, 6000,
+                Powellite,   7000,
+                Chromite,    7000,
+                Ilmenite,    6000,
                 1,
                 VA[LuV]);
 
         //  Neodymium-Platinum-Palladium vein
         createMiningModuleRecipe(2, MINING_DRONE_HV,
-                Neodymium, 6000,
-                Platinum, 7000,
-                Palladium, 7000,
+                Neodymium,  6000,
+                Platinum,   7000,
+                Palladium,  7000,
                 Bastnasite, 8000,
-                Monazite, 7000,
-                Cooperite, 8000,
-                Bornite, 9000,
-                Tantalite, 8000,
+                Monazite,   7000,
+                Cooperite,  8000,
+                Bornite,    9000,
+                Tantalite,  8000,
                 Pyrolusite, 8000,
                 1,
                 VA[LuV]);
 
         //  Sapphire-Amethyst vein
         createMiningModuleRecipe(3, MINING_DRONE_HV,
-                Sapphire, 7000,
-                Almandine, 7000,
-                Pyrope, 8000,
+                Sapphire,      7000,
+                Almandine,     7000,
+                Pyrope,        8000,
                 GreenSapphire, 7000,
-                Amethyst, 9000,
-                GarnetRed, 8000,
-                GarnetYellow, 8000,
-                GarnetYellow, 8000,
-                Opal, 8000,
+                Amethyst,      9000,
+                GarnetRed,     8000,
+                GarnetYellow,  8000,
+                GarnetYellow,  8000,
+                Opal,          8000,
                 1,
                 VA[LuV]);
 
         //  Copper-Tantalum vein
         createMiningModuleRecipe(4, MINING_DRONE_HV,
-                Malachite, 9000,
-                Apatite, 8000,
+                Malachite,           9000,
+                Apatite,             8000,
                 TricalciumPhosphate, 8000,
-                Realgar, 9000,
-                Grossular, 8000,
-                Pyrolusite, 7000,
-                Spessartine, 7000,
-                Tantalite, 6000,
-                Pyrochlore, 8000,
+                Realgar,             9000,
+                Grossular,           8000,
+                Pyrolusite,          7000,
+                Spessartine,         7000,
+                Tantalite,           6000,
+                Pyrochlore,          8000,
                 1,
                 VA[LuV]);
 
@@ -296,56 +376,56 @@ public class SpaceElevator {
 
         //  Neodymium-Tungsten-Platinum vein
         createMiningModuleRecipe(1, MINING_DRONE_EV,
-                Neodymium, 9000,
-                Platinum, 8000,
-                Cooperite, 7000,
-                Tungstate, 8000,
-                Scheelite, 7000,
-                Bauxite, 8000,
-                Palladium, 7000,
+                Neodymium,  9000,
+                Platinum,   8000,
+                Cooperite,  7000,
+                Tungstate,  8000,
+                Scheelite,  7000,
+                Bauxite,    8000,
+                Palladium,  7000,
                 Pyrochlore, 8000,
-                Grossular, 8000,
+                Grossular,  8000,
                 1,
                 VH[LuV]);
 
         //  Monazite-Molybdenum vein
         createMiningModuleRecipe(2, MINING_DRONE_EV,
-                Monazite, 9000,
-                Bastnasite, 8000,
-                Molybdenum, 7000,
+                Monazite,    9000,
+                Bastnasite,  8000,
+                Molybdenum,  7000,
                 Molybdenite, 8000,
-                Bornite, 7000,
-                Tantalite, 8000,
-                Almandine, 8000,
-                Apatite, 7000,
-                Ilmenite, 7000,
+                Bornite,     7000,
+                Tantalite,   8000,
+                Almandine,   8000,
+                Apatite,     7000,
+                Ilmenite,    7000,
                 1,
                 VH[LuV]);
 
         //  Oilsand vein
         createMiningModuleRecipe(3, MINING_DRONE_EV,
-                Oilsands, 8000,
-                Oilsands, 8000,
-                Oilsands, 8000,
-                Oilsands, 8000,
+                Oilsands,            8000,
+                Oilsands,            8000,
+                Oilsands,            8000,
+                Oilsands,            8000,
                 GraniticMineralSand, 7000,
-                GarnetSand, 7000,
+                GarnetSand,          7000,
                 BasalticMineralSand, 6000,
-                GlauconiteSand, 9000,
-                Quartzite, 7000,
+                GlauconiteSand,      9000,
+                Quartzite,           7000,
                 1,
                 VH[LuV]);
 
         //  Silver-Gold-Platinum vein
         createMiningModuleRecipe(4, MINING_DRONE_EV,
-                Silver, 7000,
-                Silver, 7000,
-                Gold, 6000,
-                Gold, 6000,
-                Platinum, 8000,
-                Platinum, 8000,
-                Lead, 9000,
-                Tin, 9000,
+                Silver,    7000,
+                Silver,    7000,
+                Gold,      6000,
+                Gold,      6000,
+                Platinum,  8000,
+                Platinum,  8000,
+                Lead,      9000,
+                Tin,       9000,
                 Cooperite, 7000,
                 1,
                 VH[LuV]);
@@ -354,29 +434,29 @@ public class SpaceElevator {
 
         //  Naquadah-Plutonium-Uranium vein
         createMiningModuleRecipe(1, MINING_DRONE_IV,
-                Naquadah, 6000,
-                Naquadah, 6000,
-                Naquadah, 6000,
+                Naquadah,     6000,
+                Naquadah,     6000,
+                Naquadah,     6000,
                 Plutonium239, 7000,
-                Uraninite, 8000,
-                Uraninite, 8000,
-                Pitchblende, 8000,
-                Pitchblende, 8000,
-                Pyrochlore, 9000,
+                Uraninite,    8000,
+                Uraninite,    8000,
+                Pitchblende,  8000,
+                Pitchblende,  8000,
+                Pyrochlore,   9000,
                 1,
                 VA[ZPM]);
 
         //  Thorium-Plutonium-Pitchblende vein
         createMiningModuleRecipe(2, MINING_DRONE_IV,
-                Thorium, 8000,
-                Thorium, 8000,
-                Uraninite, 7000,
-                Uraninite, 7000,
+                Thorium,     8000,
+                Thorium,     8000,
+                Uraninite,   7000,
+                Uraninite,   7000,
                 Pitchblende, 9000,
                 Pitchblende, 9000,
-                Beryllium, 8000,
-                Emerald, 8000,
-                Olivine, 9000,
+                Beryllium,   8000,
+                Emerald,     8000,
+                Olivine,     9000,
                 1,
                 VA[ZPM]);
 
@@ -384,13 +464,13 @@ public class SpaceElevator {
 
         //  Sylvanite-Gold-Silver vein
         createMiningModuleRecipe(1, MINING_DRONE_LuV,
-                Gold, 8000,
-                Gold, 8000,
-                Gold, 8000,
-                Gold, 8000,
-                Silver, 9000,
-                Silver, 9000,
-                Silver, 9000,
+                Gold,      8000,
+                Gold,      8000,
+                Gold,      8000,
+                Gold,      8000,
+                Silver,    9000,
+                Silver,    9000,
+                Silver,    9000,
                 Sylvanite, 4000,
                 Sylvanite, 4000,
                 1,
@@ -401,12 +481,12 @@ public class SpaceElevator {
                 Molybdenite, 9000,
                 Molybdenite, 9000,
                 Molybdenite, 9000,
-                Wulfenite, 8000,
-                Wulfenite, 8000,
-                Wulfenite, 8000,
-                Rheniite, 7000,
-                Rheniite, 7000,
-                Rheniite, 7000,
+                Wulfenite,   8000,
+                Wulfenite,   8000,
+                Wulfenite,   8000,
+                Rheniite,    7000,
+                Rheniite,    7000,
+                Rheniite,    7000,
                 1,
                 VH[ZPM]);
 
@@ -430,15 +510,15 @@ public class SpaceElevator {
 
         //  Iridium-Ruthenium vein
         createMiningModuleRecipe(1, MINING_DRONE_UV,
-                BismuthIridiate, 6000,
-                BismuthIridiate, 6000,
-                BismuthIridiate, 6000,
+                BismuthIridiate,  6000,
+                BismuthIridiate,  6000,
+                BismuthIridiate,  6000,
                 BismuthRuthenate, 6000,
                 BismuthRuthenate, 6000,
                 BismuthRuthenate, 6000,
-                Platinum, 9000,
-                Cooperite, 8000,
-                Palladium, 7000,
+                Platinum,         9000,
+                Cooperite,        8000,
+                Palladium,        7000,
                 1,
                 VH[UV]);
 
@@ -448,11 +528,11 @@ public class SpaceElevator {
                 Platarsite, 7000,
                 Platarsite, 7000,
                 Platarsite, 7000,
-                Picotite, 8000,
-                Picotite, 8000,
-                Picotite, 8000,
-                Kyanite, 9000,
-                Chromite, 9000,
+                Picotite,   8000,
+                Picotite,   8000,
+                Picotite,   8000,
+                Kyanite,    9000,
+                Chromite,   9000,
                 1,
                 VH[UV]);
 
@@ -460,12 +540,12 @@ public class SpaceElevator {
 
         //  Naquadah-Trinium vein
         createMiningModuleRecipe(1, MINING_DRONE_UHV,
-                Naquadah, 8000,
-                Naquadah, 8000,
-                Naquadah, 8000,
-                Naquadah, 8000,
-                Naquadah, 8000,
-                Naquadah, 8000,
+                Naquadah,        8000,
+                Naquadah,        8000,
+                Naquadah,        8000,
+                Naquadah,        8000,
+                Naquadah,        8000,
+                Naquadah,        8000,
                 TriniumTitanide, 3000,
                 TriniumTitanide, 3000,
                 TriniumTitanide, 3000,
@@ -474,15 +554,15 @@ public class SpaceElevator {
 
         //  Gadolinite-Euxenite vein
         createMiningModuleRecipe(2, MINING_DRONE_UHV,
-                Gadolinite, 7000,
-                Gadolinite, 7000,
-                Gadolinite, 7000,
-                Gadolinite, 7000,
-                Euxenite, 6000,
-                Euxenite, 6000,
-                Euxenite, 6000,
+                Gadolinite,  7000,
+                Gadolinite,  7000,
+                Gadolinite,  7000,
+                Gadolinite,  7000,
+                Euxenite,    6000,
+                Euxenite,    6000,
+                Euxenite,    6000,
                 Electrotine, 9000,
-                Silver, 8000,
+                Silver,      8000,
                 2,
                 VA[UHV]);
 
@@ -490,14 +570,14 @@ public class SpaceElevator {
 
         //  Proto Adamantium-Trinium vein
         createMiningModuleRecipe(1, MINING_DRONE_UEV,
-                ProtoAdamantium, 3000,
-                ProtoAdamantium, 3000,
-                ProtoAdamantium, 3000,
-                TriniumTitanide, 6000,
-                TriniumTitanide, 6000,
-                TriniumTitanide, 6000,
-                BismuthIridiate, 8000,
-                BismuthIridiate, 8000,
+                ProtoAdamantium,          3000,
+                ProtoAdamantium,          3000,
+                ProtoAdamantium,          3000,
+                TriniumTitanide,          6000,
+                TriniumTitanide,          6000,
+                TriniumTitanide,          6000,
+                BismuthIridiate,          8000,
+                BismuthIridiate,          8000,
                 GermaniumTungstenNitride, 9000,
                 3,
                 VA[UEV]);
@@ -527,7 +607,7 @@ public class SpaceElevator {
     }
 
     private static void createDrillingModuleFluidRecipe(int circuitMeta,
-                                                        MetaItem.MetaValueItem drone,
+                                                        MetaItem<?>.MetaValueItem drone,
                                                         Material fluidOutput,
                                                         int amount,
                                                         int casingTier,
@@ -551,7 +631,7 @@ public class SpaceElevator {
     }
 
     private static void createDrillingModulePlasmaRecipe(int circuitMeta,
-                                                         MetaItem.MetaValueItem drone,
+                                                         MetaItem<?>.MetaValueItem drone,
                                                          Material fluidOutput,
                                                          int amount,
                                                          int casingTier,
@@ -575,7 +655,7 @@ public class SpaceElevator {
     }
 
     private static void createMiningModuleRecipe(int circuitMeta,
-                                                 MetaItem.MetaValueItem drone,
+                                                 MetaItem<?>.MetaValueItem drone,
                                                  Material ore1,
                                                  int chanceOre1,
                                                  Material ore2,

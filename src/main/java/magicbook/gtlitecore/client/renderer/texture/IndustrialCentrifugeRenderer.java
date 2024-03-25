@@ -6,7 +6,7 @@ import codechicken.lib.texture.TextureUtils;
 import codechicken.lib.vec.Cuboid6;
 import codechicken.lib.vec.Matrix4;
 import gregtech.client.renderer.texture.Textures;
-import magicbook.gtlitecore.GTLiteCore;
+import magicbook.gtlitecore.api.GTLiteValues;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.util.BlockRenderLayer;
@@ -15,6 +15,15 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * Industrial Centrifuge Controller Renderer.
+ *
+ * @author Magic_Sweepy
+ *
+ * <p>
+ *     Used for {@link magicbook.gtlitecore.common.metatileentities.multi.electric.adv.MetaTileEntityIndustrialCentrifuge}.
+ * </p>
+ */
 public class IndustrialCentrifugeRenderer implements TextureUtils.IIconRegister {
 
     @SideOnly(Side.CLIENT)
@@ -30,8 +39,8 @@ public class IndustrialCentrifugeRenderer implements TextureUtils.IIconRegister 
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(TextureMap textureMap) {
-        this.baseBackgroundSprite = textureMap.registerSprite(new ResourceLocation(GTLiteCore.MODID, "blocks/multiblocks/industrial_centrifuge/base_background"));
-        this.activeBladeSprite = textureMap.registerSprite(new ResourceLocation(GTLiteCore.MODID, "blocks/multiblocks/industrial_centrifuge/rotor_spinning"));
+        this.baseBackgroundSprite = textureMap.registerSprite(new ResourceLocation(GTLiteValues.MODID, "blocks/multiblocks/industrial_centrifuge/base_background"));
+        this.activeBladeSprite = textureMap.registerSprite(new ResourceLocation(GTLiteValues.MODID, "blocks/multiblocks/industrial_centrifuge/rotor_spinning"));
     }
 
     @SideOnly(Side.CLIENT)

@@ -1,16 +1,17 @@
 package magicbook.gtlitecore.loaders.oreprocessing;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.GTValues.HV;
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_BATH_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 
 /**
  * The Niobium-Tantalum Process
  *
  * <p>
- * Produces Niobium and Tantalum from Tantalite and Pyrochlore
+ *     Produces Niobium and Tantalum from Tantalite and Pyrochlore
  * </p>
  *
  * <p>Main Products: Niobium, Tantalum</p>

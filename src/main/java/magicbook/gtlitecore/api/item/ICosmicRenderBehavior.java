@@ -12,7 +12,6 @@ import javax.annotation.Nullable;
  * Any item implementing this that also binds itself to TODO INPUT MODEL NAME HERE.
  * Will automatically have the cosmic shader applied to the mask with the given opacity.
  */
-@Deprecated
 public interface ICosmicRenderBehavior extends IItemRendererManager {
     /**
      * The mask where the cosmic overlay will be.

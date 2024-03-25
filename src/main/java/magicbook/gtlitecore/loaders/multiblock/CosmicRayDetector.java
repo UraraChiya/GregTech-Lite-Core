@@ -1,13 +1,14 @@
 package magicbook.gtlitecore.loaders.multiblock;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static gregtechfoodoption.GTFOMaterialHandler.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
+import static gregtech.api.unification.material.Materials.Naquadria;
+import static gregtech.api.unification.material.Materials.Tritanium;
+import static gregtech.api.unification.ore.OrePrefix.gemExquisite;
+import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UHV;
+import static gregtechfoodoption.GTFOMaterialHandler.Blood;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.COSMIC_RAY_DETECTOR_RECIPES;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
-import static magicbook.gtlitecore.api.unification.materials.info.GTLiteOrePrefix.*;
+import static magicbook.gtlitecore.api.unification.materials.info.GTLiteOrePrefix.swarm;
 import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
 
 public class CosmicRayDetector {

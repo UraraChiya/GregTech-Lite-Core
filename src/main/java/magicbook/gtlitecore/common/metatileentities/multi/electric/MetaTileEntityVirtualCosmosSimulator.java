@@ -4,18 +4,16 @@ import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
-import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
+import gregtech.api.metatileentity.multiblock.*;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.util.RelativeDirection;
-import gregtech.api.util.TextFormattingUtil;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockComputerCasing;
 import gregtech.common.blocks.MetaBlocks;
 import magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps;
+import magicbook.gtlitecore.api.utils.GTLiteUtils;
 import magicbook.gtlitecore.client.GTLiteTextures;
 import magicbook.gtlitecore.common.blocks.BlockScienceCasing;
 import magicbook.gtlitecore.common.blocks.GTLiteMetaBlocks;
@@ -29,15 +27,15 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.input.Keyboard;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static gregtech.api.GTValues.L;
 import static gregtech.api.unification.material.Materials.Helium;
+import static gregtech.api.unification.material.Materials.Hydrogen;
 
+//  TODO redo workable handler of this machine (if possible, add a new renderer in middle part of structure).
 public class MetaTileEntityVirtualCosmosSimulator extends RecipeMapMultiblockController {
 
     public MetaTileEntityVirtualCosmosSimulator(ResourceLocation metaTileEntityId) {
@@ -171,54 +169,18 @@ public class MetaTileEntityVirtualCosmosSimulator extends RecipeMapMultiblockCon
         tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.14"));
         tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.15"));
         tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.16"));
-        tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.17"));
-        if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.1"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.2"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.3"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.4"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.5"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.6"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.7"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.8"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.9"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.10"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.11"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.12"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.13"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.14"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.15"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.16"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.17"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.18"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.19"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.20"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.21"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.22"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.23"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.24"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.25"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.26"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.27"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.28"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.29"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.30"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.31"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.32"));
-            tooltip.add(I18n.format("gtlitecore.machine.virtual_cosmos_simulator.tooltip.shift.33"));
-        } else {
-            tooltip.add(I18n.format("gregtech.tooltip.hold_shift"));
-        }
     }
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         if (isStructureFormed()) {
-
             if (getInputFluidInventory() != null) {
-                FluidStack PlasmaStack = getInputFluidInventory().drain(Helium.getPlasma(Integer.MAX_VALUE), false);
-                int liquidOxygenAmount = PlasmaStack == null ? 0 : PlasmaStack.amount;
-                textList.add(new TextComponentTranslation("gtlitecore.machine.virtual_cosmos_simulator.amount", TextFormattingUtil.formatNumbers((liquidOxygenAmount))));
+                FluidStack HydrogenStack = this.getInputFluidInventory().drain(Hydrogen.getFluid(Integer.MAX_VALUE), false);
+                FluidStack HeliumStack = this.getInputFluidInventory().drain(Helium.getFluid(Integer.MAX_VALUE), false);
+                int hydrogenAmount = HydrogenStack == null ? 0 : HydrogenStack.amount;
+                int heliumAmount = HeliumStack == null ? 0 : HeliumStack.amount;
+                textList.add(new TextComponentTranslation("gtlitecore.machine.virtual_cosmos_simulator.hydrogen_amount", GTLiteUtils.formatNumbers(hydrogenAmount)));
+                textList.add(new TextComponentTranslation("gtlitecore.machine.virtual_cosmos_simulator.helium_amount", GTLiteUtils.formatNumbers(heliumAmount)));
             }
         }
         super.addDisplayText(textList);
@@ -228,16 +190,21 @@ public class MetaTileEntityVirtualCosmosSimulator extends RecipeMapMultiblockCon
     protected void addWarningText(List<ITextComponent> textList) {
         super.addWarningText(textList);
         if (isStructureFormed()) {
-            FluidStack plsamaStack = getInputFluidInventory().drain(Helium.getPlasma(Integer.MAX_VALUE), false);
-            if (plsamaStack == null || plsamaStack.amount == 0) {
-                textList.add(new TextComponentTranslation("gtlitecore.machine.virtual_cosmos_simulator.warning"));
+            FluidStack hydrogenStack = this.getInputFluidInventory().drain(Hydrogen.getFluid(Integer.MAX_VALUE), false);
+            FluidStack heliumStack = this.getInputFluidInventory().drain(Helium.getFluid(Integer.MAX_VALUE), false);
+            if (hydrogenStack == null || hydrogenStack.amount == 0) {
+                textList.add(new TextComponentTranslation("gtlitecore.machine.virtual_cosmos_simulator.hydrogen_warning"));
+            }
+            if (heliumStack == null || heliumStack.amount == 0) {
+                textList.add(new TextComponentTranslation("gtlitecore.machine.virtual_cosmos_simulator.helium_warning"));
             }
         }
     }
 
-    private final FluidStack PLASMA_STACK = Helium.getPlasma(L * 40);
-
     private class VirtualCosmosSimulatorRecipeLogic extends MultiblockRecipeLogic {
+
+        public final FluidStack HYDROGEN_STACK = Hydrogen.getFluid(1000000);
+        public final FluidStack HELIUM_STACK = Helium.getFluid(1000000);
 
         public VirtualCosmosSimulatorRecipeLogic(RecipeMapMultiblockController tileEntity) {
             super(tileEntity);
@@ -247,10 +214,13 @@ public class MetaTileEntityVirtualCosmosSimulator extends RecipeMapMultiblockCon
         protected void updateRecipeProgress() {
             if (canRecipeProgress && drawEnergy(recipeEUt, true)) {
                 IMultipleTankHandler inputTank = getInputFluidInventory();
-                if (PLASMA_STACK.isFluidStackIdentical(inputTank.drain(PLASMA_STACK, false))) {
-                    inputTank.drain(PLASMA_STACK, true);
-                    if (++progressTime > maxProgressTime) {
-                        completeRecipe();
+                if (HYDROGEN_STACK.isFluidStackIdentical(inputTank.drain(HYDROGEN_STACK, false))) {
+                    inputTank.drain(HYDROGEN_STACK, true);
+                    if (HELIUM_STACK.isFluidStackIdentical(inputTank.drain(HELIUM_STACK, false))) {
+                        inputTank.drain(HELIUM_STACK, true);
+                        if (++progressTime > maxProgressTime) {
+                            completeRecipe();
+                        }
                     }
                 }
                 else return;

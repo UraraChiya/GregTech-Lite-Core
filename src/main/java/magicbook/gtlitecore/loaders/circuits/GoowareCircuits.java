@@ -55,6 +55,7 @@ public class GoowareCircuits {
 
     private static void CircuitComponent() {
 
+        //  BZ Reactor Chamber
         ASSEMBLER_RECIPES.recipeBuilder()
                 .inputs(FLUID_CELL_LARGE_STAINLESS_STEEL.getStackForm())
                 .input(plate, Naquadah, 4)
@@ -69,6 +70,7 @@ public class GoowareCircuits {
                 .EUt(VA[UV])
                 .buildAndRegister();
 
+        //  Non-linear Chemical Oscillator
         CANNER_RECIPES.recipeBuilder()
                 .inputs(BZ_REACTION_CHAMBER.getStackForm())
                 .fluidInputs(BZMedium.getFluid(500))

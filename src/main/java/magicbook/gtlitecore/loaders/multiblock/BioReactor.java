@@ -5,9 +5,9 @@ import magicbook.gtlitecore.common.GTLiteConfigHolder;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.common.items.MetaItems.STEM_CELLS;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.BIO_REACTOR_RECIPES;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.ExoticMutagen;
 import static magicbook.gtlitecore.common.items.GTLiteMetaItems.BIO_CELL;
 

@@ -10,10 +10,10 @@ public class SteamProgressIndicator {
     public int width, height;
 
     /**
-     * @param progressBarTexture Progress Bar textures of machine, you can use renderer in GTLiteGuiTextures or GuiTextures
-     * @param progressMoveType Move type of progress bar
-     * @param width Width of progress bar
-     * @param height Height of progress bar
+     * @param progressBarTexture  Progress Bar textures of machine, you can use renderer in {@link magicbook.gtlitecore.api.gui.GTLiteGuiTextures} or {@link gregtech.api.gui.GuiTextures}.
+     * @param progressMoveType    Move type of progress bar
+     * @param width               Width of progress bar
+     * @param height              Height of progress bar
      */
     public SteamProgressIndicator(SteamTexture progressBarTexture,
                                   ProgressWidget.MoveType progressMoveType,

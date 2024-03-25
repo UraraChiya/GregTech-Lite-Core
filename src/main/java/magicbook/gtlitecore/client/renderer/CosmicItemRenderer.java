@@ -24,7 +24,16 @@ import org.lwjgl.opengl.GL11;
 import java.util.HashMap;
 import java.util.List;
 
-@Deprecated
+/**
+ * Cosmic Item Renderer.
+ *
+ * @author Gate Guardian
+ *
+ * <p>
+ *     This renderer is transplanted from <a href="https://github.com/GTNewHorizons/GT5-Unofficial">GT5u</a>.
+ *     Please see {@link magicbook.gtlitecore.common.items.behaviors.renderer.CosmicRenderItemBehavior}.
+ * </p>
+ */
 public class CosmicItemRenderer extends WrappedItemRenderer {
 
     private static final HashMap<TextureAtlasSprite, IBakedModel> spriteQuadCache = new HashMap<>();
@@ -42,18 +51,23 @@ public class CosmicItemRenderer extends WrappedItemRenderer {
         super(state, getter);
     }
 
+    /**
+     * @param stack          Item stack, should check if it in gregtech's {@link MetaItem} class, otherwise cause crash when it in AE2 Pattern (please see: {@link appeng.items.misc.ItemEncodedPattern}).
+     * @param transformType  Transform type, used to check if it in GUI.
+     */
     @Override
-    public void renderItem(ItemStack item, ItemCameraTransforms.TransformType transformType) {
-        processLightLevel(transformType);
-        if (transformType == ItemCameraTransforms.TransformType.GUI) {
-            renderInventory(item, renderEntity);
-        } else {
-            renderSimple(item, renderEntity);
+    public void renderItem(ItemStack stack, ItemCameraTransforms.TransformType transformType) {
+        if (stack.getItem() instanceof MetaItem) {
+            processLightLevel(transformType);
+            if (transformType == ItemCameraTransforms.TransformType.GUI) {
+                renderInventory(stack, renderEntity);
+            } else { //  Common renderer
+                renderSimple(stack, renderEntity);
+            }
         }
     }
 
     protected void renderSimple(ItemStack stack, EntityLivingBase player) {
-
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
@@ -71,7 +85,6 @@ public class CosmicItemRenderer extends WrappedItemRenderer {
         }
 
         if (cri != null) {
-
             GlStateManager.disableAlpha();
             GlStateManager.depthFunc(GL11.GL_EQUAL);
 
@@ -94,7 +107,6 @@ public class CosmicItemRenderer extends WrappedItemRenderer {
     }
 
     protected void renderInventory(ItemStack stack, EntityLivingBase player) {
-
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
@@ -113,7 +125,6 @@ public class CosmicItemRenderer extends WrappedItemRenderer {
         }
 
         if (cri != null) {
-
             GlStateManager.pushMatrix();
             GlStateManager.enableBlend();
             GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);

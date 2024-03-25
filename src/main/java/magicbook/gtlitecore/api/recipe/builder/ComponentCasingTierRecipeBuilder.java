@@ -10,6 +10,17 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Component Assembly Line Casing Recipe builder
+ *
+ * @author Magic_Sweepy
+ *
+ * <p>
+ *     This class creates a recipe builder for Component Assembly Line Casing Tier system (please see: {@link magicbook.gtlitecore.common.metatileentities.multi.electric.MetaTileEntityComponentAssemblyLine}.
+ *     You should use {@link gregtech.api.capability.impl.MultiblockRecipeLogic#checkRecipe(Recipe)} to implement correspondent function about this recipe.
+ *     About related recipe property, please see: {@link ComponentCasingTierProperty}.
+ * </p>
+ */
 public class ComponentCasingTierRecipeBuilder extends RecipeBuilder<ComponentCasingTierRecipeBuilder> {
 
     public ComponentCasingTierRecipeBuilder() {}

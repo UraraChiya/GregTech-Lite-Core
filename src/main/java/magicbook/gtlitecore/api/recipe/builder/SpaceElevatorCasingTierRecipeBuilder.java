@@ -10,6 +10,11 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Space Elevator Casing Recipe Builder
+ *
+ * @author Magic_Sweepy
+ */
 public class SpaceElevatorCasingTierRecipeBuilder extends RecipeBuilder<SpaceElevatorCasingTierRecipeBuilder> {
 
     public SpaceElevatorCasingTierRecipeBuilder() {}

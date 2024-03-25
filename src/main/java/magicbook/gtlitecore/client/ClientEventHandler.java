@@ -11,10 +11,8 @@ import java.nio.FloatBuffer;
 
 public class ClientEventHandler {
 
-    @Deprecated
     public static FloatBuffer cosmicUVs = BufferUtils.createFloatBuffer(4 * 10);
 
-    @Deprecated
     @SubscribeEvent
     public void onRenderTick(TickEvent.RenderTickEvent event) {
         if (event.phase == TickEvent.Phase.START) {
@@ -31,13 +29,11 @@ public class ClientEventHandler {
         }
     }
 
-    @Deprecated
     @SubscribeEvent
     public void onDrawScreenPre(GuiScreenEvent.DrawScreenEvent.Pre event) {
         CosmicShaderHelper.inventoryRender = true;
     }
 
-    @Deprecated
     @SubscribeEvent
     public void drawScreenPost(GuiScreenEvent.DrawScreenEvent.Post event) {
         CosmicShaderHelper.inventoryRender = false;

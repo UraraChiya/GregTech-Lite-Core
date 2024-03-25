@@ -3,7 +3,7 @@ package magicbook.gtlitecore.loaders.multiblock;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.MOLECULAR_TRANSFORMER_RECIPES;
 
 public class MolecularTransformer {
 

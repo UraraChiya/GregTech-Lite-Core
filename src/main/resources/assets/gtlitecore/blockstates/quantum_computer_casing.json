@@ -1,0 +1,42 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all"
+  },
+  "variants": {
+    "variant": {
+      "computer_casing": {
+        "model": "minecraft:cube",
+        "textures": {
+          "particle": "gregtech:blocks/casings/quantum_computer_casing/front",
+          "down": "gregtech:blocks/casings/quantum_computer_casing/bottom",
+          "up": "gregtech:blocks/casings/quantum_computer_casing/top",
+          "north": "gregtech:blocks/casings/quantum_computer_casing/side",
+          "east": "gregtech:blocks/casings/quantum_computer_casing/side",
+          "south": "gregtech:blocks/casings/quantum_computer_casing/side",
+          "west": "gregtech:blocks/casings/quantum_computer_casing/side"
+        }
+      },
+      "advanced_computer_casing": {
+        "model": "minecraft:cube",
+        "textures": {
+          "particle": "gregtech:blocks/casings/advanced_quantum_computer_casing/front",
+          "down": "gregtech:blocks/casings/advanced_quantum_computer_casing/bottom",
+          "up": "gregtech:blocks/casings/advanced_quantum_computer_casing/top",
+          "north": "gregtech:blocks/casings/advanced_quantum_computer_casing/side",
+          "east": "gregtech:blocks/casings/advanced_quantum_computer_casing/side",
+          "south": "gregtech:blocks/casings/advanced_quantum_computer_casing/side",
+          "west": "gregtech:blocks/casings/advanced_quantum_computer_casing/side"
+        }
+      },
+      "heat_vent": {
+        "model": "minecraft:cube_bottom_top",
+        "textures": {
+          "bottom": "gregtech:blocks/casings/quantum_computer_heat_vent/top",
+          "top": "#bottom",
+          "side": "gregtech:blocks/casings/quantum_computer_heat_vent/side"
+        }
+      }
+    }
+  }
+}

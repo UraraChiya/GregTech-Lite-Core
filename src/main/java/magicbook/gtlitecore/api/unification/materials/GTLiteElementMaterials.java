@@ -12,7 +12,7 @@ import net.minecraft.util.text.TextFormatting;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.*;
-import static gregtech.api.util.GTUtility.*;
+import static gregtech.api.util.GTUtility.gregtechId;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 import static magicbook.gtlitecore.api.unification.materials.info.GTLiteMaterialIconSet.*;
 
@@ -230,7 +230,7 @@ public class GTLiteElementMaterials {
                         .blastStats(VA[UHV]))
                 .element(GTLiteElements.AstralTitanium)
                 .cableProperties(V[UIV], 32, 12, false)
-                .flags(GENERATE_PLATE, GENERATE_FOIL, GENERATE_FINE_WIRE)
+                .flags(GENERATE_PLATE, GENERATE_FOIL, GENERATE_FINE_WIRE, GENERATE_ROD, GENERATE_RING)
                 .build();
 
         //  10015 Celestial Tungsten
@@ -244,7 +244,7 @@ public class GTLiteElementMaterials {
                         .temp(12000, BlastProperty.GasTier.HIGHEST)
                         .blastStats(VA[UHV]))
                 .element(GTLiteElements.CelestialTungsten)
-                .flags(GENERATE_PLATE, GENERATE_FOIL, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_RING, GENERATE_FRAME)
+                .flags(GENERATE_PLATE, GENERATE_FOIL, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME)
                 .build();
 
         //  10016 Metastable Oganesson
@@ -344,8 +344,7 @@ public class GTLiteElementMaterials {
                 .iconSet(CUSTOM_ETERNITY)
                 .element(GTLiteElements.Eternity)
                 .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR)
-                .build()
-                .setFormula(TextFormatting.OBFUSCATED + "aaaaaa", false);
+                .build();
 
         //  10025 Tiberium
         Tiberium = new Material.Builder(getId(), gregtechId("tiberium"))
@@ -403,6 +402,7 @@ public class GTLiteElementMaterials {
         Fatalium = new Material.Builder(getId(), gregtechId("fatalium"))
                 .ingot()
                 .fluid()
+                .plasma()
                 .color(0xFFECEF)
                 .iconSet(BRIGHT)
                 .element(GTLiteElements.Fatalium)
@@ -411,6 +411,19 @@ public class GTLiteElementMaterials {
                         .blastStats(VA[OpV], 27)
                         .vacuumStats(VA[OpV], 50))
                 .fluidPipeProperties(160000, 40000, true, true, true, true)
+                .build();
+
+        //  10030 Omnium
+        Omnium = new Material.Builder(getId(), gregtechId("omnium"))
+                .ingot()
+                .fluid()
+                .iconSet(CUSTOM_OMNIUM)
+                .element(GTLiteElements.Omnium)
+                .blast(b -> b
+                        .temp(18400, BlastProperty.GasTier.HIGHEST)
+                        .blastStats(VA[MAX], 999)
+                        .vacuumStats(VA[MAX], 999))
+                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_BOLT_SCREW, GENERATE_RING, GENERATE_FRAME, GENERATE_ROTOR, GENERATE_ROUND)
                 .build();
     }
 

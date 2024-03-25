@@ -25,6 +25,8 @@ import javax.annotation.Nonnull;
 import java.util.List;
 
 /**
+ * Fishing Pond Recipe Logic.
+ *
  * @author Gate Guardian
  *
  * <p>
@@ -412,14 +414,14 @@ public class FishingPondRecipeLogic implements IWorkable {
     }
 
     /**
-     * @return whether the rig was active and needs an update
+     * @return  whether the rig was active and needs an update
      */
     public boolean wasActiveAndNeedsUpdate() {
         return this.wasActiveAndNeedsUpdate;
     }
 
     /**
-     * @param wasActiveAndNeedsUpdate the state to set
+     * @param wasActiveAndNeedsUpdate  the state to set
      */
     public void setWasActiveAndNeedsUpdate(boolean wasActiveAndNeedsUpdate) {
         this.wasActiveAndNeedsUpdate = wasActiveAndNeedsUpdate;

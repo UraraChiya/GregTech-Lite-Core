@@ -11,7 +11,6 @@ import gregtech.api.pattern.MultiblockShapeInfo;
 import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.shader.postprocessing.BloomEffect;
 import gregtech.client.utils.BloomEffectUtil;
 import gregtech.common.metatileentities.MetaTileEntities;
 import magicbook.gtlitecore.api.GTLiteAPI;
@@ -21,6 +20,7 @@ import magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps;
 import magicbook.gtlitecore.api.recipe.properties.FieldCasingTierProperty;
 import magicbook.gtlitecore.api.utils.GTLiteUtils;
 import magicbook.gtlitecore.client.GTLiteTextures;
+import magicbook.gtlitecore.client.renderer.ForceFieldRenderer;
 import magicbook.gtlitecore.common.blocks.BlockScienceCasing;
 import magicbook.gtlitecore.common.blocks.BlockTransparentCasing;
 import magicbook.gtlitecore.common.blocks.BlockUniqueCasing;
@@ -30,7 +30,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
@@ -58,13 +57,13 @@ import java.util.List;
 import static gregtech.api.GTValues.UHV;
 
 /**
- * Quantum Force Transformer for GregTech CEu
+ * Quantum Force Transformer
  *
- * @author Gate Guardian, Magic_Sweepy
+ * @author Gate Guardian, Magic_Sweepy, tong-ge
  *
  * <p>
  *     Some code maybe will redo, because some methods in {@link BloomEffectUtil} is deprecated.
- *     This render is from original machine in GregTech++.
+ *     This render is from original machine in GregTech++, please see {@link ForceFieldRenderer} (thanks for my friend tong-ge fix server crash problem).
  * </p>
  *
  */
@@ -110,7 +109,7 @@ public class MetaTileEntityQuantumForceTransformer extends RecipeMapMultiblockCo
                 .aisle("               ", "               ", "               ", " D           D ", " D           D ", " B           B ", " DFF       FFD ", "  DD       DD  ", "    DD   DD    ", "      DAD      ", "               ", "               ", "               ", "               ", "               ", "               ", "               ", "               ", "               ", "               ", "               ")
                 .aisle("D             D", "D             D", "D             D", "D             D", "D             D", "B             B", "DFF         FFD", " DD         DD ", "   DD     DD   ", "     DFFFD     ", "               ", "               ", "               ", "               ", "               ", "               ", "               ", "               ", "               ", "               ", "               ")
                 .aisle("      HHH      ", "      EEE      ", "      EEE      ", "      EEE      ", "A     DDD     A", "D     EEE     D", "DF    DDD    FD", " D    EEE    D ", "  DD  EEE  DD  ", "    DFEEEFD    ", "      DDD      ", "      EEE      ", "      EEE      ", "      EEE      ", "      DDD      ", "      EEE      ", "      DDD      ", "      EEE      ", "      EEE      ", "      EEE      ", "      HHH      ")
-                .aisle("     HHHHH     ", "     ECCCE     ", "     ECCCE     ", "B    ECCCE    B", "A    D   D    A", "D    ECCCE    D", "DF   D   D   FD", " D   ECCCE   D ", "  D  ECCCE  D  ", "   BFECCCEFD   ", "     D   D     ", "     ECCCE     ", "     ECCCE     ", "     ECCCE     ", "     D   D     ", "     ECCCE     ", "     D   D     ", "     ECCCE     ", "     ECCCE     ", "     ECCCE     ", "     HHHHH     ")
+                .aisle("     HHHHH     ", "     ECCCE     ", "     ECCCE     ", "B    ECCCE    B", "A    D   D    A", "D    ECCCE    D", "DF   D   D   FD", " D   ECCCE   D ", "  D  ECCCE  D  ", "   DFECCCEFD   ", "     D   D     ", "     ECCCE     ", "     ECCCE     ", "     ECCCE     ", "     D   D     ", "     ECCCE     ", "     D   D     ", "     ECCCE     ", "     ECCCE     ", "     ECCCE     ", "     HHHHH     ")
                 .aisle("    HHHHHHH    ", "    EC   CE    ", "D   EC   CE   D", "A   EC   CE   A", "D   D     D   D", "D   EC   CE   D", "DF  D     D  FD", "DF  EC   CE  FD", " D  EC   CE  D ", "  DFEC   CEFD  ", "    D     D    ", "    EC   CE    ", "    EC   CE    ", "    EC   CE    ", "    D     D    ", "    EC   CE    ", "    D     D    ", "    EC   CE    ", "    EC   CE    ", "    ECCCCCE    ", "    HHHHHHH    ")
                 .aisle("    HHHHHHH    ", "    EC   CE    ", "    EC   CE    ", "    EC   CE    ", "D   D     D   D", "D   EC   CE   D", "GF  D     D  FG", "AF  EC   CE  FA", " G  EC   CE  G ", "  AFEC   CEFA  ", "    D     D    ", "    EC   CE    ", "    EC   CE    ", "    EC   CE    ", "    D     D    ", "    EC   CE    ", "    D     D    ", "    EC   CE    ", "    EC   CE    ", "    ECCCCCE    ", "    HHHHHHH    ")
                 .aisle("    HHHHHHH    ", "    EC   CE    ", "    EC   CE    ", "A   EC   CE   A", "D   D     D   D", "D   EC   CE   D", "DF  D     D  FD", "DF  EC   CE  FD", " D  EC   CE  D ", "  DFEC   CEFD  ", "    D     D    ", "    EC   CE    ", "    EC   CE    ", "    EC   CE    ", "    D     D    ", "    EC   CE    ", "    D     D    ", "    EC   CE    ", "    EC   CE    ", "    ECCCCCE    ", "    HHHHHHH    ")
@@ -298,7 +297,7 @@ public class MetaTileEntityQuantumForceTransformer extends RecipeMapMultiblockCo
     public void renderMetaTileEntity(double x, double y, double z, float partialTicks) {
         TextureAtlasSprite forceField = GTLiteTextures.FORCE_FIELD;
         if (isActive() && MinecraftForgeClient.getRenderPass() == 0) {
-            BloomEffectUtil.requestCustomBloom(RENDER_HANDLER, (buffer) -> {
+            BloomEffectUtil.requestCustomBloom(ForceFieldRenderer.INSTANCE, (buffer) -> {
                 Entity entity = Minecraft.getMinecraft().getRenderViewEntity();
                 if (entity != null) {
                     double minU = forceField.getMinU();
@@ -356,37 +355,4 @@ public class MetaTileEntityQuantumForceTransformer extends RecipeMapMultiblockCo
     public boolean isGlobalRenderer() {
         return true;
     }
-
-    @SuppressWarnings("all")
-    static BloomEffectUtil.IBloomRenderFast RENDER_HANDLER = new BloomEffectUtil.IBloomRenderFast() {
-
-        @Override
-        public int customBloomStyle() {
-            return 2;
-        }
-
-        float lastBrightnessX;
-        float lastBrightnessY;
-
-        @Override
-        @SideOnly(Side.CLIENT)
-        public void preDraw(BufferBuilder buffer) {
-            BloomEffect.strength = 1.5F;
-            BloomEffect.baseBrightness = 0.0F;
-            BloomEffect.highBrightnessThreshold = 1.3F;
-            BloomEffect.lowBrightnessThreshold = 0.3F;
-            BloomEffect.step = 1;
-
-            lastBrightnessX = OpenGlHelper.lastBrightnessX;
-            lastBrightnessY = OpenGlHelper.lastBrightnessY;
-            GlStateManager.color(1, 1, 1, 1);
-            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240.0F, 240.0F);
-        }
-
-        @Override
-        @SideOnly(Side.CLIENT)
-        public void postDraw(BufferBuilder buffer) {
-            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, lastBrightnessX, lastBrightnessY);
-        }
-    };
 }

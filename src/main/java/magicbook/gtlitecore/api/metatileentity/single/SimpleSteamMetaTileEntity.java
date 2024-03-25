@@ -32,6 +32,16 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nullable;
 import java.util.Arrays;
 
+/**
+ * Simple Steam Meta Tile Entity.
+ *
+ * <p>
+ *     This class is an easier register of single steam machines,
+ *     please see: {@link magicbook.gtlitecore.common.metatileentities.GTLiteMetaTileEntities#registerSimpleSteamMetaTileEntity(SimpleSteamMetaTileEntity[], int, String, RecipeMap, SteamProgressIndicator, ICubeRenderer, boolean)}.
+ *     You needs to use progress bar through {@link SteamProgressIndicators}.
+ * </p>
+ */
+@SuppressWarnings("all")
 public class SimpleSteamMetaTileEntity extends SteamMetaTileEntity {
 
     protected SteamProgressIndicator progressIndicator;
@@ -42,12 +52,12 @@ public class SimpleSteamMetaTileEntity extends SteamMetaTileEntity {
     private IItemHandlerModifiable actualImportItems;
 
     /**
-     * @param metaTileEntityId MetaTileEntity id (do not use epId(), use number id in gregtech)
-     * @param recipeMap Recipemap of machine, you can use recipemap in EPRecipeMaps or RecipeMaps in gregtech
-     * @param progressIndicator Steam Progress Bar Indicator (generally, no special adjustments are required, it is only used to catch parameters of progress bar of steam machine)
-     * @param renderer Renderer of machine, you can use renderer in EPTextures or Textures/GCYMTextures
-     * @param isBrickedCasing Check if the machine use brick casing (if true, then cause texture change)
-     * @param isHighPressure Check if the machine is High Pressure machine (if true, then cause texture change)
+     * @param metaTileEntityId   MetaTileEntity id (do not use {@link magicbook.gtlitecore.api.utils.GTLiteUtils#gtliteId(String)}, use number id in gregtech)
+     * @param recipeMap          Recipemap of machine, you can use recipemap in {@link magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps} or {@link gregtech.api.recipes.RecipeMaps} in gregtech
+     * @param progressIndicator  Steam Progress Bar Indicator (generally, no special adjustments are required, it is only used to catch parameters of progress bar of steam machine)
+     * @param renderer           Renderer of machine, you can use renderer in {@link magicbook.gtlitecore.client.GTLiteTextures} or {@link gregtech.client.renderer.texture.Textures}/{@link gregicality.multiblocks.api.render.GCYMTextures}.
+     * @param isBrickedCasing    Check if the machine use brick casing (if true, then cause texture change)
+     * @param isHighPressure     Check if the machine is High Pressure machine (if true, then cause texture change)
      */
     public SimpleSteamMetaTileEntity(ResourceLocation metaTileEntityId,
                                      RecipeMap<?> recipeMap,
@@ -71,6 +81,11 @@ public class SimpleSteamMetaTileEntity extends SteamMetaTileEntity {
         this.workableHandler = new RecipeLogicSteam(this, recipeMap, isHighPressure, steamFluidTank, 1.0);
     }
 
+    /**
+     * Check if machine has ghost circuit slot.
+     *
+     * @return If machine has ghost circuit slot, then return true.
+     */
     protected boolean hasGhostCircuitInventory() {
         return true;
     }
@@ -113,7 +128,7 @@ public class SimpleSteamMetaTileEntity extends SteamMetaTileEntity {
     public FluidTankList createImportFluidHandler() {
         super.createImportFluidHandler();
         if (workableHandler == null)
-            return new FluidTankList(false, new IFluidTank[]{this.steamFluidTank});
+            return new FluidTankList(false, this.steamFluidTank);
         IFluidTank[] fluidImports = new IFluidTank[workableHandler.getRecipeMap().getMaxFluidInputs() + 1];
         fluidImports[0] = this.steamFluidTank;
         for (int i = 1; i < fluidImports.length; i++)
@@ -179,9 +194,11 @@ public class SimpleSteamMetaTileEntity extends SteamMetaTileEntity {
     }
 
     public void setGhostCircuitConfig(int config) {
-        if (this.circuitInventory == null || this.circuitInventory.getCircuitValue() == config) return;
+        if (this.circuitInventory == null || this.circuitInventory.getCircuitValue() == config)
+            return;
         this.circuitInventory.setCircuitValue(config);
-        if (!getWorld().isRemote) markDirty();
+        if (!getWorld().isRemote)
+            markDirty();
     }
 
     protected ModularUI.Builder createGuiTemplate(EntityPlayer player) {
@@ -239,14 +256,17 @@ public class SimpleSteamMetaTileEntity extends SteamMetaTileEntity {
         boolean isVerticalFluid = itemsSlotsDown >= fluidSlotsCount && itemsSlotsLeft < 3;
         int fluidGridHeight = ((fluidSlotsCount / 3 == 0) ? 1 : fluidSlotsCount / 3);
         int fullGridHeight = itemsSlotsDown + (isVerticalFluid ? 0 : fluidGridHeight);
-        if (fullGridHeight >= 3) yOffset += 4;
+        if (fullGridHeight >= 3)
+            yOffset += 4;
 
         int startInputsX = isOutputs ? 89 + progressIndicator.width / 2 + 9 : 89 - (progressIndicator.width / 2 + 9 + itemsSlotsLeft * 18);
         int startInputsY = yOffset + (isVerticalFluid ? 42 - ((itemsSlotsDown * 18) / 2) : 42 - (((fluidSlotsCount - 1) / 3 + 1) * 18));
 
         boolean wasGroup = itemHandler.getSlots() + fluidHandler.getTanks() == 12;
-        if (wasGroup) startInputsY -= 9;
-        else if (itemHandler.getSlots() >= 6 && fluidHandler.getTanks() >= 2 && !isOutputs) startInputsY -= 9;
+        if (wasGroup)
+            startInputsY -= 9;
+        else if (itemHandler.getSlots() >= 6 && fluidHandler.getTanks() >= 2 && !isOutputs)
+            startInputsY -= 9;
 
         for (int i = 0; i < itemsSlotsDown; i++) {
             for (int j = 0; j < itemsSlotsLeft; j++) {
@@ -275,10 +295,13 @@ public class SimpleSteamMetaTileEntity extends SteamMetaTileEntity {
     }
 
     protected void addSlot(ModularUI.Builder builder, int x, int y, int slotIndex, IItemHandlerModifiable itemHandler, FluidTankList fluidHandler, boolean isFluid, boolean isOutputs) {
-        if (!isOutputs && isFluid) slotIndex++; //Skip steam slot
-        if (!isFluid) builder.widget(new SlotWidget(itemHandler, slotIndex, x, y, true, !isOutputs)
-                .setBackgroundTexture(getOverlaysForSlot(isOutputs, false)));
-        else builder.widget(new TankWidget(fluidHandler.getTankAt(slotIndex), x, y, 18, 18).setAlwaysShowFull(true)
+        if (!isOutputs && isFluid)
+            slotIndex++; //  Skip steam slot
+        if (!isFluid)
+            builder.widget(new SlotWidget(itemHandler, slotIndex, x, y, true, !isOutputs)
+                    .setBackgroundTexture(getOverlaysForSlot(isOutputs, false)));
+        else builder.widget(new TankWidget(fluidHandler.getTankAt(slotIndex), x, y, 18, 18)
+                .setAlwaysShowFull(true)
                 .setBackgroundTexture(getOverlaysForSlot(isOutputs, true))
                 .setContainerClicking(true, !isOutputs));
     }

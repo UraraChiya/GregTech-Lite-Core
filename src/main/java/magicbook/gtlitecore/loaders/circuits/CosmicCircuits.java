@@ -496,7 +496,7 @@ public class CosmicCircuits {
                 .buildAndRegister();
 
         ION_IMPLANTATOR_RECIPES.recipeBuilder()
-                .input(ring, CelestialTungsten, 2)
+                .input(ring, AstralTitanium, 2)
                 .input(wireFine, PlatinumGroupAlloy, 4)
                 .fluidInputs(Zylon.getFluid(L * 2))
                 .output(COSMIC_INDUCTOR, 32)

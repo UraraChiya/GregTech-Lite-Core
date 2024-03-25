@@ -2,6 +2,7 @@ package magicbook.gtlitecore.common.metatileentities.multi.electric;
 
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
+import gregtech.api.block.IHeatingCoilBlockStats;
 import gregtech.api.capability.IHeatingCoil;
 import gregtech.api.capability.impl.HeatingCoilRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -47,7 +48,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import static gregtech.api.GTValues.*;
+import static gregtech.api.GTValues.LV;
+import static gregtech.api.GTValues.LuV;
 
 public class MetaTileEntityVacuumDryingFurnace extends MultiMapMultiblockController implements IHeatingCoil {
 
@@ -80,11 +82,10 @@ public class MetaTileEntityVacuumDryingFurnace extends MultiMapMultiblockControl
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
         Object type = context.get("CoilType");
-        if (type instanceof BlockWireCoil.CoilType)
-            this.temperature = ((BlockWireCoil.CoilType) type).getCoilTemperature();
+        if (type instanceof IHeatingCoilBlockStats)
+            this.temperature = ((IHeatingCoilBlockStats) type).getCoilTemperature();
         else
             this.temperature = BlockWireCoil.CoilType.CUPRONICKEL.getCoilTemperature();
-
         this.temperature += 100 * Math.max(0, GTUtility.getTierByVoltage(getEnergyContainer().getInputVoltage()) - GTValues.MV);
     }
 

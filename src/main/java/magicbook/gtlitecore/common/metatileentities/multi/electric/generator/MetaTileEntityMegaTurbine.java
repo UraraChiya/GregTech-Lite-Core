@@ -1,7 +1,10 @@
 package magicbook.gtlitecore.common.metatileentities.multi.electric.generator;
 
 import gregtech.api.GTValues;
+import gregtech.api.capability.IEnergyContainer;
+import gregtech.api.capability.impl.EnergyContainerList;
 import gregtech.api.capability.impl.FluidTankList;
+import gregtech.api.capability.impl.ItemHandlerList;
 import gregtech.api.gui.Widget;
 import gregtech.api.gui.widgets.ImageCycleButtonWidget;
 import gregtech.api.metatileentity.ITieredMetaTileEntity;
@@ -43,6 +46,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -97,16 +101,27 @@ public class MetaTileEntityMegaTurbine extends FuelMultiblockController implemen
     }
 
     @Override
+    protected void initializeAbilities() {
+        this.inputInventory = new ItemHandlerList(this.getAbilities(MultiblockAbility.IMPORT_ITEMS));
+        this.inputFluidInventory = new FluidTankList(this.allowSameFluidFillForOutputs(), this.getAbilities(MultiblockAbility.IMPORT_FLUIDS));
+        this.outputInventory = new ItemHandlerList(this.getAbilities(MultiblockAbility.EXPORT_ITEMS));
+        this.outputFluidInventory = new FluidTankList(this.allowSameFluidFillForOutputs(), this.getAbilities(MultiblockAbility.EXPORT_FLUIDS));
+        List<IEnergyContainer> energyContainer = new ArrayList<>(this.getAbilities(MultiblockAbility.OUTPUT_LASER));
+        energyContainer.addAll(this.getAbilities(MultiblockAbility.OUTPUT_LASER));
+        this.energyContainer = new EnergyContainerList(energyContainer);
+    }
+
+    @Override
     public boolean checkRecipe(@Nonnull Recipe recipe, boolean consumeIfSuccess) {
         return super.checkRecipe(recipe, consumeIfSuccess) && checkRotors() && checkRotorMaterial();
     }
 
     @Override
     protected long getMaxVoltage() {
-        long maxProduction = ((MegaTurbineWorkableHandler) recipeMapWorkable).getMaxVoltage();
+        long maxProduction = recipeMapWorkable.getMaxVoltage();
         long currentProduction = ((MegaTurbineWorkableHandler) recipeMapWorkable).boostProduction((int) maxProduction);
         if (isActive() && currentProduction < maxProduction) {
-            return ((MegaTurbineWorkableHandler) recipeMapWorkable).getMaxVoltage();
+            return recipeMapWorkable.getMaxVoltage();
         } else {
             return 0L;
         }
@@ -205,18 +220,24 @@ public class MetaTileEntityMegaTurbine extends FuelMultiblockController implemen
                         .setPreviewCount(8))
                 .where('A', states(getCasingState())
                         .or(abilities(MultiblockAbility.OUTPUT_ENERGY)
-                                .setMinGlobalLimited(1)
-                                .setMaxGlobalLimited(2))
+                                .setMaxGlobalLimited(1)
+                                .setPreviewCount(1))
+                        .or(abilities(MultiblockAbility.OUTPUT_LASER)
+                                .setMaxGlobalLimited(1)
+                                .setPreviewCount(1))
                         .or(abilities(MultiblockAbility.MAINTENANCE_HATCH)
                                 .setExactLimit(1))
                         .or(abilities(MultiblockAbility.IMPORT_ITEMS)
-                                .setExactLimit(1))
+                                .setMaxGlobalLimited(1)
+                                .setPreviewCount(1))
                         .or(abilities(MultiblockAbility.IMPORT_FLUIDS)
                                 .setMinGlobalLimited(1)
-                                .setMaxGlobalLimited(4))
+                                .setMaxGlobalLimited(4)
+                                .setPreviewCount(1))
                         .or(abilities(MultiblockAbility.EXPORT_FLUIDS)
                                 .setMinGlobalLimited(1)
-                                .setMaxGlobalLimited(4)))
+                                .setMaxGlobalLimited(4)
+                                .setPreviewCount(1)))
                 .build();
     }
 
@@ -292,6 +313,7 @@ public class MetaTileEntityMegaTurbine extends FuelMultiblockController implemen
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("gregtech.universal.tooltip.base_production_eut", GTValues.V[tier] * 2 * 16));
         tooltip.add(I18n.format("gregtech.multiblock.turbine.efficiency_tooltip", GTValues.VNF[tier]));
+        tooltip.add(I18n.format("gtlitecore.universal.tooltip.laser_output"));
     }
 
     @Override

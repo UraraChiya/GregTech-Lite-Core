@@ -32,7 +32,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
+import static magicbook.gtlitecore.api.unification.GTLiteMaterials.GelidCryotheum;
 
 public class MetaTileEntityCryogenicFreezer extends RecipeMapMultiblockController {
 

@@ -8,7 +8,7 @@ import java.util.Collections;
 
 import static gregtech.api.GTValues.M;
 import static gregtech.api.unification.ore.OrePrefix.Conditions.hasGemProperty;
-import static gregtech.api.unification.ore.OrePrefix.Flags.*;
+import static gregtech.api.unification.ore.OrePrefix.Flags.ENABLE_UNIFICATION;
 import static magicbook.gtlitecore.api.unification.materials.info.GTLiteMaterialFlags.*;
 
 public class GTLiteOrePrefix {

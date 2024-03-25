@@ -8,7 +8,8 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
-import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
+import static magicbook.gtlitecore.api.unification.GTLiteMaterials.BismuthTellurite;
+import static magicbook.gtlitecore.api.unification.GTLiteMaterials.MagnetoResonatic;
 import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
 
 public class MagnetoResonaticCircuits {

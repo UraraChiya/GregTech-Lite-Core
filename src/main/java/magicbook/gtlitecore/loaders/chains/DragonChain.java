@@ -7,9 +7,10 @@ import net.minecraft.item.ItemStack;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
+import static gregtech.api.unification.material.Materials.Endstone;
+import static gregtech.api.unification.material.Materials.Radon;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.SONICATION_RECIPES;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 
 public class DragonChain {

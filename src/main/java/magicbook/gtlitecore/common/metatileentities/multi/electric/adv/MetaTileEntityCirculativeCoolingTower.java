@@ -95,7 +95,7 @@ public class MetaTileEntityCirculativeCoolingTower extends MultiMapMultiblockCon
         this.outputFluidInventory = new FluidTankList(this.allowSameFluidFillForOutputs(), this.getAbilities(MultiblockAbility.EXPORT_FLUIDS));
         List<IEnergyContainer> energyContainer = new ArrayList<>(this.getAbilities(MultiblockAbility.INPUT_ENERGY));
         energyContainer.addAll(this.getAbilities(MultiblockAbility.INPUT_LASER));
-        this.energyContainer=new EnergyContainerList(energyContainer);
+        this.energyContainer = new EnergyContainerList(energyContainer);
     }
 
     @Nonnull
@@ -289,6 +289,7 @@ public class MetaTileEntityCirculativeCoolingTower extends MultiMapMultiblockCon
         tooltip.add(I18n.format("gtlitecore.machine.circulative_cooling_tower.tooltip.19"));
         tooltip.add(I18n.format("gtlitecore.machine.circulative_cooling_tower.tooltip.20"));
         tooltip.add(I18n.format("gtlitecore.machine.circulative_cooling_tower.tooltip.21"));
+        tooltip.add(I18n.format("gtlitecore.universal.tooltip.laser_input"));
     }
 
     public class CirculativeCoolingTowerRecipeLogic extends MultiblockRecipeLogic {
