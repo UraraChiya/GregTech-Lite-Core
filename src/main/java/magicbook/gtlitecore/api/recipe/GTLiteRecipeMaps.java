@@ -1511,7 +1511,6 @@ public class GTLiteRecipeMaps {
      * <p>
      *     One of two modes of Neutral Network Nexus, used to hybridizing nano swarm.
      *     Please see: {@link magicbook.gtlitecore.loaders.multiblock.NeutralNetworkNexus}.
-     *     TODO Add recipe and system of this mode.
      * </p>
      */
     @ZenProperty
