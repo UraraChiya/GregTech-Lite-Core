@@ -165,7 +165,7 @@ public class NeutralNetworkNexus {
 
     }
 
-    private static void BreedingMode() {
+    private static void HybridizingMode() {
 
         //  Tungsten Steel
         NEUTRAL_NETWORK_NEXUS_HYBRIDIZING_MODE.recipeBuilder()
