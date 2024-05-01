@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gtlitecore:items/material_sets/enriched/spring_small",
+    "layer1": "gtlitecore:items/material_sets/enriched/spring_small_overlay"
+  }
+}

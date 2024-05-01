@@ -35,7 +35,7 @@ public class CosmicCircuits {
                 .output(COSMIC_INFORMATION_MODULE)
                 .EUt(VA[UIV])
                 .duration(2 * SECOND + 10)
-                .CasingTier(4)
+                .tier(4)
                 .buildAndRegister();
 
         //  Cosmic Circuit Board
@@ -51,7 +51,7 @@ public class CosmicCircuits {
                 .output(HOLOGRAPHIC_INFORMATION_IMC, 2)
                 .EUt(VA[UIV])
                 .duration(SECOND)
-                .CasingTier(5)
+                .tier(5)
                 .buildAndRegister();
     }
 
@@ -72,7 +72,7 @@ public class CosmicCircuits {
                 .output(NUCLEAR_CLOCK)
                 .EUt(VA[UEV])
                 .duration(SECOND + 15)
-                .CasingTier(4)
+                .tier(4)
                 .buildAndRegister();
 
         //  Closed Time-like Curve Guidance Unit
@@ -99,7 +99,7 @@ public class CosmicCircuits {
                 .output(CLOSED_TIMELIKE_CURVE_COMPUTATIONAL_UNIT, 2)
                 .EUt(VA[UIV])
                 .duration(10 * SECOND)
-                .CasingTier(4) // UHV
+                .tier(4) // UHV
                 .buildAndRegister();
 
         //  Cladded Optical Fiber Core
@@ -457,7 +457,7 @@ public class CosmicCircuits {
                 .output(UNIVERSAL_SOC, 4)
                 .EUt(VA[UXV])
                 .duration(10 * SECOND)
-                .CasingTier(7) // UXV
+                .tier(7) // UXV
                 .buildAndRegister();
     }
 

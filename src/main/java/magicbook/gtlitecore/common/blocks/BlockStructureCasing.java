@@ -47,7 +47,8 @@ public class BlockStructureCasing extends VariantBlock<BlockStructureCasing.Stru
         NAQUADAH_CASING("naquadah_casing"),
         NAQUADAH_GEARBOX_CASING("naquadah_gearbox_casing"),
         HATTRIUM_CASING("hattrium_casing"),
-        CIRCULATIVE_COOLING_CASING("circulative_cooling_casing");
+        CIRCULATIVE_COOLING_CASING("circulative_cooling_casing"),
+        DURALUMINIUM_ALLOY_CASING("duraluminium_alloy_casing");
 
         private final String name;
 

@@ -19,18 +19,18 @@ public class CosmicRayDetector {
         COSMIC_RAY_DETECTOR_RECIPES.recipeBuilder()
                 .circuitMeta(0)
                 .fluidOutputs(StarlightLiquid.getFluid(100))
-                .Altitude(100)
                 .EUt(VA[UHV])
                 .duration(1)
+                .altitude(100)
                 .buildAndRegister();
 
         //  Heavy Lepton
         COSMIC_RAY_DETECTOR_RECIPES.recipeBuilder()
                 .circuitMeta(1)
                 .fluidOutputs(HeavyLepton.getFluid(40))
-                .Altitude(80)
                 .EUt((int) V[UHV])
                 .duration(1)
+                .altitude(80)
                 .buildAndRegister();
 
         //  Algae
@@ -41,9 +41,9 @@ public class CosmicRayDetector {
                 .circuitMeta(2)
                 .output(BARNARDA_C_BASE, 64)
                 .fluidOutputs(Blood.getFluid(L / 4))
-                .Altitude(100)
                 .EUt((int) V[UHV])
                 .duration(1)
+                .altitude(100)
                 .buildAndRegister();
 
         COSMIC_RAY_DETECTOR_RECIPES.recipeBuilder()
@@ -53,9 +53,9 @@ public class CosmicRayDetector {
                 .circuitMeta(3)
                 .output(PROXIMA_B_BASE, 64)
                 .fluidOutputs(Blood.getFluid(L / 4))
-                .Altitude(100)
                 .EUt((int) V[UHV])
                 .duration(1)
+                .altitude(100)
                 .buildAndRegister();
 
         COSMIC_RAY_DETECTOR_RECIPES.recipeBuilder()
@@ -65,9 +65,9 @@ public class CosmicRayDetector {
                 .circuitMeta(4)
                 .output(TAU_CETI_F_BASE, 64)
                 .fluidOutputs(Blood.getFluid(L / 4))
-                .Altitude(100)
                 .EUt((int) V[UHV])
                 .duration(1)
+                .altitude(100)
                 .buildAndRegister();
     }
 }

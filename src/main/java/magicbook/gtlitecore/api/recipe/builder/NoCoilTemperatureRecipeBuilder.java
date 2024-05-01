@@ -9,6 +9,7 @@ import gregtech.api.util.TextFormattingUtil;
 import gregtech.api.util.ValidationResult;
 import magicbook.gtlitecore.api.recipe.properties.NoCoilTemperatureProperty;
 import magicbook.gtlitecore.api.utils.GTLiteLog;
+import magicbook.gtlitecore.common.metatileentities.multi.electric.MetaTileEntityNanoscaleFabricator;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.annotation.Nonnull;
@@ -19,7 +20,7 @@ import javax.annotation.Nonnull;
  * <p>
  *     Used for some multiblock machine which does not has wire coil,
  *     but require a temperature info view (maybe has a new predicate in same time).
- *     Like {@link magicbook.gtlitecore.common.metatileentities.multi.electric.MetaTileEntityNanoscaleFabricator},
+ *     Like {@link MetaTileEntityNanoscaleFabricator},
  *     this multiblock has a new predicate, but has no coil and require a temperature info,
  *     so used this recipe builder to support auxiliary temperature.
  * </p>

@@ -7,6 +7,7 @@ import gregtech.api.recipes.recipeproperties.RecipePropertyStorage;
 import gregtech.api.util.TextFormattingUtil;
 import gregtech.api.util.ValidationResult;
 import magicbook.gtlitecore.api.recipe.properties.NoCoilHigherTemperatureProperty;
+import magicbook.gtlitecore.common.metatileentities.multi.electric.MetaTileEntityStellarFurnace;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.annotation.Nonnull;
@@ -20,7 +21,7 @@ import java.math.BigInteger;
  * <p>
  *     Same as {@link NoCoilTemperatureRecipeBuilder}, but use {@link BigInteger}.
  *     Used for some recipes which need big number info (but not a real predicate lol),
- *     such that {@link magicbook.gtlitecore.common.metatileentities.multi.electric.MetaTileEntityStellarFurnace}.
+ *     such that {@link MetaTileEntityStellarFurnace}.
  * </p>
  */
 public class NoCoilHigherTemperatureRecipeBuilder extends RecipeBuilder<NoCoilHigherTemperatureRecipeBuilder> {

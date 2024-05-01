@@ -9,12 +9,13 @@ import magicbook.gtlitecore.common.GTLiteConfigHolder;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
-import static gregtech.api.GTValues.HV;
-import static gregtech.api.GTValues.VA;
+import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.common.items.MetaItems.SHAPE_MOLD_PLATE;
 import static gregtechfoodoption.GTFOMaterialHandler.*;
+import static magicbook.gtlitecore.api.GTLiteValues.SECOND;
 import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.BIO_REACTOR_RECIPES;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.CHEMICAL_DRYER_RECIPES;
 
 /**
  * Overrides of GregTechFoodOptions
@@ -86,6 +87,18 @@ public class GTFOOverrideRecipeLoader {
                     .EUt(110)
                     .duration(120)
                     .buildAndRegister();
+
+            //  Mozzarella Curd
+            //  Use Chemical Dryer, do not use Thermal Centrifuge!
+            GTRecipeHandler.removeRecipesByInputs(THERMAL_CENTRIFUGE_RECIPES, SmallMozzarellaCurd.getItemStack());
+
+            CHEMICAL_DRYER_RECIPES.recipeBuilder()
+                    .inputs(SmallMozzarellaCurd.getItemStack())
+                    .outputs(DriedMozzarellaCurd.getItemStack())
+                    .EUt(VA[LV])
+                    .duration(50 * SECOND)
+                    .buildAndRegister();
+
         }
     }
 

@@ -8,6 +8,17 @@ import static gregtech.api.unification.material.info.MaterialIconSet.*;
 import static gregtech.api.util.GTUtility.gregtechId;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 
+/**
+ * Third Degree Materials
+ *
+ * @author Magic_Sweepy
+ *
+ * <p>
+ *     This class is a part of {@code Material} class.
+ * </p>
+ *
+ * @since 2.8.7-beta
+ */
 public class GTLiteThirdDegreeMaterials {
 
     //  Range: 20001-21000

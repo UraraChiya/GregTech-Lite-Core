@@ -89,6 +89,12 @@
           "side": "gtlitecore:blocks/casings/circulative_cooling_casing",
           "bottom": "#top"
         }
+      },
+      "duraluminium_alloy_casing": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gtlitecore:blocks/casings/duraluminium_alloy_casing"
+        }
       }
     }
   }

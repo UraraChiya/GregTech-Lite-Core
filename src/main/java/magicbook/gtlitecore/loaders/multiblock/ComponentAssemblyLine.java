@@ -39,7 +39,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_MOTOR_ULV, 64)
                 .EUt(VA[ULV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         //  LV (15s)
@@ -51,7 +51,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_MOTOR_LV, 64)
                 .EUt(VA[LV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -62,7 +62,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_MOTOR_LV, 64)
                 .EUt(VA[LV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         //  MV (30s)
@@ -74,7 +74,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_MOTOR_MV, 64)
                 .EUt(VA[MV])
                 .duration(600)
-                .CasingTier(MV)
+                .tier(MV)
                 .buildAndRegister();
 
         //  HV (30s)
@@ -86,7 +86,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_MOTOR_HV, 64)
                 .EUt(VA[HV])
                 .duration(600)
-                .CasingTier(HV)
+                .tier(HV)
                 .buildAndRegister();
 
         //  EV (45s)
@@ -98,7 +98,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_MOTOR_EV, 64)
                 .EUt(VA[EV])
                 .duration(900)
-                .CasingTier(EV)
+                .tier(EV)
                 .buildAndRegister();
 
         //  IV (45s)
@@ -110,7 +110,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_MOTOR_IV, 64)
                 .EUt(VA[IV])
                 .duration(900)
-                .CasingTier(IV)
+                .tier(IV)
                 .buildAndRegister();
 
         //  LuV (60s)
@@ -127,7 +127,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_MOTOR_LuV, 64)
                 .EUt(VA[LuV])
                 .duration(1200)
-                .CasingTier(LuV)
+                .tier(LuV)
                 .buildAndRegister();
 
         //  ZPM (60s)
@@ -147,7 +147,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_MOTOR_ZPM, 64)
                 .EUt(VA[ZPM])
                 .duration(1200)
-                .CasingTier(ZPM)
+                .tier(ZPM)
                 .buildAndRegister();
 
         //  UV (75s)
@@ -168,7 +168,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_MOTOR_UV, 64)
                 .EUt(VA[UV])
                 .duration(1500)
-                .CasingTier(UV)
+                .tier(UV)
                 .buildAndRegister();
 
         //  UHV (75s)
@@ -189,7 +189,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_MOTOR_UHV, 64)
                 .EUt(VA[UHV])
                 .duration(1500)
-                .CasingTier(UHV)
+                .tier(UHV)
                 .buildAndRegister();
 
         //  UEV (90s)
@@ -211,7 +211,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_MOTOR_UEV, 64)
                 .EUt(VA[UEV])
                 .duration(1800)
-                .CasingTier(UEV)
+                .tier(UEV)
                 .buildAndRegister();
 
         //  UIV (90s)
@@ -232,7 +232,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_MOTOR_UIV, 64)
                 .EUt(VA[UIV])
                 .duration(1800)
-                .CasingTier(UIV)
+                .tier(UIV)
                 .buildAndRegister();
 
         //  UXV (105s)
@@ -253,7 +253,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_MOTOR_UXV, 64)
                 .EUt(VA[UXV])
                 .duration(2100)
-                .CasingTier(UXV)
+                .tier(UXV)
                 .buildAndRegister();
 
         //  OpV (105s)
@@ -274,7 +274,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_MOTOR_OpV, 64)
                 .EUt(VA[OpV])
                 .duration(2100)
-                .CasingTier(OpV)
+                .tier(OpV)
                 .buildAndRegister();
 
         //  MAX (120s)
@@ -294,7 +294,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_PISTON_ULV, 64)
                 .EUt(VA[ULV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         //  LV (15s)
@@ -308,7 +308,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_PISTON_LV, 64)
                 .EUt(VA[LV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         //  MV (30s)
@@ -322,7 +322,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_PISTON_MV, 64)
                 .EUt(VA[MV])
                 .duration(600)
-                .CasingTier(MV)
+                .tier(MV)
                 .buildAndRegister();
 
         //  HV (30s)
@@ -336,7 +336,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_PISTON_HV, 64)
                 .EUt(VA[HV])
                 .duration(600)
-                .CasingTier(HV)
+                .tier(HV)
                 .buildAndRegister();
 
         //  EV (45s)
@@ -350,7 +350,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_PISTON_EV, 64)
                 .EUt(VA[EV])
                 .duration(900)
-                .CasingTier(EV)
+                .tier(EV)
                 .buildAndRegister();
 
         //  IV (45s)
@@ -364,7 +364,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_PISTON_IV, 64)
                 .EUt(VA[IV])
                 .duration(900)
-                .CasingTier(IV)
+                .tier(IV)
                 .buildAndRegister();
 
         //  LuV (60s)
@@ -383,7 +383,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_PISTON_LUV, 64)
                 .EUt(VA[LuV])
                 .duration(1200)
-                .CasingTier(LuV)
+                .tier(LuV)
                 .buildAndRegister();
 
         //  ZPM (60s)
@@ -402,7 +402,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_PISTON_ZPM, 64)
                 .EUt(VA[ZPM])
                 .duration(1200)
-                .CasingTier(ZPM)
+                .tier(ZPM)
                 .buildAndRegister();
 
         //  UV (75s)
@@ -423,7 +423,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_PISTON_UV, 64)
                 .EUt(VA[UV])
                 .duration(1500)
-                .CasingTier(UV)
+                .tier(UV)
                 .buildAndRegister();
 
         //  UHV (75s)
@@ -444,7 +444,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_PISTON_UHV, 64)
                 .EUt(VA[UHV])
                 .duration(1500)
-                .CasingTier(UHV)
+                .tier(UHV)
                 .buildAndRegister();
 
         //  UEV (90s)
@@ -466,7 +466,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_PISTON_UEV, 64)
                 .EUt(VA[UEV])
                 .duration(1800)
-                .CasingTier(UEV)
+                .tier(UEV)
                 .buildAndRegister();
 
         //  UIV (90s)
@@ -488,7 +488,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_PISTON_UIV, 64)
                 .EUt(VA[UIV])
                 .duration(1800)
-                .CasingTier(UIV)
+                .tier(UIV)
                 .buildAndRegister();
 
         //  UXV (105s)
@@ -510,7 +510,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_PISTON_UXV, 64)
                 .EUt(VA[UXV])
                 .duration(2100)
-                .CasingTier(UXV)
+                .tier(UXV)
                 .buildAndRegister();
 
         //  OpV (105s)
@@ -532,7 +532,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_PISTON_OpV, 64)
                 .EUt(VA[OpV])
                 .duration(2100)
-                .CasingTier(OpV)
+                .tier(OpV)
                 .buildAndRegister();
 
         //  MAX (120s)
@@ -555,7 +555,7 @@ public class ComponentAssemblyLine {
                 .output(CONVEYOR_MODULE_ULV, 64)
                 .EUt(VA[ULV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         for (FluidStack stack : new FluidStack[]{
@@ -573,7 +573,7 @@ public class ComponentAssemblyLine {
                     .output(CONVEYOR_MODULE_ULV, 64)
                     .EUt(VA[ULV])
                     .duration(300)
-                    .CasingTier(LV)
+                    .tier(LV)
                     .buildAndRegister();
         }
 
@@ -593,7 +593,7 @@ public class ComponentAssemblyLine {
                     .output(CONVEYOR_MODULE_LV, 64)
                     .EUt(VA[LV])
                     .duration(300)
-                    .CasingTier(LV)
+                    .tier(LV)
                     .buildAndRegister();
         }
 
@@ -613,7 +613,7 @@ public class ComponentAssemblyLine {
                     .output(CONVEYOR_MODULE_MV, 64)
                     .EUt(VA[MV])
                     .duration(600)
-                    .CasingTier(MV)
+                    .tier(MV)
                     .buildAndRegister();
         }
 
@@ -633,7 +633,7 @@ public class ComponentAssemblyLine {
                     .output(CONVEYOR_MODULE_HV, 64)
                     .EUt(VA[HV])
                     .duration(600)
-                    .CasingTier(HV)
+                    .tier(HV)
                     .buildAndRegister();
         }
 
@@ -653,7 +653,7 @@ public class ComponentAssemblyLine {
                     .output(CONVEYOR_MODULE_EV, 64)
                     .EUt(VA[EV])
                     .duration(900)
-                    .CasingTier(EV)
+                    .tier(EV)
                     .buildAndRegister();
         }
 
@@ -672,7 +672,7 @@ public class ComponentAssemblyLine {
                     .output(CONVEYOR_MODULE_IV, 64)
                     .EUt(VA[IV])
                     .duration(900)
-                    .CasingTier(IV)
+                    .tier(IV)
                     .buildAndRegister();
         }
 
@@ -694,7 +694,7 @@ public class ComponentAssemblyLine {
                     .output(CONVEYOR_MODULE_LuV, 64)
                     .EUt(VA[LuV])
                     .duration(1200)
-                    .CasingTier(LuV)
+                    .tier(LuV)
                     .buildAndRegister();
         }
 
@@ -716,7 +716,7 @@ public class ComponentAssemblyLine {
                     .output(CONVEYOR_MODULE_ZPM, 64)
                     .EUt(VA[ZPM])
                     .duration(1200)
-                    .CasingTier(ZPM)
+                    .tier(ZPM)
                     .buildAndRegister();
         }
 
@@ -739,7 +739,7 @@ public class ComponentAssemblyLine {
                     .output(CONVEYOR_MODULE_UV, 64)
                     .EUt(VA[UV])
                     .duration(1500)
-                    .CasingTier(UV)
+                    .tier(UV)
                     .buildAndRegister();
         }
 
@@ -762,7 +762,7 @@ public class ComponentAssemblyLine {
                     .output(CONVEYOR_MODULE_UHV, 64)
                     .EUt(VA[UHV])
                     .duration(1500)
-                    .CasingTier(UHV)
+                    .tier(UHV)
                     .buildAndRegister();
         }
 
@@ -785,7 +785,7 @@ public class ComponentAssemblyLine {
                     .output(CONVEYOR_MODULE_UEV, 64)
                     .EUt(VA[UEV])
                     .duration(1800)
-                    .CasingTier(UEV)
+                    .tier(UEV)
                     .buildAndRegister();
         }
 
@@ -808,7 +808,7 @@ public class ComponentAssemblyLine {
                     .output(CONVEYOR_MODULE_UIV, 64)
                     .EUt(VA[UIV])
                     .duration(1800)
-                    .CasingTier(UIV)
+                    .tier(UIV)
                     .buildAndRegister();
         }
 
@@ -831,7 +831,7 @@ public class ComponentAssemblyLine {
                     .output(CONVEYOR_MODULE_UXV, 64)
                     .EUt(VA[UXV])
                     .duration(2100)
-                    .CasingTier(UXV)
+                    .tier(UXV)
                     .buildAndRegister();
 
         }
@@ -855,7 +855,7 @@ public class ComponentAssemblyLine {
                     .output(CONVEYOR_MODULE_OpV, 64)
                     .EUt(VA[OpV])
                     .duration(2100)
-                    .CasingTier(OpV)
+                    .tier(OpV)
                     .buildAndRegister();
         }
 
@@ -876,7 +876,7 @@ public class ComponentAssemblyLine {
                 .output(ELECTRIC_PUMP_ULV, 64)
                 .EUt(VA[ULV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         for (FluidStack stack : new FluidStack[]{
@@ -895,7 +895,7 @@ public class ComponentAssemblyLine {
                     .output(ELECTRIC_PUMP_ULV, 64)
                     .EUt(VA[ULV])
                     .duration(300)
-                    .CasingTier(LV)
+                    .tier(LV)
                     .buildAndRegister();
         }
 
@@ -916,7 +916,7 @@ public class ComponentAssemblyLine {
                     .output(ELECTRIC_PUMP_LV, 64)
                     .EUt(VA[LV])
                     .duration(300)
-                    .CasingTier(LV)
+                    .tier(LV)
                     .buildAndRegister();
         }
 
@@ -937,7 +937,7 @@ public class ComponentAssemblyLine {
                     .output(ELECTRIC_PUMP_MV, 64)
                     .EUt(VA[MV])
                     .duration(600)
-                    .CasingTier(MV)
+                    .tier(MV)
                     .buildAndRegister();
         }
 
@@ -958,7 +958,7 @@ public class ComponentAssemblyLine {
                     .output(ELECTRIC_PUMP_HV, 64)
                     .EUt(VA[HV])
                     .duration(600)
-                    .CasingTier(HV)
+                    .tier(HV)
                     .buildAndRegister();
         }
 
@@ -979,7 +979,7 @@ public class ComponentAssemblyLine {
                     .output(ELECTRIC_PUMP_EV, 64)
                     .EUt(VA[EV])
                     .duration(900)
-                    .CasingTier(EV)
+                    .tier(EV)
                     .buildAndRegister();
         }
 
@@ -998,7 +998,7 @@ public class ComponentAssemblyLine {
                     .output(ELECTRIC_PUMP_IV, 64)
                     .EUt(VA[IV])
                     .duration(900)
-                    .CasingTier(IV)
+                    .tier(IV)
                     .buildAndRegister();
         }
 
@@ -1020,7 +1020,7 @@ public class ComponentAssemblyLine {
                     .output(ELECTRIC_PUMP_LuV, 64)
                     .EUt(VA[LuV])
                     .duration(1200)
-                    .CasingTier(LuV)
+                    .tier(LuV)
                     .buildAndRegister();
         }
 
@@ -1042,7 +1042,7 @@ public class ComponentAssemblyLine {
                     .output(ELECTRIC_PUMP_ZPM, 64)
                     .EUt(VA[ZPM])
                     .duration(1200)
-                    .CasingTier(ZPM)
+                    .tier(ZPM)
                     .buildAndRegister();
         }
 
@@ -1065,7 +1065,7 @@ public class ComponentAssemblyLine {
                     .output(ELECTRIC_PUMP_UV, 64)
                     .EUt(VA[UV])
                     .duration(1500)
-                    .CasingTier(UV)
+                    .tier(UV)
                     .buildAndRegister();
         }
 
@@ -1088,7 +1088,7 @@ public class ComponentAssemblyLine {
                     .output(ELECTRIC_PUMP_UHV, 64)
                     .EUt(VA[UHV])
                     .duration(1500)
-                    .CasingTier(UHV)
+                    .tier(UHV)
                     .buildAndRegister();
         }
 
@@ -1112,7 +1112,7 @@ public class ComponentAssemblyLine {
                     .output(ELECTRIC_PUMP_UEV, 64)
                     .EUt(VA[UEV])
                     .duration(1800)
-                    .CasingTier(UEV)
+                    .tier(UEV)
                     .buildAndRegister();
         }
 
@@ -1136,7 +1136,7 @@ public class ComponentAssemblyLine {
                     .output(ELECTRIC_PUMP_UIV, 64)
                     .EUt(VA[UIV])
                     .duration(1800)
-                    .CasingTier(UIV)
+                    .tier(UIV)
                     .buildAndRegister();
         }
 
@@ -1160,7 +1160,7 @@ public class ComponentAssemblyLine {
                     .output(ELECTRIC_PUMP_UXV, 64)
                     .EUt(VA[UXV])
                     .duration(2100)
-                    .CasingTier(UXV)
+                    .tier(UXV)
                     .buildAndRegister();
         }
         //  OpV (105s)
@@ -1183,7 +1183,7 @@ public class ComponentAssemblyLine {
                     .output(ELECTRIC_PUMP_OpV, 64)
                     .EUt(VA[OpV])
                     .duration(2100)
-                    .CasingTier(OpV)
+                    .tier(OpV)
                     .buildAndRegister();
         }
 
@@ -1206,7 +1206,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_ULV, 64)
                 .EUt(VA[ULV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -1221,7 +1221,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_ULV, 64)
                 .EUt(VA[ULV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         //  LV (15s)
@@ -1235,7 +1235,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_LV, 64)
                 .EUt(VA[LV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -1248,7 +1248,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_LV, 64)
                 .EUt(VA[LV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         //  MV (30s)
@@ -1262,7 +1262,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_MV, 64)
                 .EUt(VA[MV])
                 .duration(600)
-                .CasingTier(MV)
+                .tier(MV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -1275,7 +1275,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_MV, 64)
                 .EUt(VA[MV])
                 .duration(600)
-                .CasingTier(MV)
+                .tier(MV)
                 .buildAndRegister();
 
         //  HV (30s)
@@ -1289,7 +1289,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_HV, 64)
                 .EUt(VA[HV])
                 .duration(600)
-                .CasingTier(HV)
+                .tier(HV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -1302,7 +1302,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_HV, 64)
                 .EUt(VA[HV])
                 .duration(600)
-                .CasingTier(HV)
+                .tier(HV)
                 .buildAndRegister();
 
         //  EV (45s)
@@ -1316,7 +1316,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_EV, 64)
                 .EUt(VA[EV])
                 .duration(900)
-                .CasingTier(EV)
+                .tier(EV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -1329,7 +1329,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_EV, 64)
                 .EUt(VA[EV])
                 .duration(900)
-                .CasingTier(EV)
+                .tier(EV)
                 .buildAndRegister();
 
         //  IV (45s)
@@ -1343,7 +1343,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_IV, 64)
                 .EUt(VA[IV])
                 .duration(900)
-                .CasingTier(IV)
+                .tier(IV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -1356,7 +1356,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_IV, 64)
                 .EUt(VA[IV])
                 .duration(900)
-                .CasingTier(IV)
+                .tier(IV)
                 .buildAndRegister();
 
         //  LuV (60s)
@@ -1378,7 +1378,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_LuV, 64)
                 .EUt(VA[LuV])
                 .duration(1200)
-                .CasingTier(LuV)
+                .tier(LuV)
                 .buildAndRegister();
 
         //  ZPM (60s)
@@ -1400,7 +1400,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_ZPM, 64)
                 .EUt(VA[ZPM])
                 .duration(1200)
-                .CasingTier(ZPM)
+                .tier(ZPM)
                 .buildAndRegister();
 
         //  UV (75s)
@@ -1423,7 +1423,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_UV, 64)
                 .EUt(VA[UV])
                 .duration(1500)
-                .CasingTier(UV)
+                .tier(UV)
                 .buildAndRegister();
 
         //  UHV (75s)
@@ -1446,7 +1446,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_UHV, 64)
                 .EUt(VA[UHV])
                 .duration(1500)
-                .CasingTier(UHV)
+                .tier(UHV)
                 .buildAndRegister();
 
         //  UEV (90s)
@@ -1470,7 +1470,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_UEV, 64)
                 .EUt(VA[UEV])
                 .duration(1800)
-                .CasingTier(UEV)
+                .tier(UEV)
                 .buildAndRegister();
 
         //  UIV (90s)
@@ -1494,7 +1494,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_UIV, 64)
                 .EUt(VA[UIV])
                 .duration(1800)
-                .CasingTier(UIV)
+                .tier(UIV)
                 .buildAndRegister();
 
         //  UXV (105s)
@@ -1518,7 +1518,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_UXV, 64)
                 .EUt(VA[UXV])
                 .duration(2100)
-                .CasingTier(UXV)
+                .tier(UXV)
                 .buildAndRegister();
 
         //  OpV (105s)
@@ -1542,7 +1542,7 @@ public class ComponentAssemblyLine {
                 .output(ROBOT_ARM_OpV, 64)
                 .EUt(VA[OpV])
                 .duration(2100)
-                .CasingTier(OpV)
+                .tier(OpV)
                 .buildAndRegister();
 
         //  MAX (120s)
@@ -1563,7 +1563,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_ULV, 64)
                 .EUt(VA[ULV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -1577,7 +1577,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_ULV, 64)
                 .EUt(VA[ULV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         //  LV (15s)
@@ -1592,7 +1592,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_LV, 64)
                 .EUt(VA[LV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -1605,7 +1605,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_LV, 64)
                 .EUt(VA[LV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         //  MV (30s)
@@ -1620,7 +1620,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_MV, 64)
                 .EUt(VA[MV])
                 .duration(600)
-                .CasingTier(MV)
+                .tier(MV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -1633,7 +1633,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_MV, 64)
                 .EUt(VA[MV])
                 .duration(600)
-                .CasingTier(MV)
+                .tier(MV)
                 .buildAndRegister();
 
         //  HV (30s)
@@ -1648,7 +1648,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_HV, 64)
                 .EUt(VA[HV])
                 .duration(600)
-                .CasingTier(HV)
+                .tier(HV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -1661,7 +1661,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_HV, 64)
                 .EUt(VA[HV])
                 .duration(600)
-                .CasingTier(HV)
+                .tier(HV)
                 .buildAndRegister();
 
         //  EV (45s)
@@ -1676,7 +1676,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_EV, 64)
                 .EUt(VA[EV])
                 .duration(900)
-                .CasingTier(EV)
+                .tier(EV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -1689,7 +1689,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_EV, 64)
                 .EUt(VA[EV])
                 .duration(900)
-                .CasingTier(EV)
+                .tier(EV)
                 .buildAndRegister();
 
         //  IV (45s)
@@ -1704,7 +1704,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_IV, 64)
                 .EUt(VA[IV])
                 .duration(900)
-                .CasingTier(IV)
+                .tier(IV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -1717,7 +1717,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_IV, 64)
                 .EUt(VA[IV])
                 .duration(900)
-                .CasingTier(IV)
+                .tier(IV)
                 .buildAndRegister();
 
         //  LuV (60s)
@@ -1733,7 +1733,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_LuV, 64)
                 .EUt(VA[LuV])
                 .duration(1200)
-                .CasingTier(LuV)
+                .tier(LuV)
                 .buildAndRegister();
 
         //  ZPM (60s)
@@ -1750,7 +1750,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_ZPM, 64)
                 .EUt(VA[ZPM])
                 .duration(1200)
-                .CasingTier(ZPM)
+                .tier(ZPM)
                 .buildAndRegister();
 
         //  UV (75s)
@@ -1766,7 +1766,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_UV, 64)
                 .EUt(VA[UV])
                 .duration(1500)
-                .CasingTier(UV)
+                .tier(UV)
                 .buildAndRegister();
 
         //  UHV (75s)
@@ -1783,7 +1783,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_UHV, 64)
                 .EUt(VA[UHV])
                 .duration(1500)
-                .CasingTier(UHV)
+                .tier(UHV)
                 .buildAndRegister();
 
         //  UEV (90s)
@@ -1803,7 +1803,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_UEV, 64)
                 .EUt(VA[UEV])
                 .duration(1800)
-                .CasingTier(UEV)
+                .tier(UEV)
                 .buildAndRegister();
 
         //  UIV (90s)
@@ -1820,7 +1820,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_UIV, 64)
                 .EUt(VA[UIV])
                 .duration(1800)
-                .CasingTier(UIV)
+                .tier(UIV)
                 .buildAndRegister();
 
         //  UXV (105s)
@@ -1838,7 +1838,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_UXV, 64)
                 .EUt(VA[UXV])
                 .duration(2100)
-                .CasingTier(UXV)
+                .tier(UXV)
                 .buildAndRegister();
 
         //  OpV (105s)
@@ -1858,7 +1858,7 @@ public class ComponentAssemblyLine {
                 .output(EMITTER_OpV, 64)
                 .EUt(VA[OpV])
                 .duration(2100)
-                .CasingTier(OpV)
+                .tier(OpV)
                 .buildAndRegister();
 
         //  MAX (120s)
@@ -1876,7 +1876,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_ULV, 64)
                 .EUt(VA[ULV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -1888,7 +1888,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_ULV, 64)
                 .EUt(VA[ULV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         //  LV (15s)
@@ -1901,7 +1901,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_LV, 64)
                 .EUt(VA[LV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -1913,7 +1913,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_LV, 64)
                 .EUt(VA[LV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         //  MV (30s)
@@ -1926,7 +1926,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_MV, 64)
                 .EUt(VA[MV])
                 .duration(600)
-                .CasingTier(MV)
+                .tier(MV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -1938,7 +1938,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_MV, 64)
                 .EUt(VA[MV])
                 .duration(600)
-                .CasingTier(MV)
+                .tier(MV)
                 .buildAndRegister();
 
         //  HV (30s)
@@ -1951,7 +1951,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_HV, 64)
                 .EUt(VA[HV])
                 .duration(600)
-                .CasingTier(HV)
+                .tier(HV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -1963,7 +1963,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_HV, 64)
                 .EUt(VA[HV])
                 .duration(600)
-                .CasingTier(HV)
+                .tier(HV)
                 .buildAndRegister();
 
         //  EV (45s)
@@ -1976,7 +1976,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_EV, 64)
                 .EUt(VA[EV])
                 .duration(900)
-                .CasingTier(EV)
+                .tier(EV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -1988,7 +1988,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_EV, 64)
                 .EUt(VA[EV])
                 .duration(900)
-                .CasingTier(EV)
+                .tier(EV)
                 .buildAndRegister();
 
         //  IV (45s)
@@ -2001,7 +2001,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_IV, 64)
                 .EUt(VA[IV])
                 .duration(900)
-                .CasingTier(IV)
+                .tier(IV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -2013,7 +2013,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_IV, 64)
                 .EUt(VA[IV])
                 .duration(900)
-                .CasingTier(IV)
+                .tier(IV)
                 .buildAndRegister();
 
         //  LuV (60s)
@@ -2030,7 +2030,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_LuV, 64)
                 .EUt(VA[LuV])
                 .duration(1200)
-                .CasingTier(LuV)
+                .tier(LuV)
                 .buildAndRegister();
 
         //  ZPM (60s)
@@ -2048,7 +2048,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_ZPM, 64)
                 .EUt(VA[ZPM])
                 .duration(1200)
-                .CasingTier(ZPM)
+                .tier(ZPM)
                 .buildAndRegister();
 
         //  UV (75s)
@@ -2065,7 +2065,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_UV, 64)
                 .EUt(VA[UV])
                 .duration(1500)
-                .CasingTier(UV)
+                .tier(UV)
                 .buildAndRegister();
 
         //  UHV (75s)
@@ -2084,7 +2084,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_UHV, 64)
                 .EUt(VA[UHV])
                 .duration(1500)
-                .CasingTier(UHV)
+                .tier(UHV)
                 .buildAndRegister();
 
         //  UEV (90s)
@@ -2106,7 +2106,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_UEV, 64)
                 .EUt(VA[UEV])
                 .duration(1800)
-                .CasingTier(UEV)
+                .tier(UEV)
                 .buildAndRegister();
 
         //  UIV (90s)
@@ -2125,7 +2125,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_UIV, 64)
                 .EUt(VA[UIV])
                 .duration(1800)
-                .CasingTier(UIV)
+                .tier(UIV)
                 .buildAndRegister();
 
         //  UXV (105s)
@@ -2145,7 +2145,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_UXV, 64)
                 .EUt(VA[UXV])
                 .duration(2100)
-                .CasingTier(UXV)
+                .tier(UXV)
                 .buildAndRegister();
 
         //  OpV (105s)
@@ -2167,7 +2167,7 @@ public class ComponentAssemblyLine {
                 .output(SENSOR_OpV, 64)
                 .EUt(VA[OpV])
                 .duration(2100)
-                .CasingTier(OpV)
+                .tier(OpV)
                 .buildAndRegister();
 
         //  MAX (120s)
@@ -2188,7 +2188,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_ULV, 64)
                 .EUt(VA[ULV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -2202,7 +2202,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_ULV, 64)
                 .EUt(VA[ULV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         //  LV (15s)
@@ -2215,7 +2215,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_LV, 64)
                 .EUt(VA[LV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -2226,7 +2226,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_LV, 64)
                 .EUt(VA[LV])
                 .duration(300)
-                .CasingTier(LV)
+                .tier(LV)
                 .buildAndRegister();
 
         //  MV (30s)
@@ -2239,7 +2239,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_MV, 64)
                 .EUt(VA[MV])
                 .duration(600)
-                .CasingTier(MV)
+                .tier(MV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -2250,7 +2250,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_MV, 64)
                 .EUt(VA[MV])
                 .duration(600)
-                .CasingTier(MV)
+                .tier(MV)
                 .buildAndRegister();
 
         //  HV (30s)
@@ -2263,7 +2263,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_HV, 64)
                 .EUt(VA[HV])
                 .duration(600)
-                .CasingTier(HV)
+                .tier(HV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -2274,7 +2274,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_HV, 64)
                 .EUt(VA[HV])
                 .duration(600)
-                .CasingTier(HV)
+                .tier(HV)
                 .buildAndRegister();
 
         //  EV (45s)
@@ -2288,7 +2288,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_EV, 64)
                 .EUt(VA[EV])
                 .duration(900)
-                .CasingTier(EV)
+                .tier(EV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -2300,7 +2300,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_EV, 64)
                 .EUt(VA[EV])
                 .duration(900)
-                .CasingTier(EV)
+                .tier(EV)
                 .buildAndRegister();
 
         //  IV (45s)
@@ -2314,7 +2314,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_IV, 64)
                 .EUt(VA[IV])
                 .duration(900)
-                .CasingTier(IV)
+                .tier(IV)
                 .buildAndRegister();
 
         COMPONENT_ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -2326,7 +2326,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_IV, 64)
                 .EUt(VA[IV])
                 .duration(900)
-                .CasingTier(IV)
+                .tier(IV)
                 .buildAndRegister();
 
         //  LuV (60s)
@@ -2345,7 +2345,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_LuV, 64)
                 .EUt(VA[LuV])
                 .duration(1200)
-                .CasingTier(LuV)
+                .tier(LuV)
                 .buildAndRegister();
 
         //  ZPM (60s)
@@ -2364,7 +2364,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_ZPM, 64)
                 .EUt(VA[ZPM])
                 .duration(1200)
-                .CasingTier(ZPM)
+                .tier(ZPM)
                 .buildAndRegister();
 
         //  UV (75s)
@@ -2384,7 +2384,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_UV, 64)
                 .EUt(VA[UV])
                 .duration(1500)
-                .CasingTier(UV)
+                .tier(UV)
                 .buildAndRegister();
 
         //  UHV (75s)
@@ -2405,7 +2405,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_UHV, 64)
                 .EUt(VA[UHV])
                 .duration(1500)
-                .CasingTier(UHV)
+                .tier(UHV)
                 .buildAndRegister();
 
         //  UEV (90s)
@@ -2429,7 +2429,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_UEV, 64)
                 .EUt(VA[UEV])
                 .duration(1800)
-                .CasingTier(UEV)
+                .tier(UEV)
                 .buildAndRegister();
 
         //  UIV (90s)
@@ -2450,7 +2450,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_UIV, 64)
                 .EUt(VA[UIV])
                 .duration(1800)
-                .CasingTier(UIV)
+                .tier(UIV)
                 .buildAndRegister();
 
         //  UXV (105s)
@@ -2472,7 +2472,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_UXV, 64)
                 .EUt(VA[UXV])
                 .duration(2100)
-                .CasingTier(UXV)
+                .tier(UXV)
                 .buildAndRegister();
 
         //  OpV (105s)
@@ -2496,7 +2496,7 @@ public class ComponentAssemblyLine {
                 .output(FIELD_GENERATOR_OpV, 64)
                 .EUt(VA[OpV])
                 .duration(2100)
-                .CasingTier(OpV)
+                .tier(OpV)
                 .buildAndRegister();
 
         //  MAX (120s)

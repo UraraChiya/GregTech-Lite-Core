@@ -344,7 +344,7 @@ public class GoowareCircuits {
                 .outputs(INTRAVITAL_SOC.getStackForm(2))
                 .EUt(VA[UHV])
                 .duration(24 * SECOND)
-                .CasingTier(4) // UHV
+                .tier(4) // UHV
                 .buildAndRegister();
     }
 

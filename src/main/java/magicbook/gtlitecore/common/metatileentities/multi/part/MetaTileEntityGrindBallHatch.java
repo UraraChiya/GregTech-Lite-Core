@@ -14,7 +14,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMultiblockPart;
 import magicbook.gtlitecore.api.capability.IGrindBallHatch;
 import magicbook.gtlitecore.api.metatileentity.multi.GTLiteMultiblockAbility;
-import magicbook.gtlitecore.client.GTLiteTextures;
+import magicbook.gtlitecore.client.renderer.texture.GTLiteTextures;
 import magicbook.gtlitecore.common.items.GTLiteMetaItems;
 import magicbook.gtlitecore.common.items.behaviors.GrindBallBehavior;
 import net.minecraft.client.resources.I18n;

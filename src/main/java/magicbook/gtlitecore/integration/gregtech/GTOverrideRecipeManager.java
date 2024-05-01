@@ -27,6 +27,7 @@ public class GTOverrideRecipeManager {
         EnergyHatches.init();
         LaserHatches.init();
         WirelessEnergyHatches.init();
+        ReinforcedRotorHolder.init();
         CreativeHatches.init();
     }
 

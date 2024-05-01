@@ -1,15 +1,18 @@
 package magicbook.gtlitecore.api.gui.impl;
 
 import magicbook.gtlitecore.api.gui.IFluidStyle;
+import magicbook.gtlitecore.integration.theoneprobe.FluidStackElement;
+import mcjty.theoneprobe.apiimpl.styles.ItemStyle;
 
 /**
- * Fluid Style.
+ * Fluid Style Builder
  *
  * <p>
- *     Please see {@link mcjty.theoneprobe.apiimpl.styles.ItemStyle},
- *     This is just a rewrite of this class,
- *     used for {@link magicbook.gtlitecore.integration.theoneprobe.FluidStackElement}.
+ *     This class is impl class of the interface {@link IFluidStyle},
+ *     just like {@link ItemStyle}, this class create a new style for {@link FluidStackElement}.
  * </p>
+ *
+ * @since 1.4.28
  */
 public class FluidStyle implements IFluidStyle {
 

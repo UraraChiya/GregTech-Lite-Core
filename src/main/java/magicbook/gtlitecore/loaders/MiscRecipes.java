@@ -23,10 +23,10 @@ import static gregtech.common.items.MetaItems.*;
 import static gregtech.common.metatileentities.MetaTileEntities.QUANTUM_TANK;
 import static gregtechfoodoption.GTFOMaterialHandler.LithiumCarbonate;
 import static gregtechfoodoption.GTFOMaterialHandler.RainbowSap;
+import static magicbook.gtlitecore.api.GTLiteValues.MINUTE;
 import static magicbook.gtlitecore.api.GTLiteValues.SECOND;
 import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
-import static magicbook.gtlitecore.api.unification.materials.info.GTLiteOrePrefix.swarm;
 import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
 
 public class MiscRecipes {
@@ -548,6 +548,7 @@ public class MiscRecipes {
 
     private static void OtherRecipes() {
         FluidCores();
+        ExoticExtruders();
 
         //  Gravi Star
         GTRecipeHandler.removeRecipesByInputs(AUTOCLAVE_RECIPES,
@@ -606,6 +607,51 @@ public class MiscRecipes {
                 .EUt(7)
                 .duration(110)
                 .buildAndRegister();
+
+        //  Crystal Matrix Lens
+        LATHE_RECIPES.recipeBuilder()
+                .input(plate, CrystalMatrix)
+                .output(lens, CrystalMatrix)
+                .output(dustSmall, CrystalMatrix)
+                .EUt(VA[UV])
+                .duration(MINUTE)
+                .buildAndRegister();
+
+        //  Infinity Lens
+        LATHE_RECIPES.recipeBuilder()
+                .input(plate, Infinity)
+                .output(lens, Infinity)
+                .output(dustSmall, Infinity)
+                .EUt(VA[UHV])
+                .duration(MINUTE / 2)
+                .buildAndRegister();
+
+        //  Magneto Hydrodynamically Constrained Star Matter
+        LATHE_RECIPES.recipeBuilder()
+                .input(plate, MagnetoHydrodynamicallyConstrainedStarMatter)
+                .output(lens, MagnetoHydrodynamicallyConstrainedStarMatter)
+                .output(dustSmall, MagnetoHydrodynamicallyConstrainedStarMatter)
+                .EUt(VA[UEV])
+                .duration(MINUTE / 4)
+                .buildAndRegister();
+
+        //  Spacetime Lens
+        LATHE_RECIPES.recipeBuilder()
+                .input(plate, Spacetime)
+                .output(lens, Spacetime)
+                .output(dustSmall, Spacetime)
+                .EUt(VA[UIV])
+                .duration(MINUTE / 6)
+                .buildAndRegister();
+
+        //  Eternity Lens
+        LATHE_RECIPES.recipeBuilder()
+                .input(plate, Eternity)
+                .output(lens, Eternity)
+                .output(dustSmall, Eternity)
+                .EUt(VA[UXV])
+                .duration(MINUTE / 8)
+                .buildAndRegister();
     }
 
     private static void ToolRecipes() {
@@ -627,6 +673,26 @@ public class MiscRecipes {
                 .output(toolHeadBuzzSaw, CubicBoronNitride)
                 .duration((int) (CubicBoronNitride.getMass() * 4))
                 .EUt(240)
+                .buildAndRegister();
+
+        //  Soapstone Grindball
+        VACUUM_CHAMBER_RECIPES.recipeBuilder()
+                .input(dust, Soapstone, 4)
+                .notConsumable(SHAPE_MOLD_BALL)
+                .fluidInputs(SolderingAlloy.getFluid(L))
+                .output(GRINDBALL_SOAPSTONE)
+                .EUt(VA[MV])
+                .duration(300)
+                .buildAndRegister();
+
+        //  Aluminium Grindball
+        VACUUM_CHAMBER_RECIPES.recipeBuilder()
+                .input(dust, Aluminium, 4)
+                .notConsumable(SHAPE_MOLD_BALL)
+                .fluidInputs(SolderingAlloy.getFluid(L))
+                .output(GRINDBALL_ALUMINIUM)
+                .EUt(VA[HV])
+                .duration(300)
                 .buildAndRegister();
 
         //  Boron Nitride Grinder
@@ -1085,7 +1151,7 @@ public class MiscRecipes {
                 .output(FLUID_CORE_T3)
                 .EUt(VA[LuV])
                 .duration(400)
-                .CasingTier(1)
+                .tier(1) // LuV
                 .buildAndRegister();
 
         //  T4
@@ -1099,7 +1165,7 @@ public class MiscRecipes {
                 .output(FLUID_CORE_T4)
                 .EUt(VA[ZPM])
                 .duration(400)
-                .CasingTier(2)
+                .tier(2) // ZPM
                 .buildAndRegister();
 
         //  T5
@@ -1114,7 +1180,7 @@ public class MiscRecipes {
                 .output(FLUID_CORE_T5)
                 .EUt(VA[UV])
                 .duration(400)
-                .CasingTier(3)
+                .tier(3) // UV
                 .buildAndRegister();
 
         //  T6
@@ -1130,7 +1196,7 @@ public class MiscRecipes {
                 .output(FLUID_CORE_T6)
                 .EUt(VA[UHV])
                 .duration(400)
-                .CasingTier(4)
+                .tier(4) // UHV
                 .buildAndRegister();
 
         //  T7
@@ -1146,7 +1212,7 @@ public class MiscRecipes {
                 .output(FLUID_CORE_T7)
                 .EUt(VA[UEV])
                 .duration(400)
-                .CasingTier(5)
+                .tier(5) // UEV
                 .buildAndRegister();
 
         //  T8
@@ -1162,7 +1228,7 @@ public class MiscRecipes {
                 .output(FLUID_CORE_T8)
                 .EUt(VA[UIV])
                 .duration(400)
-                .CasingTier(6)
+                .tier(6) // UIV
                 .buildAndRegister();
 
         //  T9
@@ -1178,7 +1244,7 @@ public class MiscRecipes {
                 .output(FLUID_CORE_T9)
                 .EUt(VA[UXV])
                 .duration(400)
-                .CasingTier(7)
+                .tier(7) // UXV
                 .buildAndRegister();
 
         //  T10
@@ -1194,7 +1260,7 @@ public class MiscRecipes {
                 .output(FLUID_CORE_T10)
                 .EUt(VA[OpV])
                 .duration(400)
-                .CasingTier(8)
+                .tier(8) // OpV
                 .buildAndRegister();
 
         //  General Circuits
@@ -1388,6 +1454,180 @@ public class MiscRecipes {
                 .output(GENERAL_CIRCUIT_MAX)
                 .EUt(VA[ULV])
                 .duration(20)
+                .buildAndRegister();
+    }
+
+    private static void ExoticExtruders() {
+
+        //  Plate
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_PLATE)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_PLATE)
+                .EUt(VA[UXV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Rod
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_ROD)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_ROD)
+                .EUt(VA[UXV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Bolt
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_BOLT)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_BOLT)
+                .EUt(VA[UXV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Ring
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_RING)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_RING)
+                .EUt(VA[UXV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Cell
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_CELL)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_CELL)
+                .EUt(VA[UXV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Ingot
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_INGOT)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_INGOT)
+                .EUt(VA[UXV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Wire
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_WIRE)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_WIRE)
+                .EUt(VA[UXV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Pipe Tiny
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_PIPE_TINY)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_PIPE_TINY)
+                .EUt(VA[UXV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Pipe Small
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_PIPE_SMALL)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_PIPE_SMALL)
+                .EUt(VA[UXV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Pipe Normal
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_PIPE_NORMAL)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_PIPE_NORMAL)
+                .EUt(VA[UXV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Pipe Large
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_PIPE_LARGE)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_PIPE_LARGE)
+                .EUt(VA[UXV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Pipe Huge
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_PIPE_HUGE)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_PIPE_HUGE)
+                .EUt(VA[UXV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Block
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_BLOCK)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_BLOCK)
+                .EUt(VA[UXV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Gear
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_GEAR)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_GEAR)
+                .EUt(VA[UXV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Bottle
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_BOTTLE)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_BOTTLE)
+                .EUt(VA[UXV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Foil
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_FOIL)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_FOIL)
+                .EUt(VA[UXV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Small Gear
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_GEAR_SMALL)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_GEAR_SMALL)
+                .EUt(VA[UXV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Long Rod
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_ROD_LONG)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_ROD_LONG)
+                .EUt(VA[UXV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Rotor
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(SHAPE_EXTRUDER_ROTOR)
+                .fluidInputs(WhiteDwarfMatter.getFluid(L * 4))
+                .output(EXOTIC_SHAPE_EXTRUDER_ROTOR)
+                .EUt(VA[UXV])
+                .duration(200)
                 .buildAndRegister();
     }
 

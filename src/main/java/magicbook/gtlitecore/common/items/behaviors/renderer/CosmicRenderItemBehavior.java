@@ -3,7 +3,7 @@ package magicbook.gtlitecore.common.items.behaviors.renderer;
 import codechicken.lib.model.ModelRegistryHelper;
 import codechicken.lib.util.TransformUtils;
 import magicbook.gtlitecore.api.item.ICosmicRenderBehavior;
-import magicbook.gtlitecore.client.renderer.CosmicItemRenderer;
+import magicbook.gtlitecore.client.renderer.handler.CosmicItemRenderer;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.entity.EntityLivingBase;

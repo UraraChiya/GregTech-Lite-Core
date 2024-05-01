@@ -6,17 +6,29 @@ import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.ToolProperty;
 import magicbook.gtlitecore.api.unification.GTLiteElements;
-import magicbook.gtlitecore.api.unification.materials.info.GTLiteMaterialIconSet;
 import net.minecraft.init.Enchantments;
-import net.minecraft.util.text.TextFormatting;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.*;
 import static gregtech.api.util.GTUtility.gregtechId;
+import static magicbook.gtlitecore.api.GTLiteValues.addObfuscatedFormula;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 import static magicbook.gtlitecore.api.unification.materials.info.GTLiteMaterialIconSet.*;
 
+/**
+ * Element Materials
+ *
+ * @author Magic_Sweepy
+ *
+ * <p>
+ *     This class is a part of {@code Material} class,
+ *     similar to name, this class is create correspondence material about {@code Element},
+ *     for element, please see: {@link GTLiteElements}.
+ * </p>
+ *
+ * @since 2.8.7-beta
+ */
 public class GTLiteElementMaterials {
 
     //  Range: 10000-11000
@@ -30,7 +42,7 @@ public class GTLiteElementMaterials {
                 .fluid()
                 .color(0x72A0C1)
                 .iconSet(METALLIC)
-                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_ROTOR, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_FRAME, GENERATE_FINE_WIRE)
+                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_ROTOR, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_FRAME, GENERATE_FINE_WIRE, GENERATE_LONG_ROD)
                 .element(GTLiteElements.Or)
                 .toolStats(ToolProperty.Builder.of(7.0F, 25.0F, 17000, 22)
                                        .magnetic()
@@ -99,7 +111,7 @@ public class GTLiteElementMaterials {
                 .blast(b -> b
                         .temp(12600, BlastProperty.GasTier.HIGHEST)
                         .blastStats(VA[UHV], 5901))
-                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_ROTOR, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_DENSE)
+                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_ROTOR, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE, GENERATE_DENSE, GENERATE_LENS, GENERATE_LONG_ROD)
                 .toolStats(ToolProperty.Builder.of(10.0F, 150.0F, 80000, 30)
                         .magnetic()
                         .unbreakable()
@@ -117,7 +129,7 @@ public class GTLiteElementMaterials {
                 .iconSet(BRIGHT)
                 .element(GTLiteElements.CrystalMatrix)
                 .fluidPipeProperties(40000, 10000, true, true, true, true)
-                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE)
+                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_LENS)
                 .build();
 
         //  10006 Ichorium
@@ -152,7 +164,7 @@ public class GTLiteElementMaterials {
                         .temp(15000, BlastProperty.GasTier.HIGHEST)
                         .blastStats(VA[UXV], 200)
                         .blastStats(VA[UXV], 200))
-                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_RING, GENERATE_ROTOR, GENERATE_FRAME, GENERATE_FINE_WIRE, GENERATE_GEAR, GENERATE_SMALL_GEAR)
+                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_RING, GENERATE_ROTOR, GENERATE_FRAME, GENERATE_FINE_WIRE, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_LONG_ROD)
                 .element(GTLiteElements.SpNt)
                 .build();
 
@@ -165,11 +177,11 @@ public class GTLiteElementMaterials {
                         .temp(16000, BlastProperty.GasTier.HIGHEST)
                         .blastStats(VA[OpV], 100)
                         .vacuumStats(VA[OpV], 100))
-                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_RING, GENERATE_ROTOR, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR)
+                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_RING, GENERATE_ROTOR, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_LENS, GENERATE_LONG_ROD)
                 .element(GTLiteElements.SpaceTime)
                 .rotorStats(360.0F, 1.0F, 524288000)
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED + "aaaaaa", false);
+                .setFormula(addObfuscatedFormula(), false);
 
         //  10010 Solarium
         Solarium = new Material.Builder(getId(), gregtechId("solarium"))
@@ -190,7 +202,7 @@ public class GTLiteElementMaterials {
                 .ingot()
                 .liquid(new FluidBuilder().temperature((int) (V[UIV] - V[UV])))
                 .color(0xBE00FF)
-                .iconSet(CUSTOM_RHUGNOR)
+                .iconSet(NUCLEAR)
                 .element(GTLiteElements.Rhugnor)
                 .blast(b -> b
                         .temp(12000, BlastProperty.GasTier.HIGHEST)
@@ -205,7 +217,7 @@ public class GTLiteElementMaterials {
                 .plasma(new FluidBuilder().temperature((int) (V[UXV] - V[LuV])))
                 .element(GTLiteElements.Hypogen)
                 .color(0xDC784B)
-                .iconSet(CUSTOM_HYPOGEN)
+                .iconSet(ENRICHED)
                 .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_FINE_WIRE)
                 .cableProperties(V[UXV], 32, 16, false)
                 .build();
@@ -345,7 +357,7 @@ public class GTLiteElementMaterials {
                 .liquid()
                 .iconSet(CUSTOM_ETERNITY)
                 .element(GTLiteElements.Eternity)
-                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR)
+                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_DENSE, GENERATE_ROD, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_LENS)
                 .build();
 
         //  10025 Tiberium
@@ -390,14 +402,24 @@ public class GTLiteElementMaterials {
                 .ingot()
                 .fluid()
                 .color(0xFFE140)
-                .iconSet(CUSTOM_LEGENDARIUM)
+                .iconSet(ENRICHED)
                 .element(GTLiteElements.Edenium)
                 .blast(b -> b
                         .temp(17800, BlastProperty.GasTier.HIGHEST)
                         .blastStats(VA[OpV], 365)
                         .vacuumStats(VA[OpV], 365))
-                .flags(GENERATE_PLATE, GENERATE_FOIL, GENERATE_FINE_WIRE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_SPRING)
+                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_GEAR, GENERATE_FOIL, GENERATE_FINE_WIRE, GENERATE_LONG_ROD, GENERATE_SPRING)
                 .cableProperties(V[OpV], 360, 640, false)
+                .toolStats(ToolProperty.Builder.of(50.0F, 8000.0F, 500000, 99)
+                        .unbreakable()
+                        .magnetic()
+                        .enchantment(Enchantments.SHARPNESS, 10)
+                        .enchantment(Enchantments.SWEEPING, 10)
+                        .enchantment(Enchantments.LOOTING, 10)
+                        .enchantment(Enchantments.FIRE_ASPECT, 10)
+                        .enchantment(Enchantments.EFFICIENCY, 10)
+                        .enchantment(Enchantments.FORTUNE, 10)
+                        .build())
                 .build();
 
         //  10029 Fatalium
@@ -444,7 +466,7 @@ public class GTLiteElementMaterials {
                 .ingot()
                 .fluid()
                 .color(0xFFD6FB)
-                .iconSet(GTLiteMaterialIconSet.CUSTOM_PRIMORDIAL_MATTER)
+                .iconSet(BRIGHT)
                 .element(GTLiteElements.PrimordialMatter)
                 .flags(GENERATE_PLATE, GENERATE_FOIL, GENERATE_FINE_WIRE)
                 .cableProperties(V[MAX], 500, 125, false)

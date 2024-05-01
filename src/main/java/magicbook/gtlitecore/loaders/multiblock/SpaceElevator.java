@@ -2,14 +2,13 @@ package magicbook.gtlitecore.loaders.multiblock;
 
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.unification.material.Material;
-import gregtech.common.blocks.MetaBlocks;
 import net.minecraftforge.fluids.FluidStack;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_OpV;
-import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
+import static gregtech.api.unification.ore.OrePrefix.ore;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.SPACE_ELEVATOR_DRILLING_MODULE;
+import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.SPACE_ELEVATOR_MINING_MODULE;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
 
@@ -630,7 +629,7 @@ public class SpaceElevator {
                     .fluidOutputs(fluidOutput.getFluid(amount))
                     .EUt(voltage)
                     .duration(20)
-                    .CasingTier(casingTier)
+                    .tier(casingTier)
                     .buildAndRegister();
         }
     }
@@ -654,7 +653,7 @@ public class SpaceElevator {
                     .fluidOutputs(fluidOutput.getPlasma(amount))
                     .EUt(voltage)
                     .duration(20)
-                    .CasingTier(casingTier)
+                    .tier(casingTier)
                     .buildAndRegister();
         }
     }
@@ -701,7 +700,7 @@ public class SpaceElevator {
                     .chancedOutput(ore, ore9, 256, chanceOre9, 500)
                     .EUt(voltage)
                     .duration(400)
-                    .CasingTier(casingTier)
+                    .tier(casingTier)
                     .buildAndRegister();
         }
 
@@ -724,7 +723,7 @@ public class SpaceElevator {
                     .chancedOutput(ore, ore9, 256, chanceOre9, 500)
                     .EUt(voltage)
                     .duration(200)
-                    .CasingTier(casingTier)
+                    .tier(casingTier)
                     .buildAndRegister();
         }
 
@@ -748,7 +747,7 @@ public class SpaceElevator {
                     .chancedOutput(ore, ore9, 512, chanceOre9, 500)
                     .EUt(voltage)
                     .duration(400)
-                    .CasingTier(casingTier)
+                    .tier(casingTier)
                     .buildAndRegister();
         }
 
@@ -771,7 +770,7 @@ public class SpaceElevator {
                     .chancedOutput(ore, ore9, 512, chanceOre9, 500)
                     .EUt(voltage)
                     .duration(200)
-                    .CasingTier(casingTier)
+                    .tier(casingTier)
                     .buildAndRegister();
         }
 
@@ -795,7 +794,7 @@ public class SpaceElevator {
                     .chancedOutput(ore, ore9, 1024, chanceOre9, 500)
                     .EUt(voltage)
                     .duration(400)
-                    .CasingTier(casingTier)
+                    .tier(casingTier)
                     .buildAndRegister();
         }
 
@@ -818,7 +817,7 @@ public class SpaceElevator {
                     .chancedOutput(ore, ore9, 1024, chanceOre9, 500)
                     .EUt(voltage)
                     .duration(200)
-                    .CasingTier(casingTier)
+                    .tier(casingTier)
                     .buildAndRegister();
         }
     }
