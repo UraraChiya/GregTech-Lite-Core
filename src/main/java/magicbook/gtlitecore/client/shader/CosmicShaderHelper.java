@@ -1,6 +1,6 @@
 package magicbook.gtlitecore.client.shader;
 
-import magicbook.gtlitecore.client.ClientEventHandler;
+import magicbook.gtlitecore.client.event.ClientEventHandler;
 import magicbook.gtlitecore.client.utils.ShaderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.math.BlockPos;

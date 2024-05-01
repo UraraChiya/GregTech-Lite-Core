@@ -16,8 +16,10 @@ import static gregtech.api.unification.material.MarkerMaterials.Color.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
-import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
-import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
+import static magicbook.gtlitecore.api.unification.GTLiteMaterials.NitrileButadieneRubber;
+import static magicbook.gtlitecore.api.unification.GTLiteMaterials.PolyPhosphonitrileFluoroRubber;
+import static magicbook.gtlitecore.common.items.GTLiteMetaItems.DUBNIUM_BOULE;
+import static magicbook.gtlitecore.common.items.GTLiteMetaItems.DUBNIUM_WAFER;
 
 public class OverrideRecipeLoader {
 

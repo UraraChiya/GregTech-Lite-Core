@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gtlitecore:items/material_sets/hypogen/foil",
-    "layer1": "gtlitecore:items/material_sets/hypogen/foil_overlay"
-  }
-}

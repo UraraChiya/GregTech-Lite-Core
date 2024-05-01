@@ -10,7 +10,7 @@ import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.utils.TooltipHelper;
 import magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps;
-import magicbook.gtlitecore.client.GTLiteTextures;
+import magicbook.gtlitecore.client.renderer.texture.GTLiteTextures;
 import magicbook.gtlitecore.common.blocks.BlockBoilerCasing;
 import magicbook.gtlitecore.common.blocks.BlockMultiblockCasing;
 import magicbook.gtlitecore.common.blocks.BlockUniqueCasing;

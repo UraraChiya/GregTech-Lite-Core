@@ -1,7 +1,8 @@
 package magicbook.gtlitecore.client;
 
 import magicbook.gtlitecore.api.utils.GTLiteLog;
-import magicbook.gtlitecore.client.renderer.StructureSelectRenderer;
+import magicbook.gtlitecore.client.renderer.handler.StructureSelectRenderer;
+import magicbook.gtlitecore.client.renderer.texture.GTLiteTextures;
 import magicbook.gtlitecore.common.CommonProxy;
 import magicbook.gtlitecore.common.blocks.GTLiteMetaBlocks;
 import net.minecraftforge.client.event.ModelRegistryEvent;

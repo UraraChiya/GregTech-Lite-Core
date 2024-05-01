@@ -1,12 +1,14 @@
 package magicbook.gtlitecore.api.capability;
 
+import gregtech.api.capability.GregtechDataCodes;
+
 /**
  * Data Codes for gtlitecore.
  *
  * @author Magic_Sweepy
  *
  * <p>
- *     Another class please see {@link gregtech.api.capability.GregtechDataCodes},
+ *     Another class please see {@link GregtechDataCodes},
  *     in the main class, channel id start from 0, and in this class,
  *     channel ID range is 9900-10000 (roughly).
  * </p>

@@ -367,7 +367,7 @@ public class SpintronicCircuits {
                 .output(EXOTIC_SOC, 4)
                 .EUt(VA[UIV])
                 .duration(10 * SECOND)
-                .CasingTier(6) // UIV
+                .tier(6) // UIV
                 .buildAndRegister();
     }
 

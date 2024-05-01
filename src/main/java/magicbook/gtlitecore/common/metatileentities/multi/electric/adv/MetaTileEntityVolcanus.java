@@ -25,7 +25,7 @@ import gregtech.client.renderer.texture.Textures;
 import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.metatileentities.MetaTileEntities;
-import magicbook.gtlitecore.client.GTLiteTextures;
+import magicbook.gtlitecore.client.renderer.texture.GTLiteTextures;
 import magicbook.gtlitecore.common.blocks.BlockMultiblockCasing;
 import magicbook.gtlitecore.common.blocks.GTLiteMetaBlocks;
 import magicbook.gtlitecore.common.metatileentities.GTLiteMetaTileEntities;

@@ -15,7 +15,7 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.common.blocks.*;
 import gregtech.common.metatileentities.MetaTileEntities;
 import magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps;
-import magicbook.gtlitecore.client.GTLiteTextures;
+import magicbook.gtlitecore.client.renderer.texture.GTLiteTextures;
 import magicbook.gtlitecore.common.blocks.BlockBoilerCasing;
 import magicbook.gtlitecore.common.blocks.BlockPCBFactoryCasing;
 import magicbook.gtlitecore.common.blocks.BlockUniqueCasing;

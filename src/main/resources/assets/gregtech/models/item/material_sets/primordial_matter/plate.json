@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gtlitecore:items/material_sets/primordial_matter/plate",
-    "layer1": "gtlitecore:items/material_sets/primordial_matter/plate_overlay"
-  }
-}

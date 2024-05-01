@@ -64,7 +64,7 @@ public class SupracausalCircuits {
                 .output(LIGHT_CONE_MODULE, 2)
                 .EUt(VA[UXV])
                 .duration(SECOND)
-                .CasingTier(5)
+                .tier(5)
                 .buildAndRegister();
 
     }
@@ -136,7 +136,7 @@ public class SupracausalCircuits {
                 .output(MICROWORMHOLE_GENERATOR)
                 .EUt(VA[UXV])
                 .duration(SECOND)
-                .CasingTier(7) // UXV
+                .tier(7) // UXV
                 .buildAndRegister();
 
         //  Macrowormhole Generator
@@ -151,7 +151,7 @@ public class SupracausalCircuits {
                 .output(MACROWORMHOLE_GENERATOR)
                 .EUt(VA[UXV])
                 .duration(SECOND)
-                .CasingTier(5)
+                .tier(5)
                 .buildAndRegister();
 
         //  Stabilized Wormhole Generator

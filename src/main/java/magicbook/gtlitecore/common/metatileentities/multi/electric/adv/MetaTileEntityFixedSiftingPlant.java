@@ -17,7 +17,7 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.*;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMufflerHatch;
-import magicbook.gtlitecore.client.GTLiteTextures;
+import magicbook.gtlitecore.client.renderer.texture.GTLiteTextures;
 import magicbook.gtlitecore.common.blocks.BlockBoilerCasing;
 import magicbook.gtlitecore.common.blocks.BlockStructureCasing;
 import magicbook.gtlitecore.common.blocks.GTLiteMetaBlocks;

@@ -173,5 +173,6 @@ public class RecipeManager {
         DysonSwarm.init();
         PlanetaryGasSiphon.init();
         NicollDysonBeamer.init();
+        EternityGarden.init();
     }
 }

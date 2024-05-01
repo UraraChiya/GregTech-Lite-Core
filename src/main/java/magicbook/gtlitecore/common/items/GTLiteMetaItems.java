@@ -4,7 +4,7 @@ import gregtech.api.items.metaitem.MetaItem;
 
 import java.util.List;
 
-public class GTLiteMetaItems {
+public final class GTLiteMetaItems {
     public static final List<MetaItem<?>> ITEMS = GTLiteMetaItems1.getMetaItems();
 
     //  Boards
@@ -355,6 +355,28 @@ public class GTLiteMetaItems {
     public static MetaItem<?>.MetaValueItem OMEGA_BARYON;
     public static MetaItem<?>.MetaValueItem MESON;
     public static MetaItem<?>.MetaValueItem ETA_MESON;
+
+    //  Extruders
+    public static final MetaItem<?>.MetaValueItem[] EXOTIC_SHAPE_EXTRUDERS = new MetaItem.MetaValueItem[27];
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_PLATE;
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_ROD;
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_BOLT;
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_RING;
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_CELL;
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_INGOT;
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_WIRE;
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_PIPE_TINY;
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_PIPE_SMALL;
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_PIPE_NORMAL;
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_PIPE_LARGE;
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_PIPE_HUGE;
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_BLOCK;
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_GEAR;
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_BOTTLE;
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_FOIL;
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_GEAR_SMALL;
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_ROD_LONG;
+    public static MetaItem<?>.MetaValueItem EXOTIC_SHAPE_EXTRUDER_ROTOR;
 
     //  Wrap Items
     public static MetaItem<?>.MetaValueItem WRAP_CIRCUIT_ULV;

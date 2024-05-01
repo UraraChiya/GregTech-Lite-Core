@@ -1,10 +1,13 @@
 package magicbook.gtlitecore.loaders;
 
+import gregtech.api.block.VariantBlock;
 import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.material.Material;
 import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.*;
@@ -20,16 +23,19 @@ import magicbook.gtlitecore.common.blocks.BlockMultiblockCasing;
 import magicbook.gtlitecore.common.blocks.*;
 import magicbook.gtlitecore.common.metatileentities.GTLiteMetaTileEntities;
 import net.minecraft.init.Items;
+import net.minecraft.util.IStringSerializable;
 
 import static gregicality.multiblocks.api.unification.GCYMMaterials.*;
 import static gregicality.multiblocks.common.metatileentities.GCYMMetaTileEntities.*;
 import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
 import static gregtechfoodoption.machines.GTFOTileEntities.GREENHOUSE;
+import static magicbook.gtlitecore.api.GTLiteValues.VZ;
 import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 import static magicbook.gtlitecore.api.unification.materials.info.GTLiteOrePrefix.*;
@@ -37,6 +43,7 @@ import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
 import static magicbook.gtlitecore.common.metatileentities.GTLiteMetaTileEntities.*;
 
 public class MachineRecipeLoader {
+
     public static void init() {
         SingleMachineRecipes();
         MultiblockControllerRecipes();
@@ -324,6 +331,19 @@ public class MachineRecipeLoader {
                         .duration(600))
                 .EUt(VA[LuV])
                 .duration(1200)
+                .buildAndRegister();
+
+        //  Grindball Hatch
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(HULL[EV])
+                .input(frameGt, TungstenSteel)
+                .input(gear, Titanium, 4)
+                .input(COMPONENT_GRINDER_TUNGSTEN)
+                .input(wireFine, Tungsten, 16)
+                .fluidInputs(RTMAlloy.getFluid(L * 4))
+                .output(MULTIPART_GRIND_BALL_HATCH)
+                .EUt(VA[IV])
+                .duration(600)
                 .buildAndRegister();
 
         //  Flotation Cell Regulator
@@ -2091,9 +2111,59 @@ public class MachineRecipeLoader {
                         .CWUt(2048)
                         .EUt(VA[OpV]))
                 .buildAndRegister();
+
+        //  Industrial Vacuum Chamber
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, RedSteel, 4)
+                .input(LARGE_VACUUM_CHAMBER, 16)
+                .input(circuit, MarkerMaterials.Tier.IV, 16)
+                .input(plateDouble, IncoloyMA956, 4)
+                .input(plateDouble, Talonite, 4)
+                .input(gear, Ruthenium, 4)
+                .input(gearSmall, IncoloyDS, 16)
+                .input(cableGtQuadruple, TungstenSteel, 4)
+                .fluidInputs(VanadiumSteel.getFluid(L * 4))
+                .output(INDUSTRIAL_VACUUM_CHAMBER)
+                .EUt(VA[IV])
+                .duration(800)
+                .buildAndRegister();
+
+        //  Industrial Bio Reactor
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, BismuthBronze, 4)
+                .input(LARGE_BIO_REACTOR, 16)
+                .input(circuit, MarkerMaterials.Tier.IV, 16)
+                .input(plateDouble, AusteniticStainlessSteel904L, 4)
+                .input(plateDouble, CobaltBrass, 4)
+                .input(gear, Talonite, 4)
+                .input(gearSmall, Inconel792, 16)
+                .input(cableGtQuadruple, RTMAlloy, 4)
+                .fluidInputs(Inconel625.getFluid(L * 4))
+                .output(INDUSTRIAL_BIO_REACTOR)
+                .EUt(VA[IV])
+                .duration(1200)
+                .buildAndRegister();
     }
 
     private static void MachineCasingRecipes() {
+        MetalCasings();
+        HighEnergyPhysicsCasings();
+        ComputerCasings();
+        FusionCasings();
+        UniqueCasings();
+        SpaceElevatorCasings();
+        PCBFactoryCasings();
+        YottaTankCells();
+        HyperCores();
+        CoolingTowerCasings();
+        FieldCasings();
+        PreciseAssemblyCasings();
+        ComponentAssemblyCasings();
+        DysonSwarmCasings();
+        NicollDysonBeamerCasings();
+    }
+
+    private static void MetalCasings() {
 
         //  Substrate Casing
         ModHandler.addShapedRecipe(true, "substrate_casing", GTLiteMetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.SUBSTRATE_CASING),
@@ -2151,37 +2221,6 @@ public class MachineRecipeLoader {
                 'P', new UnificationEntry(pipeNormalFluid, Inconel625),
                 'A', new UnificationEntry(plate, NiobiumTitanium));
 
-        //  Grindball Hatch
-        VACUUM_CHAMBER_RECIPES.recipeBuilder()
-                .input(dust, Soapstone, 4)
-                .notConsumable(SHAPE_MOLD_BALL)
-                .fluidInputs(SolderingAlloy.getFluid(L))
-                .output(GRINDBALL_SOAPSTONE)
-                .EUt(VA[MV])
-                .duration(300)
-                .buildAndRegister();
-
-        VACUUM_CHAMBER_RECIPES.recipeBuilder()
-                .input(dust, Aluminium, 4)
-                .notConsumable(SHAPE_MOLD_BALL)
-                .fluidInputs(SolderingAlloy.getFluid(L))
-                .output(GRINDBALL_ALUMINIUM)
-                .EUt(VA[HV])
-                .duration(300)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(HULL[EV])
-                .input(frameGt, TungstenSteel)
-                .input(gear, Titanium, 4)
-                .input(COMPONENT_GRINDER_TUNGSTEN)
-                .input(wireFine, Tungsten, 16)
-                .fluidInputs(RTMAlloy.getFluid(L * 4))
-                .output(MULTIPART_GRIND_BALL_HATCH)
-                .EUt(VA[IV])
-                .duration(600)
-                .buildAndRegister();
-
         //  Hatelloy-N Casing
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(HULL[EV], 2)
@@ -2215,38 +2254,13 @@ public class MachineRecipeLoader {
                 'P', new UnificationEntry(pipeNormalFluid, HastelloyN),
                 'A', new UnificationEntry(plate, VanadiumGallium));
 
-        //  Flotation Cell
-        ModHandler.addShapedRecipe(true, "flotation_cell", GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.FLOTATION_CELL, 2),
-                "AAA", "AGA", "APA",
-                'P', ELECTRIC_PUMP_IV,
-                'A', new UnificationEntry(plate, HastelloyN),
-                'G', MetaBlocks.MULTIBLOCK_CASING.getItemVariant(gregtech.common.blocks.BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, HastelloyN, 7)
-                .inputs(MetaBlocks.MULTIBLOCK_CASING.getItemVariant(gregtech.common.blocks.BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING))
-                .input(ELECTRIC_PUMP_IV)
-                .outputs(GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.FLOTATION_CELL, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
         //  Red Steel Casing
-        ModHandler.addShapedRecipe(true, "red_steel_casing", GTLiteMetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.RED_STEEL_CASING, 2),
-                "PhP", "TFT","PwP",
-                'P', new UnificationEntry(plateDouble, RedSteel),
-                'T', new UnificationEntry(plate, TitaniumCarbide),
-                'F', new UnificationEntry(frameGt, CobaltBrass));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plateDouble, RedSteel, 4)
-                .input(plate, TitaniumCarbide, 2)
-                .input(frameGt, CobaltBrass)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.RED_STEEL_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
+        createCasingRecipe("red_steel_casing",
+                GTLiteMetaBlocks.MULTIBLOCK_CASING,
+                BlockMultiblockCasing.MultiblockCasingType.RED_STEEL_CASING,
+                RedSteel,
+                TitaniumCarbide,
+                CobaltBrass);
 
         //  Advanced Invar Casing
         ASSEMBLER_RECIPES.recipeBuilder()
@@ -2276,52 +2290,611 @@ public class MachineRecipeLoader {
                 'A', new UnificationEntry(plate, Polybenzimidazole));
 
         //  Talonite Casing
-        ModHandler.addShapedRecipe(true, "talonite_casing", GTLiteMetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.TALONITE_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Talonite),
-                'F', new UnificationEntry(frameGt, Talonite));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Talonite, 6)
-                .input(frameGt, Talonite)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.TALONITE_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
+        createCasingRecipe("talonite_casing",
+                GTLiteMetaBlocks.MULTIBLOCK_CASING,
+                BlockMultiblockCasing.MultiblockCasingType.TALONITE_CASING,
+                Talonite);
 
         //  Naquadria Casing
-        ModHandler.addShapedRecipe(true, "naquadria_casing", GTLiteMetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.NAQUADRIA_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Naquadria),
-                'F', new UnificationEntry(frameGt, NaquadahAlloy));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Naquadria, 6)
-                .input(frameGt, NaquadahAlloy)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.NAQUADRIA_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
+        createCasingRecipe("naquadria_casing",
+                GTLiteMetaBlocks.MULTIBLOCK_CASING,
+                BlockMultiblockCasing.MultiblockCasingType.NAQUADRIA_CASING,
+                Naquadria,
+                NaquadahAlloy);
 
         //  Hastelloy-X78 Casing
-        ModHandler.addShapedRecipe(true, "hastelloy_x78_casing", GTLiteMetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.HASTELLOY_X78_CASING, 2),
-                "PhP", "TFT","PwP",
-                'P', new UnificationEntry(plateDouble, HastelloyX),
-                'T', new UnificationEntry(plate, HastelloyX78),
-                'F', new UnificationEntry(frameGt, HastelloyX));
+        createCasingRecipe("hastelloy_x78_casing",
+                GTLiteMetaBlocks.MULTIBLOCK_CASING,
+                BlockMultiblockCasing.MultiblockCasingType.HASTELLOY_X78_CASING,
+                HastelloyX,
+                HastelloyX78,
+                HastelloyX);
 
+        //  Iridium Casing
         ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plateDouble, HastelloyX, 4)
-                .input(plate, HastelloyX78, 2)
-                .input(frameGt, HastelloyX)
+                .inputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
+                .fluidInputs(Iridium.getFluid(L * 2))
                 .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.HASTELLOY_X78_CASING, 2))
+                .outputs(GTLiteMetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.IRIDIUM_CASING))
                 .EUt(VA[LV])
                 .duration(50)
                 .buildAndRegister();
 
+        //  Farm Casing
+        createCasingRecipe("aseptic_farm_casing",
+                GTLiteMetaBlocks.MULTIBLOCK_CASING,
+                BlockMultiblockCasing.MultiblockCasingType.ASEPTIC_FARM_CASING,
+                TreatedWood,
+                Aluminium);
+
+        //  Zirconium Carbide Casing
+        createCasingRecipe("zirconium_carbide_casing",
+                GTLiteMetaBlocks.METAL_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.ZIRCONIUM_CARBIDE_CASING,
+                ZirconiumCarbide);
+
+        //  Staballoy Casing
+        createCasingRecipe("staballoy_casing",
+                GTLiteMetaBlocks.METAL_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.STABALLOY_CASING,
+                Staballoy,
+                MaragingSteel250);
+
+        //  Quantum Casing
+        createCasingRecipe("quantum_casing",
+                GTLiteMetaBlocks.METAL_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.QUANTUM_CASING,
+                Naquadria,
+                QuantumAlloy,
+                Orichalcum);
+
+        //  Hyper casings
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(GTLiteMetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.NAQUADRIA_CASING))
+                .circuitMeta(6)
+                .fluidInputs(BlackPlutonium.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.HYPER_CASING))
+                .EUt(VA[LV])
+                .duration(50)
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.HYPER_CASING))
+                .circuitMeta(6)
+                .fluidInputs(BlackDwarfMatter.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.ADVANCED_HYPER_CASING))
+                .EUt(VA[LV])
+                .duration(50)
+                .buildAndRegister();
+
+        //  HG-1223 casing
+        createCasingRecipe("hg_1223_casing",
+                GTLiteMetaBlocks.METAL_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.HG1223_CASING,
+                HG1223,
+                WatertightSteel);
+
+        //  Eglin Steel casing
+        createCasingRecipe("eglin_steel_casing",
+                GTLiteMetaBlocks.METAL_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.EGLIN_STEEL_CASING,
+                EglinSteel);
+
+        //  Tritanium casing
+        createCasingRecipe("tritanium_casing",
+                GTLiteMetaBlocks.MULTIBLOCK_CASING,
+                BlockMultiblockCasing.MultiblockCasingType.TRITANIUM_CASING,
+                Tritanium,
+                HSSS);
+
+        //  Inconel-792 casing
+        createCasingRecipe("inconel_792_casing",
+                GTLiteMetaBlocks.METAL_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.INCONEL_792_CASING,
+                Inconel792,
+                WatertightSteel);
+
+        //  MAR-M200 Steel casing
+        ModHandler.addShapedRecipe(true, "mar_m200_steel_casing", GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.MAR_M200_CASING, 2),
+                "TPT", "RFR", "TPT",
+                'T', new UnificationEntry(plate, IncoloyMA956),
+                'P', new UnificationEntry(plate, WatertightSteel),
+                'R', new UnificationEntry(rotor, MARM200Steel),
+                'F', new UnificationEntry(frameGt, MARM200Steel));
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(plate, IncoloyMA956, 4)
+                .input(plate, WatertightSteel, 2)
+                .input(rotor, MARM200Steel, 2)
+                .input(frameGt, MARM200Steel)
+                .outputs(GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.MAR_M200_CASING, 2))
+                .EUt(VA[LV])
+                .duration(50)
+                .buildAndRegister();
+
+        //  HSS-S Casing
+        createCasingRecipe("hss_s_casing",
+                GTLiteMetaBlocks.METAL_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.HSS_S_CASING,
+                HSSS,
+                Americium);
+
+        //  Einsteinium Casing
+        createCasingRecipe("einsteinium_casing",
+                GTLiteMetaBlocks.METAL_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.EINSTEINIUM_CASING,
+                Einsteinium);
+
+        //  Nitinol-60 Casing
+        createCasingRecipe("nitinol_60_casing",
+                GTLiteMetaBlocks.METAL_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.NITINOL_60_CASING,
+                Nitinol60);
+
+        //  Fermium Casing
+        createCasingRecipe("fermium_casing",
+                GTLiteMetaBlocks.METAL_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.FERMIUM_CASING,
+                Fermium);
+
+        //  Mendelevium Casing
+        createCasingRecipe("mendelevium_casing",
+                GTLiteMetaBlocks.METAL_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.MENDELEVIUM_CASING,
+                Mendelevium);
+
+        //  Protactinium Casing
+        createCasingRecipe("protactinium_casing",
+                GTLiteMetaBlocks.METAL_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.PROTACTINIUM_CASING,
+                Protactinium);
+
+        //  HSS-G Casing
+        createCasingRecipe("hss_g_casing",
+                GTLiteMetaBlocks.METAL_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.HSS_G_CASING,
+                HSSG);
+
+        //  Incoloy-MA813 Casing
+        createCasingRecipe("incoloy_ma_813_casing",
+                GTLiteMetaBlocks.METAL_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.INCOLOY_MA_813_CASING,
+                IncoloyMA813,
+                IncoloyMA956);
+
+        //  Curium Casing
+        createCasingRecipe("curium_casing",
+                GTLiteMetaBlocks.MACHINE_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.CURIUM_CASING,
+                Curium);
+
+        //  Uranium Casing
+        createCasingRecipe("uranium_casing",
+                GTLiteMetaBlocks.MACHINE_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.URANIUM_CASING,
+                Uranium235,
+                Uranium238);
+
+        //  Potin Casing
+        createCasingRecipe("potin_casing",
+                GTLiteMetaBlocks.MACHINE_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.POTIN_CASING,
+                Potin,
+                StainlessSteel);
+
+        //  Plutonium Casing
+        createCasingRecipe("plutonium_casing",
+                GTLiteMetaBlocks.MACHINE_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.PLUTONIUM_CASING,
+                Plutonium239,
+                Plutonium241);
+
+        //  Black Steel Casing
+        createCasingRecipe("black_steel_casing",
+                GTLiteMetaBlocks.MACHINE_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.BLACK_STEEL_CASING,
+                BlackSteel);
+
+        //  Tumbaga Casing
+        createCasingRecipe("tumbaga_casing",
+                GTLiteMetaBlocks.MACHINE_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.TUMBAGA_CASING,
+                Tumbaga);
+
+        //  Rhodium Plated Palladium Casing
+        createCasingRecipe("rhodium_plated_palladium_casing",
+                GTLiteMetaBlocks.MACHINE_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.RHODIUM_PLATED_PALLADIUM_CASING,
+                RhodiumPlatedPalladium);
+
+        //  Berkelium Casing
+        createCasingRecipe("berkelium_casing",
+                GTLiteMetaBlocks.MACHINE_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.BERKELIUM_CASING,
+                Berkelium);
+
+        //  Californium Casing
+        createCasingRecipe("californium_casing",
+                GTLiteMetaBlocks.MACHINE_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.CALIFORNIUM_CASING,
+                Californium);
+
+        //  Neptunium Casing
+        createCasingRecipe("neptunium_casing",
+                GTLiteMetaBlocks.MACHINE_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.NEPTUNIUM_CASING,
+                Neptunium);
+
+        //  Nobelium Casing
+        createCasingRecipe("nobelium_casing",
+                GTLiteMetaBlocks.MACHINE_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.NOBELIUM_CASING,
+                Nobelium);
+
+        //  Lawrencium Casing
+        createCasingRecipe("lawrencium_casing",
+                GTLiteMetaBlocks.MACHINE_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.LAWRENCIUM_CASING,
+                Lawrencium);
+
+        //  Niobium Titanium Casing
+        createCasingRecipe("niobium_titanium_casing",
+                GTLiteMetaBlocks.MACHINE_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.NIOBIUM_TITANIUM_CASING,
+                NiobiumTitanium,
+                NiobiumNitride);
+
+        //  Botmium Casing
+        createCasingRecipe("botmium_casing",
+                GTLiteMetaBlocks.MACHINE_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.BOTMIUM_CASING,
+                Botmium);
+
+        //  Austenitic Stainless Steel Casing
+        createCasingRecipe("austenitic_stainless_steel_casing",
+                GTLiteMetaBlocks.METAL_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.AUSTENITIC_STAINLESS_STEEL_CASING,
+                AusteniticStainlessSteel904L);
+
+        //  Laurenium Casing
+        createCasingRecipe("laurenium_casing",
+                GTLiteMetaBlocks.MACHINE_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.LAURENIUM_CASING,
+                Laurenium);
+
+        //  Incoloy-DS Casing
+        createCasingRecipe("incoloy_ds_casing",
+                GTLiteMetaBlocks.MACHINE_CASING,
+                magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.INCOLOY_DS_CASING,
+                IncoloyDS,
+                RhodiumPlatedPalladium);
+
+        //  Maraging Steel 250 Casing
+        createCasingRecipe("maraging_steel_250_casing",
+                GTLiteMetaBlocks.STRUCTURE_CASING,
+                BlockStructureCasing.StructureCasingType.MARAGING_STEEL_250_CASING,
+                MaragingSteel250);
+
+        //  Ruridit Casing
+        createCasingRecipe("ruridit_casing",
+                GTLiteMetaBlocks.STRUCTURE_CASING,
+                BlockStructureCasing.StructureCasingType.RURIDIT_CASING,
+                Ruridit);
+
+        //  Osmiridium Casing
+        createCasingRecipe("osmiridium_casing",
+                GTLiteMetaBlocks.STRUCTURE_CASING,
+                BlockStructureCasing.StructureCasingType.OSMIRIDIUM_CASING,
+                Osmiridium);
+
+        //  Fluxed Electrum Casing
+        createCasingRecipe("fluxed_electrum_casing",
+                GTLiteMetaBlocks.STRUCTURE_CASING,
+                BlockStructureCasing.StructureCasingType.FLUXED_ELECTRUM_CASING,
+                FluxedElectrum,
+                TitaniumTungstenCarbide);
+
+        //  Rhodium Casing
+        createCasingRecipe("rhodium_casing",
+                GTLiteMetaBlocks.STRUCTURE_CASING,
+                BlockStructureCasing.StructureCasingType.RHODIUM_CASING,
+                Rhodium,
+                Ruthenium);
+
+        //  Naquadah Alloy Casing
+        createCasingRecipe("naquadah_alloy_casing",
+                GTLiteMetaBlocks.STRUCTURE_CASING,
+                BlockStructureCasing.StructureCasingType.NAQUADAH_ALLOY_CASING,
+                NaquadahAlloy,
+                Trinium);
+
+        //  Yotta Fluid Tank Casings
+        createCasingRecipe("force_field_constrained_casing",
+                GTLiteMetaBlocks.STRUCTURE_CASING,
+                BlockStructureCasing.StructureCasingType.FORCE_FIELD_CONSTRAINED_CASING,
+                MARM200Steel,
+                Rhodium);
+
+        //  Incoloy-020 Casing
+        createCasingRecipe("incoloy_020_casing",
+                GTLiteMetaBlocks.STRUCTURE_CASING,
+                BlockStructureCasing.StructureCasingType.INCOLOY_020_CASING,
+                Incoloy020);
+
+        //  Tantalum Carbide Casing
+        createCasingRecipe("tantalum_carbide_casing",
+                GTLiteMetaBlocks.STRUCTURE_CASING,
+                BlockStructureCasing.StructureCasingType.TANTALUM_CARBIDE_CASING,
+                TantalumCarbide);
+
+        //  Naquadah Casing
+        createCasingRecipe("naquadah_casing",
+                GTLiteMetaBlocks.STRUCTURE_CASING,
+                BlockStructureCasing.StructureCasingType.NAQUADAH_CASING,
+                Naquadah);
+
+        //  Naquadah Gearbox Casing
+        ModHandler.addShapedRecipe(true, "naquadah_gearbox_casing", GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.NAQUADAH_GEARBOX_CASING, 2),
+                "PhP", "GFG", "PwP",
+                'P', new UnificationEntry(plate, Naquadah),
+                'G', new UnificationEntry(gear, Naquadah),
+                'F', new UnificationEntry(frameGt, Naquadah));
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(plate, Naquadah, 4)
+                .input(gear, Naquadah, 2)
+                .input(frameGt, Naquadah)
+                .circuitMeta(4)
+                .outputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.NAQUADAH_GEARBOX_CASING, 2))
+                .EUt(VA[LV])
+                .duration(50)
+                .buildAndRegister();
+
+        //  Hattrium Casing
+        createCasingRecipe("hattrium_casing",
+                GTLiteMetaBlocks.STRUCTURE_CASING,
+                BlockStructureCasing.StructureCasingType.HATTRIUM_CASING,
+                Hattrium);
+
+        //  Duraluminium Casing
+        createCasingRecipe("duraluminium_casing",
+                GTLiteMetaBlocks.STRUCTURE_CASING,
+                BlockStructureCasing.StructureCasingType.DURALUMINIUM_ALLOY_CASING,
+                DuraluminiumAlloy);
+    }
+
+    private static void HighEnergyPhysicsCasings() {
+        //  High Energy Casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Osmiridium)
+                .input(plate, Osmiridium, 6)
+                .input(circuit, MarkerMaterials.Tier.LuV)
+                .input(wireFine, Iridium, 16)
+                .input(wireFine, Cupronickel, 16)
+                .input(wireGtSingle, VanadiumGallium, 2)
+                .outputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.HIGH_ENERGY_CASING, 2))
+                .EUt(VA[ZPM])
+                .duration(100)
+                .buildAndRegister();
+
+        //  Advanced High Energy Casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Europium)
+                .input(plate, Europium, 6)
+                .input(circuit, MarkerMaterials.Tier.ZPM)
+                .input(wireFine, Ruridit, 16)
+                .input(wireFine, Kanthal, 16)
+                .input(wireGtSingle, YttriumBariumCuprate, 2)
+                .outputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.ADVANCED_HIGH_ENERGY_CASING, 2))
+                .EUt(VA[UV])
+                .duration(100)
+                .buildAndRegister();
+
+        //  Ultimate High Energy Casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Americium)
+                .input(plate, Americium, 6)
+                .input(circuit, MarkerMaterials.Tier.UV)
+                .input(wireFine, Hdcs, 16)
+                .input(wireFine, Nichrome, 16)
+                .input(wireGtSingle, Europium, 2)
+                .outputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.ULTIMATE_HIGH_ENERGY_CASING, 2))
+                .EUt(VA[UHV])
+                .duration(100)
+                .buildAndRegister();
+
+        //  Molecular Coil
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, TungstenSteel)
+                .input(plate, BlueSteel, 4)
+                .input(wireFine, Tantalum, 16)
+                .input(wireFine, Palladium, 16)
+                .input(foil, Rhodium, 8)
+                .input(wireGtDouble, Naquadah, 4)
+                .fluidInputs(RTMAlloy.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.MOLECULAR_COIL, 2))
+                .EUt(VA[ZPM])
+                .duration(160)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  Hollow Casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, RhodiumPlatedPalladium)
+                .input(pipeNormalFluid, Naquadah, 2)
+                .input(ELECTRIC_PUMP_IV, 2)
+                .input(ring, StainlessSteel, 32)
+                .input(wireGtSingle, Platinum, 2)
+                .fluidInputs(BlackSteel.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.HOLLOW_CASING, 2))
+                .EUt(VA[IV])
+                .duration(200)
+                .buildAndRegister();
+
+        //  Spacetime Casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Neutronium)
+                .inputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.HOLLOW_CASING))
+                .input(plate, Infinity, 6)
+                .input(FIELD_GENERATOR_UEV, 2)
+                .input(wireFine, Vibranium, 16)
+                .fluidInputs(Rhugnor.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.SPACETIME_CASING, 2))
+                .EUt(VA[UEV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  Dimensional Bridge Casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Orichalcum)
+                .inputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.ADVANCED_HIGH_ENERGY_CASING))
+                .input(plate, Vibranium, 6)
+                .input(FIELD_GENERATOR_UHV, 2)
+                .input(wireFine, YttriumBariumCuprate, 16)
+                .fluidInputs(Tritanium.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.DIMENSIONAL_BRIDGE_CASING, 2))
+                .EUt(VA[UHV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  Dimensional Preserve Casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Neutronium)
+                .inputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.ULTIMATE_HIGH_ENERGY_CASING))
+                .input(plate, Infinity, 6)
+                .input(FIELD_GENERATOR_UEV, 2)
+                .input(wireFine, Europium, 16)
+                .fluidInputs(Adamantium.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.DIMENSIONAL_PRESERVE_CASING, 2))
+                .EUt(VA[UEV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  Quantum coil
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(wireGtDouble, Europium, 8)
+                .input(foil, Pikyonium64B, 8)
+                .fluidInputs(QuantumAlloy.getFluid(L))
+                .outputs(GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.QUANTUM_COIL))
+                .EUt(VA[UEV])
+                .duration(1100)
+                .buildAndRegister();
+
+        //  Quantum Glass
+        VACUUM_CHAMBER_RECIPES.recipeBuilder()
+                .input(plate, ZBLANGlass, 4)
+                .notConsumable(SHAPE_MOLD_BLOCK)
+                .fluidInputs(SolderingAlloy.getFluid(L))
+                .fluidInputs(Cinobite.getFluid(L / 2))
+                .outputs(GTLiteMetaBlocks.TRANSPARENT_CASING.getItemVariant(BlockTransparentCasing.TransparentCasingType.QUANTUM_GLASS))
+                .EUt(VA[UHV])
+                .duration(200)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+    }
+
+    private static void ComputerCasings() {
+        //  Bioware Computer Casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Ruridit)
+                .input(plate, Ruridit, 6)
+                .input(ELECTRIC_PUMP_IV, 2)
+                .input(wireFine, BorosilicateGlass, 32)
+                .input(wireFine, Rhodium, 32)
+                .input(cableGtSingle, NiobiumTitanium, 2)
+                .fluidInputs(Biomass.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.COMPUTER_CASING.getItemVariant(BlockComputerCasing.ComputerCasingType.BIOWARE_COMPUTER_CASING, 2))
+                .EUt(VA[LuV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  Advanced Bioware Computer Casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(GTLiteMetaBlocks.COMPUTER_CASING.getItemVariant(BlockComputerCasing.ComputerCasingType.BIOWARE_COMPUTER_CASING))
+                .input(circuit, MarkerMaterials.Tier.LuV)
+                .input(wireFine, Aluminium, 64)
+                .input(wireFine, Cupronickel, 64)
+                .input(wireGtSingle, SamariumIronArsenicOxide, 4)
+                .outputs(GTLiteMetaBlocks.COMPUTER_CASING.getItemVariant(BlockComputerCasing.ComputerCasingType.ADVANCED_BIOWARE_COMPUTER_CASING, 2))
+                .EUt(VA[LuV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  Bioware Heat Vent
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Iridium)
+                .input(ELECTRIC_MOTOR_LuV, 2)
+                .input(rotor, Iridium, 2)
+                .input(pipeTinyFluid, VanadiumSteel, 16)
+                .input(plate, TinAlloy, 16)
+                .input(wireFine, UraniumTriplatinum, 4)
+                .fluidInputs(PCBCoolant.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.COMPUTER_CASING.getItemVariant(BlockComputerCasing.ComputerCasingType.BIOWARE_COMPUTER_HEAT_VENT, 2))
+                .EUt(VA[IV])
+                .duration(50)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  Bioware Computing Casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Osmiridium)
+                .input(PETRI_DISH)
+                .input(plate, VanadiumGallium, 4)
+                .input(dust, Sarcosine, 3)
+                .input(FIELD_GENERATOR_LuV, 2)
+                .input(cableGtSingle, NiobiumNitride)
+                .outputs(GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.BIOWARE_COMPUTING_CASING))
+                .EUt(VA[LuV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  Quantum Computer Casings
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Duranium)
+                .input(plate, Duranium, 6)
+                .input(circuit, MarkerMaterials.Tier.ZPM)
+                .input(wireFine, Osmiridium, 32)
+                .input(wireFine, Rhenium, 32)
+                .input(wireGtSingle, YttriumBariumCuprate, 2)
+                .outputs(GTLiteMetaBlocks.QUANTUM_COMPUTER_CASING.getItemVariant(BlockQuantumComputerCasing.QCCasingType.COMPUTER_CASING, 2))
+                .EUt(VA[ZPM])
+                .duration(200)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(GTLiteMetaBlocks.QUANTUM_COMPUTER_CASING.getItemVariant(BlockQuantumComputerCasing.QCCasingType.COMPUTER_CASING))
+                .input(circuit, MarkerMaterials.Tier.UV)
+                .input(wireFine, Titanium, 64)
+                .input(wireFine, RedAlloy, 64)
+                .input(wireGtSingle, UraniumRhodiumDinaquadide, 4)
+                .outputs(GTLiteMetaBlocks.QUANTUM_COMPUTER_CASING.getItemVariant(BlockQuantumComputerCasing.QCCasingType.ADVANCED_COMPUTER_CASING))
+                .EUt(VA[ZPM])
+                .duration(200)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Titanium)
+                .input(ELECTRIC_MOTOR_LuV, 2)
+                .input(rotor, Titanium, 2)
+                .input(pipeTinyFluid, Titanium, 16)
+                .input(plate, BlackBronze, 16)
+                .input(wireGtSingle, IndiumTinBariumTitaniumCuprate)
+                .outputs(GTLiteMetaBlocks.QUANTUM_COMPUTER_CASING.getItemVariant(BlockQuantumComputerCasing.QCCasingType.HEAT_VENT, 2))
+                .EUt(VA[LuV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+    }
+
+    private static void FusionCasings() {
         //  Fusion Casing Mk IV
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(HULL[UHV])
@@ -2490,7 +3063,804 @@ public class MachineRecipeLoader {
                 .duration(50)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
+    }
 
+    private static void UniqueCasings() {
+
+        //  Flotation Cell
+        ModHandler.addShapedRecipe(true, "flotation_cell", GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.FLOTATION_CELL, 2),
+                "AAA", "AGA", "APA",
+                'P', ELECTRIC_PUMP_IV,
+                'A', new UnificationEntry(plate, HastelloyN),
+                'G', MetaBlocks.MULTIBLOCK_CASING.getItemVariant(gregtech.common.blocks.BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING));
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(plate, HastelloyN, 7)
+                .inputs(MetaBlocks.MULTIBLOCK_CASING.getItemVariant(gregtech.common.blocks.BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING))
+                .input(ELECTRIC_PUMP_IV)
+                .outputs(GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.FLOTATION_CELL, 2))
+                .EUt(VA[LV])
+                .duration(50)
+                .buildAndRegister();
+
+        //  Advanced Filter Casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Iridium)
+                .inputs(MetaBlocks.CLEANROOM_CASING.getItemVariant(gregtech.common.blocks.BlockCleanroomCasing.CasingType.FILTER_CASING))
+                .input(ELECTRIC_MOTOR_UV)
+                .input(rotor, Iridium)
+                .input(ITEM_FILTER)
+                .input(FLUID_FILTER)
+                .input(stickLong, Iridium, 2)
+                .fluidInputs(SolderingAlloy.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.CLEANROOM_CASING.getItemVariant(BlockCleanroomCasing.CleanroomCasingType.ADVANCED_FILTER_CASING))
+                .EUt(VA[LuV])
+                .duration(200)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  Stellar Containment Casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, MaragingSteel250)
+                .input(plate, Hdcs, 4)
+                .inputs(VOLTAGE_COIL_ZPM.getStackForm(2))
+                .input(screw, IncoloyMA813, 8)
+                .fluidInputs(Inconel792.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.STELLAR_CONTAINMENT_CASING))
+                .EUt(VA[UHV])
+                .duration(50)
+                .buildAndRegister();
+
+        //  Advanced Assembly Control Casing
+        ModHandler.addShapedRecipe(true, "casing_assembly_control.advanced", GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.ADVANCED_ASSEMBLY_CONTROL_CASING, 2),
+                "OPO", "SFE", "OMO",
+                'O', new UnificationEntry(circuit, MarkerMaterials.Tier.UV),
+                'P', ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT,
+                'F', new UnificationEntry(frameGt, NaquadahAlloy),
+                'S', SENSOR_ZPM,
+                'E', EMITTER_ZPM,
+                'M', ELECTRIC_MOTOR_ZPM);
+
+        //  Advanced Assembly Casing
+        ModHandler.addShapedRecipe(true, "casing_assembly_line.advanced", GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.ADVANCED_ASSEMBLY_LINE_CASING, 2),
+                "PGP", "RFR", "PGP",
+                'P', new UnificationEntry(plate, Iridium),
+                'G', new UnificationEntry(gear, Osmiridium),
+                'R', ROBOT_ARM_ZPM,
+                'F', new UnificationEntry(frameGt, NaquadahAlloy));
+
+        //  Circuit Assembly Casing
+        ModHandler.addShapedRecipe(true, "circuit_assembly_casing", GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.CIRCUIT_ASSEMBLY_LINE_CASING, 2),
+                "PGP", "RFR", "PGP",
+                'P', new UnificationEntry(plate, Osmium),
+                'G', new UnificationEntry(gear, Rhodium),
+                'R', ROBOT_ARM_LuV,
+                'F', new UnificationEntry(frameGt, HSSE));
+
+        //  Advanced Grate Casing
+        ModHandler.addShapedRecipe(true, "advanced_grate_casing", GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.ADVANCED_GRATE_CASING, 2),
+                "PRP", "PXP", "PMP",
+                'X', MetaBlocks.MULTIBLOCK_CASING.getItemVariant(gregtech.common.blocks.BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING),
+                'R', new UnificationEntry(rotor, StainlessSteel),
+                'M', ELECTRIC_MOTOR_LuV,
+                'P', new UnificationEntry(plate, Osmiridium));
+
+        //  Reflective Casing
+        ModHandler.addShapedRecipe(true, "reflective_casing", GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.REFLECTIVE_CASING, 2),
+                "NNN", "FHF", "WWW",
+                'H', HULL[IV].getStackForm(),
+                'N', NEUTRON_REFLECTOR,
+                'F', FIELD_GENERATOR_IV,
+                'W', new UnificationEntry(cableGtSingle, Platinum));
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(HULL[IV])
+                .input(NEUTRON_REFLECTOR, 3)
+                .input(FIELD_GENERATOR_IV, 2)
+                .input(cableGtSingle, Platinum, 3)
+                .outputs(GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.REFLECTIVE_CASING, 2))
+                .EUt(VA[LV])
+                .duration(50)
+                .buildAndRegister();
+
+        //  Ultimate Engine Intake Casing
+        ModHandler.addShapedRecipe(true, "ultimate_engine_intake_casing", GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.ULTIMATE_ENGINE_INTAKE_CASING, 2),
+                "PhP", "RCR", "PwP",
+                'C', GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.NAQUADAH_CASING),
+                'R', new UnificationEntry(rotor, Naquadah),
+                'P', new UnificationEntry(pipeNormalFluid, Naquadah));
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(rotor, Naquadah, 2)
+                .input(pipeNormalFluid, Naquadah, 4)
+                .inputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.NAQUADAH_CASING))
+                .outputs(GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.ULTIMATE_ENGINE_INTAKE_CASING, 2))
+                .EUt(VA[LV])
+                .duration(50)
+                .buildAndRegister();
+
+        //  Advanced Crushing Wheel
+        ModHandler.addShapedRecipe(true, "advanced_crushing_wheels", GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.ADVANCED_CRUSHING_WHEEL, 2),
+                "GGG", "ECE", "EXE",
+                'C', GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.LAURENIUM_CASING),
+                'G', new UnificationEntry(gearSmall, HSSE),
+                'E', new UnificationEntry(gear, TungstenCarbide),
+                'X', ELECTRIC_MOTOR_LuV);
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(gearSmall, HSSE, 3)
+                .input(gear, TungstenCarbide, 4)
+                .input(ELECTRIC_MOTOR_LuV)
+                .inputs(GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.LAURENIUM_CASING))
+                .outputs(GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.ADVANCED_CRUSHING_WHEEL, 2))
+                .EUt(VA[LV])
+                .duration(50)
+                .buildAndRegister();
+
+        //  Advanced Slicing Blade
+        ModHandler.addShapedRecipe(true, "advanced_slicing_blades", GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.ADVANCED_SLICING_BLADE, 2),
+                "PPP", "GCG", "GMG",
+                'C', GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.TANTALUM_CARBIDE_CASING),
+                'M', ELECTRIC_MOTOR_LuV,
+                'G', new UnificationEntry(gear, TungstenCarbide),
+                'P', new UnificationEntry(plate, HSSE));
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(plate, HSSE, 3)
+                .input(gear, TungstenCarbide, 4)
+                .input(ELECTRIC_MOTOR_LuV)
+                .inputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.TANTALUM_CARBIDE_CASING))
+                .outputs(GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.ADVANCED_SLICING_BLADE, 2))
+                .EUt(VA[LV])
+                .duration(50)
+                .buildAndRegister();
+    }
+
+    private static void SpaceElevatorCasings() {
+        //  Basic Casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, TungstenCarbide)
+                .inputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST))
+                .input(plate, Pikyonium64B, 6)
+                .input(wireFine, Zinc, 16)
+                .fluidInputs(Kanthal.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.SPACE_ELEVATOR_CASING.getItemVariant(BlockSpaceElevatorCasing.ElevatorCasingType.BASIC_CASING, 2))
+                .EUt(VA[UV])
+                .duration(50)
+                .buildAndRegister();
+
+        //  Internal Structure Casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Osmiridium)
+                .input(plate, IncoloyMA813, 6)
+                .input(ELECTRIC_PUMP_IV, 2)
+                .input(CONVEYOR_MODULE_IV, 2)
+                .input(ROBOT_ARM_IV, 2)
+                .input(wireFine, Tantalum, 16)
+                .fluidInputs(RTMAlloy.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.SPACE_ELEVATOR_CASING.getItemVariant(BlockSpaceElevatorCasing.ElevatorCasingType.INTERNAL_STRUCTURE, 2))
+                .EUt(VA[UV])
+                .duration(50)
+                .buildAndRegister();
+
+        //  Support Structure Casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Naquadah)
+                .input(plate, TungstenSteel, 6)
+                .input(NEUTRON_REFLECTOR, 2)
+                .input(stick, Inconel625, 2)
+                .input(stick, MARM200Steel, 2)
+                .input(wireFine, Lead, 16)
+                .fluidInputs(SolderingAlloy.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.SPACE_ELEVATOR_CASING.getItemVariant(BlockSpaceElevatorCasing.ElevatorCasingType.SUPPORT_STRUCTURE, 2))
+                .EUt(VA[UV])
+                .duration(50)
+                .buildAndRegister();
+
+        //  Floor Casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(MetaBlocks.CLEANROOM_CASING.getItemVariant(gregtech.common.blocks.BlockCleanroomCasing.CasingType.PLASCRETE))
+                .fluidInputs(FluorinatedEthylenePropylene.getFluid(L * 2)) // todo use more powerful plastic, this is too soft!
+                .outputs(GTLiteMetaBlocks.SPACE_ELEVATOR_CASING.getItemVariant(BlockSpaceElevatorCasing.ElevatorCasingType.FLOOR))
+                .circuitMeta(6)
+                .EUt(VA[HV])
+                .duration(50)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  Cable Casing
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(HULL[UV])
+                .input(ELECTRIC_MOTOR_UV, 2)
+                .input(circuit, MarkerMaterials.Tier.UV, 4)
+                .input(plate, HSSS, 4)
+                .input(gear, Duranium, 3)
+                .input(gearSmall, HY1301, 6)
+                .input(wireFine, YttriumBariumCuprate, 16)
+                .fluidInputs(SolderingAlloy.getFluid(L * 40))
+                .fluidInputs(Lubricant.getFluid(16000))
+                .fluidInputs(Tantalloy61.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.SPACE_ELEVATOR_CASING.getItemVariant(BlockSpaceElevatorCasing.ElevatorCasingType.CABLE_CASING))
+                .EUt(VA[UV])
+                .duration(200)
+                .stationResearch(b -> b
+                        .researchStack(GTLiteMetaBlocks.SPACE_ELEVATOR_CASING.getItemVariant(BlockSpaceElevatorCasing.ElevatorCasingType.BASIC_CASING))
+                        .CWUt(128)
+                        .EUt(VA[UV]))
+                .buildAndRegister();
+
+        //  Motor MK1
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(HULL[IV])
+                .input(frameGt, HSSG)
+                .input(ELECTRIC_MOTOR_IV, 4)
+                .input(wireFine, Platinum, 16)
+                .fluidInputs(SolderingAlloy.getFluid(L * 4))
+                .fluidInputs(Lubricant.getFluid(1600))
+                .fluidInputs(Americium.getFluid(L))
+                .outputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK1, 4))
+                .EUt(VA[ZPM])
+                .duration(200)
+                .stationResearch(b -> b
+                        .researchStack(GTLiteMetaBlocks.SPACE_ELEVATOR_CASING.getItemVariant(BlockSpaceElevatorCasing.ElevatorCasingType.INTERNAL_STRUCTURE))
+                        .CWUt(64)
+                        .EUt(VA[ZPM]))
+                .buildAndRegister();
+
+        //  Motor MK2
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(frameGt, HSSE)
+                .inputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK1))
+                .input(ELECTRIC_MOTOR_LuV, 4)
+                .input(wireFine, NiobiumTitanium, 16)
+                .fluidInputs(SolderingAlloy.getFluid(L * 4))
+                .fluidInputs(Lubricant.getFluid(1600))
+                .fluidInputs(Orichalcum.getFluid(L))
+                .outputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK2, 4))
+                .EUt(VA[UV])
+                .duration(200)
+                .stationResearch(b -> b
+                        .researchStack(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK1))
+                        .CWUt(128)
+                        .EUt(VA[UV]))
+                .buildAndRegister();
+
+        //  Motor MK3
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(frameGt, HSSS)
+                .inputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK2))
+                .input(ELECTRIC_MOTOR_ZPM, 4)
+                .input(wireFine, VanadiumGallium, 16)
+                .fluidInputs(SolderingAlloy.getFluid(L * 8))
+                .fluidInputs(Lubricant.getFluid(3200))
+                .fluidInputs(Adamantium.getFluid(L))
+                .outputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK3, 4))
+                .EUt(VA[UHV])
+                .duration(200)
+                .stationResearch(b -> b
+                        .researchStack(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK2))
+                        .CWUt(256)
+                        .EUt(VA[UHV]))
+                .buildAndRegister();
+
+        //  Motor MK4
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(frameGt, Hdcs)
+                .inputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK3))
+                .input(ELECTRIC_MOTOR_UV, 4)
+                .input(wireFine, YttriumBariumCuprate, 16)
+                .fluidInputs(SolderingAlloy.getFluid(L * 8))
+                .fluidInputs(Lubricant.getFluid(3200))
+                .fluidInputs(Mithril.getFluid(L))
+                .outputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK4, 4))
+                .EUt(VA[UEV])
+                .duration(200)
+                .stationResearch(b -> b
+                        .researchStack(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK3))
+                        .CWUt(512)
+                        .EUt(VA[UEV]))
+                .buildAndRegister();
+
+        //  Motor MK5
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(frameGt, Infinity)
+                .inputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK4))
+                .input(ELECTRIC_MOTOR_UHV, 4)
+                .input(wireFine, Europium, 16)
+                .fluidInputs(SolderingAlloy.getFluid(L * 16))
+                .fluidInputs(Lubricant.getFluid(6400))
+                .fluidInputs(Rhugnor.getFluid(L))
+                .outputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK5, 4))
+                .EUt(VA[UIV])
+                .duration(200)
+                .stationResearch(b -> b
+                        .researchStack(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK4))
+                        .CWUt(1024)
+                        .EUt(VA[UIV]))
+                .buildAndRegister();
+    }
+
+    private static void PCBFactoryCasings() {
+        //  PCB T1 casing
+        ModHandler.addShapedRecipe(true, "photolithographic_framework_casing", GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, 2),
+                "PhP", "PFP","PwP",
+                'P', new UnificationEntry(plate, Iridium),
+                'F', new UnificationEntry(frameGt, Naquadah));
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(plate, Iridium, 6)
+                .input(frameGt, Naquadah)
+                .circuitMeta(6)
+                .outputs(GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, 2))
+                .EUt(VA[LV])
+                .duration(50)
+                .buildAndRegister();
+
+        //  PCB T2 casing
+        ModHandler.addShapedRecipe(true, "mold_printing_assembly_framework_casing", GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.MOLD_PRINTING_ASSEMBLY_FRAMEWORK_CASING, 2),
+                "PhP", "PFP","PwP",
+                'P', new UnificationEntry(plate, Pikyonium64B),
+                'F', new UnificationEntry(frameGt, NaquadahEnriched));
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(plate, Pikyonium64B, 6)
+                .input(frameGt, NaquadahEnriched)
+                .circuitMeta(6)
+                .outputs(GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.MOLD_PRINTING_ASSEMBLY_FRAMEWORK_CASING, 2))
+                .EUt(VA[LV])
+                .duration(50)
+                .buildAndRegister();
+
+        //  Water cooling casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, StainlessSteel)
+                .input(plate, HY1301, 4)
+                .input(pipeNormalFluid, Polybenzimidazole)
+                .input(ELECTRIC_PUMP_EV)
+                .input(wireFine, NiobiumTitanium, 4)
+                .fluidInputs(PCBCoolant.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.WATER_COOLED_MACHINE_CASING, 2))
+                .EUt(VA[ZPM])
+                .duration(50)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  Bio chamber casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, VanadiumSteel)
+                .input(plate, BlackSteel, 4)
+                .input(FIELD_GENERATOR_EV)
+                .input(STEM_CELLS, 2)
+                .input(wireFine, VanadiumGallium, 4)
+                .fluidInputs(PCBCoolant.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.BIOLOGICAL_STERILE_MACHINE_CASING, 2))
+                .EUt(VA[ZPM])
+                .duration(50)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  PCB T3 casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Tritanium)
+                .input(plate, Cinobite, 4)
+                .input(TOOL_DATA_STICK)
+                .input(wireFine, Tin, 4)
+                .fluidInputs(PCBCoolant.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.RADIATION_PROOF_SCAN_FRAMEWORK_CASING, 2))
+                .EUt(VA[UV])
+                .duration(50)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  Infinity cooling casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Orichalcum)
+                .input(plate, Infinity, 4)
+                .input(pipeNormalFluid, Lafium)
+                .input(ELECTRIC_PUMP_LuV)
+                .input(wireFine, Europium, 4)
+                .fluidInputs(PCBCoolant.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.INFINITY_COOLED_MACHINE_CASING, 2))
+                .EUt(VA[UHV])
+                .duration(50)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  Computing casing
+        ModHandler.addShapedRecipe(true, "computing_casing", GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.COMPMUTING_CASING, 2),
+                "pPp", "wCw", "pSp",
+                'C', GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.RADIATION_PROOF_SCAN_FRAMEWORK_CASING),
+                'P', COVER_SCREEN,
+                'p', new UnificationEntry(plate, RhodiumPlatedPalladium),
+                'S', SENSOR_IV,
+                'w', new UnificationEntry(wireGtSingle, Cobalt));
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.RADIATION_PROOF_SCAN_FRAMEWORK_CASING))
+                .input(COVER_SCREEN)
+                .input(plate, RhodiumPlatedPalladium, 4)
+                .input(SENSOR_IV)
+                .input(wireGtSingle, Cobalt, 2)
+                .outputs(GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.COMPMUTING_CASING, 2))
+                .EUt(VA[LV])
+                .duration(50)
+                .buildAndRegister();
+    }
+
+    private static void YottaTankCells() {
+        //  T1
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, BlackSteel)
+                .input(FLUID_CORE_T1)
+                .input(plate, Steel,4)
+                .input(ELECTRIC_PUMP_HV, 8)
+                .input(pipeNormalFluid, StainlessSteel, 4)
+                .circuitMeta(5)
+                .fluidInputs(Cupronickel.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T1))
+                .EUt(VA[HV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  T2
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, TungstenSteel)
+                .input(FLUID_CORE_T2)
+                .input(plate, RhodiumPlatedPalladium, 4)
+                .input(ELECTRIC_PUMP_EV, 8)
+                .input(pipeNormalFluid, Titanium, 4)
+                .circuitMeta(5)
+                .fluidInputs(Kanthal.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T2))
+                .EUt(VA[IV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  T3
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Naquadah)
+                .input(FLUID_CORE_T3)
+                .input(plate, NaquadahEnriched, 4)
+                .input(ELECTRIC_PUMP_IV, 8)
+                .input(pipeNormalFluid, NiobiumTitanium, 4)
+                .circuitMeta(5)
+                .fluidInputs(Nichrome.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T3))
+                .EUt(VA[LuV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  T4
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Trinium)
+                .input(FLUID_CORE_T4)
+                .input(plate, Naquadria, 4)
+                .input(ELECTRIC_PUMP_LuV, 8)
+                .input(pipeNormalFluid, Iridium, 4)
+                .circuitMeta(5)
+                .fluidInputs(RTMAlloy.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T4))
+                .EUt(VA[ZPM])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  T5
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Americium)
+                .input(FLUID_CORE_T5)
+                .input(plate, Tritanium, 4)
+                .input(ELECTRIC_PUMP_ZPM, 8)
+                .input(pipeNormalFluid, Europium, 4)
+                .circuitMeta(5)
+                .fluidInputs(HSSG.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T5))
+                .EUt(VA[UV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  T6
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Orichalcum)
+                .input(FLUID_CORE_T6)
+                .input(plate, Adamantium, 4)
+                .input(ELECTRIC_PUMP_UV, 8)
+                .input(pipeNormalFluid, Duranium, 4)
+                .circuitMeta(5)
+                .fluidInputs(Naquadah.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T6))
+                .EUt(VA[UHV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  T7
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, CelestialTungsten)
+                .input(FLUID_CORE_T7)
+                .input(plate, AstralTitanium, 4)
+                .input(ELECTRIC_PUMP_UHV, 8)
+                .input(pipeNormalFluid, Lafium, 4)
+                .circuitMeta(5)
+                .fluidInputs(Trinium.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T7))
+                .EUt(VA[UEV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  T8
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Infinity)
+                .input(FLUID_CORE_T8)
+                .input(plate, DegenerateRhenium, 4)
+                .input(ELECTRIC_PUMP_UEV, 8)
+                .input(pipeNormalFluid, CrystalMatrix, 4)
+                .circuitMeta(5)
+                .fluidInputs(Tritanium.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T8))
+                .EUt(VA[UIV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  T9
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, HeavyQuarkDegenerateMatter)
+                .input(FLUID_CORE_T9)
+                .input(plate, BlackDwarfMatter, 4)
+                .input(ELECTRIC_PUMP_UIV, 8)
+                .input(pipeNormalFluid, QuantumchromodynamicallyConfinedMatter, 4)
+                .circuitMeta(5)
+                .fluidInputs(Ichorium.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T9))
+                .EUt(VA[UXV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  T10
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, TranscendentMetal)
+                .input(FLUID_CORE_T10)
+                .input(plate, Shirabon, 4)
+                .input(ELECTRIC_PUMP_UXV, 8)
+                .input(pipeNormalFluid, Fatalium, 4)
+                .circuitMeta(5)
+                .fluidInputs(Astralium.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T10))
+                .EUt(VA[OpV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+    }
+
+    private static void HyperCores() {
+        //  MK1
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Orichalcum)
+                .input(plate, CarbonNanotube, 4)
+                .input(FIELD_GENERATOR_UV, 2)
+                .input(wireFine, Seaborgium, 4)
+                .fluidInputs(Hdcs.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.HYPER_CORE_MK1))
+                .EUt(VA[UEV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  MK2
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Adamantium)
+                .input(plate, CelestialTungsten, 4)
+                .input(FIELD_GENERATOR_UHV, 2)
+                .input(wireFine, AstralTitanium, 4)
+                .fluidInputs(Legendarium.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.HYPER_CORE_MK2))
+                .EUt(VA[UIV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  MK3
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Taranium)
+                .input(plate, MetastableHassium, 4)
+                .input(FIELD_GENERATOR_UEV, 2)
+                .input(wireFine, SuperheavyHAlloy, 4)
+                .fluidInputs(MagnetoHydrodynamicallyConstrainedStarMatter.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.HYPER_CORE_MK3))
+                .EUt(VA[UXV])
+                .duration(100)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+    }
+
+    private static void CoolingTowerCasings() {
+        //  Circulative Cooling Casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.HATTRIUM_CASING))
+                .input(ELECTRIC_PUMP_IV, 2)
+                .input(gear, SiliconeRubber)
+                .input(pipeNormalFluid, Aluminium, 4)
+                .input(ring, Zinc, 16)
+                .input(wireFine, NaquadahEnriched, 4)
+                .fluidInputs(GelidCryotheum.getFluid(L * 4))
+                .outputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.CIRCULATIVE_COOLING_CASING, 2))
+                .EUt(VA[IV])
+                .duration(50)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  Circulative Cooling Core
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Orichalcum)
+                .input(plate, AlkalisGroupAlloy, 2)
+                .input(SENSOR_IV, 2)
+                .input(rotor, Meitnerium)
+                .input(FLUID_CELL_LARGE_STEEL)
+                .input(wireFine, PlatinumGroupAlloy, 4)
+                .fluidInputs(EnrichedNaquadahTriniumEuropiumDuranide.getFluid(L / 4))
+                .outputs(GTLiteMetaBlocks.COOLING_CORE.getItemVariant(BlockCoolingCore.CoolingCoreTier.MK1, 4))
+                .EUt(VA[UHV])
+                .duration(400)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(GTLiteMetaBlocks.COOLING_CORE.getItemVariant(BlockCoolingCore.CoolingCoreTier.MK1))
+                .input(plate, RefractoryAlloy, 2)
+                .input(SENSOR_LuV, 2)
+                .input(rotor, Nobelium)
+                .input(FLUID_CELL_LARGE_ALUMINIUM)
+                .input(wireFine, Tairitsium, 4)
+                .fluidInputs(PedotPSS.getFluid(L / 4))
+                .outputs(GTLiteMetaBlocks.COOLING_CORE.getItemVariant(BlockCoolingCore.CoolingCoreTier.MK2, 4))
+                .EUt(VA[UEV])
+                .duration(400)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(GTLiteMetaBlocks.COOLING_CORE.getItemVariant(BlockCoolingCore.CoolingCoreTier.MK2))
+                .input(plate, BlackTitanium, 2)
+                .input(SENSOR_ZPM, 2)
+                .input(rotor, MetastableOganesson)
+                .input(FLUID_CELL_LARGE_STAINLESS_STEEL)
+                .input(wireFine, SuperheavyLAlloy, 4)
+                .fluidInputs(QuantumAlloy.getFluid(L / 4))
+                .outputs(GTLiteMetaBlocks.COOLING_CORE.getItemVariant(BlockCoolingCore.CoolingCoreTier.MK3, 4))
+                .EUt(VA[UIV])
+                .duration(400)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(GTLiteMetaBlocks.COOLING_CORE.getItemVariant(BlockCoolingCore.CoolingCoreTier.MK3))
+                .input(plate, BlackPlutonium, 2)
+                .input(SENSOR_UV, 2)
+                .input(rotor, MetastableHassium)
+                .input(FLUID_CELL_LARGE_TITANIUM)
+                .input(wireFine, SuperheavyHAlloy, 4)
+                .fluidInputs(FullereneSuperconductor.getFluid(L / 4))
+                .outputs(GTLiteMetaBlocks.COOLING_CORE.getItemVariant(BlockCoolingCore.CoolingCoreTier.MK4, 4))
+                .EUt(VA[UXV])
+                .duration(400)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+    }
+
+    private static void FieldCasings() {
+        //  ZPM
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, NaquadahAlloy)
+                .input(plate, Kanthal, 4)
+                .input(FIELD_GENERATOR_ZPM, 2)
+                .input(wireGtSingle, VanadiumGallium, 2)
+                .fluidInputs(PCBCoolant.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.FIELD_CASING.getItemVariant(BlockFieldCasing.FieldCasingTier.ZPM, 2))
+                .EUt(VA[ZPM])
+                .duration(150)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  UV
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Darmstadtium)
+                .input(plate, Nichrome, 4)
+                .input(FIELD_GENERATOR_UV, 2)
+                .input(wireGtSingle, YttriumBariumCuprate, 2)
+                .fluidInputs(PCBCoolant.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.FIELD_CASING.getItemVariant(BlockFieldCasing.FieldCasingTier.UV, 2))
+                .EUt(VA[UV])
+                .duration(150)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  UHV
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Orichalcum)
+                .input(plate, RTMAlloy, 4)
+                .input(FIELD_GENERATOR_UHV, 2)
+                .input(wireGtSingle, Europium, 2)
+                .fluidInputs(PCBCoolant.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.FIELD_CASING.getItemVariant(BlockFieldCasing.FieldCasingTier.UHV, 2))
+                .EUt(VA[UHV])
+                .duration(150)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  UEV
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Adamantium)
+                .input(plate, HSSG, 4)
+                .input(FIELD_GENERATOR_UEV, 2)
+                .input(wireGtSingle, PedotTMA, 2)
+                .fluidInputs(PCBCoolant.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.FIELD_CASING.getItemVariant(BlockFieldCasing.FieldCasingTier.UEV, 2))
+                .EUt(VA[UEV])
+                .duration(150)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  UIV
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Infinity)
+                .input(plate, Naquadah, 4)
+                .input(FIELD_GENERATOR_UIV, 2)
+                .input(wireGtSingle, Solarium, 2)
+                .fluidInputs(PCBCoolant.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.FIELD_CASING.getItemVariant(BlockFieldCasing.FieldCasingTier.UIV, 2))
+                .EUt(VA[UIV])
+                .duration(150)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  UXV
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, CosmicNeutronium)
+                .input(plate, Trinium, 4)
+                .input(FIELD_GENERATOR_UXV, 2)
+                .input(wireGtSingle, Hypogen, 2)
+                .fluidInputs(PCBCoolant.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.FIELD_CASING.getItemVariant(BlockFieldCasing.FieldCasingTier.UXV, 2))
+                .EUt(VA[UXV])
+                .duration(150)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  OpV
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Spacetime)
+                .input(plate, Tritanium, 4)
+                .input(FIELD_GENERATOR_OpV, 2)
+                .input(wireGtSingle, Galaxium, 2)
+                .fluidInputs(PCBCoolant.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.FIELD_CASING.getItemVariant(BlockFieldCasing.FieldCasingTier.OpV, 2))
+                .EUt(VA[OpV])
+                .duration(150)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+
+        //  MAX
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Eternity)
+                .input(plate, Adamantium, 4)
+                .input(FIELD_GENERATOR_MAX, 2)
+                .input(wireGtSingle, Universium, 2)
+                .fluidInputs(PCBCoolant.getFluid(L * 2))
+                .outputs(GTLiteMetaBlocks.FIELD_CASING.getItemVariant(BlockFieldCasing.FieldCasingTier.MAX, 2))
+                .EUt(VA[MAX])
+                .duration(150)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .buildAndRegister();
+    }
+
+    private static void PreciseAssemblyCasings() {
         //  Precise Assembler Casing Mk I
         ASSEMBLER_RECIPES.recipeBuilder()
                 .inputs(MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LuV))
@@ -2612,33 +3982,9 @@ public class MachineRecipeLoader {
                 .EUt(VA[UXV])
                 .duration(400)
                 .buildAndRegister();
+    }
 
-        //  Iridium Casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
-                .fluidInputs(Iridium.getFluid(L * 2))
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.IRIDIUM_CASING))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Advanced Filter Casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Iridium)
-                .inputs(MetaBlocks.CLEANROOM_CASING.getItemVariant(gregtech.common.blocks.BlockCleanroomCasing.CasingType.FILTER_CASING))
-                .input(ELECTRIC_MOTOR_UV)
-                .input(rotor, Iridium)
-                .input(ITEM_FILTER)
-                .input(FLUID_FILTER)
-                .input(stickLong, Iridium, 2)
-                .fluidInputs(SolderingAlloy.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.CLEANROOM_CASING.getItemVariant(BlockCleanroomCasing.CleanroomCasingType.ADVANCED_FILTER_CASING))
-                .EUt(VA[LuV])
-                .duration(200)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
+    private static void ComponentAssemblyCasings() {
         //  Component Assembly Line Casings
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(frameGt, Steel, 1)
@@ -2934,1769 +4280,9 @@ public class MachineRecipeLoader {
                         .EUt(VA[OpV])
                         .CWUt(2048))
                 .buildAndRegister();
+    }
 
-        //  Farm Casing
-        ModHandler.addShapedRecipe(true, "farm_casing", GTLiteMetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.ASEPTIC_FARM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, TreatedWood),
-                'F', new UnificationEntry(frameGt, Aluminium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, TreatedWood, 6)
-                .input(frameGt, Aluminium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.ASEPTIC_FARM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Zirconium Carbide Casing
-        ModHandler.addShapedRecipe(true, "zirconium_carbide_casing", GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.ZIRCONIUM_CARBIDE_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, ZirconiumCarbide),
-                'F', new UnificationEntry(frameGt, ZirconiumCarbide));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, ZirconiumCarbide, 6)
-                .input(frameGt, ZirconiumCarbide)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.ZIRCONIUM_CARBIDE_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Stellar Containment Casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, MaragingSteel250)
-                .input(plate, Hdcs, 4)
-                .inputs(VOLTAGE_COIL_ZPM.getStackForm(2))
-                .input(screw, IncoloyMA813, 8)
-                .fluidInputs(Inconel792.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.STELLAR_CONTAINMENT_CASING))
-                .EUt(VA[UHV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  High Energy Casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Osmiridium)
-                .input(plate, Osmiridium, 6)
-                .input(circuit, MarkerMaterials.Tier.LuV)
-                .input(wireFine, Iridium, 16)
-                .input(wireFine, Cupronickel, 16)
-                .input(wireGtSingle, VanadiumGallium, 2)
-                .outputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.HIGH_ENERGY_CASING, 2))
-                .EUt(VA[ZPM])
-                .duration(100)
-                .buildAndRegister();
-
-        //  Advanced High Energy Casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Europium)
-                .input(plate, Europium, 6)
-                .input(circuit, MarkerMaterials.Tier.ZPM)
-                .input(wireFine, Ruridit, 16)
-                .input(wireFine, Kanthal, 16)
-                .input(wireGtSingle, YttriumBariumCuprate, 2)
-                .outputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.ADVANCED_HIGH_ENERGY_CASING, 2))
-                .EUt(VA[UV])
-                .duration(100)
-                .buildAndRegister();
-
-        //  Ultimate High Energy Casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Americium)
-                .input(plate, Americium, 6)
-                .input(circuit, MarkerMaterials.Tier.UV)
-                .input(wireFine, Hdcs, 16)
-                .input(wireFine, Nichrome, 16)
-                .input(wireGtSingle, Europium, 2)
-                .outputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.ULTIMATE_HIGH_ENERGY_CASING, 2))
-                .EUt(VA[UHV])
-                .duration(100)
-                .buildAndRegister();
-
-        //  Molecular Coil
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, TungstenSteel)
-                .input(plate, BlueSteel, 4)
-                .input(wireFine, Tantalum, 16)
-                .input(wireFine, Palladium, 16)
-                .input(foil, Rhodium, 8)
-                .input(wireGtDouble, Naquadah, 4)
-                .fluidInputs(RTMAlloy.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.MOLECULAR_COIL, 2))
-                .EUt(VA[ZPM])
-                .duration(160)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        //  Hollow Casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, RhodiumPlatedPalladium)
-                .input(pipeNormalFluid, Naquadah, 2)
-                .input(ELECTRIC_PUMP_IV, 2)
-                .input(ring, StainlessSteel, 32)
-                .input(wireGtSingle, Platinum, 2)
-                .fluidInputs(BlackSteel.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.HOLLOW_CASING, 2))
-                .EUt(VA[IV])
-                .duration(200)
-                .buildAndRegister();
-
-        //  Spacetime Casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Neutronium)
-                .inputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.HOLLOW_CASING))
-                .input(plate, Infinity, 6)
-                .input(FIELD_GENERATOR_UEV, 2)
-                .input(wireFine, Vibranium, 16)
-                .fluidInputs(Rhugnor.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.SPACETIME_CASING, 2))
-                .EUt(VA[UEV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        //  Dimensional Bridge Casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Orichalcum)
-                .inputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.ADVANCED_HIGH_ENERGY_CASING))
-                .input(plate, Vibranium, 6)
-                .input(FIELD_GENERATOR_UHV, 2)
-                .input(wireFine, YttriumBariumCuprate, 16)
-                .fluidInputs(Tritanium.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.DIMENSIONAL_BRIDGE_CASING, 2))
-                .EUt(VA[UHV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        //  Dimensional Preserve Casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Neutronium)
-                .inputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.ULTIMATE_HIGH_ENERGY_CASING))
-                .input(plate, Infinity, 6)
-                .input(FIELD_GENERATOR_UEV, 2)
-                .input(wireFine, Europium, 16)
-                .fluidInputs(Adamantium.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.DIMENSIONAL_PRESERVE_CASING, 2))
-                .EUt(VA[UEV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        //  Field Casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, NaquadahAlloy)
-                .input(plate, Kanthal, 4)
-                .input(FIELD_GENERATOR_ZPM, 2)
-                .input(wireGtSingle, VanadiumGallium, 2)
-                .fluidInputs(PCBCoolant.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.FIELD_CASING.getItemVariant(BlockFieldCasing.FieldCasingTier.ZPM, 2))
-                .EUt(VA[ZPM])
-                .duration(150)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Darmstadtium)
-                .input(plate, Nichrome, 4)
-                .input(FIELD_GENERATOR_UV, 2)
-                .input(wireGtSingle, YttriumBariumCuprate, 2)
-                .fluidInputs(PCBCoolant.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.FIELD_CASING.getItemVariant(BlockFieldCasing.FieldCasingTier.UV, 2))
-                .EUt(VA[UV])
-                .duration(150)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Orichalcum)
-                .input(plate, RTMAlloy, 4)
-                .input(FIELD_GENERATOR_UHV, 2)
-                .input(wireGtSingle, Europium, 2)
-                .fluidInputs(PCBCoolant.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.FIELD_CASING.getItemVariant(BlockFieldCasing.FieldCasingTier.UHV, 2))
-                .EUt(VA[UHV])
-                .duration(150)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Adamantium)
-                .input(plate, HSSG, 4)
-                .input(FIELD_GENERATOR_UEV, 2)
-                .input(wireGtSingle, PedotTMA, 2)
-                .fluidInputs(PCBCoolant.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.FIELD_CASING.getItemVariant(BlockFieldCasing.FieldCasingTier.UEV, 2))
-                .EUt(VA[UEV])
-                .duration(150)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Infinity)
-                .input(plate, Naquadah, 4)
-                .input(FIELD_GENERATOR_UIV, 2)
-                .input(wireGtSingle, Solarium, 2)
-                .fluidInputs(PCBCoolant.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.FIELD_CASING.getItemVariant(BlockFieldCasing.FieldCasingTier.UIV, 2))
-                .EUt(VA[UIV])
-                .duration(150)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, CosmicNeutronium)
-                .input(plate, Trinium, 4)
-                .input(FIELD_GENERATOR_UXV, 2)
-                .input(wireGtSingle, Hypogen, 2)
-                .fluidInputs(PCBCoolant.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.FIELD_CASING.getItemVariant(BlockFieldCasing.FieldCasingTier.UXV, 2))
-                .EUt(VA[UXV])
-                .duration(150)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Spacetime)
-                .input(plate, Tritanium, 4)
-                .input(FIELD_GENERATOR_OpV, 2)
-                .input(wireGtSingle, Galaxium, 2)
-                .fluidInputs(PCBCoolant.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.FIELD_CASING.getItemVariant(BlockFieldCasing.FieldCasingTier.OpV, 2))
-                .EUt(VA[OpV])
-                .duration(150)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Eternity)
-                .input(plate, Adamantium, 4)
-                .input(FIELD_GENERATOR_MAX, 2)
-                .input(wireGtSingle, Universium, 2)
-                .fluidInputs(PCBCoolant.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.FIELD_CASING.getItemVariant(BlockFieldCasing.FieldCasingTier.MAX, 2))
-                .EUt(VA[MAX])
-                .duration(150)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        //  Space Elevator Casings
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, TungstenCarbide)
-                .inputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST))
-                .input(plate, Pikyonium64B, 6)
-                .input(wireFine, Zinc, 16)
-                .fluidInputs(Kanthal.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.SPACE_ELEVATOR_CASING.getItemVariant(BlockSpaceElevatorCasing.ElevatorCasingType.BASIC_CASING, 2))
-                .EUt(VA[UV])
-                .duration(50)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Osmiridium)
-                .input(plate, IncoloyMA813, 6)
-                .input(ELECTRIC_PUMP_IV, 2)
-                .input(CONVEYOR_MODULE_IV, 2)
-                .input(ROBOT_ARM_IV, 2)
-                .input(wireFine, Tantalum, 16)
-                .fluidInputs(RTMAlloy.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.SPACE_ELEVATOR_CASING.getItemVariant(BlockSpaceElevatorCasing.ElevatorCasingType.INTERNAL_STRUCTURE, 2))
-                .EUt(VA[UV])
-                .duration(50)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Naquadah)
-                .input(plate, TungstenSteel, 6)
-                .input(NEUTRON_REFLECTOR, 2)
-                .input(stick, Inconel625, 2)
-                .input(stick, MARM200Steel, 2)
-                .input(wireFine, Lead, 16)
-                .fluidInputs(SolderingAlloy.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.SPACE_ELEVATOR_CASING.getItemVariant(BlockSpaceElevatorCasing.ElevatorCasingType.SUPPORT_STRUCTURE, 2))
-                .EUt(VA[UV])
-                .duration(50)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(MetaBlocks.CLEANROOM_CASING.getItemVariant(gregtech.common.blocks.BlockCleanroomCasing.CasingType.PLASCRETE))
-                .fluidInputs(FluorinatedEthylenePropylene.getFluid(L * 2)) // todo use more powerful plastic, this is too soft!
-                .outputs(GTLiteMetaBlocks.SPACE_ELEVATOR_CASING.getItemVariant(BlockSpaceElevatorCasing.ElevatorCasingType.FLOOR))
-                .circuitMeta(6)
-                .EUt(VA[HV])
-                .duration(50)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(HULL[UV])
-                .input(ELECTRIC_MOTOR_UV, 2)
-                .input(circuit, MarkerMaterials.Tier.UV, 4)
-                .input(plate, HSSS, 4)
-                .input(gear, Duranium, 3)
-                .input(gearSmall, HY1301, 6)
-                .input(wireFine, YttriumBariumCuprate, 16)
-                .fluidInputs(SolderingAlloy.getFluid(L * 40))
-                .fluidInputs(Lubricant.getFluid(16000))
-                .fluidInputs(Tantalloy61.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.SPACE_ELEVATOR_CASING.getItemVariant(BlockSpaceElevatorCasing.ElevatorCasingType.CABLE_CASING))
-                .EUt(VA[UV])
-                .duration(200)
-                .stationResearch(b -> b
-                        .researchStack(GTLiteMetaBlocks.SPACE_ELEVATOR_CASING.getItemVariant(BlockSpaceElevatorCasing.ElevatorCasingType.BASIC_CASING))
-                        .CWUt(128)
-                        .EUt(VA[UV]))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(HULL[IV])
-                .input(frameGt, HSSG)
-                .input(ELECTRIC_MOTOR_IV, 4)
-                .input(wireFine, Platinum, 16)
-                .fluidInputs(SolderingAlloy.getFluid(L * 4))
-                .fluidInputs(Lubricant.getFluid(1600))
-                .fluidInputs(Americium.getFluid(L))
-                .outputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK1, 4))
-                .EUt(VA[ZPM])
-                .duration(200)
-                .stationResearch(b -> b
-                        .researchStack(GTLiteMetaBlocks.SPACE_ELEVATOR_CASING.getItemVariant(BlockSpaceElevatorCasing.ElevatorCasingType.INTERNAL_STRUCTURE))
-                        .CWUt(64)
-                        .EUt(VA[ZPM]))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, HSSE)
-                .inputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK1))
-                .input(ELECTRIC_MOTOR_LuV, 4)
-                .input(wireFine, NiobiumTitanium, 16)
-                .fluidInputs(SolderingAlloy.getFluid(L * 4))
-                .fluidInputs(Lubricant.getFluid(1600))
-                .fluidInputs(Orichalcum.getFluid(L))
-                .outputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK2, 4))
-                .EUt(VA[UV])
-                .duration(200)
-                .stationResearch(b -> b
-                        .researchStack(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK1))
-                        .CWUt(128)
-                        .EUt(VA[UV]))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, HSSS)
-                .inputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK2))
-                .input(ELECTRIC_MOTOR_ZPM, 4)
-                .input(wireFine, VanadiumGallium, 16)
-                .fluidInputs(SolderingAlloy.getFluid(L * 8))
-                .fluidInputs(Lubricant.getFluid(3200))
-                .fluidInputs(Adamantium.getFluid(L))
-                .outputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK3, 4))
-                .EUt(VA[UHV])
-                .duration(200)
-                .stationResearch(b -> b
-                        .researchStack(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK2))
-                        .CWUt(256)
-                        .EUt(VA[UHV]))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Hdcs)
-                .inputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK3))
-                .input(ELECTRIC_MOTOR_UV, 4)
-                .input(wireFine, YttriumBariumCuprate, 16)
-                .fluidInputs(SolderingAlloy.getFluid(L * 8))
-                .fluidInputs(Lubricant.getFluid(3200))
-                .fluidInputs(Mithril.getFluid(L))
-                .outputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK4, 4))
-                .EUt(VA[UEV])
-                .duration(200)
-                .stationResearch(b -> b
-                        .researchStack(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK3))
-                        .CWUt(512)
-                        .EUt(VA[UEV]))
-                .buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Infinity)
-                .inputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK4))
-                .input(ELECTRIC_MOTOR_UHV, 4)
-                .input(wireFine, Europium, 16)
-                .fluidInputs(SolderingAlloy.getFluid(L * 16))
-                .fluidInputs(Lubricant.getFluid(6400))
-                .fluidInputs(Rhugnor.getFluid(L))
-                .outputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK5, 4))
-                .EUt(VA[UIV])
-                .duration(200)
-                .stationResearch(b -> b
-                        .researchStack(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK4))
-                        .CWUt(1024)
-                        .EUt(VA[UIV]))
-                .buildAndRegister();
-
-        //  Advanced Assembly Control Casing
-        ModHandler.addShapedRecipe(true, "casing_assembly_control.advanced", GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.ADVANCED_ASSEMBLY_CONTROL_CASING, 2),
-                "OPO", "SFE", "OMO",
-                'O', new UnificationEntry(circuit, MarkerMaterials.Tier.UV),
-                'P', ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT,
-                'F', new UnificationEntry(frameGt, NaquadahAlloy),
-                'S', SENSOR_ZPM,
-                'E', EMITTER_ZPM,
-                'M', ELECTRIC_MOTOR_ZPM);
-
-        //  Advanced Assembly Casing
-        ModHandler.addShapedRecipe(true, "casing_assembly_line.advanced", GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.ADVANCED_ASSEMBLY_LINE_CASING, 2),
-                "PGP", "RFR", "PGP",
-                'P', new UnificationEntry(plate, Iridium),
-                'G', new UnificationEntry(gear, Osmiridium),
-                'R', ROBOT_ARM_ZPM,
-                'F', new UnificationEntry(frameGt, NaquadahAlloy));
-
-        //  Circuit Assembly Casing
-        ModHandler.addShapedRecipe(true, "circuit_assembly_casing", GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.CIRCUIT_ASSEMBLY_LINE_CASING, 2),
-                "PGP", "RFR", "PGP",
-                'P', new UnificationEntry(plate, Osmium),
-                'G', new UnificationEntry(gear, Rhodium),
-                'R', ROBOT_ARM_LuV,
-                'F', new UnificationEntry(frameGt, HSSE));
-
-        //  Advanced Grate Casing
-        ModHandler.addShapedRecipe(true, "advanced_grate_casing", GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.ADVANCED_GRATE_CASING, 2),
-                "PRP", "PXP", "PMP",
-                'X', MetaBlocks.MULTIBLOCK_CASING.getItemVariant(gregtech.common.blocks.BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING),
-                'R', new UnificationEntry(rotor, StainlessSteel),
-                'M', ELECTRIC_MOTOR_LuV,
-                'P', new UnificationEntry(plate, Osmiridium));
-
-        //  Staballoy Casing
-        ModHandler.addShapedRecipe(true, "staballoy_casing", GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.STABALLOY_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Staballoy),
-                'F', new UnificationEntry(frameGt, MaragingSteel250));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Staballoy, 6)
-                .input(frameGt, MaragingSteel250)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.STABALLOY_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Reinforced Rotor Holder
-
-        //  LuV
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, RhodiumPlatedPalladium)
-                .input(ROTOR_HOLDER[3])
-                .input(ELECTRIC_MOTOR_LuV, 2)
-                .input(rotor, Staballoy, 4)
-                .input(stickLong, Titanium, 2)
-                .input(wireFine, Platinum, 16)
-                .fluidInputs(SolderingAlloy.getFluid(L * 2))
-                .output(MULTIPART_REINFORCED_ROTOR_HOLDER[0])
-                .EUt(VA[LuV])
-                .duration(1200)
-                .buildAndRegister();
-
-        //  ZPM
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, NaquadahAlloy)
-                .input(ROTOR_HOLDER[4])
-                .input(ELECTRIC_MOTOR_ZPM, 2)
-                .input(rotor, Inconel792, 4)
-                .input(stickLong, TungstenSteel, 2)
-                .input(wireFine, NiobiumTitanium, 16)
-                .fluidInputs(SolderingAlloy.getFluid(L * 2))
-                .output(MULTIPART_REINFORCED_ROTOR_HOLDER[1])
-                .EUt(VA[ZPM])
-                .duration(1200)
-                .buildAndRegister();
-
-        //  UV
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Darmstadtium)
-                .input(ROTOR_HOLDER[5])
-                .input(ELECTRIC_MOTOR_UV, 2)
-                .input(rotor, Inconel625, 4)
-                .input(stickLong, RhodiumPlatedPalladium, 2)
-                .input(wireFine, VanadiumGallium, 16)
-                .fluidInputs(SolderingAlloy.getFluid(L * 2))
-                .output(MULTIPART_REINFORCED_ROTOR_HOLDER[2])
-                .EUt(VA[UV])
-                .duration(1200)
-                .buildAndRegister();
-
-        //  UHV
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Orichalcum)
-                .input(MULTIPART_REINFORCED_ROTOR_HOLDER[2])
-                .input(ELECTRIC_MOTOR_UHV, 2)
-                .input(CONVEYOR_MODULE_UHV, 2)
-                .input(rotor, Adamantium, 4)
-                .input(stickLong, HSSS, 2)
-                .input(wireFine, YttriumBariumCuprate, 32)
-                .fluidInputs(SolderingAlloy.getFluid(L * 10))
-                .output(MULTIPART_REINFORCED_ROTOR_HOLDER[3])
-                .EUt(VA[UHV])
-                .duration(1200)
-                .scannerResearch(b -> b
-                        .researchStack(MULTIPART_REINFORCED_ROTOR_HOLDER[2].getStackForm())
-                        .EUt(VA[UV])
-                        .duration(600))
-                .buildAndRegister();
-
-        //  UEV
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Adamantium)
-                .input(MULTIPART_REINFORCED_ROTOR_HOLDER[3])
-                .input(ELECTRIC_MOTOR_UEV, 2)
-                .input(CONVEYOR_MODULE_UEV, 2)
-                .input(rotor, Taranium, 4)
-                .input(stickLong, Osmiridium, 2)
-                .input(wireFine, ThalliumCopperChloride, 32)
-                .fluidInputs(SolderingAlloy.getFluid(L * 10))
-                .output(MULTIPART_REINFORCED_ROTOR_HOLDER[4])
-                .EUt(VA[UEV])
-                .duration(1200)
-                .scannerResearch(b -> b
-                        .researchStack(MULTIPART_REINFORCED_ROTOR_HOLDER[3].getStackForm())
-                        .EUt(VA[UHV])
-                        .duration(1200))
-                .buildAndRegister();
-
-        //  UIV
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Infinity)
-                .input(MULTIPART_REINFORCED_ROTOR_HOLDER[4])
-                .input(ELECTRIC_MOTOR_UIV, 2)
-                .input(CONVEYOR_MODULE_UIV, 2)
-                .input(rotor, BlackPlutonium, 4)
-                .input(stickLong, Tritanium, 2)
-                .input(wireFine, SuperheavyLAlloy, 32)
-                .fluidInputs(SolderingAlloy.getFluid(L * 10))
-                .output(MULTIPART_REINFORCED_ROTOR_HOLDER[5])
-                .EUt(VA[UIV])
-                .duration(1200)
-                .stationResearch(b -> b
-                        .researchStack(MULTIPART_REINFORCED_ROTOR_HOLDER[4].getStackForm())
-                        .EUt(VA[UEV])
-                        .CWUt(64))
-                .buildAndRegister();
-
-        //  UXV
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, CosmicNeutronium)
-                .input(MULTIPART_REINFORCED_ROTOR_HOLDER[5])
-                .input(ELECTRIC_MOTOR_UXV, 2)
-                .input(CONVEYOR_MODULE_UXV, 2)
-                .input(rotor, Octiron, 4)
-                .input(stickLong, Adamantium, 2)
-                .input(wireFine, SuperheavyHAlloy, 32)
-                .fluidInputs(SolderingAlloy.getFluid(L * 10))
-                .output(MULTIPART_REINFORCED_ROTOR_HOLDER[6])
-                .EUt(VA[UXV])
-                .duration(1200)
-                .stationResearch(b -> b
-                        .researchStack(MULTIPART_REINFORCED_ROTOR_HOLDER[5].getStackForm())
-                        .EUt(VA[UIV])
-                        .CWUt(128))
-                .buildAndRegister();
-
-        //  OpV
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Spacetime)
-                .input(MULTIPART_REINFORCED_ROTOR_HOLDER[6])
-                .input(ELECTRIC_MOTOR_OpV, 2)
-                .input(CONVEYOR_MODULE_OpV, 2)
-                .input(rotor, TranscendentMetal, 4)
-                .input(stickLong, Hdcs, 2)
-                .input(wireFine, Arcanium, 32)
-                .fluidInputs(SolderingAlloy.getFluid(L * 10))
-                .output(MULTIPART_REINFORCED_ROTOR_HOLDER[7])
-                .EUt(VA[OpV])
-                .duration(1200)
-                .stationResearch(b -> b
-                        .researchStack(MULTIPART_REINFORCED_ROTOR_HOLDER[6].getStackForm())
-                        .EUt(VA[UXV])
-                        .CWUt(256))
-                .buildAndRegister();
-
-        //  Quantum Casing
-        ModHandler.addShapedRecipe(true, "quantum_casing", GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.QUANTUM_CASING, 2),
-                "PhP", "TFT","PwP",
-                'P', new UnificationEntry(plateDouble, Naquadria),
-                'T', new UnificationEntry(plate, QuantumAlloy),
-                'F', new UnificationEntry(frameGt, Orichalcum));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plateDouble, Naquadria, 4)
-                .input(plate, QuantumAlloy, 2)
-                .input(frameGt, Orichalcum)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.QUANTUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Reflective Casing
-        ModHandler.addShapedRecipe(true, "reflective_casing", GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.REFLECTIVE_CASING, 2),
-                "NNN", "FHF", "WWW",
-                'H', HULL[IV].getStackForm(),
-                'N', NEUTRON_REFLECTOR,
-                'F', FIELD_GENERATOR_IV,
-                'W', new UnificationEntry(cableGtSingle, Platinum));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(HULL[IV])
-                .input(NEUTRON_REFLECTOR, 3)
-                .input(FIELD_GENERATOR_IV, 2)
-                .input(cableGtSingle, Platinum, 3)
-                .outputs(GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.REFLECTIVE_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  PCB T1 casing
-        ModHandler.addShapedRecipe(true, "photolithographic_framework_casing", GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Iridium),
-                'F', new UnificationEntry(frameGt, Naquadah));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Iridium, 6)
-                .input(frameGt, Naquadah)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  PCB T2 casing
-        ModHandler.addShapedRecipe(true, "mold_printing_assembly_framework_casing", GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.MOLD_PRINTING_ASSEMBLY_FRAMEWORK_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Pikyonium64B),
-                'F', new UnificationEntry(frameGt, NaquadahEnriched));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Pikyonium64B, 6)
-                .input(frameGt, NaquadahEnriched)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.MOLD_PRINTING_ASSEMBLY_FRAMEWORK_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Water cooling casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, StainlessSteel)
-                .input(plate, HY1301, 4)
-                .input(pipeNormalFluid, Polybenzimidazole)
-                .input(ELECTRIC_PUMP_EV)
-                .input(wireFine, NiobiumTitanium, 4)
-                .fluidInputs(PCBCoolant.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.WATER_COOLED_MACHINE_CASING, 2))
-                .EUt(VA[ZPM])
-                .duration(50)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        //  Bio chamber casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, VanadiumSteel)
-                .input(plate, BlackSteel, 4)
-                .input(FIELD_GENERATOR_EV)
-                .input(STEM_CELLS, 2)
-                .input(wireFine, VanadiumGallium, 4)
-                .fluidInputs(PCBCoolant.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.BIOLOGICAL_STERILE_MACHINE_CASING, 2))
-                .EUt(VA[ZPM])
-                .duration(50)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        //  PCB T3 casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Tritanium)
-                .input(plate, Cinobite, 4)
-                .input(TOOL_DATA_STICK)
-                .input(wireFine, Tin, 4)
-                .fluidInputs(PCBCoolant.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.RADIATION_PROOF_SCAN_FRAMEWORK_CASING, 2))
-                .EUt(VA[UV])
-                .duration(50)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        //  Infinity cooling casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Orichalcum)
-                .input(plate, Infinity, 4)
-                .input(pipeNormalFluid, Lafium)
-                .input(ELECTRIC_PUMP_LuV)
-                .input(wireFine, Europium, 4)
-                .fluidInputs(PCBCoolant.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.INFINITY_COOLED_MACHINE_CASING, 2))
-                .EUt(VA[UHV])
-                .duration(50)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        //  Computing casing
-        ModHandler.addShapedRecipe(true, "computing_casing", GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.COMPMUTING_CASING, 2),
-                "pPp", "wCw", "pSp",
-                'C', GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.RADIATION_PROOF_SCAN_FRAMEWORK_CASING),
-                'P', COVER_SCREEN,
-                'p', new UnificationEntry(plate, RhodiumPlatedPalladium),
-                'S', SENSOR_IV,
-                'w', new UnificationEntry(wireGtSingle, Cobalt));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(GTLiteMetaBlocks.PCB_FACTORY_CASING.getItemVariant(BlockPCBFactoryCasing.PCBFactoryCasingType.RADIATION_PROOF_SCAN_FRAMEWORK_CASING))
-                .input(COVER_SCREEN)
-                .input(plate, RhodiumPlatedPalladium, 4)
-                .input(SENSOR_IV)
-                .input(wireGtSingle, Cobalt, 2)
-                .outputs(GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.COMPMUTING_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Quantum coil
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(wireGtDouble, Europium, 8)
-                .input(foil, Pikyonium64B, 8)
-                .fluidInputs(QuantumAlloy.getFluid(L))
-                .outputs(GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.QUANTUM_COIL))
-                .EUt(VA[UEV])
-                .duration(1100)
-                .buildAndRegister();
-
-        //  Quantum Glass
-        VACUUM_CHAMBER_RECIPES.recipeBuilder()
-                .input(plate, ZBLANGlass, 4)
-                .notConsumable(SHAPE_MOLD_BLOCK)
-                .fluidInputs(SolderingAlloy.getFluid(L))
-                .fluidInputs(Cinobite.getFluid(L / 2))
-                .outputs(GTLiteMetaBlocks.TRANSPARENT_CASING.getItemVariant(BlockTransparentCasing.TransparentCasingType.QUANTUM_GLASS))
-                .EUt(VA[UHV])
-                .duration(200)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        //  Hyper casings
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(GTLiteMetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.NAQUADRIA_CASING))
-                .circuitMeta(6)
-                .fluidInputs(BlackPlutonium.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.HYPER_CASING))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.HYPER_CASING))
-                .circuitMeta(6)
-                .fluidInputs(BlackDwarfMatter.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.UNIQUE_CASING.getItemVariant(BlockUniqueCasing.UniqueCasingType.ADVANCED_HYPER_CASING))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Orichalcum)
-                .input(plate, CarbonNanotube, 4)
-                .input(FIELD_GENERATOR_UV, 2)
-                .input(wireFine, Seaborgium, 4)
-                .fluidInputs(Hdcs.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.HYPER_CORE_MK1))
-                .EUt(VA[UEV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Adamantium)
-                .input(plate, CelestialTungsten, 4)
-                .input(FIELD_GENERATOR_UHV, 2)
-                .input(wireFine, AstralTitanium, 4)
-                .fluidInputs(Legendarium.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.HYPER_CORE_MK2))
-                .EUt(VA[UIV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Taranium)
-                .input(plate, MetastableHassium, 4)
-                .input(FIELD_GENERATOR_UEV, 2)
-                .input(wireFine, SuperheavyHAlloy, 4)
-                .fluidInputs(MagnetoHydrodynamicallyConstrainedStarMatter.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.HYPER_CORE_MK3))
-                .EUt(VA[UXV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        //  HG-1223 casing
-        ModHandler.addShapedRecipe(true, "hg_1223_casing", GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.HG1223_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, HG1223),
-                'F', new UnificationEntry(frameGt, WatertightSteel));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, HG1223, 6)
-                .input(frameGt, WatertightSteel)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.HG1223_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Eglin Steel casing
-        ModHandler.addShapedRecipe(true, "eglin_casing", GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.EGLIN_STEEL_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, EglinSteel),
-                'F', new UnificationEntry(frameGt, EglinSteel));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, EglinSteel, 6)
-                .input(frameGt, EglinSteel)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.EGLIN_STEEL_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Tritanium casing
-        ModHandler.addShapedRecipe(true, "tritanium_casing", GTLiteMetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.TRITANIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Tritanium),
-                'F', new UnificationEntry(frameGt, HSSS));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Tritanium, 6)
-                .input(frameGt, HSSS)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.TRITANIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Inconel-792 casing
-        ModHandler.addShapedRecipe(true, "inconel_792_casing", GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.INCONEL_792_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Inconel792),
-                'F', new UnificationEntry(frameGt, WatertightSteel));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Inconel792, 6)
-                .input(frameGt, WatertightSteel)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.INCONEL_792_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  MAR-M200 Steel casing
-        ModHandler.addShapedRecipe(true, "mar_m200_steel_casing", GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.MAR_M200_CASING, 2),
-                "TPT", "RFR", "TPT",
-                'T', new UnificationEntry(plate, IncoloyMA956),
-                'P', new UnificationEntry(plate, WatertightSteel),
-                'R', new UnificationEntry(rotor, MARM200Steel),
-                'F', new UnificationEntry(frameGt, MARM200Steel));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, IncoloyMA956, 4)
-                .input(plate, WatertightSteel, 2)
-                .input(rotor, MARM200Steel, 2)
-                .input(frameGt, MARM200Steel)
-                .outputs(GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.MAR_M200_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Bioware Computer Casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Ruridit)
-                .input(plate, Ruridit, 6)
-                .input(ELECTRIC_PUMP_IV, 2)
-                .input(wireFine, BorosilicateGlass, 32)
-                .input(wireFine, Rhodium, 32)
-                .input(cableGtSingle, NiobiumTitanium, 2)
-                .fluidInputs(Biomass.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.COMPUTER_CASING.getItemVariant(BlockComputerCasing.ComputerCasingType.BIOWARE_COMPUTER_CASING, 2))
-                .EUt(VA[LuV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        //  Advanced Bioware Computer Casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(GTLiteMetaBlocks.COMPUTER_CASING.getItemVariant(BlockComputerCasing.ComputerCasingType.BIOWARE_COMPUTER_CASING))
-                .input(circuit, MarkerMaterials.Tier.LuV)
-                .input(wireFine, Aluminium, 64)
-                .input(wireFine, Cupronickel, 64)
-                .input(wireGtSingle, SamariumIronArsenicOxide, 4)
-                .outputs(GTLiteMetaBlocks.COMPUTER_CASING.getItemVariant(BlockComputerCasing.ComputerCasingType.ADVANCED_BIOWARE_COMPUTER_CASING, 2))
-                .EUt(VA[LuV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        //  Bioware Heat Vent
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Iridium)
-                .input(ELECTRIC_MOTOR_LuV, 2)
-                .input(rotor, Iridium, 2)
-                .input(pipeTinyFluid, VanadiumSteel, 16)
-                .input(plate, TinAlloy, 16)
-                .input(wireFine, UraniumTriplatinum, 4)
-                .fluidInputs(PCBCoolant.getFluid(L * 2))
-                .outputs(GTLiteMetaBlocks.COMPUTER_CASING.getItemVariant(BlockComputerCasing.ComputerCasingType.BIOWARE_COMPUTER_HEAT_VENT, 2))
-                .EUt(VA[IV])
-                .duration(50)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        //  Bioware Computing Casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Osmiridium)
-                .input(PETRI_DISH)
-                .input(plate, VanadiumGallium, 4)
-                .input(dust, Sarcosine, 3)
-                .input(FIELD_GENERATOR_LuV, 2)
-                .input(cableGtSingle, NiobiumNitride)
-                .outputs(GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.BIOWARE_COMPUTING_CASING))
-                .EUt(VA[LuV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        //  HSS-S Casing
-        ModHandler.addShapedRecipe(true, "hss_s_casing", GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.HSS_S_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, HSSS),
-                'F', new UnificationEntry(frameGt, Americium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, HSSS, 6)
-                .input(frameGt, Americium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.HSS_S_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Einsteinium Casing
-        ModHandler.addShapedRecipe(true, "einsteinium_casing", GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.EINSTEINIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Einsteinium),
-                'F', new UnificationEntry(frameGt, Einsteinium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Einsteinium, 6)
-                .input(frameGt, Einsteinium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.EINSTEINIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Nitinol-60 Casing
-        ModHandler.addShapedRecipe(true, "nitinol_60_casing", GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.NITINOL_60_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Nitinol60),
-                'F', new UnificationEntry(frameGt, Nitinol60));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Nitinol60, 6)
-                .input(frameGt, Nitinol60)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.NITINOL_60_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Fermium Casing
-        ModHandler.addShapedRecipe(true, "fermium_casing", GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.FERMIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Fermium),
-                'F', new UnificationEntry(frameGt, Fermium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Fermium, 6)
-                .input(frameGt, Fermium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.FERMIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Mendelevium Casing
-        ModHandler.addShapedRecipe(true, "mendelevium_casing", GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.MENDELEVIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Mendelevium),
-                'F', new UnificationEntry(frameGt, Mendelevium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Mendelevium, 6)
-                .input(frameGt, Mendelevium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.MENDELEVIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Protactinium Casing
-        ModHandler.addShapedRecipe(true, "protactinium_casing", GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.PROTACTINIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Protactinium),
-                'F', new UnificationEntry(frameGt, Protactinium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Protactinium, 6)
-                .input(frameGt, Protactinium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.PROTACTINIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  HSS-G Casing
-        ModHandler.addShapedRecipe(true, "hss_g_casing", GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.HSS_G_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, HSSG),
-                'F', new UnificationEntry(frameGt, HSSG));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, HSSG, 6)
-                .input(frameGt, HSSG)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.HSS_G_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Incoloy-MA813 Casing
-        ModHandler.addShapedRecipe(true, "incoloy_ma_813_casing", GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.INCOLOY_MA_813_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, IncoloyMA813),
-                'F', new UnificationEntry(frameGt, IncoloyMA956));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, IncoloyMA813, 6)
-                .input(frameGt, IncoloyMA956)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.INCOLOY_MA_813_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Curium Casing
-        ModHandler.addShapedRecipe(true, "curium_casing", GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.CURIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Curium),
-                'F', new UnificationEntry(frameGt, Curium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Curium, 6)
-                .input(frameGt, Curium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.CURIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Uranium Casing
-        ModHandler.addShapedRecipe(true, "uranium_casing", GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.URANIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Uranium235),
-                'F', new UnificationEntry(frameGt, Uranium238));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Uranium235, 6)
-                .input(frameGt, Uranium238)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.URANIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Potin Casing
-        ModHandler.addShapedRecipe(true, "potin_casing", GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.POTIN_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Potin),
-                'F', new UnificationEntry(frameGt, StainlessSteel));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Potin, 6)
-                .input(frameGt, StainlessSteel)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.POTIN_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Plutonium Casing
-        ModHandler.addShapedRecipe(true, "plutonium_casing", GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.PLUTONIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Plutonium239),
-                'F', new UnificationEntry(frameGt, Plutonium241));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Plutonium239, 6)
-                .input(frameGt, Plutonium241)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.PLUTONIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Black Steel Casing
-        ModHandler.addShapedRecipe(true, "black_steel_casing", GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.BLACK_STEEL_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, BlackSteel),
-                'F', new UnificationEntry(frameGt, BlackSteel));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, BlackSteel, 6)
-                .input(frameGt, BlackSteel)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.BLACK_STEEL_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Tumbaga Casing
-        ModHandler.addShapedRecipe(true, "tumbaga_casing", GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.TUMBAGA_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Tumbaga),
-                'F', new UnificationEntry(frameGt, Tumbaga));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Tumbaga, 6)
-                .input(frameGt, Tumbaga)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.TUMBAGA_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Rhodium Plated Palladium Casing
-        ModHandler.addShapedRecipe(true, "rhodium_plated_palladium_casing", GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.RHODIUM_PLATED_PALLADIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, RhodiumPlatedPalladium),
-                'F', new UnificationEntry(frameGt, RhodiumPlatedPalladium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, RhodiumPlatedPalladium, 6)
-                .input(frameGt, RhodiumPlatedPalladium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.RHODIUM_PLATED_PALLADIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Berkelium Casing
-        ModHandler.addShapedRecipe(true, "berkelium_casing", GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.BERKELIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Berkelium),
-                'F', new UnificationEntry(frameGt, Berkelium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Berkelium, 6)
-                .input(frameGt, Berkelium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.BERKELIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Californium Casing
-        ModHandler.addShapedRecipe(true, "californium_casing", GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.CALIFORNIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Californium),
-                'F', new UnificationEntry(frameGt, Californium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Californium, 6)
-                .input(frameGt, Californium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.CALIFORNIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Neptunium Casing
-        ModHandler.addShapedRecipe(true, "neptunium_casing", GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.NEPTUNIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Neptunium),
-                'F', new UnificationEntry(frameGt, Neptunium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Neptunium, 6)
-                .input(frameGt, Neptunium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.NEPTUNIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Nobelium Casing
-        ModHandler.addShapedRecipe(true, "nobelium_casing", GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.NOBELIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Nobelium),
-                'F', new UnificationEntry(frameGt, Nobelium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Nobelium, 6)
-                .input(frameGt, Nobelium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.NOBELIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Lawrencium Casing
-        ModHandler.addShapedRecipe(true, "lawrencium_casing", GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.LAWRENCIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Lawrencium),
-                'F', new UnificationEntry(frameGt, Lawrencium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Lawrencium, 6)
-                .input(frameGt, Lawrencium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.LAWRENCIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Niobium Titanium Casing
-        ModHandler.addShapedRecipe(true, "niobium_titanium_casing", GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.NIOBIUM_TITANIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, NiobiumTitanium),
-                'F', new UnificationEntry(frameGt, NiobiumNitride));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, NiobiumTitanium, 6)
-                .input(frameGt, NiobiumNitride)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.NIOBIUM_TITANIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Botmium Casing
-        ModHandler.addShapedRecipe(true, "botmium_casing", GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.BOTMIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Botmium),
-                'F', new UnificationEntry(frameGt, Botmium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Botmium, 6)
-                .input(frameGt, Botmium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.BOTMIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Ultimate Engine Intake Casing
-        ModHandler.addShapedRecipe(true, "ultimate_engine_intake_casing", GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.ULTIMATE_ENGINE_INTAKE_CASING, 2),
-                "PhP", "RCR", "PwP",
-                'C', GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.NAQUADAH_CASING),
-                'R', new UnificationEntry(rotor, Naquadah),
-                'P', new UnificationEntry(pipeNormalFluid, Naquadah));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(rotor, Naquadah, 2)
-                .input(pipeNormalFluid, Naquadah, 4)
-                .inputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.NAQUADAH_CASING))
-                .outputs(GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.ULTIMATE_ENGINE_INTAKE_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Austenitic Stainless Steel Casing
-        ModHandler.addShapedRecipe(true, "austenitic_stainless_steel_casing", GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.AUSTENITIC_STAINLESS_STEEL_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, AusteniticStainlessSteel904L),
-                'F', new UnificationEntry(frameGt, AusteniticStainlessSteel904L));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, AusteniticStainlessSteel904L, 6)
-                .input(frameGt, AusteniticStainlessSteel904L)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.METAL_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMetalCasing.MetalCasingType.AUSTENITIC_STAINLESS_STEEL_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Laurenium Casing
-        ModHandler.addShapedRecipe(true, "laurenium_casing", GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.LAURENIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Laurenium),
-                'F', new UnificationEntry(frameGt, Laurenium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Laurenium, 6)
-                .input(frameGt, Laurenium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.LAURENIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Advanced Crushing Wheel
-        ModHandler.addShapedRecipe(true, "advanced_crushing_wheels", GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.ADVANCED_CRUSHING_WHEEL, 2),
-                "GGG", "ECE", "EXE",
-                'C', GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.LAURENIUM_CASING),
-                'G', new UnificationEntry(gearSmall, HSSE),
-                'E', new UnificationEntry(gear, TungstenCarbide),
-                'X', ELECTRIC_MOTOR_LuV);
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(gearSmall, HSSE, 3)
-                .input(gear, TungstenCarbide, 4)
-                .input(ELECTRIC_MOTOR_LuV)
-                .inputs(GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.LAURENIUM_CASING))
-                .outputs(GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.ADVANCED_CRUSHING_WHEEL, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Incoloy-DS Casing
-        ModHandler.addShapedRecipe(true, "incoloy_ds_casing", GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.INCOLOY_DS_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, IncoloyDS),
-                'F', new UnificationEntry(frameGt, RhodiumPlatedPalladium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, IncoloyDS, 6)
-                .input(frameGt, RhodiumPlatedPalladium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.MACHINE_CASING.getItemVariant(magicbook.gtlitecore.common.blocks.BlockMachineCasing.MachineCasingType.INCOLOY_DS_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Maraging Steel 250 Casing
-        ModHandler.addShapedRecipe(true, "maraging_steel_250_casing", GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.MARAGING_STEEL_250_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, MaragingSteel250),
-                'F', new UnificationEntry(frameGt, MaragingSteel250));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, MaragingSteel250, 6)
-                .input(frameGt, MaragingSteel250)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.MARAGING_STEEL_250_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Ruridit Casing
-        ModHandler.addShapedRecipe(true, "ruridit_casing", GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.RURIDIT_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Ruridit),
-                'F', new UnificationEntry(frameGt, Ruridit));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Ruridit, 6)
-                .input(frameGt, Ruridit)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.RURIDIT_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Osmiridium Casing
-        ModHandler.addShapedRecipe(true, "osmiridium_casing", GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.OSMIRIDIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Osmiridium),
-                'F', new UnificationEntry(frameGt, Osmiridium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Osmiridium, 6)
-                .input(frameGt, Osmiridium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.OSMIRIDIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Fluxed Electrum Casing
-        ModHandler.addShapedRecipe(true, "fluxed_electrum_casing", GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.FLUXED_ELECTRUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, FluxedElectrum),
-                'F', new UnificationEntry(frameGt, TitaniumTungstenCarbide));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, FluxedElectrum, 6)
-                .input(frameGt, TitaniumTungstenCarbide)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.FLUXED_ELECTRUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Rhodium Casing
-        ModHandler.addShapedRecipe(true, "rhodium_casing", GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.RHODIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Rhodium),
-                'F', new UnificationEntry(frameGt, Ruthenium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Rhodium, 6)
-                .input(frameGt, Ruthenium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.RHODIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Naquadah Alloy Casing
-        ModHandler.addShapedRecipe(true, "naquadah_alloy_casing", GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.NAQUADAH_ALLOY_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, NaquadahAlloy),
-                'F', new UnificationEntry(frameGt, Trinium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, NaquadahAlloy, 6)
-                .input(frameGt, Trinium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.NAQUADAH_ALLOY_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Yotta Fluid Tank Casings
-        ModHandler.addShapedRecipe(true, "force_field_constrained_casing", GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.FORCE_FIELD_CONSTRAINED_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, MARM200Steel),
-                'F', new UnificationEntry(frameGt, Rhodium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, MARM200Steel, 6)
-                .input(frameGt, Rhodium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.FORCE_FIELD_CONSTRAINED_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, BlackSteel)
-                .input(FLUID_CORE_T1)
-                .input(plate, Steel,4)
-                .input(ELECTRIC_PUMP_HV, 8)
-                .input(pipeNormalFluid, StainlessSteel, 4)
-                .circuitMeta(5)
-                .fluidInputs(Cupronickel.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T1))
-                .EUt(VA[HV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, TungstenSteel)
-                .input(FLUID_CORE_T2)
-                .input(plate, RhodiumPlatedPalladium, 4)
-                .input(ELECTRIC_PUMP_EV, 8)
-                .input(pipeNormalFluid, Titanium, 4)
-                .circuitMeta(5)
-                .fluidInputs(Kanthal.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T2))
-                .EUt(VA[IV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Naquadah)
-                .input(FLUID_CORE_T3)
-                .input(plate, NaquadahEnriched, 4)
-                .input(ELECTRIC_PUMP_IV, 8)
-                .input(pipeNormalFluid, NiobiumTitanium, 4)
-                .circuitMeta(5)
-                .fluidInputs(Nichrome.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T3))
-                .EUt(VA[LuV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Trinium)
-                .input(FLUID_CORE_T4)
-                .input(plate, Naquadria, 4)
-                .input(ELECTRIC_PUMP_LuV, 8)
-                .input(pipeNormalFluid, Iridium, 4)
-                .circuitMeta(5)
-                .fluidInputs(RTMAlloy.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T4))
-                .EUt(VA[ZPM])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Americium)
-                .input(FLUID_CORE_T5)
-                .input(plate, Tritanium, 4)
-                .input(ELECTRIC_PUMP_ZPM, 8)
-                .input(pipeNormalFluid, Europium, 4)
-                .circuitMeta(5)
-                .fluidInputs(HSSG.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T5))
-                .EUt(VA[UV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Orichalcum)
-                .input(FLUID_CORE_T6)
-                .input(plate, Adamantium, 4)
-                .input(ELECTRIC_PUMP_UV, 8)
-                .input(pipeNormalFluid, Duranium, 4)
-                .circuitMeta(5)
-                .fluidInputs(Naquadah.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T6))
-                .EUt(VA[UHV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, CelestialTungsten)
-                .input(FLUID_CORE_T7)
-                .input(plate, AstralTitanium, 4)
-                .input(ELECTRIC_PUMP_UHV, 8)
-                .input(pipeNormalFluid, Lafium, 4)
-                .circuitMeta(5)
-                .fluidInputs(Trinium.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T7))
-                .EUt(VA[UEV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Infinity)
-                .input(FLUID_CORE_T8)
-                .input(plate, DegenerateRhenium, 4)
-                .input(ELECTRIC_PUMP_UEV, 8)
-                .input(pipeNormalFluid, CrystalMatrix, 4)
-                .circuitMeta(5)
-                .fluidInputs(Tritanium.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T8))
-                .EUt(VA[UIV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, HeavyQuarkDegenerateMatter)
-                .input(FLUID_CORE_T9)
-                .input(plate, BlackDwarfMatter, 4)
-                .input(ELECTRIC_PUMP_UIV, 8)
-                .input(pipeNormalFluid, QuantumchromodynamicallyConfinedMatter, 4)
-                .circuitMeta(5)
-                .fluidInputs(Ichorium.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T9))
-                .EUt(VA[UXV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, TranscendentMetal)
-                .input(FLUID_CORE_T10)
-                .input(plate, Shirabon, 4)
-                .input(ELECTRIC_PUMP_UXV, 8)
-                .input(pipeNormalFluid, Fatalium, 4)
-                .circuitMeta(5)
-                .fluidInputs(Astralium.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.YOTTA_TANK_CELL.getItemVariant(BlockYottaTankCell.YottaTankCellTier.T10))
-                .EUt(VA[OpV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        //  Incoloy-020 Casing
-        ModHandler.addShapedRecipe(true, "incoloy_020_casing", GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.INCOLOY_020_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Incoloy020),
-                'F', new UnificationEntry(frameGt, Incoloy020));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Incoloy020, 6)
-                .input(frameGt, Incoloy020)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.INCOLOY_020_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Tantalum Carbide Casing
-        ModHandler.addShapedRecipe(true, "tantalum_carbide_casing", GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.TANTALUM_CARBIDE_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, TantalumCarbide),
-                'F', new UnificationEntry(frameGt, TantalumCarbide));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, TantalumCarbide, 6)
-                .input(frameGt, TantalumCarbide)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.TANTALUM_CARBIDE_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Advanced Slicing Blade
-        ModHandler.addShapedRecipe(true, "advanced_slicing_blades", GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.ADVANCED_SLICING_BLADE, 2),
-                "PPP", "GCG", "GMG",
-                'C', GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.TANTALUM_CARBIDE_CASING),
-                'M', ELECTRIC_MOTOR_LuV,
-                'G', new UnificationEntry(gear, TungstenCarbide),
-                'P', new UnificationEntry(plate, HSSE));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, HSSE, 3)
-                .input(gear, TungstenCarbide, 4)
-                .input(ELECTRIC_MOTOR_LuV)
-                .inputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.TANTALUM_CARBIDE_CASING))
-                .outputs(GTLiteMetaBlocks.ACTIVE_UNIQUE_CASING.getItemVariant(BlockActiveUniqueCasing.ActiveCasingType.ADVANCED_SLICING_BLADE, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Naquadah Casing
-        ModHandler.addShapedRecipe(true, "naquadah_casing", GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.NAQUADAH_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Naquadah),
-                'F', new UnificationEntry(frameGt, Naquadah));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Naquadah, 6)
-                .input(frameGt, Naquadah)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.NAQUADAH_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Naquadah Gearbox Casing
-        ModHandler.addShapedRecipe(true, "naquadah_gearbox_casing", GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.NAQUADAH_GEARBOX_CASING, 2),
-                "PhP", "GFG", "PwP",
-                'P', new UnificationEntry(plate, Naquadah),
-                'G', new UnificationEntry(gear, Naquadah),
-                'F', new UnificationEntry(frameGt, Naquadah));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Naquadah, 4)
-                .input(gear, Naquadah, 2)
-                .input(frameGt, Naquadah)
-                .circuitMeta(4)
-                .outputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.NAQUADAH_GEARBOX_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Hattrium Casing
-        ModHandler.addShapedRecipe(true, "hattrium_casing", GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.HATTRIUM_CASING, 2),
-                "PhP", "PFP","PwP",
-                'P', new UnificationEntry(plate, Hattrium),
-                'F', new UnificationEntry(frameGt, Hattrium));
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plate, Hattrium, 6)
-                .input(frameGt, Hattrium)
-                .circuitMeta(6)
-                .outputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.HATTRIUM_CASING, 2))
-                .EUt(VA[LV])
-                .duration(50)
-                .buildAndRegister();
-
-        //  Circulative Cooling Casing
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.HATTRIUM_CASING))
-                .input(ELECTRIC_PUMP_IV, 2)
-                .input(gear, SiliconeRubber)
-                .input(pipeNormalFluid, Aluminium, 4)
-                .input(ring, Zinc, 16)
-                .input(wireFine, NaquadahEnriched, 4)
-                .fluidInputs(GelidCryotheum.getFluid(L * 4))
-                .outputs(GTLiteMetaBlocks.STRUCTURE_CASING.getItemVariant(BlockStructureCasing.StructureCasingType.CIRCULATIVE_COOLING_CASING, 2))
-                .EUt(VA[IV])
-                .duration(50)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        //  Circulative Cooling Core
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Orichalcum)
-                .input(plate, AlkalisGroupAlloy, 2)
-                .input(SENSOR_IV, 2)
-                .input(rotor, Meitnerium)
-                .input(FLUID_CELL_LARGE_STEEL)
-                .input(wireFine, PlatinumGroupAlloy, 4)
-                .fluidInputs(EnrichedNaquadahTriniumEuropiumDuranide.getFluid(L / 4))
-                .outputs(GTLiteMetaBlocks.COOLING_CORE.getItemVariant(BlockCoolingCore.CoolingCoreTier.MK1, 4))
-                .EUt(VA[UHV])
-                .duration(400)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(GTLiteMetaBlocks.COOLING_CORE.getItemVariant(BlockCoolingCore.CoolingCoreTier.MK1))
-                .input(plate, RefractoryAlloy, 2)
-                .input(SENSOR_LuV, 2)
-                .input(rotor, Nobelium)
-                .input(FLUID_CELL_LARGE_ALUMINIUM)
-                .input(wireFine, Tairitsium, 4)
-                .fluidInputs(PedotPSS.getFluid(L / 4))
-                .outputs(GTLiteMetaBlocks.COOLING_CORE.getItemVariant(BlockCoolingCore.CoolingCoreTier.MK2, 4))
-                .EUt(VA[UEV])
-                .duration(400)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(GTLiteMetaBlocks.COOLING_CORE.getItemVariant(BlockCoolingCore.CoolingCoreTier.MK2))
-                .input(plate, BlackTitanium, 2)
-                .input(SENSOR_ZPM, 2)
-                .input(rotor, MetastableOganesson)
-                .input(FLUID_CELL_LARGE_STAINLESS_STEEL)
-                .input(wireFine, SuperheavyLAlloy, 4)
-                .fluidInputs(QuantumAlloy.getFluid(L / 4))
-                .outputs(GTLiteMetaBlocks.COOLING_CORE.getItemVariant(BlockCoolingCore.CoolingCoreTier.MK3, 4))
-                .EUt(VA[UIV])
-                .duration(400)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(GTLiteMetaBlocks.COOLING_CORE.getItemVariant(BlockCoolingCore.CoolingCoreTier.MK3))
-                .input(plate, BlackPlutonium, 2)
-                .input(SENSOR_UV, 2)
-                .input(rotor, MetastableHassium)
-                .input(FLUID_CELL_LARGE_TITANIUM)
-                .input(wireFine, SuperheavyHAlloy, 4)
-                .fluidInputs(FullereneSuperconductor.getFluid(L / 4))
-                .outputs(GTLiteMetaBlocks.COOLING_CORE.getItemVariant(BlockCoolingCore.CoolingCoreTier.MK4, 4))
-                .EUt(VA[UXV])
-                .duration(400)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
+    private static void DysonSwarmCasings() {
         //  Hypogen Coil Block
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(wireGtDouble, Hypogen, 8)
@@ -4723,7 +4309,7 @@ public class MachineRecipeLoader {
                         .researchStack(TIERED_HATCH[UIV].getStackForm())
                         .EUt(VA[UIV])
                         .CWUt(288))
-                .EUt(8000000)
+                .EUt(VZ[UEV])
                 .duration(400)
                 .buildAndRegister();
 
@@ -4736,9 +4322,9 @@ public class MachineRecipeLoader {
                 .fluidInputs(TinAlloy.getFluid(L * 4))
                 .fluidInputs(HSSE.getFluid(L * 2))
                 .outputs(GTLiteMetaBlocks.DYSON_SWARM_CASING.getItemVariant(BlockDysonSwarmCasing.DysonSwarmCasingType.CONTROL_PRIMARY, 4))
-                .EUt(8000000)
+                .EUt(VZ[UEV])
                 .duration(200)
-                .CasingTier(5) // UEV
+                .tier(5) // UEV
                 .buildAndRegister();
 
         //  Control Secondary
@@ -4750,7 +4336,7 @@ public class MachineRecipeLoader {
                 .input(wireFine, Trinium, 4)
                 .fluidInputs(Hikarium.getFluid(L * 4))
                 .outputs(GTLiteMetaBlocks.DYSON_SWARM_CASING.getItemVariant(BlockDysonSwarmCasing.DysonSwarmCasingType.CONTROL_SECONDARY, 4))
-                .EUt(8000000)
+                .EUt(VZ[UEV])
                 .duration(200)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
@@ -4762,9 +4348,9 @@ public class MachineRecipeLoader {
                 .input(screw, Neutronium, 4)
                 .fluidInputs(BlackTitanium.getFluid(L))
                 .outputs(GTLiteMetaBlocks.DYSON_SWARM_CASING.getItemVariant(BlockDysonSwarmCasing.DysonSwarmCasingType.CONTROL_TOROID))
-                .EUt(8000000)
+                .EUt(VZ[UEV])
                 .duration(20)
-                .CasingTier(5)
+                .tier(5)
                 .buildAndRegister();
 
         //  Depolyment Casing
@@ -4776,9 +4362,9 @@ public class MachineRecipeLoader {
                 .fluidInputs(MetastableFlerovium.getFluid(L))
                 .fluidInputs(PedotTMA.getFluid(L / 2))
                 .outputs(GTLiteMetaBlocks.DYSON_SWARM_CASING.getItemVariant(BlockDysonSwarmCasing.DysonSwarmCasingType.DEPLOYMENT_CASING, 8))
-                .EUt(8000000)
+                .EUt(VZ[UEV])
                 .duration(400)
-                .CasingTier(5) // UEV
+                .tier(5) // UEV
                 .buildAndRegister();
 
         //  Depolyment Magnet
@@ -4798,7 +4384,7 @@ public class MachineRecipeLoader {
                         .researchStack(EXCITATION_MAINTAINER.getStackForm())
                         .EUt(VA[UIV])
                         .CWUt(288))
-                .EUt(8000000)
+                .EUt(VZ[UEV])
                 .duration(400)
                 .buildAndRegister();
 
@@ -4812,7 +4398,7 @@ public class MachineRecipeLoader {
                 .input(wireFine, LunaSilver, 4)
                 .fluidInputs(FluxedElectrum.getFluid(L * 4))
                 .outputs(GTLiteMetaBlocks.DYSON_SWARM_CASING.getItemVariant(BlockDysonSwarmCasing.DysonSwarmCasingType.RECEIVER_CASING, 8))
-                .EUt(8000000)
+                .EUt(VZ[UEV])
                 .duration(400)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
@@ -4833,51 +4419,12 @@ public class MachineRecipeLoader {
                         .researchStack(GTLiteMetaBlocks.ACTIVE_MULTIBLOCK_CASING.getItemVariant(BlockActiveMultiblockCasing.ActiveCasingType.MOTOR_CASING_MK5))
                         .EUt(VA[UIV])
                         .CWUt(288))
-                .EUt(8000000)
+                .EUt(VZ[UEV])
                 .duration(100)
                 .buildAndRegister();
+    }
 
-        //  Quantum Computer Casings
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Duranium)
-                .input(plate, Duranium, 6)
-                .input(circuit, MarkerMaterials.Tier.ZPM)
-                .input(wireFine, Osmiridium, 32)
-                .input(wireFine, Rhenium, 32)
-                .input(wireGtSingle, YttriumBariumCuprate, 2)
-                .outputs(GTLiteMetaBlocks.QUANTUM_COMPUTER_CASING.getItemVariant(BlockQuantumComputerCasing.QCCasingType.COMPUTER_CASING, 2))
-                .EUt(VA[ZPM])
-                .duration(200)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(GTLiteMetaBlocks.QUANTUM_COMPUTER_CASING.getItemVariant(BlockQuantumComputerCasing.QCCasingType.COMPUTER_CASING))
-                .input(circuit, MarkerMaterials.Tier.UV)
-                .input(wireFine, Titanium, 64)
-                .input(wireFine, RedAlloy, 64)
-                .input(wireGtSingle, UraniumRhodiumDinaquadide, 4)
-                .outputs(GTLiteMetaBlocks.QUANTUM_COMPUTER_CASING.getItemVariant(BlockQuantumComputerCasing.QCCasingType.ADVANCED_COMPUTER_CASING))
-                .EUt(VA[ZPM])
-                .duration(200)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Titanium)
-                .input(ELECTRIC_MOTOR_LuV, 2)
-                .input(rotor, Titanium, 2)
-                .input(pipeTinyFluid, Titanium, 16)
-                .input(plate, BlackBronze, 16)
-                .input(wireGtSingle, IndiumTinBariumTitaniumCuprate)
-                .outputs(GTLiteMetaBlocks.QUANTUM_COMPUTER_CASING.getItemVariant(BlockQuantumComputerCasing.QCCasingType.HEAT_VENT, 2))
-                .EUt(VA[LuV])
-                .duration(100)
-                .cleanroom(CleanroomType.CLEANROOM)
-                .buildAndRegister();
-
-        //  Nicoll-Dyson Beamer Casings
-
+    private static void NicollDysonBeamerCasings() {
         //  Singularity Reinforced Stellar Shielding Casing
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .inputs(GTLiteMetaBlocks.SCIENCE_CASING.getItemVariant(BlockScienceCasing.ScienceCasingType.ULTIMATE_HIGH_ENERGY_CASING, 16))
@@ -5032,4 +4579,113 @@ public class MachineRecipeLoader {
                         .EUt(VA[OpV]))
                 .buildAndRegister();
     }
+
+    /**
+     * Create common Metal Casing recipe.
+     *
+     * <p>
+     *     This method will add two recipe of each Metal Casing,
+     *     one is crafting table recipe by Hammer (hard) and Wrench,
+     *     another is assembler recipe.
+     * </p>
+     *
+     * @param regName           Register Name of recipe.
+     * @param outputCasingType  Variant Block class of {@code MetaBlock}.
+     * @param outputCasing      Casing type of {@code MetaBlock}.
+     * @param material          Basic {@code material} of Metal Casing,
+     *                          means plate and frame material.
+     */
+    private static <T extends Enum<T> & IStringSerializable> void createCasingRecipe(String regName,
+                                                                                     VariantBlock<T> outputCasingType,
+                                                                                     T outputCasing,
+                                                                                     Material material) {
+        ModHandler.addShapedRecipe(true, regName, outputCasingType.getItemVariant(outputCasing, ConfigHolder.recipes.casingsPerCraft),
+                "PhP", "PFP","PwP",
+                'P', new UnificationEntry(plate, material),
+                'F', new UnificationEntry(frameGt, material));
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(plate, material, 6)
+                .input(frameGt, material)
+                .circuitMeta(6)
+                .outputs(outputCasingType.getItemVariant(outputCasing, ConfigHolder.recipes.casingsPerCraft))
+                .EUt(VA[LV])
+                .duration(50)
+                .buildAndRegister();
+    }
+
+    /**
+     * Create Metal Casing recipe with different plate-frame material.
+     *
+     * <p>
+     *     This method will add two recipe of each Metal Casing,
+     *     one is crafting table recipe by Hammer (hard) and Wrench,
+     *     another is assembler recipe.
+     * </p>
+     *
+     * @param regName           Register Name of recipe.
+     * @param outputCasingType  Variant Block class of {@code MetaBlock}.
+     * @param outputCasing      Casing type of {@code MetaBlock}.
+     * @param plateMaterial     Plate {@code material} of Metal Casing.
+     * @param frameMaterial     Frame {@code material} of Metal Casing.
+     */
+    private static <T extends Enum<T> & IStringSerializable> void createCasingRecipe(String regName,
+                                                                                     VariantBlock<T> outputCasingType,
+                                                                                     T outputCasing,
+                                                                                     Material plateMaterial,
+                                                                                     Material frameMaterial) {
+        ModHandler.addShapedRecipe(true, regName, outputCasingType.getItemVariant(outputCasing, ConfigHolder.recipes.casingsPerCraft),
+                "PhP", "PFP","PwP",
+                'P', new UnificationEntry(plate, plateMaterial),
+                'F', new UnificationEntry(frameGt, frameMaterial));
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(plate, plateMaterial, 6)
+                .input(frameGt, frameMaterial)
+                .circuitMeta(6)
+                .outputs(outputCasingType.getItemVariant(outputCasing, ConfigHolder.recipes.casingsPerCraft))
+                .EUt(VA[LV])
+                .duration(50)
+                .buildAndRegister();
+    }
+
+    /**
+     * Create Metal Casing recipe with different plate-frame material and new double plate material.
+     *
+     * <p>
+     *     This method will add two recipe of each Metal Casing,
+     *     one is crafting table recipe by Hammer (hard) and Wrench,
+     *     another is assembler recipe.
+     * </p>
+     *
+     * @param regName              Register Name of recipe.
+     * @param outputCasingType     Variant Block class of {@code MetaBlock}.
+     * @param outputCasing         Casing type of {@code MetaBlock}.
+     * @param plateDoubleMaterial  Double Plate {@code material} of Metal Casing.
+     * @param plateMaterial        Plate {@code material} of Metal Casing.
+     * @param frameMaterial        Frame {@code material} of Metal Casing.
+     */
+    private static <T extends Enum<T> & IStringSerializable> void createCasingRecipe(String regName,
+                                                                                     VariantBlock<T> outputCasingType,
+                                                                                     T outputCasing,
+                                                                                     Material plateDoubleMaterial,
+                                                                                     Material plateMaterial,
+                                                                                     Material frameMaterial) {
+        ModHandler.addShapedRecipe(true, regName, outputCasingType.getItemVariant(outputCasing, ConfigHolder.recipes.casingsPerCraft),
+                "PhP", "TFT","PwP",
+                'P', new UnificationEntry(plateDouble, plateDoubleMaterial),
+                'T', new UnificationEntry(plate, plateMaterial),
+                'F', new UnificationEntry(frameGt, frameMaterial));
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(plateDouble, plateDoubleMaterial, 4)
+                .input(plate, plateMaterial, 2)
+                .input(frameGt, frameMaterial)
+                .circuitMeta(6)
+                .outputs(outputCasingType.getItemVariant(outputCasing, ConfigHolder.recipes.casingsPerCraft))
+                .EUt(VA[LV])
+                .duration(50)
+                .buildAndRegister();
+    }
+
 }

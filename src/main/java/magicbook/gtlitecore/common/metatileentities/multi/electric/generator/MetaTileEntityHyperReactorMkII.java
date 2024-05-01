@@ -22,7 +22,7 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.MetaBlocks;
 import magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps;
-import magicbook.gtlitecore.client.GTLiteTextures;
+import magicbook.gtlitecore.client.renderer.texture.GTLiteTextures;
 import magicbook.gtlitecore.common.blocks.BlockActiveMultiblockCasing;
 import magicbook.gtlitecore.common.blocks.BlockUniqueCasing;
 import magicbook.gtlitecore.common.blocks.GTLiteMetaBlocks;

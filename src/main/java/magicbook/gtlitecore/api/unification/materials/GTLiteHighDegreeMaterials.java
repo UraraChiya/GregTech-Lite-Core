@@ -4,7 +4,6 @@ import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.fluids.FluidState;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.BlastProperty;
-import net.minecraft.util.text.TextFormatting;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.Deuterium;
@@ -12,9 +11,23 @@ import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.BRIGHT;
 import static gregtech.api.unification.material.info.MaterialIconSet.DULL;
 import static gregtech.api.util.GTUtility.gregtechId;
+import static magicbook.gtlitecore.api.GTLiteValues.*;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 import static magicbook.gtlitecore.api.unification.materials.info.GTLiteMaterialIconSet.CUSTOM_MHCSM;
 
+/**
+ * High Degree Materials
+ *
+ * @author Magic_Sweepy
+ *
+ * <p>
+ *     This class is a part of {@code Material} class,
+ *     all material in this class is all High Energy Physics related,
+ *     or it is just science-fantastic material.
+ * </p>
+ *
+ * @since 2.8.7-beta
+ */
 public class GTLiteHighDegreeMaterials {
 
     //  Range: 15001-16000
@@ -28,73 +41,75 @@ public class GTLiteHighDegreeMaterials {
                 .plasma(new FluidBuilder().temperature((int) (V[ZPM] + V[UHV])/2))
                 .color(0x8DA7DC)
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED  + "a" + TextFormatting.RESET + "§e(u2)d(c2)s(t2)bg" + TextFormatting.OBFUSCATED + "a", false);
+                .setFormula(formulaWithObfuscatedA("§e(u2)d(c2)s(t2)bg"), true);
 
         //  15002 Heavy Quarks
         HeavyQuarks = new Material.Builder(getId(), gregtechId("heavy_quarks"))
-                .liquid(new FluidBuilder().state(FluidState.PLASMA).temperature((int) V[ZPM]))
+                .liquid(new FluidBuilder().temperature((int) V[ZPM]))
                 .color(0xA6C8D4)
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED  + "a"  + TextFormatting.RESET + "§e(u2)ds" + TextFormatting.OBFUSCATED  + "a" , true);
+                .setFormula(formulaWithObfuscatedA("§e(u2)ds"), true);
 
         //  15003 Light Quarks
         LightQuarks = new Material.Builder(getId(), gregtechId("light_quarks"))
-                .liquid(new FluidBuilder().state(FluidState.PLASMA).temperature((int) (V[ZPM] + V[UHV])/2))
+                .liquid(new FluidBuilder().temperature((int) (V[ZPM] + V[UHV])/2))
                 .color(0x7E95DF)
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED  + "a" + TextFormatting.RESET + "§e(c2)(t2)b" + TextFormatting.OBFUSCATED + "a", false);
+                .setFormula(formulaWithObfuscatedA("§e(c2)(t2)b"), true);
 
         //  15004 Gluons
         Gluons = new Material.Builder(getId(), gregtechId("gluons"))
-                .liquid(new FluidBuilder().state(FluidState.PLASMA).temperature((int) V[UHV]))
+                .liquid(new FluidBuilder().temperature((int) V[UHV]))
                 .color(0x564983)
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED  + "a" + TextFormatting.RESET + "§eg" + TextFormatting.OBFUSCATED  + "a", false);
+                .setFormula(formulaWithObfuscatedA("§eg"), false);
 
         //  15005 Instantons
         Instantons = new Material.Builder(getId(), gregtechId("instantons"))
-                .liquid(new FluidBuilder().state(FluidState.PLASMA).temperature((int) V[UEV]))
+                .liquid(new FluidBuilder().temperature((int) V[UEV]))
                 .color(0x80CFEC)
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED  + "a" + TextFormatting.RESET + "§ei" + TextFormatting.OBFUSCATED  + "a", false);
+                .setFormula(formulaWithObfuscatedA("§ei"), false);
 
         //  15006 Higgs Bosons
         HiggsBosons = new Material.Builder(getId(), gregtechId("higgs_bosons"))
                 .liquid(new FluidBuilder().state(FluidState.PLASMA).temperature((int) V[UXV]).customStill())
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED  + "a" + TextFormatting.RESET + "§eh" + TextFormatting.OBFUSCATED + "a", false);
+                .setFormula(formulaWithObfuscatedA("§eh"), false);
 
         //  15007 Heavy Lepton Mixture
         HeavyLepton = new Material.Builder(getId(), gregtechId("heavy_lepton"))
-                .liquid(new FluidBuilder().state(FluidState.PLASMA).temperature((int)(V[UIV] - V[UV])))
+                .liquid(new FluidBuilder().temperature((int)(V[UIV] - V[UV])))
                 .color(0xD3A9F8)
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED  + "a" + TextFormatting.RESET + "§e(t2)u" + TextFormatting.OBFUSCATED  + "a", true);
+                .setFormula(formulaWithObfuscatedA("§e(t2)u"), true);
 
         //  15008 Temporal Fluid
         TemporalFluid = new Material.Builder(getId(), gregtechId("temporal_fluid"))
-                .liquid(new FluidBuilder().state(FluidState.PLASMA).temperature((int)(V[OpV] - V[IV])).customStill())
+                .liquid(new FluidBuilder().temperature((int)(V[OpV] - V[IV])).customStill())
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED + "aaaaaa", false);
+                .setFormula(addObfuscatedFormula(), false);
 
         //  15009 Cosmic Computing Mixture
         CosmicComputingMixture = new Material.Builder(getId(), gregtechId("cosmic_computing_mixture"))
-                .liquid(new FluidBuilder().state(FluidState.PLASMA).temperature((int)(V[OpV])).customStill())
+                .liquid(new FluidBuilder().temperature((int)(V[OpV])).customStill())
+                .components(Gluons, 8, HeavyQuarks, 8, HeavyLepton, 32, HiggsBosons, 4, TemporalFluid, 4, Instantons, 4)
+                .flags(DISABLE_DECOMPOSITION)
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED + "aaaaaa", false);
+                .setFormula(formulaWithObfuscatedA("§eg8((u2)ds)8((t2)u)32h4?4i4"), true);
 
         //  15010 Heavy Quark Enriched Mixture
         HeavyQuarkEnrichedMixture = new Material.Builder(getId(), gregtechId("heavy_quark_enriched_mixture"))
-                .liquid(new FluidBuilder().state(FluidState.PLASMA).temperature((int) ((V[ZPM] * 4 + V[UHV])/2)))
+                .liquid(new FluidBuilder().temperature((int) ((V[ZPM] * 4 + V[UHV])/2)))
                 .color(HeavyQuarks.getMaterialRGB() + LightQuarks.getMaterialRGB())
                 .components(LightQuarks, 1, HeavyQuarks, 3)
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED  + "a"  + TextFormatting.RESET + "§e(u2)d(c2)s(t2)b" + TextFormatting.OBFUSCATED  + "a" , true);
+                .setFormula(formulaWithObfuscatedA("§e(u2)d(c2)s(t2)b"), true);
 
         //  15011 Deuterium-Superheavy Mixture
         DeuteriumSuperheavyMixture = new Material.Builder(getId(), gregtechId("deuterium_superheavy_mixture"))
-                .liquid(new FluidBuilder().state(FluidState.PLASMA).temperature((int) (V[ZPM] * V[MV])/2))
+                .liquid(new FluidBuilder().temperature((int) (V[ZPM] * V[MV])/2))
                 .color(0x7B9F8E)
                 .components(Deuterium, 2, MetastableHassium, 1, MetastableFlerovium, 1, MetastableOganesson, 1)
                 .flags(DISABLE_DECOMPOSITION)
@@ -112,35 +127,36 @@ public class GTLiteHighDegreeMaterials {
                         .blastStats(VA[UIV]))
                 .flags(DISABLE_DECOMPOSITION, GENERATE_PLATE, GENERATE_FOIL, GENERATE_FINE_WIRE, GENERATE_ROD, GENERATE_FRAME)
                 .cableProperties(V[UXV], 576, 1024, false)
-                .build();
+                .build()
+                .setFormula(addObfuscatedFormula(), false);
 
         //  15013 Magneto Hydrodynamically Constrained Star Matter
         MagnetoHydrodynamicallyConstrainedStarMatter = new Material.Builder(getId(), gregtechId("magneto_hydrodynamically_constrained_star_matter"))
                 .ingot()
                 .liquid(new FluidBuilder().temperature(600000000))
                 .iconSet(CUSTOM_MHCSM)
-                .flags(NO_SMELTING, GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_RING, GENERATE_ROUND, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_FOIL, GENERATE_FINE_WIRE)
+                .flags(NO_SMELTING, GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_RING, GENERATE_ROUND, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_FOIL, GENERATE_FINE_WIRE, GENERATE_LENS)
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED + "aaaaaa", false);
+                .setFormula(addObfuscatedFormula(), false);
 
         //  15014 Raw Star Matter
         RawStarMatter = new Material.Builder(getId(), gregtechId("raw_star_matter"))
                 .liquid(new FluidBuilder().temperature(600000000).customStill())
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED + "aaaaaa", false);
+                .setFormula(addObfuscatedFormula(), false);
 
         //  15015 Dense Neutron Plasma
         DenseNeutronPlasma = new Material.Builder(getId(), gregtechId("dense_neutron_plasma"))
                 .plasma(new FluidBuilder().temperature(32768000))
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED  + "a"  + TextFormatting.RESET + "n" + TextFormatting.OBFUSCATED  + "a" , false);
+                .setFormula(formulaWithObfuscatedA("§en") , false);
 
         //  15016 High Energy Quark-Gluon Plasma
         HighEnergyQuarkGluonPlasma = new Material.Builder(getId(), gregtechId("high_energy_quark_gluon_plasma"))
                 .plasma(new FluidBuilder().temperature((int) (V[UHV] + V[UIV])/2))
                 .color(0x9933CC)
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED  + "a"  + TextFormatting.RESET + "§e(u2)d(c2)s(t2)bg" + TextFormatting.OBFUSCATED  + "a", true);
+                .setFormula(formulaWithObfuscatedA("§e(u2)d(c2)s(t2)bg"), true);
 
         //  15017 Quantumchromodynamically Confined Matter
         QuantumchromodynamicallyConfinedMatter = new Material.Builder(getId(), gregtechId("quantumchromodynamically_confined_matter"))
@@ -154,7 +170,7 @@ public class GTLiteHighDegreeMaterials {
                 .flags(GENERATE_PLATE, GENERATE_FOIL, GENERATE_FINE_WIRE)
                 .fluidPipeProperties(80000, 20000, true, true, true, true)
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED + "aaaaaa", false);
+                .setFormula(addObfuscatedFormula(), false);
 
         //  15018 Black Dwarf Matter
         BlackDwarfMatter = new Material.Builder(getId(), gregtechId("black_dwarf_matter"))
@@ -168,7 +184,7 @@ public class GTLiteHighDegreeMaterials {
                 .flags(GENERATE_PLATE, GENERATE_FOIL, GENERATE_FINE_WIRE, GENERATE_ROD)
                 .cableProperties(V[UXV], 128, 256, false)
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED + "aaaaaa", false);
+                .setFormula(addObfuscatedFormula(), false);
 
         //  15019 White Dwarf Matter
         WhiteDwarfMatter = new Material.Builder(getId(), gregtechId("white_dwarf_matter"))
@@ -181,7 +197,7 @@ public class GTLiteHighDegreeMaterials {
                 .flags(GENERATE_ROD, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_FINE_WIRE)
                 .cableProperties(V[UXV], 256, 128, false)
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED + "aaaaaa", false);
+                .setFormula(addObfuscatedFormula(), false);
 
         //  15020 Star Core Matter
         StarCoreMatter = new Material.Builder(getId(), gregtechId("star_core_matter"))
@@ -189,20 +205,50 @@ public class GTLiteHighDegreeMaterials {
                 .color(0x592451)
                 .iconSet(DULL)
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED + "aaaaaa", false);
+                .setFormula(addObfuscatedFormula(), false);
 
         //  15021 Dimensionally Transcendent Residue
         DimensionallyTranscendentResidue = new Material.Builder(getId(), gregtechId("dimensionally_transcendent_residue"))
-                .liquid(new FluidBuilder().temperature(999999999).customStill())
+                .liquid(new FluidBuilder().temperature(200000000).customStill())
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED + "aaaaaa", false);
+                .setFormula(addObfuscatedFormula(), false);
 
         //  15022 Superluminal Tachyon Jet
         SuperluminalTachyonJet = new Material.Builder(getId(), gregtechId("superluminal_tachyon_jet"))
                 .liquid(new FluidBuilder().temperature(89340))
                 .color(0x11F7C9)
                 .build()
-                .setFormula(TextFormatting.OBFUSCATED + "aaaaaa", false);
+                .setFormula(addObfuscatedFormula(), false);
+
+        //  15023 Crude Dimensionally Transcendent Catalyst
+        CrudeDimensionallyTranscendentCatalyst = new Material.Builder(getId(), gregtechId("crude_dimensionally_transcendent_catalyst"))
+                .liquid(new FluidBuilder().temperature(250000000).customStill())
+                .build()
+                .setFormula(addObfuscatedFormula(), false);
+
+        //  24092 Prosaic Dimensionally Transcendent Catalyst
+        ProsaicDimensionallyTranscendentCatalyst = new Material.Builder(getId(), gregtechId("prosaic_dimensionally_transcendent_catalyst"))
+                .liquid(new FluidBuilder().temperature(500000000).customStill())
+                .build()
+                .setFormula(addObfuscatedFormula(), false);
+
+        //  24093 Resplendent Dimensionally Transcendent Catalyst
+        ResplendentDimensionallyTranscendentCatalyst = new Material.Builder(getId(), gregtechId("resplendent_dimensionally_transcendent_catalyst"))
+                .liquid(new FluidBuilder().temperature(750000000).customStill())
+                .build()
+                .setFormula(addObfuscatedFormula(), false);
+
+        //  24094 Exotic Dimensionally Transcendent Catalyst
+        ExoticDimensionallyTranscendentCatalyst = new Material.Builder(getId(), gregtechId("exotic_dimensionally_transcendent_catalyst"))
+                .liquid(new FluidBuilder().temperature(1000000000).customStill())
+                .build()
+                .setFormula(addObfuscatedFormula(), false);
+
+        //  24095 Zenith Dimensionally Transcendent Catalyst
+        ZenithDimensionallyTranscendentCatalyst = new Material.Builder(getId(), gregtechId("zenith_dimensionally_transcendent_catalyst"))
+                .liquid(new FluidBuilder().temperature(2000000000).customStill())
+                .build()
+                .setFormula(addObfuscatedFormula(), false);
     }
 
     private static int getId() {

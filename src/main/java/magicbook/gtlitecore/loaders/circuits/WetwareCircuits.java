@@ -68,7 +68,7 @@ public class WetwareCircuits {
                 .output(NEURO_PROCESSOR, 2)
                 .EUt(VA[UHV])
                 .duration(10 * SECOND)
-                .CasingTier(4)
+                .tier(4)
                 .buildAndRegister();
 
     }

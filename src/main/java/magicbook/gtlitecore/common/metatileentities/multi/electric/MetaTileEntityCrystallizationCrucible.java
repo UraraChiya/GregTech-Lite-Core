@@ -27,7 +27,7 @@ import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps;
 import magicbook.gtlitecore.api.utils.GTLiteUtils;
-import magicbook.gtlitecore.client.GTLiteTextures;
+import magicbook.gtlitecore.client.renderer.texture.GTLiteTextures;
 import magicbook.gtlitecore.common.metatileentities.GTLiteMetaTileEntities;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;

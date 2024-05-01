@@ -9,7 +9,7 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.client.renderer.ICubeRenderer;
 import magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps;
-import magicbook.gtlitecore.client.GTLiteTextures;
+import magicbook.gtlitecore.client.renderer.texture.GTLiteTextures;
 import magicbook.gtlitecore.common.blocks.BlockScienceCasing;
 import magicbook.gtlitecore.common.blocks.GTLiteMetaBlocks;
 import net.minecraft.block.state.IBlockState;

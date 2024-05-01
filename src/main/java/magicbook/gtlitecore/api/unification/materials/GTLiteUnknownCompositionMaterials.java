@@ -12,6 +12,17 @@ import static gregtech.api.util.GTUtility.gregtechId;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 import static magicbook.gtlitecore.api.unification.materials.info.GTLiteMaterialFlags.DISABLE_CRYSTALLIZATION;
 
+/**
+ * Unknown Composition Materials
+ *
+ * @author Magic_Sweepy
+ *
+ * <p>
+ *     This class is a part of {@code Material} class.
+ * </p>
+ *
+ * @since 2.8.7-beta
+ */
 public class GTLiteUnknownCompositionMaterials {
 
     //  Range: 18000-20000

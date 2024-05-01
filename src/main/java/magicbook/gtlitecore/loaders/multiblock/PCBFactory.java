@@ -1,11 +1,13 @@
 package magicbook.gtlitecore.loaders.multiblock;
 
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.foil;
+import static gregtech.api.unification.ore.OrePrefix.plate;
 import static gregtech.common.items.MetaItems.*;
 import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.PCB_FACTORY_ETCH_RECIPES;
-import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
-import static magicbook.gtlitecore.api.unification.materials.info.GTLiteOrePrefix.*;
+import static magicbook.gtlitecore.api.unification.GTLiteMaterials.KaptonE;
+import static magicbook.gtlitecore.api.unification.GTLiteMaterials.KaptonK;
+import static magicbook.gtlitecore.api.unification.materials.info.GTLiteOrePrefix.swarm;
 
 public class PCBFactory {
 

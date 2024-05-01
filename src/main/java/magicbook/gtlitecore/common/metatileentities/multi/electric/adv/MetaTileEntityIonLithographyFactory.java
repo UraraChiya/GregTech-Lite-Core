@@ -29,7 +29,7 @@ import magicbook.gtlitecore.api.block.impl.WrappedIntTier;
 import magicbook.gtlitecore.api.pattern.GTLiteTraceabilityPredicate;
 import magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps;
 import magicbook.gtlitecore.api.utils.GTLiteUtils;
-import magicbook.gtlitecore.client.GTLiteTextures;
+import magicbook.gtlitecore.client.renderer.texture.GTLiteTextures;
 import magicbook.gtlitecore.common.blocks.BlockScienceCasing;
 import magicbook.gtlitecore.common.blocks.GTLiteMetaBlocks;
 import magicbook.gtlitecore.common.metatileentities.GTLiteMetaTileEntities;

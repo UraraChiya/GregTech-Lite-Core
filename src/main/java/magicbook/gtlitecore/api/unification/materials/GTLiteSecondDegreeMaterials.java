@@ -12,9 +12,19 @@ import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.*;
 import static gregtech.api.util.GTUtility.gregtechId;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
-import static magicbook.gtlitecore.api.unification.materials.info.GTLiteMaterialIconSet.CUSTOM_LEGENDARIUM;
-import static magicbook.gtlitecore.api.unification.materials.info.GTLiteMaterialIconSet.CUSTOM_MAGNETO_RESONATIC;
+import static magicbook.gtlitecore.api.unification.materials.info.GTLiteMaterialIconSet.*;
 
+/**
+ * Second Degree Materials
+ *
+ * @author Magic_Sweepy
+ *
+ * <p>
+ *     This class is a part of {@code Material} class.
+ * </p>
+ *
+ * @since 2.8.7-beta
+ */
 public class GTLiteSecondDegreeMaterials {
 
     //  Range: 12001-13000
@@ -63,7 +73,7 @@ public class GTLiteSecondDegreeMaterials {
                         .blastStats(VA[EV], 944)
                         .vacuumStats(VA[HV], 320))
                 .components(StainlessSteel, 8, NickelZincFerrite, 4, Kanthal, 4, Molybdenum, 4)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME, GENERATE_BOLT_SCREW)
+                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_FRAME, GENERATE_BOLT_SCREW)
                 .build();
 
         //  12004 Tanmolyium Beta-C
@@ -91,7 +101,7 @@ public class GTLiteSecondDegreeMaterials {
                         .blastStats(VA[EV], 454)
                         .vacuumStats(VA[MV], 280))
                 .components(Cobalt, 4, Chrome, 3, Phosphorus, 2, Molybdenum, 1)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR)
+                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR)
                 .build();
 
         //  12006 Hastelloy-X78
@@ -149,7 +159,7 @@ public class GTLiteSecondDegreeMaterials {
                         .blastStats(VA[LuV], 432)
                         .vacuumStats(VA[EV], 180))
                 .components(MARM200Steel, 18, Cerium, 1)
-                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE)
+                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_ROTOR)
                 .build();
 
         //  12010 Stellite
@@ -219,7 +229,7 @@ public class GTLiteSecondDegreeMaterials {
                         .temp(8400, BlastProperty.GasTier.HIGHEST)
                         .blastStats(VA[ZPM], 1277)
                         .vacuumStats(VA[IV], 400))
-                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR)
+                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_ROTOR)
                 .build();
 
         //  12015 Lafium
@@ -298,7 +308,7 @@ public class GTLiteSecondDegreeMaterials {
                         .blastStats(VA[UV], 800)
                         .vacuumStats(VA[LuV], 140))
                 .components(Zeron100, 8, Stellite100, 6, Titanium, 6, Naquadria, 4, Osmiridium, 3, Aluminium, 2, Tin, 1, Mercury, 1)
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR)
+                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_ROTOR)
                 .build();
 
         //  12021 Titan Steel
@@ -312,7 +322,7 @@ public class GTLiteSecondDegreeMaterials {
                         .blastStats(VA[UHV], 1200)
                         .vacuumStats(VA[ZPM], 180))
                 .components(TitaniumTungstenCarbide, 6, AusteniticStainlessSteel904L, 3, Ruby, 3)
-                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_BOLT_SCREW)
+                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_BOLT_SCREW, GENERATE_ROTOR)
                 .build();
 
         //  12022 Quantum Alloy
@@ -448,7 +458,7 @@ public class GTLiteSecondDegreeMaterials {
                         .temp(5680, BlastProperty.GasTier.HIGHER)
                         .blastStats(VA[IV], 680))
                 .components(Iron, 23, Cobalt, 9, Chrome, 9, Nickel, 9)
-                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE)
+                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_GEAR, GENERATE_SMALL_GEAR)
                 .build();
 
         //  12033 Tantalloy-61
@@ -507,7 +517,7 @@ public class GTLiteSecondDegreeMaterials {
                 .blast(b -> b
                         .temp(11500, BlastProperty.GasTier.HIGHEST)
                         .blastStats(VA[UEV], 580))
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME, GENERATE_DOUBLE_PLATE)
+                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_GEAR)
                 .components(Titanium, 26, Lanthanum, 6, TungstenSteel, 4, Cobalt, 3, Manganese, 2, Phosphorus, 2, Palladium, 2, Niobium, 1, Argon, 5)
                 .toolStats(new ToolProperty(9.0F, 30.0F, 32000, 20))
                 .build();
@@ -521,7 +531,7 @@ public class GTLiteSecondDegreeMaterials {
                 .blast(b -> b
                         .temp(12960, BlastProperty.GasTier.HIGHEST)
                         .blastStats(VA[UIV], 600))
-                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_FRAME, GENERATE_ROTOR)
+                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_FRAME, GENERATE_GEAR)
                 .components(Plutonium241, 18, Cerium, 9, Gadolinium, 3, Dysprosium, 3, Thulium, 2, TungstenCarbide, 6, RedSteel, 6, Duranium, 2, Radon, 2)
                 .toolStats(new ToolProperty(18.0F, 40.0F, 75000, 30))
                 .build();
@@ -531,7 +541,7 @@ public class GTLiteSecondDegreeMaterials {
                 .ingot()
                 .fluid()
                 .color(0xF58FDA)
-                .iconSet(CUSTOM_LEGENDARIUM)
+                .iconSet(ENRICHED)
                 .components(Naquadria, 1, Trinium, 1, Duranium, 1, Tritanium, 1, Orichalcum, 1, Adamantium, 1, Vibranium, 1, Taranium, 1)
                 .blast(b -> b
                         .temp(16500, BlastProperty.GasTier.HIGHEST)
@@ -576,7 +586,7 @@ public class GTLiteSecondDegreeMaterials {
                 .blast(b -> b
                         .temp(14960, BlastProperty.GasTier.HIGHEST)
                         .blastStats(VA[UIV], 1236))
-                .flags(GENERATE_PLATE, GENERATE_FOIL, GENERATE_FINE_WIRE, GENERATE_ROD, GENERATE_RING)
+                .flags(GENERATE_PLATE, GENERATE_FOIL, GENERATE_FINE_WIRE, GENERATE_ROD, GENERATE_RING, GENERATE_ROTOR)
                 .build();
 
         //  12043 Superheavy-L Alloy
@@ -687,7 +697,7 @@ public class GTLiteSecondDegreeMaterials {
                 .blast(b -> b
                         .temp(13100, BlastProperty.GasTier.HIGHEST)
                         .blastStats(VA[UEV], 420))
-                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME)
+                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME, GENERATE_ROTOR)
                 .build();
 
         //  12051 Actinium Group-L Alloy
@@ -868,7 +878,7 @@ public class GTLiteSecondDegreeMaterials {
                         .temp(16600, BlastProperty.GasTier.HIGHEST)
                         .blastStats(VA[ULV], 88888)
                         .vacuumStats(VA[ULV], 88888))
-                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_ROTOR, GENERATE_FRAME)
+                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_ROTOR, GENERATE_FRAME, GENERATE_GEAR)
                 .toolStats(new ToolProperty(36.0F, 80.0F, 100000, 30))
                 .build();
 
@@ -920,7 +930,7 @@ public class GTLiteSecondDegreeMaterials {
                 .fluid()
                 .color(0xD54338)
                 .iconSet(BRIGHT)
-                .flags(GENERATE_PLATE, GENERATE_FOIL, GENERATE_FINE_WIRE, GENERATE_DOUBLE_PLATE)
+                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_ROTOR, GENERATE_FOIL, GENERATE_FINE_WIRE, GENERATE_DOUBLE_PLATE)
                 .blast(b -> b
                         .temp(18300, BlastProperty.GasTier.HIGHEST)
                         .blastStats(VA[UXV], 100)
@@ -1011,6 +1021,20 @@ public class GTLiteSecondDegreeMaterials {
                         .temp(10800, BlastProperty.GasTier.HIGHEST)
                         .blastStats(VA[UV], 318)
                         .vacuumStats(VA[LuV], 109))
+                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME)
+                .build();
+
+        //  12077 Duraluminium Alloy
+        DuraluminiumAlloy = new Material.Builder(getId(), gregtechId("duraluminium_alloy"))
+                .ingot()
+                .fluid()
+                .color(0xF1C1F0)
+                .iconSet(METALLIC)
+                .components(Aluminium, 18, Copper, 3, Manganese, 3, Magnesium, 3, Chrome, 2, Silicon, 2)
+                .blast(b -> b
+                        .temp(4400, BlastProperty.GasTier.MID)
+                        .blastStats(VA[IV], 540)
+                        .vacuumStats(VA[HV], 280))
                 .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_FRAME)
                 .build();
     }

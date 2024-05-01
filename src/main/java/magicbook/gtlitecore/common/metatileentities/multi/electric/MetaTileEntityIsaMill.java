@@ -21,7 +21,7 @@ import magicbook.gtlitecore.api.capability.IGrindBallHatch;
 import magicbook.gtlitecore.api.metatileentity.multi.GTLiteMultiblockAbility;
 import magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps;
 import magicbook.gtlitecore.api.recipe.properties.GrindBallProperty;
-import magicbook.gtlitecore.client.GTLiteTextures;
+import magicbook.gtlitecore.client.renderer.texture.GTLiteTextures;
 import magicbook.gtlitecore.common.blocks.BlockBoilerCasing;
 import magicbook.gtlitecore.common.blocks.BlockMultiblockCasing;
 import magicbook.gtlitecore.common.blocks.GTLiteMetaBlocks;

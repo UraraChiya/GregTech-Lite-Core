@@ -18,7 +18,7 @@ import magicbook.gtlitecore.api.metatileentity.multi.IHeatExchanger;
 import magicbook.gtlitecore.api.metatileentity.multi.NoEnergyMultiblockController;
 import magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps;
 import magicbook.gtlitecore.api.unification.GTLiteMaterials;
-import magicbook.gtlitecore.client.GTLiteTextures;
+import magicbook.gtlitecore.client.renderer.texture.GTLiteTextures;
 import magicbook.gtlitecore.common.blocks.BlockBoilerCasing;
 import magicbook.gtlitecore.common.blocks.BlockMetalCasing;
 import magicbook.gtlitecore.common.blocks.GTLiteMetaBlocks;

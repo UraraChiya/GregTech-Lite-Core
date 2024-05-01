@@ -16,6 +16,17 @@ import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 import static magicbook.gtlitecore.api.unification.materials.info.GTLiteMaterialFlags.DISABLE_CRYSTALLIZATION;
 import static magicbook.gtlitecore.api.unification.materials.info.GTLiteMaterialIconSet.REAGENT;
 
+/**
+ * First Degree Materials
+ *
+ * @author Magic_Sweepy
+ *
+ * <p>
+ *     This class is a part of {@code Material} class.
+ * </p>
+ *
+ * @since 2.8.7-beta
+ */
 public class GTLiteFirstDegreeMaterials {
 
     //  Range: 11001-12000
@@ -524,7 +535,7 @@ public class GTLiteFirstDegreeMaterials {
                 .gem()
                 .color(0x545572)
                 .iconSet(DIAMOND)
-                .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION, DISABLE_CRYSTALLIZATION, FLAMMABLE, EXPLOSIVE)
+                .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_GEAR, DISABLE_DECOMPOSITION, DISABLE_CRYSTALLIZATION, FLAMMABLE, EXPLOSIVE)
                 .components(Boron, 1, Nitrogen, 1)
                 .toolStats(new ToolProperty(14.0F, 9.0F, 12400, 15))
                 .build()

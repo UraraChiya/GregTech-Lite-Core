@@ -36,7 +36,7 @@ import magicbook.gtlitecore.api.capability.IQCComputationProvider;
 import magicbook.gtlitecore.api.capability.IQCCoolantProvider;
 import magicbook.gtlitecore.api.gui.GTLiteGuiTextures;
 import magicbook.gtlitecore.api.metatileentity.multi.GTLiteMultiblockAbility;
-import magicbook.gtlitecore.client.GTLiteTextures;
+import magicbook.gtlitecore.client.renderer.texture.GTLiteTextures;
 import magicbook.gtlitecore.common.blocks.BlockQuantumComputerCasing;
 import magicbook.gtlitecore.common.blocks.GTLiteMetaBlocks;
 import magicbook.gtlitecore.common.metatileentities.GTLiteMetaTileEntities;

@@ -12,6 +12,17 @@ import static gregtech.api.util.GTUtility.gregtechId;
 import static gregtechfoodoption.GTFOMaterialHandler.AceticAnhydride;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
 
+/**
+ * Organic Chemistry Materials
+ *
+ * @author Magic_Sweepy
+ *
+ * <p>
+ *     This class is a part of {@code Material} class.
+ * </p>
+ *
+ * @since 2.8.7-beta
+ */
 public class GTLiteOrganicChemistryMaterials {
 
     //  Range: 13001-15000

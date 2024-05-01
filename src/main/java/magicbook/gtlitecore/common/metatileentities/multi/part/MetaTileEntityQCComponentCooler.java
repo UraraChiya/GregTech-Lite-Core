@@ -7,7 +7,7 @@ import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.client.renderer.texture.cube.SimpleOverlayRenderer;
 import magicbook.gtlitecore.api.capability.IQCCoolantProvider;
 import magicbook.gtlitecore.api.gui.GTLiteGuiTextures;
-import magicbook.gtlitecore.client.GTLiteTextures;
+import magicbook.gtlitecore.client.renderer.texture.GTLiteTextures;
 import net.minecraft.util.ResourceLocation;
 
 public class MetaTileEntityQCComponentCooler extends MetaTileEntityQCComponent implements IQCCoolantProvider {
