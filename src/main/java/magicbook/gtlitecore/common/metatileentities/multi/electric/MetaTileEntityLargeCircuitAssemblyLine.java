@@ -9,10 +9,13 @@ import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiMapMultiblockController;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.recipes.RecipeMap;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.RelativeDirection;
 import gregtech.client.particle.GTLaserBeamParticle;
@@ -23,7 +26,7 @@ import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.core.sound.GTSoundEvents;
 import magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps;
-import magicbook.gtlitecore.client.GTLiteTextures;
+import magicbook.gtlitecore.client.renderer.texture.GTLiteTextures;
 import magicbook.gtlitecore.common.blocks.BlockActiveUniqueCasing;
 import magicbook.gtlitecore.common.blocks.BlockStructureCasing;
 import magicbook.gtlitecore.common.blocks.GTLiteMetaBlocks;
@@ -53,7 +56,7 @@ import java.util.function.Function;
  *
  * @since 2.8.7-beta
  */
-public class MetaTileEntityLargeCircuitAssemblyLine extends RecipeMapMultiblockController {
+public class MetaTileEntityLargeCircuitAssemblyLine extends MultiMapMultiblockController {
 
     private static final ResourceLocation LASER_LOCATION = GTUtility.gregtechId("textures/fx/laser/laser.png");
     private static final ResourceLocation LASER_HEAD_LOCATION = GTUtility.gregtechId("textures/fx/laser/laser_start.png");
@@ -62,7 +65,9 @@ public class MetaTileEntityLargeCircuitAssemblyLine extends RecipeMapMultiblockC
     private int beamCount;
 
     public MetaTileEntityLargeCircuitAssemblyLine(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GTLiteRecipeMaps.LARGE_CIRCUIT_ASSEMBLY_LINE_RECIPES);
+        super(metaTileEntityId, new RecipeMap[]{
+                RecipeMaps.CIRCUIT_ASSEMBLER_RECIPES,
+                GTLiteRecipeMaps.LARGE_CIRCUIT_ASSEMBLY_LINE_RECIPES});
         this.recipeMapWorkable = new LargeCircuitAssemblyLineRecipeLogic(this);
     }
 
@@ -266,6 +271,7 @@ public class MetaTileEntityLargeCircuitAssemblyLine extends RecipeMapMultiblockC
         tooltip.add(I18n.format("gtlitecore.machine.large_circuit_assembly_line.tooltip.5"));
         tooltip.add(I18n.format("gtlitecore.machine.large_circuit_assembly_line.tooltip.6"));
         tooltip.add(I18n.format("gtlitecore.machine.large_circuit_assembly_line.tooltip.7"));
+        tooltip.add(I18n.format("gtlitecore.machine.large_circuit_assembly_line.tooltip.8"));
         if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
             tooltip.add(I18n.format("gtlitecore.machine.large_circuit_assembly_line.tooltip.shift.1"));
             tooltip.add(I18n.format("gtlitecore.machine.large_circuit_assembly_line.tooltip.shift.2"));
@@ -296,11 +302,30 @@ public class MetaTileEntityLargeCircuitAssemblyLine extends RecipeMapMultiblockC
         }
 
         /**
+         * @return Check if machine in Circuit Assembler mode.
+         */
+        private boolean isCircAssembler() {
+            return this.getRecipeMap() == RecipeMaps.CIRCUIT_ASSEMBLER_RECIPES;
+        }
+
+        /**
          * @return This parallel dependencies to Input inventory size, and if you do not build more layer, then return zero.
          */
         @Override
         public int getParallelLimit() {
             return (getInputInventorySize() - 4) * 4;
+        }
+
+        /**
+         * @param maxProgress If machine in common circuit assembler, then get 1/2 progress time.
+         */
+        @Override
+        public void setMaxProgress(int maxProgress) {
+            if (isCircAssembler()) {
+                this.maxProgressTime = maxProgress / 2;
+            } else {
+                this.maxProgressTime = maxProgress;
+            }
         }
     }
 }

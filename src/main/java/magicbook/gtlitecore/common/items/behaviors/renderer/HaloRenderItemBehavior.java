@@ -3,7 +3,7 @@ package magicbook.gtlitecore.common.items.behaviors.renderer;
 import codechicken.lib.model.ModelRegistryHelper;
 import codechicken.lib.util.TransformUtils;
 import magicbook.gtlitecore.api.item.IHaloRenderBehavior;
-import magicbook.gtlitecore.client.renderer.HaloItemRenderer;
+import magicbook.gtlitecore.client.renderer.handler.HaloItemRenderer;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.ResourceLocation;

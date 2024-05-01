@@ -33,7 +33,7 @@ import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityEnerg
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityItemBus;
 import gregtech.common.metatileentities.multi.multiblockpart.appeng.MetaTileEntityMEInputBus;
 import magicbook.gtlitecore.api.capability.impl.OreProcessorRecipeLogic;
-import magicbook.gtlitecore.client.GTLiteTextures;
+import magicbook.gtlitecore.client.renderer.texture.GTLiteTextures;
 import magicbook.gtlitecore.common.blocks.BlockMultiblockCasing;
 import magicbook.gtlitecore.common.blocks.GTLiteMetaBlocks;
 import net.minecraft.block.state.IBlockState;

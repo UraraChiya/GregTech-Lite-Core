@@ -7,6 +7,7 @@ import gregtech.api.recipes.recipeproperties.PrimitiveProperty;
 import gregtech.api.util.EnumValidationResult;
 import gregtech.api.util.TextFormattingUtil;
 import gregtech.api.util.ValidationResult;
+import magicbook.gtlitecore.api.capability.impl.HeatExchangerRecipeLogic;
 import magicbook.gtlitecore.api.recipe.properties.FlowRateProperty;
 import magicbook.gtlitecore.api.recipe.properties.MaxRateProperty;
 import magicbook.gtlitecore.api.utils.GTLiteLog;
@@ -22,7 +23,7 @@ import javax.annotation.Nonnull;
  * <p>
  *     This recipe builder creates a recipe use two Properties,
  *     which one is {@link FlowRateProperty}, and another one is {@link MaxRateProperty}.
- *     Its used for {@link magicbook.gtlitecore.api.capability.impl.HeatExchangerRecipeLogic}.
+ *     Its used for {@link HeatExchangerRecipeLogic}.
  * </p>
  *
  * FIXME Maybe caused error by {@link RecipeMap} in Heat Exchanger running,

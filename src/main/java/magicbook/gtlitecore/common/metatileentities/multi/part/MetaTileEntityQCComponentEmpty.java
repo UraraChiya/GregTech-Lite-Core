@@ -5,7 +5,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.client.renderer.texture.cube.SimpleOverlayRenderer;
 import magicbook.gtlitecore.api.gui.GTLiteGuiTextures;
-import magicbook.gtlitecore.client.GTLiteTextures;
+import magicbook.gtlitecore.client.renderer.texture.GTLiteTextures;
 import net.minecraft.util.ResourceLocation;
 
 public class MetaTileEntityQCComponentEmpty extends MetaTileEntityQCComponent {

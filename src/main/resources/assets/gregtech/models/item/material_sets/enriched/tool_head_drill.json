@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gtlitecore:items/material_sets/enriched/tool_head_drill",
+    "layer1": "gtlitecore:items/material_sets/enriched/tool_head_drill_overlay"
+  }
+}

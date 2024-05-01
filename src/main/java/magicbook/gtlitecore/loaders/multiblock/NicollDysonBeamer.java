@@ -3,10 +3,10 @@ package magicbook.gtlitecore.loaders.multiblock;
 import gregtech.common.blocks.MetaBlocks;
 import magicbook.gtlitecore.common.blocks.*;
 
-import static gregicality.multiblocks.api.recipes.GCYMRecipeMaps.ALLOY_BLAST_RECIPES;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.FIELD_GENERATOR_OpV;
 import static magicbook.gtlitecore.api.GTLiteValues.VZ;
 import static magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps.*;
 import static magicbook.gtlitecore.api.unification.GTLiteMaterials.*;
@@ -33,7 +33,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(8127))
                 .EUt(VA[UHV])
                 .duration(200)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  Aluminium -> Crystal Matrix (UEV)
@@ -45,7 +45,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(6360))
                 .EUt(VA[UEV])
                 .duration(200)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
         //  Aluminium -> Crystal Matrix (UIV)
@@ -57,7 +57,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(4632))
                 .EUt(VA[UIV])
                 .duration(200)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  Crystal Matrix -> Infinity (UEV)
@@ -69,7 +69,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(8127))
                 .EUt(VA[UEV])
                 .duration(200)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  Crystal Matrix -> Infinity (UIV)
@@ -81,7 +81,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(6360))
                 .EUt(VA[UIV])
                 .duration(200)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
         //  Crystal Matrix -> Infinity (UXV)
@@ -93,7 +93,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(4632))
                 .EUt(VA[UXV])
                 .duration(200)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  Iron -> Neutronium (UIV)
@@ -107,7 +107,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(8127))
                 .EUt(VA[UIV])
                 .duration(200)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  Iron -> Neutronium (UXV)
@@ -119,7 +119,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(6360))
                 .EUt(VA[UXV])
                 .duration(200)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
         //  Iron -> Neutronium (OpV)
@@ -131,7 +131,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(4632))
                 .EUt(VA[OpV])
                 .duration(200)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  Neutronium -> Cosmic Neutronium (UXV)
@@ -143,7 +143,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(8127))
                 .EUt(VA[UXV])
                 .duration(200)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  Neutronium -> Cosmic Neutronium (OpV)
@@ -155,7 +155,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(6360))
                 .EUt(VA[OpV])
                 .duration(200)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
         //  Neutronium -> Cosmic Neutronium (MAX)
@@ -167,7 +167,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(4632))
                 .EUt(VA[MAX])
                 .duration(200)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  Copper -> Ichorium (UEV)
@@ -179,7 +179,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(8127))
                 .EUt(VA[UEV])
                 .duration(200)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  Copper -> Ichorium (UIV)
@@ -191,7 +191,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(6360))
                 .EUt(VA[UIV])
                 .duration(200)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
         //  Copper -> Ichorium (UXV)
@@ -203,7 +203,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(4632))
                 .EUt(VA[UXV])
                 .duration(200)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  Ichorium -> Hypogen (UXV)
@@ -215,7 +215,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(8127))
                 .EUt(VA[UXV])
                 .duration(200)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  Ichorium -> Hypogen (OpV)
@@ -227,7 +227,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(6360))
                 .EUt(VA[OpV])
                 .duration(200)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
         //  Ichorium -> Hypogen (MAX)
@@ -239,7 +239,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(4632))
                 .EUt(VA[MAX])
                 .duration(200)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  7
@@ -255,14 +255,15 @@ public class NicollDysonBeamer {
                 .input(swarm, WhiteDwarfMatter, 2)
                 .fluidInputs(Spacetime.getFluid(L * 40))
                 .fluidInputs(Eternity.getFluid(L * 4))
-                .fluidInputs(CosmicComputingMixture.getFluid(1000))
+                .fluidInputs(CosmicComputingMixture.getFluid(65017))
                 .output(dust, Shirabon, 64)
                 .output(dust, Shirabon, 64)
                 .output(dust, Shirabon, 64)
-                .fluidOutputs(DimensionallyTranscendentResidue.getFluid(1000))
+                .fluidOutputs(Galaxium.getFluid(73728))
+                .fluidOutputs(DimensionallyTranscendentResidue.getFluid(8127))
                 .EUt(VZ[UXV])
                 .duration(200)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         NICOLL_DYSON_BEAMER_BURNING_MODULE.recipeBuilder()
@@ -276,19 +277,21 @@ public class NicollDysonBeamer {
                 .input(swarm, Galaxium, 2)
                 .fluidInputs(MagnetoHydrodynamicallyConstrainedStarMatter.getFluid(160000))
                 .fluidInputs(Infinity.getFluid(80000))
-                .fluidInputs(CosmicComputingMixture.getFluid(40000))
                 .fluidInputs(Spacetime.getFluid(L * 20))
                 .fluidInputs(Eternity.getFluid(L * 10))
+                .fluidInputs(CosmicComputingMixture.getFluid(25442))
                 .output(dust, Shirabon, 64)
                 .output(dust, Shirabon, 64)
                 .output(dust, Shirabon, 64)
                 .output(dust, Shirabon, 64)
                 .output(dust, Shirabon, 64)
                 .output(dust, Shirabon, 64)
-                .fluidOutputs(DimensionallyTranscendentResidue.getFluid(40000))
+                .fluidOutputs(Galaxium.getFluid(147456))
+                .fluidOutputs(Edenium.getFluid(73728))
+                .fluidOutputs(DimensionallyTranscendentResidue.getFluid(6360))
                 .EUt(VZ[OpV])
                 .duration(200)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
         NICOLL_DYSON_BEAMER_BURNING_MODULE.recipeBuilder()
@@ -305,10 +308,10 @@ public class NicollDysonBeamer {
                 .fluidInputs(Infinity.getFluid(L * 80))
                 .fluidInputs(CosmicNeutronium.getFluid(L * 40))
                 .fluidInputs(MagnetoHydrodynamicallyConstrainedStarMatter.getFluid(18000))
-                .fluidInputs(CosmicComputingMixture.getFluid(6000))
                 .fluidInputs(Spacetime.getFluid(L * 8))
                 .fluidInputs(Eternity.getFluid(L * 4))
                 .fluidInputs(Magmatter.getFluid(L))
+                .fluidInputs(CosmicComputingMixture.getFluid(4632))
                 .output(dust, Shirabon, 64)
                 .output(dust, Shirabon, 64)
                 .output(dust, Shirabon, 64)
@@ -318,10 +321,13 @@ public class NicollDysonBeamer {
                 .output(dust, Shirabon, 64)
                 .output(dust, Shirabon, 64)
                 .output(dust, Shirabon, 64)
-                .fluidOutputs(DimensionallyTranscendentResidue.getFluid(6000))
+                .fluidOutputs(Galaxium.getFluid(589824))
+                .fluidOutputs(Edenium.getFluid(147456))
+                .fluidOutputs(Arcanium.getFluid(73728))
+                .fluidOutputs(DimensionallyTranscendentResidue.getFluid(4632))
                 .EUt(VZ[MAX])
                 .duration(200)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  Advanced Crude Hypercube recipe
@@ -338,7 +344,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(1000))
                 .EUt(128000000) //  UXV
                 .duration(20)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
         //  Ultimate Crude Hypercube recipe
@@ -353,7 +359,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(DimensionallyTranscendentResidue.getFluid(2000))
                 .EUt(512000000) //  OpV
                 .duration(20)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  Quantum Anomaly
@@ -366,7 +372,7 @@ public class NicollDysonBeamer {
                 .output(QUANTUM_ANOMALY)
                 .EUt(VA[UEV])
                 .duration(20)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  Dimension Gap
@@ -382,7 +388,93 @@ public class NicollDysonBeamer {
                 .fluidOutputs(HiggsBosons.getFluid(147456))
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(3)
+                .tier(3)
+                .buildAndRegister();
+
+
+        //  Crude Dimensionally Transcendent Catalyst
+        NICOLL_DYSON_BEAMER_BURNING_MODULE.recipeBuilder()
+                .notConsumable(lens, CrystalMatrix)
+                .fluidInputs(DimensionallyTranscendentResidue.getFluid(1000))
+                .fluidInputs(Helium.getPlasma(1000))
+                .fluidInputs(Oxygen.getPlasma(1000))
+                .fluidInputs(Iron.getPlasma(1000))
+                .fluidOutputs(CrudeDimensionallyTranscendentCatalyst.getFluid(1000))
+                .EUt(VZ[UEV])
+                .duration(200)
+                .tier(1)
+                .buildAndRegister();
+
+        //  Prosaic Dimensionally Transcendent Catalyst
+        NICOLL_DYSON_BEAMER_BURNING_MODULE.recipeBuilder()
+                .notConsumable(QUANTUM_ANOMALY)
+                .notConsumable(lens, Infinity)
+                .fluidInputs(CrudeDimensionallyTranscendentCatalyst.getFluid(1000))
+                .fluidInputs(Argon.getPlasma(1000))
+                .fluidInputs(Nitrogen.getPlasma(1000))
+                .fluidInputs(Americium.getPlasma(1000))
+                .fluidOutputs(ProsaicDimensionallyTranscendentCatalyst.getFluid(1000))
+                .EUt(VZ[UIV])
+                .duration(200)
+                .tier(1)
+                .buildAndRegister();
+
+        //  Resplendent Dimensionally Transcendent Catalyst
+        NICOLL_DYSON_BEAMER_BURNING_MODULE.recipeBuilder()
+                .notConsumable(QUANTUM_ANOMALY)
+                .notConsumable(lens, MagnetoHydrodynamicallyConstrainedStarMatter)
+                .notConsumable(CHROMATIC_LENS)
+                .fluidInputs(ProsaicDimensionallyTranscendentCatalyst.getFluid(1000))
+                .fluidInputs(Tin.getPlasma(1000))
+                .fluidInputs(Nickel.getPlasma(1000))
+                .fluidInputs(FleroviumYtterbiumPlasma.getPlasma(1000))
+                .fluidOutputs(ResplendentDimensionallyTranscendentCatalyst.getFluid(1000))
+                .EUt(VZ[UXV])
+                .duration(200)
+                .tier(2)
+                .buildAndRegister();
+
+        //  Exotic Dimensionally Transcendent Catalyst
+        NICOLL_DYSON_BEAMER_BURNING_MODULE.recipeBuilder()
+                .notConsumable(CHARGED_HYPERCUBE)
+                .notConsumable(RECURSIVELY_FOLDED_NEGATIVE_SPACE)
+                .notConsumable(lens, Spacetime)
+                .notConsumable(SUPERSOLID_SPACETIME_CONTINUUM)
+                .fluidInputs(ResplendentDimensionallyTranscendentCatalyst.getFluid(1000))
+                .fluidInputs(Taranium.getPlasma(1000))
+                .fluidInputs(Adamantium.getPlasma(1000))
+                .fluidInputs(Vibranium.getPlasma(1000))
+                .fluidInputs(Mithril.getPlasma(1000))
+                .fluidInputs(Hypogen.getPlasma(1000))
+                .fluidInputs(IchorLiquid.getPlasma(1000))
+                .fluidInputs(DegenerateRhenium.getPlasma(1000))
+                .fluidInputs(QuarkGluonPlasma.getPlasma(1000))
+                .fluidOutputs(ExoticDimensionallyTranscendentCatalyst.getFluid(1000))
+                .EUt(VZ[OpV])
+                .duration(200)
+                .tier(3)
+                .buildAndRegister();
+
+        //  Zenith Dimensionally Transcendent Catalyst
+        NICOLL_DYSON_BEAMER_BURNING_MODULE.recipeBuilder()
+                .notConsumable(CHARGED_HYPERCUBE)
+                .notConsumable(LIGHT_CONE_MODULE)
+                .notConsumable(lens, Eternity)
+                .notConsumable(FIELD_GENERATOR_OpV)
+                .notConsumable(swarm, Galaxium)
+                .fluidInputs(ExoticDimensionallyTranscendentCatalyst.getFluid(1000))
+                .fluidInputs(AstralTitanium.getPlasma(1000))
+                .fluidInputs(CelestialTungsten.getPlasma(1000))
+                .fluidInputs(DenseNeutronPlasma.getPlasma(1000))
+                .fluidInputs(HeavyQuarkDegenerateMatter.getPlasma(1000))
+                .fluidInputs(MagnetoHydrodynamicallyConstrainedStarMatter.getFluid(1000))
+                .fluidInputs(Fatalium.getPlasma(1000))
+                .fluidInputs(CosmicFabric.getPlasma(1000))
+                .fluidInputs(CosmicComputingMixture.getFluid(1000))
+                .fluidOutputs(ZenithDimensionallyTranscendentCatalyst.getFluid(1000))
+                .EUt(VZ[MAX])
+                .duration(200)
+                .tier(3)
                 .buildAndRegister();
 
         //  1x Magmatter Wire
@@ -397,7 +489,7 @@ public class NicollDysonBeamer {
                 .output(wireGtSingle, Magmatter)
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  1x Magmatter cable
@@ -416,7 +508,7 @@ public class NicollDysonBeamer {
                 .output(cableGtSingle, Magmatter)
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
         //  2x Magmatter cable
@@ -435,7 +527,7 @@ public class NicollDysonBeamer {
                 .output(cableGtDouble, Magmatter)
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
         //  4x Magmatter cable
@@ -454,7 +546,7 @@ public class NicollDysonBeamer {
                 .output(cableGtQuadruple, Magmatter)
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
         //  8x Magmatter cable
@@ -473,7 +565,7 @@ public class NicollDysonBeamer {
                 .output(cableGtOctal, Magmatter)
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
         //  16x Magmatter cable
@@ -492,7 +584,7 @@ public class NicollDysonBeamer {
                 .output(cableGtHex, Magmatter)
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
     }
 
@@ -507,7 +599,7 @@ public class NicollDysonBeamer {
                 .output(dust, Magmatter)
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  Magmatter Dust Small
@@ -519,7 +611,7 @@ public class NicollDysonBeamer {
                 .output(dustSmall, Magmatter)
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  Magmatter Dust Tiny
@@ -531,7 +623,7 @@ public class NicollDysonBeamer {
                 .output(dustTiny, Magmatter)
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  Magmatter Nugget
@@ -543,7 +635,7 @@ public class NicollDysonBeamer {
                 .output(nugget, Magmatter)
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  Magmatter Ingot
@@ -555,7 +647,7 @@ public class NicollDysonBeamer {
                 .output(ingot, Magmatter)
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  Magmatter Block
@@ -567,7 +659,7 @@ public class NicollDysonBeamer {
                 .output(block, Magmatter)
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  Magmatter Plate
@@ -579,7 +671,7 @@ public class NicollDysonBeamer {
                 .output(plate, Magmatter)
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  Magmatter Foil
@@ -591,7 +683,7 @@ public class NicollDysonBeamer {
                 .output(foil, Magmatter)
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  Magmatter Wire Fine
@@ -603,7 +695,7 @@ public class NicollDysonBeamer {
                 .output(wireFine, Magmatter)
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
     }
 
@@ -626,7 +718,7 @@ public class NicollDysonBeamer {
                 .chancedOutput(HYPERSTABLE_SELF_HEALING_ADHESIVE.getStackForm(), 2000, 0)
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  Supersolid Spacetime Continuum
@@ -644,7 +736,7 @@ public class NicollDysonBeamer {
                 .chancedOutput(SUPERSOLID_SPACETIME_CONTINUUM, 2000, 0)
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
         //  Magmatter Liquid
@@ -666,7 +758,7 @@ public class NicollDysonBeamer {
                 .fluidOutputs(Magmatter.getFluid(16000))
                 .EUt(VA[MAX])
                 .duration(20)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
     }

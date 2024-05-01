@@ -31,7 +31,7 @@ public class DecayGenerator {
                 .fluidOutputs(Hafnium.getFluid(L))
                 .EUt(VA[LuV])
                 .duration(120)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  Ac -> Fr
@@ -40,7 +40,7 @@ public class DecayGenerator {
                 .fluidOutputs(Francium.getFluid(L))
                 .EUt(VA[ZPM])
                 .duration(100)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
         //  Mo -> Tc
@@ -49,7 +49,7 @@ public class DecayGenerator {
                 .fluidOutputs(Technetium.getFluid(L))
                 .EUt(VA[IV])
                 .duration(100)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  Th -> Pa
@@ -60,7 +60,7 @@ public class DecayGenerator {
                 .fluidOutputs(Protactinium.getFluid(L))
                 .EUt(VA[LuV])
                 .duration(80)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  Ra -> Rn + alpha
@@ -70,7 +70,7 @@ public class DecayGenerator {
                 .fluidOutputs(Radon.getFluid(1000))
                 .EUt(VA[ZPM])
                 .duration(120)
-                .CasingTier(1) // ZPM
+                .tier(1) // ZPM
                 .buildAndRegister();
     }
 
@@ -82,7 +82,7 @@ public class DecayGenerator {
                 .fluidOutputs(FleroviumYtterbiumPlasma.getPlasma(1000))
                 .EUt(VA[ZPM])
                 .duration(160)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  Flerovium-Ytterbium Plasma -> Metastable Flerovium
@@ -130,7 +130,7 @@ public class DecayGenerator {
                 .chancedOutput(ALPHA_PARTICLE, 1000, 500)
                 .EUt(VH[IV])
                 .duration(200)
-                .CasingTier(1) // ZPM
+                .tier(1) // ZPM
                 .buildAndRegister();
 
         //  Helium-3 -> Alpha Particle
@@ -140,7 +140,7 @@ public class DecayGenerator {
                 .chancedOutput(ALPHA_PARTICLE, 1000, 500)
                 .EUt(VH[LuV])
                 .duration(100)
-                .CasingTier(1) // ZPM
+                .tier(1) // ZPM
                 .buildAndRegister();
 
         //  Helium Plasma -> Alpha Particle
@@ -150,7 +150,7 @@ public class DecayGenerator {
                 .chancedOutput(ALPHA_PARTICLE, 1000, 500)
                 .EUt(VH[ZPM])
                 .duration(50)
-                .CasingTier(1) // ZPM
+                .tier(1) // ZPM
                 .buildAndRegister();
     }
 }

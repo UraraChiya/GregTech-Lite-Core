@@ -213,7 +213,7 @@ public class CrystalCircuits {
                 .output(CRYSTAL_SOC_SOCKET, 2)
                 .EUt(VA[UV])
                 .duration(SECOND)
-                .CasingTier(3)
+                .tier(3) // UV
                 .buildAndRegister();
     }
 

@@ -11,7 +11,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.Materials.TinAlloy;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static magicbook.gtlitecore.common.items.GTLiteMetaItems.*;
 

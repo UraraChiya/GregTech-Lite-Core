@@ -1,11 +1,13 @@
 package magicbook.gtlitecore.api.recipe.builder;
 
+import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.util.EnumValidationResult;
 import magicbook.gtlitecore.api.recipe.properties.ComponentCasingTierProperty;
 import magicbook.gtlitecore.api.utils.GTLiteLog;
+import magicbook.gtlitecore.common.metatileentities.multi.electric.MetaTileEntityComponentAssemblyLine;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.annotation.Nonnull;
@@ -16,8 +18,9 @@ import javax.annotation.Nonnull;
  * @author Magic_Sweepy
  *
  * <p>
- *     This class creates a recipe builder for Component Assembly Line Casing Tier system (please see: {@link magicbook.gtlitecore.common.metatileentities.multi.electric.MetaTileEntityComponentAssemblyLine}.
- *     You should use {@link gregtech.api.capability.impl.MultiblockRecipeLogic#checkRecipe(Recipe)} to implement correspondent function about this recipe.
+ *     This class creates a recipe builder for Component Assembly Line Casing Tier system,
+ *     please see: {@link MetaTileEntityComponentAssemblyLine}.
+ *     You should use {@link MultiblockRecipeLogic#checkRecipe(Recipe)} to implement correspondent function about this recipe.
  *     About related recipe property, please see: {@link ComponentCasingTierProperty}.
  * </p>
  */
@@ -46,19 +49,19 @@ public class ComponentCasingTierRecipeBuilder extends RecipeBuilder<ComponentCas
     @Override
     public boolean applyProperty(@Nonnull String key, Object value) {
         if (key.equals(ComponentCasingTierProperty.KEY)) {
-            this.CasingTier(((Number) value).intValue());
+            this.tier(((Number) value).intValue());
             return true;
         }
         return super.applyProperty(key, value);
     }
 
-    public ComponentCasingTierRecipeBuilder CasingTier(int Tier) {
-        if (Tier <= 0) {
+    public ComponentCasingTierRecipeBuilder tier(int casingTier) {
+        if (casingTier <= 0) {
             GTLiteLog.logger.error("Casing Tier cannot be less than or equal to 0", new IllegalArgumentException());
             recipeStatus = EnumValidationResult.INVALID;
         }
 
-        this.applyProperty(ComponentCasingTierProperty.getInstance(), Tier);
+        this.applyProperty(ComponentCasingTierProperty.getInstance(), casingTier);
         return this;
     }
 

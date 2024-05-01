@@ -10,10 +10,17 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.SteamMetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.recipes.RecipeMap;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.util.GTTransferUtils;
+import gregtech.api.util.GTUtility;
 import gregtech.client.renderer.ICubeRenderer;
+import gregtech.client.renderer.texture.Textures;
 import magicbook.gtlitecore.api.gui.GTLiteGuiTextures;
+import magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps;
+import magicbook.gtlitecore.api.utils.GTLiteUtils;
+import magicbook.gtlitecore.client.renderer.texture.GTLiteTextures;
+import magicbook.gtlitecore.common.metatileentities.GTLiteMetaTileEntities;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -37,7 +44,7 @@ import java.util.Arrays;
  *
  * <p>
  *     This class is an easier register of single steam machines,
- *     please see: {@link magicbook.gtlitecore.common.metatileentities.GTLiteMetaTileEntities#registerSimpleSteamMetaTileEntity(SimpleSteamMetaTileEntity[], int, String, RecipeMap, SteamProgressIndicator, ICubeRenderer, boolean)}.
+ *     please see: {@link GTLiteMetaTileEntities#registerSimpleSteamMetaTileEntity}.
  *     You needs to use progress bar through {@link SteamProgressIndicators}.
  * </p>
  *
@@ -54,12 +61,21 @@ public class SimpleSteamMetaTileEntity extends SteamMetaTileEntity {
     private IItemHandlerModifiable actualImportItems;
 
     /**
-     * @param metaTileEntityId   MetaTileEntity id (do not use {@link magicbook.gtlitecore.api.utils.GTLiteUtils#gtliteId(String)}, use number id in gregtech)
-     * @param recipeMap          Recipemap of machine, you can use recipemap in {@link magicbook.gtlitecore.api.recipe.GTLiteRecipeMaps} or {@link gregtech.api.recipes.RecipeMaps} in gregtech
-     * @param progressIndicator  Steam Progress Bar Indicator (generally, no special adjustments are required, it is only used to catch parameters of progress bar of steam machine)
-     * @param renderer           Renderer of machine, you can use renderer in {@link magicbook.gtlitecore.client.GTLiteTextures} or {@link gregtech.client.renderer.texture.Textures}/{@link gregicality.multiblocks.api.render.GCYMTextures}.
-     * @param isBrickedCasing    Check if the machine use brick casing (if true, then cause texture change)
-     * @param isHighPressure     Check if the machine is High Pressure machine (if true, then cause texture change)
+     * Create a steam meta tile entity.
+     *
+     * @param metaTileEntityId   ID of {@code MetaTileEntity}, should return {@code ResourceLocation}.
+     *                           Hint: If you add contents in your mod, do not use {@link GTLiteUtils#gtliteId(String)},
+     *                           please use your namespace method (like this, if you want to init it in {@code gregtech},
+     *                           then you should use {@link GTUtility#gregtechId(String)}).
+     * @param recipeMap          Machine {@code RecipeMap}, you can use {@code RecipeMap} in {@link GTLiteRecipeMaps} or {@link RecipeMaps},
+     *                           or another {@code RecipeMap} class in other addition mods.
+     * @param progressIndicator  Progress Bar, please use progress bar in {@link SteamProgressIndicators}.
+     *                           Generally, no special adjustments are required,
+     *                           it is only used to catch parameters of progress bar of steam machine.
+     * @param renderer           Renderer of machine (in {@code Texture} class), you can use renderer in {@link GTLiteTextures} or {@link Textures},
+     *                           or another {@code Texture} class in other addition mods.
+     * @param isBrickedCasing    Check if the machine use brick casing, if true, then cause texture change.
+     * @param isHighPressure     Check if the machine is High Pressure machine, if true, then cause texture change.
      */
     public SimpleSteamMetaTileEntity(ResourceLocation metaTileEntityId,
                                      RecipeMap<?> recipeMap,
@@ -160,9 +176,7 @@ public class SimpleSteamMetaTileEntity extends SteamMetaTileEntity {
 
     @SideOnly(Side.CLIENT)
     @Override
-    protected void randomDisplayTick(float x,
-                                     float y,
-                                     float z,
+    protected void randomDisplayTick(float x, float y, float z,
                                      EnumParticleTypes flame,
                                      EnumParticleTypes smoke) {
         super.randomDisplayTick(x, y, z, flame, smoke);

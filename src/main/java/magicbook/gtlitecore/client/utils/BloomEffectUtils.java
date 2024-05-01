@@ -1,5 +1,6 @@
 package magicbook.gtlitecore.client.utils;
 
+import magicbook.gtlitecore.client.renderer.texture.cube.GTLiteOverlayRenderer;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -15,7 +16,7 @@ import static gregtech.client.utils.BloomEffectUtil.getEffectiveBloomLayer;
  *
  * <p>
  *     Some Bloom utils for overlay renderer,
- *     please see {@link magicbook.gtlitecore.client.renderer.GTLiteOverlayRenderer}.
+ *     please see {@link GTLiteOverlayRenderer}.
  * </p>
  */
 @SideOnly(Side.CLIENT)

@@ -42,7 +42,7 @@ public class NeutralNetworkNexus {
                 .output(nanotube, Carbon)
                 .EUt(VA[ZPM])
                 .duration(400)
-                .CasingTier(2)
+                .tier(2) // ZPM
                 .buildAndRegister();
 
         PRECISE_ASSEMBLER_RECIPES.recipeBuilder()
@@ -57,7 +57,7 @@ public class NeutralNetworkNexus {
                 .output(nanosensor, Carbon)
                 .EUt(VA[ZPM])
                 .duration(2)
-                .CasingTier(2)
+                .tier(2) // ZPM
                 .buildAndRegister();
 
         //  Basic Breeding
@@ -115,7 +115,7 @@ public class NeutralNetworkNexus {
         //  White Dwarf Matter Swarm
         NEUTRAL_NETWORK_NEXUS_BREEDING_MODE.recipeBuilder()
                 .notConsumable(lens, CelestialCrystal)
-                .notConsumable(lens, LithiumNiobate)
+                .notConsumable(lens, Infinity)
                 .notConsumable(QUANTUM_ANOMALY)
                 .input(nanotube, WhiteDwarfMatter)
                 .input(nanosensor, WhiteDwarfMatter)
@@ -132,7 +132,7 @@ public class NeutralNetworkNexus {
         //  Black Dwarf Matter Swarm
         NEUTRAL_NETWORK_NEXUS_BREEDING_MODE.recipeBuilder()
                 .notConsumable(lens, NetherStar)
-                .notConsumable(lens, MagnetoResonatic)
+                .notConsumable(lens, CrystalMatrix)
                 .notConsumable(QUANTUM_ANOMALY)
                 .input(nanotube, BlackDwarfMatter)
                 .input(nanosensor, BlackDwarfMatter)
@@ -149,7 +149,7 @@ public class NeutralNetworkNexus {
         //  Galaxium Swarm
         NEUTRAL_NETWORK_NEXUS_BREEDING_MODE.recipeBuilder()
                 .notConsumable(CHROMATIC_LENS)
-                .notConsumable(QUANTUM_ANOMALY)
+                .notConsumable(lens, Spacetime)
                 .input(nanotube, Galaxium)
                 .input(nanosensor, Galaxium)
                 .input(UHASOC_WAFER, 64)
@@ -462,6 +462,7 @@ public class NeutralNetworkNexus {
                     FullerenePolymerMatrix.getFluid(1)
             }) {
                 NEUTRAL_NETWORK_NEXUS_ASSEMBLING_MODE.recipeBuilder()
+                        .circuitMeta(1)
                         .input(CARBON_MESH, 4)
                         .input(CARBON_MESH, 2)
                         .fluidInputs(new FluidStack[]{stack})
@@ -496,6 +497,7 @@ public class NeutralNetworkNexus {
                         Lubricant.getFluid(250)
                 }) {
                     NEUTRAL_NETWORK_NEXUS_ASSEMBLING_MODE.recipeBuilder()
+                            .circuitMeta(1)
                             .input(lens, Glass)
                             .input(CARBON_FIBERS, 8)
                             .fluidInputs(new FluidStack[]{stack})

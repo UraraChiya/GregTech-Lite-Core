@@ -23,7 +23,7 @@ public class Collider {
                 .fluidOutputs(FreeElectronGas.getFluid(L))
                 .EUt(VA[IV])
                 .duration(200)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  Bi + alpha -> At
@@ -33,7 +33,7 @@ public class Collider {
                 .fluidOutputs(Astatine.getFluid(L))
                 .EUt(VA[ZPM])
                 .duration(180)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  C + At -> Ac
@@ -44,7 +44,7 @@ public class Collider {
                 .fluidOutputs(FreeElectronGas.getFluid(L * 2))
                 .EUt(VA[IV])
                 .duration(200)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
         //  C + Cs -> La
@@ -55,7 +55,7 @@ public class Collider {
                 .fluidOutputs(FreeElectronGas.getFluid(L * 4))
                 .EUt(VA[LuV])
                 .duration(200)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
         //  La + Li -> Ce
@@ -66,7 +66,7 @@ public class Collider {
                 .fluidOutputs(FreeElectronGas.getFluid(L * 2))
                 .EUt(VA[IV])
                 .duration(200)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  Cu + Sr -> Nb
@@ -77,7 +77,7 @@ public class Collider {
                 .fluidOutputs(FreeElectronGas.getFluid(L * 3))
                 .EUt(VA[IV])
                 .duration(200)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  Be + Ce -> Nb
@@ -88,7 +88,7 @@ public class Collider {
                 .fluidOutputs(FreeElectronGas.getFluid(L * 4))
                 .EUt(VA[LuV])
                 .duration(200)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
         //  Pu-239 + alpha -> Cm
@@ -98,7 +98,7 @@ public class Collider {
                 .fluidOutputs(Curium.getFluid(L))
                 .EUt(VA[IV])
                 .duration(200)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  Bk + alpha -> Cf
@@ -108,7 +108,7 @@ public class Collider {
                 .fluidOutputs(Californium.getFluid(L * 2))
                 .EUt(VA[LuV])
                 .duration(120)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  U-238 + alpha -> Neptunium
@@ -118,7 +118,7 @@ public class Collider {
                 .fluidOutputs(Neptunium.getFluid(L))
                 .EUt(VA[ZPM])
                 .duration(200)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  Cm + alpha -> Bk
@@ -128,7 +128,7 @@ public class Collider {
                 .fluidOutputs(Berkelium.getFluid(L))
                 .EUt(VA[LuV])
                 .duration(140)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  C + Am -> Es
@@ -138,7 +138,7 @@ public class Collider {
                 .fluidOutputs(Einsteinium.getFluid(L))
                 .EUt(VA[UV])
                 .duration(70)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
         //  O + U-238 -> Fm
@@ -148,7 +148,7 @@ public class Collider {
                 .fluidOutputs(Fermium.getFluid(L))
                 .EUt(VA[ZPM])
                 .duration(120)
-                .CasingTier(1)
+                .tier(1)
                 .buildAndRegister();
 
         //  Es + He -> Md
@@ -158,7 +158,7 @@ public class Collider {
                 .fluidOutputs(Mendelevium.getFluid(L))
                 .EUt(VA[UHV])
                 .duration(240)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  C + Cm -> No
@@ -168,7 +168,7 @@ public class Collider {
                 .fluidOutputs(Nobelium.getFluid(L))
                 .EUt(VA[UHV])
                 .duration(190)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  B + Cf -> Lr
@@ -178,7 +178,7 @@ public class Collider {
                 .fluidOutputs(Lawrencium.getFluid(L))
                 .EUt(VA[UHV])
                 .duration(200)
-                .CasingTier(3)
+                .tier(3)
                 .buildAndRegister();
 
         //  Ichorium -> Void Metal
@@ -188,7 +188,7 @@ public class Collider {
                 .fluidOutputs(VoidMetal.getFluid(L))
                 .EUt(VA[UV])
                 .duration(120)
-                .CasingTier(2)
+                .tier(2)
                 .buildAndRegister();
 
     }
@@ -207,7 +207,7 @@ public class Collider {
                 .chancedOutput(HIGGS_BOSON, 1, 0)
                 .EUt(VA[UV])
                 .duration(400)
-                .CasingTier(2) // UV
+                .tier(2) // UV
                 .buildAndRegister();
 
         //  Gluons:
@@ -222,7 +222,7 @@ public class Collider {
                 .chancedOutput(HIGGS_BOSON, 100, 0)
                 .EUt(VA[UHV])
                 .duration(200)
-                .CasingTier(3) // UHV
+                .tier(3) // UHV
                 .buildAndRegister();
 
         //  Free Electron Gas:
@@ -238,7 +238,7 @@ public class Collider {
                 .chancedOutput(TAU_NEUTRINO, 5, 0)
                 .EUt(VA[ZPM])
                 .duration(300)
-                .CasingTier(1) // ZPM
+                .tier(1) // ZPM
                 .buildAndRegister();
 
         //  Heavy Lepton Mixture:
@@ -254,7 +254,7 @@ public class Collider {
                 .chancedOutput(TAU_NEUTRINO, 50, 0)
                 .EUt(VA[UV])
                 .duration(150)
-                .CasingTier(2) // UV
+                .tier(2) // UV
                 .buildAndRegister();
 
         //  Argon Plasma:
@@ -270,7 +270,7 @@ public class Collider {
                 .chancedOutput(BOTTOM_QUARK, 50, 0)
                 .EUt(VA[UEV])
                 .duration(700)
-                .CasingTier(4) // UEV
+                .tier(4) // UEV
                 .buildAndRegister();
 
         //  Temporal Fluid:
@@ -286,7 +286,7 @@ public class Collider {
                 .chancedOutput(BOTTOM_QUARK, 500, 0)
                 .EUt(VA[UIV])
                 .duration(350)
-                .CasingTier(5) // UIV
+                .tier(5) // UIV
                 .buildAndRegister();
 
         //  Americium Plasma:
@@ -302,7 +302,7 @@ public class Collider {
                 .chancedOutput(HIGGS_BOSON, 10, 0)
                 .EUt(VA[UHV])
                 .duration(500)
-                .CasingTier(3) // UHV
+                .tier(3) // UHV
                 .buildAndRegister();
 
         //  Taranium Plasma:
@@ -318,7 +318,7 @@ public class Collider {
                 .chancedOutput(HIGGS_BOSON, 100, 0)
                 .EUt(VA[UEV])
                 .duration(250)
-                .CasingTier(4) // UEV
+                .tier(4) // UEV
                 .buildAndRegister();
 
         //  Nitrogen Plasma:
@@ -333,7 +333,7 @@ public class Collider {
                 .chancedOutput(OMEGA_BARYON, 20, 0)
                 .EUt(VA[ZPM])
                 .duration(400)
-                .CasingTier(1) // ZPM
+                .tier(1) // ZPM
                 .buildAndRegister();
 
         //  Adamantium Plasma:
@@ -348,7 +348,7 @@ public class Collider {
                 .chancedOutput(OMEGA_BARYON, 200, 0)
                 .EUt(VA[UV])
                 .duration(200)
-                .CasingTier(2) // UV
+                .tier(2) // UV
                 .buildAndRegister();
 
         //  Free Electron Gas -> Quantum Anomaly
@@ -357,7 +357,7 @@ public class Collider {
                 .chancedOutput(QUANTUM_ANOMALY, 1000, 0)
                 .EUt(VA[ZPM])
                 .duration(200)
-                .CasingTier(1) // ZPM
+                .tier(1) // ZPM
                 .buildAndRegister();
 
         //  Electron -> Quantum Anomaly
@@ -366,7 +366,7 @@ public class Collider {
                 .chancedOutput(QUANTUM_ANOMALY, 1000, 0)
                 .EUt(VA[UV])
                 .duration(100)
-                .CasingTier(2) // UV
+                .tier(2) // UV
                 .buildAndRegister();
 
     }

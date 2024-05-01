@@ -7,15 +7,21 @@ import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.PatternStringError;
 import gregtech.api.pattern.TraceabilityPredicate;
 import gregtech.api.util.BlockInfo;
 import gregtech.common.blocks.BlockFireboxCasing;
 import gregtech.common.blocks.MetaBlocks;
+import gregtech.common.metatileentities.multi.electric.MetaTileEntityPowerSubstation;
+import magicbook.gtlitecore.api.GTLiteAPI;
 import magicbook.gtlitecore.api.block.impl.WrappedIntTier;
 import magicbook.gtlitecore.api.metatileentity.multi.GTLiteMultiblockAbility;
 import magicbook.gtlitecore.api.metatileentity.multi.IYottaTankData;
 import magicbook.gtlitecore.api.pattern.predicates.TierTraceabilityPredicate;
+import magicbook.gtlitecore.common.metatileentities.multi.electric.MetaTileEntityIndustrialRoaster;
+import magicbook.gtlitecore.common.metatileentities.multi.part.MetaTileEntityReinforcedRotorHolder;
 import magicbook.gtlitecore.common.metatileentities.multi.storage.MetaTileEntityYottaFluidTank;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
@@ -52,12 +58,8 @@ public class GTLiteTraceabilityPredicate {
      * Firebox Casing Predicate.
      *
      * <p>
-     *     This is a heating coil like predicate,
-     *     used in {@link magicbook.gtlitecore.common.metatileentities.multi.electric.MetaTileEntityIndustrialRoaster}.
-     * </p>
-     *
-     * <p>
-     *     Init temperature in formStructure(),
+     *     This is a heating coil like predicate, used in {@link MetaTileEntityIndustrialRoaster}.
+     *     Extended predicate related {@code temperature} parameter is init in {@code formStructure()},
      *     and each firebox (in {@link BlockFireboxCasing}) get a special temperature by oridinal.
      * </p>
      */
@@ -83,13 +85,11 @@ public class GTLiteTraceabilityPredicate {
      * Yotta Fluid Tank Cell Predicate.
      *
      * <p>
-     *     This is the basic predicate of Yotta Tank.
-     *     You can see BATTERY_PREDICATE in {@link gregtech.common.metatileentities.multi.electric.MetaTileEntityPowerSubstation}.
+     *     This is the basic predicate of Yotta Tank, please see: {@code BATTERY_PREDICATE},
+     *     this predicate is another predicate in {@link MetaTileEntityPowerSubstation},
+     *     but two predicates use same method. Yotta Tank Cells init in {@link GTLiteAPI}.
      * </p>
      *
-     * <p>
-     *     Hash map of Yotta Tank Cells init in {@link magicbook.gtlitecore.api.GTLiteAPI}.
-     * </p>
      */
     public static final Supplier<TraceabilityPredicate> CELL_PREDICATE = () -> new TraceabilityPredicate(blockWorldState -> {
         IBlockState state = blockWorldState.getBlockState();
@@ -115,7 +115,7 @@ public class GTLiteTraceabilityPredicate {
      * (Reinforced) Rotor Holder Predicate.
      *
      * <p>
-     *     Just a rotor holder predicate rewrite for {@link magicbook.gtlitecore.common.metatileentities.multi.part.MetaTileEntityReinforcedRotorHolder}.
+     *     Just a rotor holder predicate rewrite for {@link MetaTileEntityReinforcedRotorHolder}.
      * </p>
      */
     public static Supplier<TraceabilityPredicate> ROTOR_HOLDER = () -> new TraceabilityPredicate(blockWorldState -> {
@@ -148,14 +148,14 @@ public class GTLiteTraceabilityPredicate {
      * Optional State in Multiblock Structure.
      *
      * <p>
-     *     This is a special state for {@link gregtech.api.pattern.FactoryBlockPattern},
+     *     This is a special state for {@link FactoryBlockPattern},
      *     used for some update meta tile entities.
      * </p>
      *
      * @param mark           Symbol to get these infoes in formStructure().
      * @param allowedStates  Allowed state, i.e. block mean of this symbol (like: 'S', getCasingState()),
      *                       and getCasingState() is a {@link IBlockState} getter.
-     * @return               Just like blockMatcher parameter in {@link gregtech.api.pattern.FactoryBlockPattern},
+     * @return               Just like blockMatcher parameter in {@link FactoryBlockPattern},
      *                       you can use correspond text (mark) to check if the aisle is your upgrade structure part.
      */
     public static TraceabilityPredicate optionalStates(String mark, IBlockState... allowedStates) {
@@ -174,13 +174,15 @@ public class GTLiteTraceabilityPredicate {
     /**
      * Optional Ability in Multiblock Structure.
      *
-     * <p>This is a special ability for {@link gregtech.api.pattern.FactoryBlockPattern},
+     * <p>This is a special ability for {@link FactoryBlockPattern},
      * used for some update meta tile entities.</p>
      *
      * @param mark              Symbol to get these infoes in formStructure().
-     * @param allowedAbilities  Allowed ability, i.e. ability mean of this symbol (like: abilities(MultiblockAbility.IMPORT_ITEM),
-     *                          please use abilities in {@link MultiblockAbility}).
-     * @return                  Just like abilities() in {@link gregtech.api.metatileentity.multiblock.MultiblockControllerBase},
+     * @param allowedAbilities  Allowed ability, i.e. ability mean of this symbol,
+     *                          like: {@code abilities(MultiblockAbility.IMPORT_ITEM},
+     *                          please use abilities in {@link MultiblockAbility}) and gtlitecore's ability class,
+     *                          i.e. {@link GTLiteMultiblockAbility}.
+     * @return                  Just like abilities() in {@link MultiblockControllerBase},
      *                          you can use correspond text (mark) to check if the ability is your upgrade structure part.
      */
     public static TraceabilityPredicate optionalAbilities(String mark, MultiblockAbility<?>... allowedAbilities) {

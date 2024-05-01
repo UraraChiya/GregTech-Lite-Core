@@ -40,18 +40,18 @@ public class SpaceElevatorCasingTierRecipeBuilder extends RecipeBuilder<SpaceEle
     @Override
     public boolean applyProperty(@Nonnull String key, Object value) {
         if (key.equals(SpaceElevatorCasingTierProperty.KEY)) {
-            this.CasingTier(((Number) value).intValue());
+            this.tier(((Number) value).intValue());
             return true;
         }
         return super.applyProperty(key, value);
     }
 
-    public SpaceElevatorCasingTierRecipeBuilder CasingTier(int Tier) {
-        if (Tier <= 0) {
+    public SpaceElevatorCasingTierRecipeBuilder tier(int casingTier) {
+        if (casingTier <= 0) {
             GTLiteLog.logger.error("Casing Tier cannot be less than or equal to 0", new IllegalArgumentException());
             recipeStatus = EnumValidationResult.INVALID;
         }
-        this.applyProperty(SpaceElevatorCasingTierProperty.getInstance(), Tier);
+        this.applyProperty(SpaceElevatorCasingTierProperty.getInstance(), casingTier);
         return this;
     }
 
